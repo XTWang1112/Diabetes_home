@@ -61,7 +61,7 @@ h1 {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   font-weight: bold;
-  padding-top: 1%;
+  padding-top: 3%;
   padding-bottom: 1%;
   padding-left: 9%;
 }
@@ -96,7 +96,7 @@ ul {
 
 .header_logo {
   color: white;
-  /* margin-left: 3%; */
+  margin-left: 3%;
   font-size: 18px;
   flex-direction: column;
 }
@@ -134,23 +134,20 @@ ul {
 
 
 
-#img_return {
-  margin-left: 2%;
+.img_return {
+  margin-left: 1%;
 }
 
 
-#img_guest {
-  margin-right: 5%;
+.img_guest {
+  margin-left: 10%;
 }
 
-#img_menu {
-  margin-right: 10px;
-  text-align: right;
+.img_menu {
+  margin-left: 10px;
+  /* text-align: right; */
 }
 
-#div_h1 {
-  background-color: #5e8db7;
-}
 
 @media screen and (max-width: 380px) {
 
