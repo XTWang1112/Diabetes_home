@@ -1,7 +1,4 @@
 /* element selector */
-body {
-    margin: 0%;
-}
 
 div {
     margin: 0;
@@ -20,6 +17,48 @@ h1 {
     color: #1F2B5A;
     padding-top: 1%;
     padding-bottom: 1%
+}
+
+body { /* page layout - desktop version */
+    margin: 0%;
+    display: grid;
+    grid-template-columns: 10% 90% 10%;
+    grid-template-rows: 10% auto 10%;
+
+    grid-template-areas: 
+        "header header header"
+        "aside main nav"
+        "footer footer footer";
+    }
+
+header {
+    background-color: #5E8DB7;
+    grid-area: header;
+}
+aside {grid-area: aside;}
+main {grid-area: main;}
+nav {grid-area: nav;}
+footer {grid-area: footer;}
+
+
+div {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: Poppins;
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    color: #1F2B5A;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left:9%;
 }
 
 h2 {
@@ -81,4 +120,16 @@ li {
 
 #div_h1 {
     background-color: #5E8DB7;
+}
+
+@media screen and (max-width: 375px) {  /* page layout for phones */
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #arrowback{
+        width: 1000px;
+        size: fix;
+    }
 }

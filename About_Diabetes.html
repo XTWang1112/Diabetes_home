@@ -12,132 +12,135 @@
 
 
 <body>
-    <!-- header: include return button, diabetes@home, guest sign and three lines button -->
-    <div class="div_header_and_footer">
+    <header>
+        <!-- header: include return button, diabetes@home, guest sign and three lines button -->
+        <div class="div_header_and_footer">
 
-        <!-- this svg is return button -->
-        <svg width="2%" height="2%" viewBox="0 0 13.503 23.619">
-            <path d="M15.321,18l8.937-8.93a1.688,1.688,0,0,0-2.391-2.384L11.742,16.8a1.685,1.685,0,0,0-.049,2.327L21.86,29.32a1.688,1.688,0,0,0,2.391-2.384Z"
-                transform="translate(-11.251 -6.194)" fill="#fff" />
-        </svg>
+            <!-- this svg is return button -->
+            <svg id="arrowback" width="2%" viewBox="0 0 13.503 23.619">
+                <path d="M15.321,18l8.937-8.93a1.688,1.688,0,0,0-2.391-2.384L11.742,16.8a1.685,1.685,0,0,0-.049,2.327L21.86,29.32a1.688,1.688,0,0,0,2.391-2.384Z"
+                    transform="translate(-11.251 -6.194)" fill="#fff" />
+            </svg>
 
-        <!-- this p is Diabetes@Home, span is @Home -->
-        <p class="p_logo_string">
-            Diabetes<span id="span_at_home">@Home</span>
+            <!-- this p is Diabetes@Home, span is @Home -->
+            <p class="p_logo_string">
+                Diabetes<span id="span_at_home">@Home</span>
+            </p>
+            <!-- this svg is guest sign -->
+            <svg id="svg_guest" width="56" height="21"
+                viewBox="0 0 56 21">
+                <g fill="#5e8db7">
+                    <path
+                        d="M 49.86516952514648 20 L 6.134829998016357 20 C 4.866250038146973 20 3.632289886474609 19.08378982543945 2.660279989242554 17.42015075683594 C 1.589630007743835 15.58769035339355 1 13.13006973266602 1 10.5 C 1 7.869929790496826 1.589630007743835 5.412310123443604 2.660279989242554 3.5798499584198 C 3.632289886474609 1.916210055351257 4.866250038146973 1 6.134829998016357 1 L 49.86516952514648 1 C 51.13375091552734 1 52.36771011352539 1.916210055351257 53.3397216796875 3.5798499584198 C 54.41036987304688 5.412310123443604 55 7.869929790496826 55 10.5 C 55 13.13006973266602 54.41036987304688 15.58769035339355 53.3397216796875 17.42015075683594 C 52.36771011352539 19.08378982543945 51.13375091552734 20 49.86516952514648 20 Z"
+                        stroke="none" />
+                    <path
+                        d="M 6.134830474853516 2 C 4.182991027832031 2 2 5.635100364685059 2 10.5 C 2 15.36490058898926 4.182991027832031 19 6.134830474853516 19 L 49.86515808105469 19 C 51.81700134277344 19 54 15.36490058898926 54 10.5 C 54 5.635100364685059 51.81700134277344 2 49.86515808105469 2 L 6.134830474853516 2 M 6.134830474853516 0 L 49.86515808105469 0 C 53.25334167480469 0 56 4.701009750366211 56 10.5 C 56 16.29899024963379 53.25334167480469 21 49.86515808105469 21 L 6.134830474853516 21 C 2.746658325195312 21 0 16.29899024963379 0 10.5 C 0 4.701009750366211 2.746658325195312 0 6.134830474853516 0 Z"
+                        stroke="none" fill="#2264b1" />
+                </g>
+                <text id="Guest" transform="translate(13 14)" fill="#fdfdfd" font-size="10"
+                    font-family="Poppins-Bold, Poppins" font-weight="700">
+                    <tspan x="0" y="0">Guest</tspan>
+                </text>
+            </svg>
+            
+            <!-- this svg is three lines button -->
+            <svg id="svg_three_lines" width="29.178" height="21" viewBox="0 0 29.178 21">
+                <g transform="translate(-4.5 -10.125)" opacity="0.997">
+                    <path d="M32.462,12.375H5.716A1.176,1.176,0,0,1,4.5,11.25h0a1.176,1.176,0,0,1,1.216-1.125H32.462a1.176,1.176,0,0,1,1.216,1.125h0A1.176,1.176,0,0,1,32.462,12.375Z"
+                        transform="translate(0)" fill="#202b5a" />
+                    <path d="M32.462,19.125H5.716A1.176,1.176,0,0,1,4.5,18h0a1.176,1.176,0,0,1,1.216-1.125H32.462A1.176,1.176,0,0,1,33.678,18h0A1.176,1.176,0,0,1,32.462,19.125Z"
+                        transform="translate(0 2.625)" fill="#202b5a" />
+                    <path d="M32.462,25.875H5.716A1.176,1.176,0,0,1,4.5,24.75h0a1.176,1.176,0,0,1,1.216-1.125H32.462a1.176,1.176,0,0,1,1.216,1.125h0A1.176,1.176,0,0,1,32.462,25.875Z"
+                        transform="translate(0 5.25)" fill="#202b5a" />
+                </g>
+            </svg>
+        </div>
+
+        <!-- the main header: about diabetes -->
+        <div id="div_h1">
+            <h1>About Diabetes</h1>
+        </div>
+    </header>
+
+
+    <main>
+        <!-- What is diabetes  -->
+        <h2>
+            what is diabetes
+        </h2>
+        <p>Diabetes is a serious condition where your blood glucose level is too high. It can happen when your body doesn’t
+            produce enough insulin or the insulin it produces isn’t effective. Or, when your body can’t produce any insulin
+            at all.</p>
+        <!-- The video: what is diabetes? -->
+        <iframe width="300" height="275" src="https://www.youtube.com/embed/wZAjVQWbMlE" title="YouTube video player"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+
+        <!-- Types of Diabetes -->
+        <h2>Types of Diabetes</h2>
+        <p>
+            There are two main types of diabetes: type 1 and type 2. When you’ve got type 1 diabetes, you can’t make any
+            insulin at all. If you’ve got type 2 diabetes, it’s a bit different. The insulin you make either can’t work
+            effectively, or you can’t produce enough of it. They’re different
+            conditions, but they’re both serious.
         </p>
-        <!-- this svg is guest sign -->
-        <svg id="svg_guest" width="56" height="21"
-            viewBox="0 0 56 21">
-            <g fill="#5e8db7">
-                <path
-                    d="M 49.86516952514648 20 L 6.134829998016357 20 C 4.866250038146973 20 3.632289886474609 19.08378982543945 2.660279989242554 17.42015075683594 C 1.589630007743835 15.58769035339355 1 13.13006973266602 1 10.5 C 1 7.869929790496826 1.589630007743835 5.412310123443604 2.660279989242554 3.5798499584198 C 3.632289886474609 1.916210055351257 4.866250038146973 1 6.134829998016357 1 L 49.86516952514648 1 C 51.13375091552734 1 52.36771011352539 1.916210055351257 53.3397216796875 3.5798499584198 C 54.41036987304688 5.412310123443604 55 7.869929790496826 55 10.5 C 55 13.13006973266602 54.41036987304688 15.58769035339355 53.3397216796875 17.42015075683594 C 52.36771011352539 19.08378982543945 51.13375091552734 20 49.86516952514648 20 Z"
-                    stroke="none" />
-                <path
-                    d="M 6.134830474853516 2 C 4.182991027832031 2 2 5.635100364685059 2 10.5 C 2 15.36490058898926 4.182991027832031 19 6.134830474853516 19 L 49.86515808105469 19 C 51.81700134277344 19 54 15.36490058898926 54 10.5 C 54 5.635100364685059 51.81700134277344 2 49.86515808105469 2 L 6.134830474853516 2 M 6.134830474853516 0 L 49.86515808105469 0 C 53.25334167480469 0 56 4.701009750366211 56 10.5 C 56 16.29899024963379 53.25334167480469 21 49.86515808105469 21 L 6.134830474853516 21 C 2.746658325195312 21 0 16.29899024963379 0 10.5 C 0 4.701009750366211 2.746658325195312 0 6.134830474853516 0 Z"
-                    stroke="none" fill="#2264b1" />
-            </g>
-            <text id="Guest" transform="translate(13 14)" fill="#fdfdfd" font-size="10"
-                font-family="Poppins-Bold, Poppins" font-weight="700">
-                <tspan x="0" y="0">Guest</tspan>
-            </text>
-        </svg>
-        
-        <!-- this svg is three lines button -->
-        <svg id="svg_three_lines" width="29.178" height="21" viewBox="0 0 29.178 21">
-            <g transform="translate(-4.5 -10.125)" opacity="0.997">
-                <path d="M32.462,12.375H5.716A1.176,1.176,0,0,1,4.5,11.25h0a1.176,1.176,0,0,1,1.216-1.125H32.462a1.176,1.176,0,0,1,1.216,1.125h0A1.176,1.176,0,0,1,32.462,12.375Z"
-                    transform="translate(0)" fill="#202b5a" />
-                <path d="M32.462,19.125H5.716A1.176,1.176,0,0,1,4.5,18h0a1.176,1.176,0,0,1,1.216-1.125H32.462A1.176,1.176,0,0,1,33.678,18h0A1.176,1.176,0,0,1,32.462,19.125Z"
-                    transform="translate(0 2.625)" fill="#202b5a" />
-                <path d="M32.462,25.875H5.716A1.176,1.176,0,0,1,4.5,24.75h0a1.176,1.176,0,0,1,1.216-1.125H32.462a1.176,1.176,0,0,1,1.216,1.125h0A1.176,1.176,0,0,1,32.462,25.875Z"
-                    transform="translate(0 5.25)" fill="#202b5a" />
-            </g>
-        </svg>
-    </div>
-
-
-
-
-    <!-- the main header: about diabetes -->
-    <div id="div_h1">
-        <h1>About Diabetes</h1>
-    </div>
-
-    <!-- What is diabetes  -->
-    <h2>
-        what is diabetes
-    </h2>
-    <p>Diabetes is a serious condition where your blood glucose level is too high. It can happen when your body doesn’t
-        produce enough insulin or the insulin it produces isn’t effective. Or, when your body can’t produce any insulin
-        at all.</p>
-    <!-- The video: what is diabetes? -->
-    <iframe width="375" height="275" src="https://www.youtube.com/embed/wZAjVQWbMlE" title="YouTube video player"
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-
-    <!-- Types of Diabetes -->
-    <h2>Types of Diabetes</h2>
-    <p>
-        There are two main types of diabetes: type 1 and type 2. When you’ve got type 1 diabetes, you can’t make any
-        insulin at all. If you’ve got type 2 diabetes, it’s a bit different. The insulin you make either can’t work
-        effectively, or you can’t produce enough of it. They’re different
-        conditions, but they’re both serious.
-    </p>
-    <p>
-        Other types of diabetes include gestational diabetes, which some women may go on to develop during pregnancy.
-        And there are many other rarer types of diabetes such as type 3c and Latent Autoimmune Diabetes in
-        Adults (LADA) too.
-    </p>
-
-    <!-- Symotoms of diabetes  -->
-    <h2>Symotoms of diabetes</h2>
-    <P>The common symptoms of diabetes include: </P>
-    <ul>
-        <li>-Going to the toilet a lot, especially at night</li>
-        <li>-Being really thirsty</li>
-        <li>-Feeling more tired than usual</li>
-        <li>-Losing weight without trying to</li>
-        <li>-Genital itching or thrush</li>
-        <li>-Cuts and wounds take longer to heal</li>
-        <li>-Blurred vision</li>
-    </ul>
-    <p>More information about symptoms of diabetes, please visit what are the signs and symptoms of diabetes?</p>
-    <img src="img/Img_Mercy.jpeg" alt="Image of partner" width="375" height="100%" title="You are not longly.">
-
-    <!-- Managing Diabetes -->
-    <h2>Managing Diabetes</h2>
-    <p>The common symptoms of diabetes include: </p>
-    <ol>
-        <li>Get the information you need. The more you know, the more confident you will become and and the easier it
-            will be to manage your diabetes.</li>
-        <li>Recognise your role: take some personal responsibility for managing your diabetes day-to-day</li>
-        <li>Be honest: give accurate information about your health and how you are really feeling.</li>
-        <li>Set goals: put into everyday practice the goals you may have agreed in your care plan.</li>
-    </ol>
-
-    <!-- Useful links about Diabetes -->
-    <h2>Useful links about Diabetes</h2>
-    <!-- The links -->
-    <div>
-        <a href="https://idf.org/"><img src="img/IDF_logo.png"></a>
-        <br>
-        <a href="https://www.diabetesaustralia.com.au/"><img src="img/DA_logo.png"></a>
-        <br>
-        <a href="https://diab.cma.org.cn/cn/index.aspx"><img src="img/CDS_logo.png"></a>
-        <br>
-        <a href="https://www.diabetes.org/"><img src="img/ADA_logo.png"></a>
-        <br>
-        <a href="https://www.diabetes.org.uk/"><img src="img/DUK_logo.png"></a>
-    </div>
-
-
-
-    <!-- the footer -->
-    <div class="div_header_and_footer">
-        <p class="p_logo_string">
-            Diabetes<span class="span_logo_at_home">@Home</span>
+        <p>
+            Other types of diabetes include gestational diabetes, which some women may go on to develop during pregnancy.
+            And there are many other rarer types of diabetes such as type 3c and Latent Autoimmune Diabetes in
+            Adults (LADA) too.
         </p>
-    </div>
+
+        <!-- Symotoms of diabetes  -->
+        <h2>Symotoms of diabetes</h2>
+        <P>The common symptoms of diabetes include: </P>
+        <ul>
+            <li>-Going to the toilet a lot, especially at night</li>
+            <li>-Being really thirsty</li>
+            <li>-Feeling more tired than usual</li>
+            <li>-Losing weight without trying to</li>
+            <li>-Genital itching or thrush</li>
+            <li>-Cuts and wounds take longer to heal</li>
+            <li>-Blurred vision</li>
+        </ul>
+        <p>More information about symptoms of diabetes, please visit what are the signs and symptoms of diabetes?</p>
+        <img src="img/Img_Mercy.jpeg" alt="Image of partner" width="300"  title="You are not longly.">
+
+        <!-- Managing Diabetes -->
+        <h2>Managing Diabetes</h2>
+        <p>The common symptoms of diabetes include: </p>
+        <ol>
+            <li>Get the information you need. The more you know, the more confident you will become and and the easier it
+                will be to manage your diabetes.</li>
+            <li>Recognise your role: take some personal responsibility for managing your diabetes day-to-day</li>
+            <li>Be honest: give accurate information about your health and how you are really feeling.</li>
+            <li>Set goals: put into everyday practice the goals you may have agreed in your care plan.</li>
+        </ol>
+
+        <!-- Useful links about Diabetes -->
+        <h2>Useful links about Diabetes</h2>
+        <!-- The links -->
+        <div>
+            <a href="https://idf.org/"><img src="img/IDF_logo.png"></a>
+            <br>
+            <a href="https://www.diabetesaustralia.com.au/"><img src="img/DA_logo.png"></a>
+            <br>
+            <a href="https://diab.cma.org.cn/cn/index.aspx"><img src="img/CDS_logo.png"></a>
+            <br>
+            <a href="https://www.diabetes.org/"><img src="img/ADA_logo.png"></a>
+            <br>
+            <a href="https://www.diabetes.org.uk/"><img src="img/DUK_logo.png"></a>
+        </div>
+    </main>
+
+
+    <footer>
+        <!-- the footer -->
+        <div class="div_header_and_footer">
+            <p class="p_logo_string">
+                Diabetes<span class="span_logo_at_home">@Home</span>
+            </p>
+        </div>
+    </footer>
 </body>
 
 </html>
