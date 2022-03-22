@@ -23,7 +23,7 @@ body { /* page layout - desktop version */
     margin: 0%;
     display: grid;
     grid-template-columns: 10% 90% 10%;
-    grid-template-rows: 10% auto 10%;
+    grid-template-rows: 250px auto 10%;
 
     grid-template-areas: 
         "header header header"
@@ -96,40 +96,77 @@ li {
 .p_logo_string {
     font-family: Poppins;
     color: white;
-    margin-right: 30%;
-    font-size: 1.5em;
-    margin-top: -2%;
+    margin-left: 5%;
+    margin-top: 0%;
+    font-size: 30px;
 }
 
 .span_logo_at_home {
     color: #1F2B5A;
 }
 
+.association_logos {
+    text-align: center;
+}
+
 /* ID Selector */
+
+#img_return {
+    margin-left: 2%;
+}
+
+
 #span_at_home {
     color: #1F2B5A;
 }
 
-#svg_guest {
-    margin-left: 30%;
+#img_guest {
+    margin-right: 5%;
 }
 
-#svg_three_lines {
-    margin-left: 5%;
+#img_menu {
+    margin-right: 10px;
+    text-align: right;
 }
 
 #div_h1 {
     background-color: #5E8DB7;
 }
 
-@media screen and (max-width: 375px) {  /* page layout for phones */
+@media screen and (max-width: 380px) {  /* page layout for phones */
     body {
-        display: flex;
-        flex-direction: column;
+        /* display: flex;
+        flex-direction: column; */
+        grid-template-rows: 120px auto 10%;
+
     }
 
-    #arrowback{
-        width: 1000px;
-        size: fix;
+    .p_logo_string {
+        font-family: Poppins;
+        color: white;
+        margin-left: 2%;
+        font-size: 20px;
+        margin-top: 0%;
+    }
+
+    #img_return {
+        height: 30px;
+        width: 17px;
+    }
+
+    #img_guest {
+        margin-left: 15%;
+        margin-right: 0;
+        margin-top: 1.5%;
+        height: 20px;
+        width: 60px;
+    }
+    
+    #img_menu {
+        margin-left: 2%;
+        margin-right: 0;
+        margin-top: 1.5%;
+        height: 20px;
+        width: 30px;
     }
 }
