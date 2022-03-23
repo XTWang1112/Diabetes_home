@@ -4,7 +4,7 @@ body {
   margin: 0%;
   display: grid;
   grid-template-columns: 10% 90% 10%;
-  grid-template-rows: 250px auto 10%;
+  grid-template-rows: 250px 300px 200px;
 
   grid-template-areas:
     "header header header"
@@ -90,7 +90,6 @@ ul {
   background-color: #5e8db7;
   display: flex;
   padding-top: 5%;
-  padding-bottom: 15%;
   flex-direction: row;
 }
 
