@@ -53,7 +53,7 @@ div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 20px 20px;
+  padding: 28px 28px;
   margin: 0 auto;
   list-style: none;
   font-size: x-small;
@@ -80,10 +80,10 @@ h1 {
   padding-left: 9%;
 }
 
-.website-title{
-  font-size: 1.3em;
-  padding-right: 85px;
-  line-height: 27px;
+.website-title {
+  font-size: 1.2em;
+  padding-right: 100px;
+  line-height: 23px;
 }
 
 p {
@@ -97,7 +97,6 @@ p {
 ul {
   list-style: "-";
 }
-
 
 .web_header {
   background-color: #5e8db7;
@@ -134,14 +133,12 @@ ul {
 
 .copyright {
   color: #1f2b5a;
-  font-size: 0.5px;
+  font-size: 11px;
 }
 
-
 .footer_info {
-  font-size: 4px;
+  font-size: 12px;
   flex-direction: row;
-  align-items: flex-end;
   padding-left: 6%;
   /* padding-right: %; */
   text-align: left;
@@ -175,11 +172,7 @@ ul {
   /* text-align: right; */
 }
 
-
-
-
 @media screen and (max-width: 380px) {
-
   /* page layout for phones */
   body {
     /* display: flex;
@@ -205,7 +198,7 @@ ul {
     height: 20px;
     width: 60px;
   }
-  
+
   .img_menu {
     margin-left: 10px;
     margin-top: 1.5%;
