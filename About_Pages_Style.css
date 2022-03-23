@@ -1,4 +1,4 @@
-.main_css {
+main {
   font-family: Poppins;
   /* page layout - desktop version */
   margin: 0%;
@@ -27,7 +27,6 @@ body {
     "aside main nav"
     "footer footer footer"; */
   color: #1f2b5a;
-
 }
 header {
   background-color: #5e8db7;
@@ -66,7 +65,7 @@ div {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 40px 40px;
-  margin: 0 auto; 
+  margin: 0 auto;
   list-style: none;
   font-size: x-small;
   line-height: 15px;
@@ -121,10 +120,11 @@ ul {
   flex-direction: row;
 }
 
-.web_footer {
+footer {
   background-color: #5e8db7;
   display: flex;
   padding-top: 5%;
+  padding-bottom: 5%;
   flex-direction: row;
 }
 
