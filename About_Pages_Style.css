@@ -1,4 +1,4 @@
-.main_css {
+main {
   font-family: Poppins;
   /* page layout - desktop version */
   margin: 0%;
@@ -65,6 +65,7 @@ div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-top: 5px;
   padding: 40px 40px;
   margin: 0 auto; 
   list-style: none;
@@ -97,7 +98,7 @@ h1 {
 
 .website-title {
   font-size: 1.2em;
-  padding-right: 100px;
+  padding-right: 85px;
   line-height: 23px;
 }
 
