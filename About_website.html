@@ -11,39 +11,34 @@
 
   <body>
     <header>
-      <div class="div_header_and_footer">
+      <div class="web_header">
         <img
-          id="img_return"
+          class="img_return"
           src="img/Arrow-back.png"
-          width="30px"
-          height="50px"
+          width="16px"
           alt="arrow-back button"
         />
 
-        <p class="p_logo_string">
-          Diabetes<span id="span_at_home">@Home</span>
+        <p class="header_logo">
+          Diabetes<span class="logo_at_home">@Home</span>
         </p>
 
         <img
-          id="img_guest"
+          class="img_guest"
           src="img/Guest_button.png"
-          width="150px"
-          height="50px"
-          alt="Guest"
+          width="80px"
+          alt="Guest button"
         />
 
         <img
-          id="img_menu"
+          class="img_menu"
           src="img/Menu.png"
-          width="70px"
-          height="50px"
+          width="30px"
           alt="Menu button"
         />
       </div>
 
-      <div id="div_h1">
-        <h1>The Best Diabetes Monitor in Australia</h1>
-      </div>
+      <h1 class="website-title">The Best Diabetes Monitor in Australia</h1>
     </header>
 
     <main>
@@ -62,27 +57,27 @@
       </p>
 
       <h2>Our Webteam</h2>
-      <ul>
+      <ul class="team-image">
         <li>
-          <img src="img/Xiaotong Wang.png" width="94" alt="Xiaotong Wang" />
+          <img class = "image1" src="img/Xiaotong Wang.png" width="94" alt="Xiaotong Wang" />
           <p>
             <strong>Project Manager<br />Xiaotong Wang</strong>
           </p>
         </li>
         <li>
-          <img src="img/Zihan Yu.png" width="94" alt="Zihan Yu" />
+          <img class = "image1" src="img/Zihan Yu.png" width="94" alt="Zihan Yu" />
           <p>
             <strong>Web developer<br />Zihan Yu</strong>
           </p>
         </li>
         <li>
-          <img src="img/Yingxi Luo.JPG" width="94" alt="Yingxi Luo" />
+          <img class = "image1" src="img/Yingxi Luo.JPG" width="94" alt="Yingxi Luo" />
           <p>
             <strong>Web developer<br />Yingxi Luo</strong>
           </p>
         </li>
         <li>
-          <img src="img/Jiashi Wang.png" width="94" alt="Jiashi Wang" />
+          <img class = "image1" src="img/Jiashi Wang.png" width="94" alt="Jiashi Wang" />
           <p>
             <strong>Web developer<br />Jiashi Wang</strong>
           </p>
@@ -90,19 +85,26 @@
       </ul>
     </main>
 
-    <footer>
+    <footer class="web_footer">
       <!-- the footer -->
-      <div class="div_header_and_footer">
-        <p class="p_logo_string">
-          Diabetes<span class="span_logo_at_home">@Home</span>
-        </p>
-        <p>&copy; 2022 Diabetes@Home, Inc</p>
-        <p>
-          <strong>Address:</strong> 813 Swanston St, Parkville VIC 3052
-          <strong>Located in:</strong> University of Melbourne
-          <strong>Phone: </strong>(03)9035 5511
-        </p>
-      </div>
+      <!-- <div class="web_footer"> -->
+      <section class="footer_logo">
+        Diabetes<span class="logo_at_home">@Home</span>
+        <p class="copyright"> 2022 Diabetes Home, Inc.</p>
+      </section>
+      <section class="footer_info">
+        <span class="footer_info_title">Address: </span>
+        813 Swanston St,<br />
+        Parkville VIC 3052
+        <br />
+        <span class="footer_info_title">Located in: </span>
+        <br />
+        University of Melbourne
+        <br />
+        <span class="footer_info_title">Phone: </span>
+        (03)9035 5511
+      </section>
+      <!-- </div> -->
     </footer>
   </body>
 </html>

@@ -4,7 +4,7 @@ body {
   margin: 0%;
   display: grid;
   grid-template-columns: 10% 90% 10%;
-  grid-template-rows: 250px 300px 200px;
+  grid-template-rows: 250px auto 200px;
 
   grid-template-areas:
     "header header header"
@@ -14,7 +14,7 @@ body {
 }
 
 main {
-  padding-right: 30px;
+  /* padding-right: 30px; */
 }
 
 header {
@@ -49,6 +49,20 @@ div {
   border-radius: 10px;
 }
 
+.team-image {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 20px;
+  margin: 0 auto;
+  list-style: none;
+  font-size: x-small;
+}
+
+.image1 {
+  border-radius: 30px;
+}
+
 iframe {
   border-radius: 10px;
 }
@@ -61,9 +75,15 @@ h1 {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   font-weight: bold;
-  padding-top: 1%;
+  padding-top: 3%;
   padding-bottom: 1%;
   padding-left: 9%;
+}
+
+.website-title{
+  font-size: 1.3em;
+  padding-right: 85px;
+  line-height: 27px;
 }
 
 p {
@@ -78,10 +98,11 @@ ul {
   list-style: "-";
 }
 
+
 .web_header {
   background-color: #5e8db7;
   display: flex;
-  padding-top: 5%;
+  padding-top: 10%;
   padding-left: 2%;
   flex-direction: row;
 }
@@ -95,9 +116,13 @@ ul {
 
 .header_logo {
   color: white;
-  /* margin-left: 3%; */
+  margin-left: 3%;
   font-size: 18px;
   flex-direction: column;
+}
+
+.a_intext_link {
+  color: #1f2b5a;
 }
 
 .footer_logo {
@@ -131,25 +156,27 @@ ul {
   font-weight: bold;
 }
 
+.img_return {
+  margin-left: 5%;
+}
 
+.img_guest {
+  margin-left: 15%;
+  margin-top: 1.5%;
+  height: 20px;
+  width: 60px;
+}
 
-#img_return {
-  margin-left: 2%;
+.img_menu {
+  margin-left: 10px;
+  margin-top: 1.5%;
+  height: 20px;
+  width: 30px;
+  /* text-align: right; */
 }
 
 
-#img_guest {
-  margin-right: 5%;
-}
 
-#img_menu {
-  margin-right: 10px;
-  text-align: right;
-}
-
-#div_h1 {
-  background-color: #5e8db7;
-}
 
 @media screen and (max-width: 380px) {
 
@@ -157,7 +184,7 @@ ul {
   body {
     /* display: flex;
         flex-direction: column; */
-    grid-template-rows: 120px auto 10%;
+    grid-template-rows: 130px auto 150px;
   }
 
   .p_logo_string {
@@ -167,25 +194,24 @@ ul {
     margin-top: 0%;
   }
 
-  #img_return {
-    height: 30px;
-    width: 17px;
+  .img_return {
+    height: 28px;
+    width: 16px;
   }
 
-  #img_guest {
+  .img_guest {
     margin-left: 15%;
-    margin-right: 0;
     margin-top: 1.5%;
     height: 20px;
     width: 60px;
   }
-
-  #img_menu {
-    margin-left: 2%;
-    margin-right: 0;
+  
+  .img_menu {
+    margin-left: 10px;
     margin-top: 1.5%;
     height: 20px;
     width: 30px;
+    /* text-align: right; */
   }
 
   .other-links {
