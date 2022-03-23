@@ -50,13 +50,16 @@ div {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 40px 40px;
-  margin: 0 auto;
+  margin: 0 auto; 
   list-style: none;
   font-size: x-small;
+  line-height: 15px;
+  text-align: center;
 }
 
 .image1 {
   border-radius: 30px;
+  margin-top: 15px;
 }
 
 iframe {
