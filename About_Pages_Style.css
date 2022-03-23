@@ -34,13 +34,13 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-right: 30px;
-  padding-bottom: 30px;
+  padding-right:20px;
+  padding-bottom: 25px;
   margin: 0 auto;
   list-style: none;
   font-size: x-small;
-  line-height: 15px;
   text-align: center;
+  padding-inline-start: 0px;
 }
 
 .image1 {
