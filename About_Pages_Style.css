@@ -4,7 +4,16 @@ header {
 
 body {
   font-family: Poppins;
+  /* page layout - desktop version */
   margin: 0%;
+  /* display: grid;
+  grid-template-columns: 10% 90% 10%;
+  grid-template-rows: 250px auto 200px; */
+
+  /* grid-template-areas:
+    "header header header"
+    "aside main nav"
+    "footer footer footer"; */
   color: #1f2b5a;
 }
 
@@ -12,8 +21,30 @@ main {
   font-family: Poppins;
   margin: 0%;
   color: #1f2b5a;
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+}
+header {
+  background-color: #5e8db7;
+=======
   margin-left: 10%;
   margin-right: 10%;
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
+=======
+  margin-left: 10%;
+  margin-right: 10%;
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
+=======
+  margin-left: 10%;
+  margin-right: 10%;
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
+=======
+  margin-left: 10%;
+  margin-right: 10%;
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
 }
 
 footer {
@@ -34,9 +65,34 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+  padding-right: 30px;
+  padding-bottom: 30px;
+=======
   padding-right:20px;
   padding-bottom: 25px;
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
+=======
+  padding-right:20px;
+  padding-bottom: 25px;
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
+=======
+  padding-right:20px;
+  padding-bottom: 25px;
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
+=======
+  padding-right:20px;
+  padding-bottom: 25px;
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
   margin: 0 auto;
+=======
+  padding: 40px 40px;
+  margin: 0 auto; 
+>>>>>>> Stashed changes
   list-style: none;
   font-size: x-small;
   text-align: center;
@@ -91,6 +147,25 @@ ul {
   flex-direction: row;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+.web_footer {
+  background-color: #5e8db7;
+  display: flex;
+  padding-top: 5%;
+  flex-direction: row;
+}
+
+=======
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
+=======
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
+=======
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
+=======
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
 .header_logo {
   color: white;
   margin-left: 3%;
@@ -132,8 +207,6 @@ ul {
 
 .img_return {
   margin-left: 5%;
-  height: 28px;
-  width: 16px;
 }
 
 .img_guest {
@@ -151,13 +224,58 @@ ul {
   /* text-align: right; */
 }
 
-.other-links {
-  list-style: none;
-  padding-left: 0px;
+@media screen and (max-width: 380px) {
+  /* page layout for phones */
+  body {
+    /* display: flex;
+        flex-direction: column; */
+    grid-template-rows: 130px auto 150px;
+  }
+
+  .p_logo_string {
+    color: white;
+    margin-left: 2%;
+    font-size: 20px;
+    margin-top: 0%;
+  }
+
+  .img_return {
+    height: 28px;
+    width: 16px;
+  }
+
+  .img_guest {
+    margin-left: 15%;
+    margin-top: 1.5%;
+    height: 20px;
+    width: 60px;
+  }
+
+  .img_menu {
+    margin-left: 10px;
+    margin-top: 1.5%;
+    height: 20px;
+    width: 30px;
+    /* text-align: right; */
+  }
+
+  .other-links {
+    list-style: none;
+    padding-left: 0px;
+  }
+
+  .other-links img {
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 21px;
+  }
 }
+<<<<<<< Updated upstream
 
 .other-links img {
   display: block;
   margin: 0 auto;
   padding-bottom: 21px;
 }
+=======
+>>>>>>> Stashed changes
