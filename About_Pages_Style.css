@@ -24,6 +24,10 @@ footer {
   flex-direction: row;
 }
 
+.a_return {
+  margin-left: 5%;
+}
+
 .rounded-rectangle {
   display: block;
   margin: 0 auto;
