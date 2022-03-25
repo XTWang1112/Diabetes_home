@@ -24,10 +24,15 @@ main {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 }
 header {
   background-color: #5e8db7;
+=======
+  margin-left: 10%;
+  margin-right: 10%;
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
 =======
   margin-left: 10%;
   margin-right: 10%;
@@ -63,9 +68,14 @@ footer {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   padding-right: 30px;
   padding-bottom: 30px;
+=======
+  padding-right:20px;
+  padding-bottom: 25px;
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
 =======
   padding-right:20px;
   padding-bottom: 25px;
@@ -140,6 +150,7 @@ ul {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .web_footer {
   background-color: #5e8db7;
   display: flex;
@@ -147,6 +158,8 @@ ul {
   flex-direction: row;
 }
 
+=======
+>>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
 =======
 >>>>>>> 00258af143896025cd2bcf2c457cf0fd199514f9
 =======
