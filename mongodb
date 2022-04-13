@@ -4,6 +4,7 @@ People(clinician & patient):
 patient{
   patientID,
   patientName,
+  userName,
   birthday,
   phoneNumber,
   address,
