@@ -30,7 +30,6 @@
   gap: 4.5rem;
 }
 
-.main-nav-general-list,
 .main-nav-patient-list {
   list-style: none;
   display: flex;
@@ -45,10 +44,15 @@
   width: 3rem;
 }
 
-.main-general-nav-link,
 .main-patient-nav-link {
   color: #2d5215;
   display: inline-block;
+  transition: all 0.3s;
+}
+
+.main-patient-nav-link:hover,
+.main-patient-nav-link:active {
+  color: #000;
 }
 
 .icon-link {
