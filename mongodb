@@ -11,6 +11,7 @@ patient{
   city,
   postalCode,
   email,
+  password,
   registerDate
   
 }
@@ -23,6 +24,7 @@ clinician{
   dob,
   phoneNumber,
   email,
+  password,
   address,
   city,
   postalCode,
