@@ -21,6 +21,7 @@ clinician{
   clinicianID,
   firstName,
   lastName,
+  title,
   dob,
   phoneNumber,
   email,
@@ -29,7 +30,7 @@ clinician{
   city,
   postalCode,
   registerDate,
-  degree
+  specialist
 }
 
 
