@@ -14,7 +14,8 @@ patient{
   postalCode,
   email,
   password,
-  registerDate
+  registerDate,
+  photoURL
   
 }
 
@@ -33,7 +34,8 @@ clinician{
   city,
   postalCode,
   registerDate,
-  specialist
+  specialist,
+  photoURL
 }
 
 
