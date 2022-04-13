@@ -28,7 +28,8 @@ clinician{
   address,
   city,
   postalCode,
-  registerDate
+  registerDate,
+  degree
 }
 
 
