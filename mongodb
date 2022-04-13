@@ -38,11 +38,28 @@ clinician{
 
 
 
+"Badges" : [
+  patient_ID(foreign key)
+  
+  1st trophy own number
+  2nd trophy own number
+  3rd trophy own number
+  
+}
+
+"Patient and clinician matching" : [
+  patient_ID(foreign key)
+  patient_matched_clinician_id
+  clinician's messages(support messages)
+  clinician's messages date
+
+}
 
 "record data" : [
   patient_ID(foreign key)
   record data type (Blood glucose level, Exercise, Insulin taken, Weight)
   record value (NULL表示当天未完成)
   record_date
+  record_data commenting
 ]
 
