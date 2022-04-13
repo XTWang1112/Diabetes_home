@@ -1,1 +1,29 @@
 
+People(clinician & patient):
+
+patient{
+  patientID,
+  patientName,
+  birthday,
+  phoneNumber,
+  address,
+  city,
+  postalCode,
+  email,
+  registerDate
+  
+}
+
+
+clinician{
+  clinicianID,
+  firstName,
+  lastName,
+  dob,
+  phoneNumber,
+  email,
+  address,
+  city,
+  postalCode,
+  registerDate
+}
