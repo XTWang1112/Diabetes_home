@@ -6,6 +6,8 @@ patient{
   patientName,
   screenName,
   birthday,
+  gender,
+  biography,
   phoneNumber,
   address,
   city,
