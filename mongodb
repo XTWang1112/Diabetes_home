@@ -22,6 +22,7 @@ clinician{
   firstName,
   lastName,
   title,
+  gender,
   dob,
   phoneNumber,
   email,
