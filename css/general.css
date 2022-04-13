@@ -1,0 +1,70 @@
+/*
+----01 TYPOGRAPHY SYSTEM
+
+- FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- FONT WEIGHTS:
+Default: 400
+Medium: 
+Semi-bold: 600
+Bold: 
+
+- LINE HEIGHTS:
+Default: 1
+small: 
+Medium: 
+Large: 
+Paragraph default: 1.6
+
+- Letter spacing::after
+
+----02 COLORS
+
+- Primary: #7DBC57 #fff
+
+- Tints: 
+- Shades:  #2d5215
+- Accents:
+- Greys  
+
+----05 SHADOWS
+ 
+
+----06 BORDER-RADIUS
+Default: 
+Medium: 
+
+----07 WHITESPACE
+
+- SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  line-height: 1;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+.arrow-back {
+  color: white;
+  width: 3rem;
+  height: 3rem;
+}
