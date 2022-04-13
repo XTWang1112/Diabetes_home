@@ -9,9 +9,8 @@ body {
   font-family: Poppins;
   margin: 0%;
   color: #1f2b5a;
-}
-header {
-  background-color: #5e8db7;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 div {
@@ -29,8 +28,8 @@ div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-right: 30px;
-  padding-bottom: 30px;
+  padding-right:20px;
+  padding-bottom: 25px;
   margin: 0 auto;
   list-style: none;
   font-size: x-small;
@@ -83,14 +82,6 @@ ul {
   display: flex;
   padding-top: 10%;
   padding-left: 2%;
-  flex-direction: row;
-}
-
-footer {
-  background-color: #5e8db7;
-  display: flex;
-  padding-top: 5%;
-  padding-bottom: 5%;
   flex-direction: row;
 }
 
