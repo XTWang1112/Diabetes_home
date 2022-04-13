@@ -27,3 +27,17 @@ clinician{
   postalCode,
   registerDate
 }
+
+
+
+
+
+
+
+"record data" : [
+  patient_ID(foreign key)
+  record data type (Blood glucose level, Exercise, Insulin taken, Weight)
+  record value (NULL表示当天未完成)
+  record_date
+]
+
