@@ -30,7 +30,6 @@
   gap: 4.5rem;
 }
 
-.main-nav-general-list,
 .main-nav-patient-list {
   list-style: none;
   display: flex;
@@ -45,14 +44,101 @@
   width: 3rem;
 }
 
-.main-general-nav-link,
 .main-patient-nav-link {
   color: #2d5215;
   display: inline-block;
+  transition: all 0.1s;
+}
+
+.main-patient-nav-link:hover,
+.main-patient-nav-link:active {
+  color: #000;
+  font-size: 2.4rem;
 }
 
 .icon-link {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+/*********************************/
+/*BLOOD GLUCOSE DATA INPUT*/
+/*********************************/
+.blood-glucose-head {
+  font-size: 3rem;
+  font-weight: 500;
+  color: #343a40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 7.2rem auto;
+}
+
+.blood-glucose-icon {
+  color: #f03e3e;
+  font-size: 4.4rem;
+}
+
+.blood-glucose-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+}
+
+.blood-glucose-data div label {
+  display: block;
+  color: #10454f;
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
+.blood-glucos-input,
+.bg-comment-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.blood-glucos-input input,
+.bg-comment-input input {
+  background-color: #eaf4e4;
+}
+
+.blood-glucos-input input {
+  width: 24rem;
+  height: 7rem;
+  font-size: 3rem;
+  text-align: center;
+  border: 3px solid #91c358;
+}
+
+.bg-comment-input input {
+  width: 51rem;
+  height: 11rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+/*********************************/
+/*BLOOD GLUCOSE REMINDER*/
+/*********************************/
+.glucose-reminder {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 45rem;
+  margin: 7.2rem auto;
+}
+
+.glucose-reminder li {
+  font-size: 1.5rem;
+  color: #495057;
+}
+
+.glucose-reminder li span {
+  color: #7dbc57;
+  font-weight: 600;
 }
