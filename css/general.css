@@ -53,14 +53,13 @@ body {
 /*********************************/
 /*HEADER*/
 /*********************************/
+
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  /* Because we want header to be sticky later */
+  gap: 3rem;
   height: 11.4rem;
   padding: 0 4.8rem;
-  position: relative;
 }
 
 .logo {
