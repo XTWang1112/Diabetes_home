@@ -2,19 +2,10 @@
 /*HEADER*/
 /*********************************/
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: #7dbc57;
-  /* Because we want header to be sticky later */
-  height: 11.4rem;
-  padding: 0 4.8rem;
-  position: relative;
 }
 
 .logo {
-  font-size: 2.5rem;
-  font-weight: 600;
   color: white;
 }
 
@@ -30,18 +21,20 @@
   gap: 4.5rem;
 }
 
+.nav-icon {
+  color: #2d5215;
+}
+
+.main-general-nav-link {
+  color: #2d5215;
+}
+
 .main-nav-patient-list {
   list-style: none;
   display: flex;
   align-items: center;
   font-size: 2rem;
   gap: 5rem;
-}
-
-.nav-icon {
-  color: #2d5215;
-  height: 3rem;
-  width: 3rem;
 }
 
 .main-patient-nav-link {
@@ -124,6 +117,7 @@
 
 .bg-comment-input textarea::placeholder {
   text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
 .blood-glucose-data *:focus {
@@ -150,4 +144,19 @@
 .glucose-reminder li span {
   color: #7dbc57;
   font-weight: 600;
+}
+
+/*********************************/
+/*FOOTER*/
+/*********************************/
+footer {
+  background-color: #7dbc57;
+}
+
+.copy-right {
+  color: #10454f;
+}
+
+.address li {
+  color: #10454f;
 }

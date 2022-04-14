@@ -50,16 +50,125 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+/*********************************/
+/*HEADER*/
+/*********************************/
 .header {
   display: flex;
-  gap: 4.5rem;
+  justify-content: space-between;
+  align-items: center;
+  /* Because we want header to be sticky later */
+  height: 11.4rem;
+  padding: 0 4.8rem;
+  position: relative;
 }
 
+.logo {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.main-general-nav-link {
+  display: inline-block;
+  transition: all 0.3s;
+}
+
+.main-nav-general-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  gap: 5rem;
+}
+
+.main-general-nav-link:hover,
+.main-general-nav-link:active {
+  color: #000000;
+  font-size: 2.1rem;
+}
+
+/*********************************/
+/*FOOTER*/
+/*********************************/
+footer {
+  height: 19.6rem;
+  display: flex;
+}
+
+.col--1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.col--2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.grid--footer {
+  column-gap: 50rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.copy-right {
+  font-size: 1.2rem;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.address li {
+  font-size: 1.8rem;
+}
+
+/*********************************/
+/*GRID*/
+/*********************************/
+
+.grid {
+  display: grid;
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/*********************************/
+/*OTHER LAYOUT*/
+/*********************************/
+
+.viewport {
+  height: 100vh;
+}
+
+.container {
+  max-width: 192rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+/*********************************/
+/*ANCHORS & LIST*/
+/*********************************/
 a:link,
 a:visited {
   text-decoration: none;
 }
 
+ul {
+  list-style: none;
+}
+
+/*********************************/
+/*INPUTS*/
+/*********************************/
 input {
   border: none;
   border-radius: 2rem;
@@ -72,30 +181,18 @@ textarea {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/*********************************/
+/*ICONS*/
+/*********************************/
 .arrow-back {
   color: white;
   width: 3rem;
   height: 3rem;
 }
 
-.main-nav-general-list {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  font-size: 2rem;
-  gap: 5rem;
-}
-
 .nav-icon {
-  color: #2d5215;
   height: 3rem;
   width: 3rem;
-}
-
-.main-general-nav-link {
-  color: #2d5215;
-  display: inline-block;
-  transition: all 0.3s;
 }
 
 .icon-link {
@@ -104,12 +201,9 @@ textarea {
   gap: 1rem;
 }
 
-.main-general-nav-link:hover,
-.main-general-nav-link:active {
-  color: #000000;
-  font-size: 2.1rem;
-}
-
+/*********************************/
+/*BUTTONS*/
+/*********************************/
 .btn {
   border: none;
   cursor: pointer;
@@ -129,8 +223,4 @@ textarea {
 .btn--done:hover,
 .btn--done:active {
   color: #dff1ca;
-}
-
-ul {
-  list-style: none;
 }
