@@ -1,8 +1,4 @@
 /*
-----01 TYPOGRAPHY SYSTEM
-
-- FONT SIZE SYSTEM (px)
-10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
 
 - FONT WEIGHTS:
 Default: 400
@@ -21,12 +17,13 @@ Paragraph default: 1.6
 
 ----02 COLORS
 
-- Primary: #7DBC57 #fff
+- Primary: #7DBC57 #fff #10454F
+-Icon: #f03e3e #2d5215
 
-- Tints: 
-- Shades:  #2d5215 #000000
+- Tints:  #EAF4E4 #95d04f #dff1ca
+- Shades: #1eb75b #2d5215 #000000
 - Accents:
-- Greys  
+- Greys  #343a40 #495057 #868e96
 
 ----05 SHADOWS
  
@@ -34,11 +31,6 @@ Paragraph default: 1.6
 ----06 BORDER-RADIUS
 Default: 
 Medium: 
-
-----07 WHITESPACE
-
-- SPACING SYSTEM (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
 
 */
 
@@ -66,6 +58,12 @@ body {
 a:link,
 a:visited {
   text-decoration: none;
+}
+
+input {
+  border: none;
+  border-radius: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .arrow-back {
@@ -103,4 +101,30 @@ a:visited {
 .main-general-nav-link:hover,
 .main-general-nav-link:active {
   color: #000000;
+  font-size: 2.4rem;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+.btn--done {
+  background-image: linear-gradient(to right, #1eb75b, #95d04f);
+  width: 19rem;
+  height: 5.8rem;
+  font-size: 3rem;
+  font-weight: 500;
+  color: white;
+  transition: all 0.3s;
+}
+
+.btn--done:hover,
+.btn--done:active {
+  color: #dff1ca;
+}
+
+ul {
+  list-style: none;
 }
