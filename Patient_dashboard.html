@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/patient_dashboard.css" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <title>Diabetes@Home &dash; best friend for life</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="main-general-nav">
+        <ul class="main-nav-general-list">
+          <li>
+            <a href="#"
+              ><ion-icon class="arrow-back" name="chevron-back"></ion-icon
+            ></a>
+          </li>
+          <li>
+            <a class="web-logo" href="#"
+              ><p class="logo">
+                Diabetes@<span class="logo-at-home">Home</span>
+              </p></a
+            >
+          </li>
+          <li class="icon-link">
+            <ion-icon class="nav-icon" name="medkit"></ion-icon
+            ><a class="main-general-nav-link" href="#">About diabetes</a>
+          </li>
+          <li class="icon-link">
+            <ion-icon class="nav-icon" name="people"></ion-icon
+            ><a class="main-general-nav-link" href="#">About website</a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="main-patient-nav">
+        <ul class="main-nav-patient-list">
+          <li class="icon-link">
+            <ion-icon class="nav-icon" name="color-palette"></ion-icon
+            ><a class="main-patient-nav-link" href="#">Setting theme</a>
+          </li>
+          <li class="icon-link">
+            <ion-icon class="nav-icon" name="key"></ion-icon
+            ><a class="main-patient-nav-link" href="#">Setting password</a>
+          </li class="icon-link">
+          <li class="icon-link">
+            <ion-icon class="nav-icon" name="log-out"></ion-icon
+            ><a class="main-patient-nav-link" href="#">Log out</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+
+    <main class="main">
+        <nav class="main-nav">
+          <ul class="main-nav-list">
+            <li class="svg-link">
+              <embed src="img/svg/data-icon.svg" type="image/svg+xml" />
+              <a class="main-nav-link" href="#">Data</a>
+            </li>
+            <li class="svg-link">
+              <embed src="img/svg/clinician-icon.svg" type="image/svg+xml" /> 
+              <a class="main-nav-link" href="#">Clinician</a>
+            </li>
+
+            <li class="svg-link home-li">
+              <embed src="img/svg/home-icon.svg" type="image/svg+xml" />
+              <a class="main-nav-link home-text" href="#">Home</a>
+            </li>
+
+            <li class="svg-link">
+              <embed src="img/svg/ranking-icon.svg" type="image/svg+xml" />
+              <a class="main-nav-link" href="#">Ranking</a>
+            </li>
+
+            
+            <li class="svg-link">
+              <embed src="img/svg/me-icon.svg" type="image/svg+xml" />                    
+              <a class="main-nav-link" href="#">Me</a>
+            </li>
+          </ul>
+        </nav>
+
+        <section class="record-div">
+          <div class="record-top">
+            <h1>Record</h1>
+            <h2 class="record-date">16/03/2022  Wed</h2>
+          </div>
+          <div class="record-grid">
+            <div class="record-box">
+              <embed src="img/svg/blood-icon.svg" type="image/svg+xml" />
+              <p>Blood glucose level</p>
+              <p>(in nmol/L)</p>
+              <embed src="img/svg/dashboard-record-back.svg" type="image/svg+xml" />
+            </div>
+            <div class="record-box">
+              <embed src="img/svg/weight-icon.svg" type="image/svg+xml" />
+              <p>Weight</p>
+              <p>(in kg)</p>
+              <embed src="img/svg/dashboard-record-back.svg" type="image/svg+xml" />
+            </div>
+            <div class="record-box">
+              <embed src="img/svg/insulin-icon.svg" type="image/svg+xml" />
+              <p>Insulin taken</p>
+              <p>(number of doses)</p>
+              <embed src="img/svg/dashboard-record-back.svg" type="image/svg+xml" />
+            </div>
+            <div class="record-box">
+              <embed src="img/svg/step-icon.svg" type="image/svg+xml" />
+              <p>Exercise</p>
+              <p>(step count)</p>
+              <embed src="img/svg/dashboard-record-back.svg" type="image/svg+xml" />
+            </div>
+          </div> 
+        </section>
+
+        <section class="comments-section">
+          <h1>Comments</h1>
+          <div class="comments-div">
+            <div class="comments-box">
+              <button class="cross-button">
+                <svg width="17.152" height="17.152">
+                  <line x2="14.324" y2="14.324" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2"/>
+                  <line x2="14.324" y2="14.324" transform="translate(0 14.324) rotate(-90)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2"/>
+                </svg>
+                
+              </button>
+              <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. invidunt ut labore et dolore magna erat set aliquyam erat, sed diam voluptua. 
+              </p>
+              
+        </section>
+    </main>
+  </body>
+</html>
