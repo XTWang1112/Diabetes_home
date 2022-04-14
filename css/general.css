@@ -20,7 +20,7 @@ Paragraph default: 1.6
 - Primary: #7DBC57 #fff #10454F
 -Icon: #f03e3e #2d5215
 
-- Tints:  #EAF4E4 #95d04f #dff1ca
+- Tints:  #EAF4E4 #95d04f #dff1ca #b1d79a
 - Shades: #1eb75b #2d5215 #000000
 - Accents:
 - Greys  #343a40 #495057 #868e96
@@ -61,6 +61,12 @@ a:visited {
 }
 
 input {
+  border: none;
+  border-radius: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
   border: none;
   border-radius: 2rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
