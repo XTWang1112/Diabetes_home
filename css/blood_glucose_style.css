@@ -18,8 +18,9 @@
 /*********************************/
 
 .main-nav {
+  width: 80%;
   display: flex;
-  gap: 40rem;
+  justify-content: space-between;
 }
 
 .back-logo {

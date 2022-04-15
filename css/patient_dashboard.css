@@ -173,3 +173,33 @@ h1 {
   text-align: justify;
   font-size: 1.5rem;
 }
+
+
+@media (max-width: 50rem)  {
+  .header {
+    background-color: #5667c8;
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+  .record-div {
+    order: 0;
+  }
+  .record-box {
+    width: 20rem;
+    height: 20rem;
+  }
+  .comments-section {
+    order: 1;
+    border-left: 0;
+  }
+  .main-nav {
+    order: 2;
+    border-right: 0;
+  }
+  .main-nav-list {
+    flex-direction: row;
+    padding: 0;
+  }
+}
