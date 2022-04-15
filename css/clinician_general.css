@@ -1,0 +1,173 @@
+/*
+
+- FONT WEIGHTS:
+Default: 400
+Medium: 
+Semi-bold: 600
+Bold: 
+
+- LINE HEIGHTS:
+Default: 1
+small: 
+Medium: 
+Large: 
+Paragraph default: 1.6
+
+- Letter spacing::after
+
+----02 COLORS
+
+- Primary: 
+-Icon: 
+
+- Tints:  
+- Shades: 
+- Accents:
+- Greys  
+
+----05 SHADOWS
+ 
+
+----06 BORDER-RADIUS
+Default: 
+Medium: 
+
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+body {
+  line-height: 1;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/*********************************/
+/*HEADER*/
+/*********************************/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #5e8db7;
+  /* Because we want header to be sticky later */
+  height: 11.4rem;
+  padding: 0 4.8rem;
+  position: relative;
+  gap: 4.5rem;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: white;
+}
+
+.main-nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  justify-content: space-evenly;
+  gap: 5rem;
+}
+
+.main-nav-link {
+  display: inline-block;
+  transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+  color: #000;
+  font-size: 2.1rem;
+}
+
+.main-nav-link {
+  color: white;
+  display: inline-block;
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* new */
+.nav-home {
+  font-weight: bold;
+}
+
+.logo-at-home {
+  color: #202b5a;
+}
+
+/*********************************/
+/*GRID*/
+/*********************************/
+
+.grid {
+  display: grid;
+}
+
+/*********************************/
+/*OTHER LAYOUT*/
+/*********************************/
+
+.container {
+  max-width: 192rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+/*********************************/
+/*ANCHORS & LIST*/
+/*********************************/
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/*********************************/
+/*ICONS*/
+/*********************************/
+
+.nav-icon {
+  height: 3rem;
+  width: 3rem;
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/*********************************/
+/*BUTTONS*/
+/*********************************/
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+footer {
+  height: 30rem;
+  color: #202b5a;
+}

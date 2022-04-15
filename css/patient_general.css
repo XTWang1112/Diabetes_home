@@ -42,12 +42,14 @@ Medium:
 
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 body {
   line-height: 1;
   font-weight: 400;
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
 }
 
 /*********************************/
@@ -55,35 +57,70 @@ body {
 /*********************************/
 
 .header {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
   height: 11.4rem;
   padding: 0 4.8rem;
+  background-color: #7dbc57;
+  position: relative;
 }
 
 .logo {
   font-size: 2.5rem;
   font-weight: 600;
+  color: white;
 }
 
-.main-general-nav-link {
-  display: inline-block;
-  transition: all 0.3s;
+.logo-at-home {
+  color: #2d5215;
 }
 
-.main-nav-general-list {
+.main-nav-list {
   list-style: none;
   display: flex;
   align-items: center;
   font-size: 2rem;
+  justify-content: space-evenly;
+}
+
+.main-nav {
+  align-self: center;
+}
+
+.back-logo {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.nav-icon {
+  color: #2d5215;
+}
+
+.main-nav-list {
+  color: #2d5215;
+  list-style: none;
+  display: flex;
+  font-size: 2rem;
   gap: 5rem;
 }
 
-.main-general-nav-link:hover,
-.main-general-nav-link:active {
-  color: #000000;
+.main-nav-link {
+  color: #2d5215;
+  display: inline-block;
+  transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+  color: #000;
   font-size: 2.1rem;
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 /*********************************/
@@ -92,6 +129,7 @@ body {
 footer {
   height: 19.6rem;
   display: flex;
+  background-color: #7dbc57;
 }
 
 .col--1 {
@@ -115,6 +153,7 @@ footer {
 
 .copy-right {
   font-size: 1.2rem;
+  color: #10454f;
 }
 
 .address {
@@ -125,6 +164,7 @@ footer {
 
 .address li {
   font-size: 1.8rem;
+  color: #10454f;
 }
 
 /*********************************/

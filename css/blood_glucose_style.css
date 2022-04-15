@@ -1,68 +1,4 @@
 /*********************************/
-/*HEADER*/
-/*********************************/
-.header {
-  background-color: #7dbc57;
-}
-
-.logo {
-  color: white;
-}
-
-.logo-at-home {
-  color: #2d5215;
-}
-
-/*********************************/
-/*NAVIGATION*/
-/*********************************/
-
-.main-nav {
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.back-logo {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-}
-
-.nav-icon {
-  color: #2d5215;
-}
-
-.main-general-nav-link {
-  color: #2d5215;
-}
-
-.main-nav-patient-list {
-  list-style: none;
-  display: flex;
-  font-size: 2rem;
-  gap: 5rem;
-}
-
-.main-patient-nav-link {
-  color: #2d5215;
-  display: inline-block;
-  transition: all 0.3s;
-}
-
-.main-patient-nav-link:hover,
-.main-patient-nav-link:active {
-  color: #000;
-  font-size: 2.1rem;
-}
-
-.icon-link {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/*********************************/
 /*BLOOD GLUCOSE DATA INPUT*/
 /*********************************/
 .blood-glucose-head {
@@ -154,21 +90,6 @@
 }
 
 /*********************************/
-/*FOOTER*/
-/*********************************/
-footer {
-  background-color: #7dbc57;
-}
-
-.copy-right {
-  color: #10454f;
-}
-
-.address li {
-  color: #10454f;
-}
-
-/*********************************/
 /*MOBILE NAVIGATOR*/
 /*********************************/
 .btn-mobile-nav {
@@ -176,6 +97,7 @@ footer {
   background: none;
   cursor: pointer;
   display: none;
+  justify-self: end;
 }
 
 .icon-mobile-nav {
