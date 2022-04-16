@@ -15,13 +15,22 @@ p {
 .main {
   background-color: #e5ebef;
   flex-flow: column;
+  height: 80rem;
   padding: 3rem 10rem;
 }
 
 .main-titles {
   display: flex;
   justify-content: space-between;
+}
+
+.main-titles h1 {
   color: #5667c8;
+}
+
+.main-titles .view-all-comments:hover,
+.main-titles .view-all-comments:active {
+  text-decoration: underline;
 }
 
 .manage-add-section {
@@ -29,6 +38,21 @@ p {
   justify-content: flex-end;
   margin: 1rem;
 }
+
+.manage-add-section p{
+  display: none;
+  position:fixed;
+  right: 1rem;
+  top: 19rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color:#5667c8
+}
+.manage-add-section:hover p {
+ display: block;
+}
+
+
 
 .patient-dashboards {
   display: grid;
@@ -84,7 +108,7 @@ p {
   justify-content: space-between;
 }
 
-.name-and-gender > .name {
+.name-and-gender .name {
   font-size: 1.8rem;
   font-weight: bold;
   padding-bottom: 0.5rem;

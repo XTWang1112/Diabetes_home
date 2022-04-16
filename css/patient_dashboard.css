@@ -174,11 +174,13 @@ h1 {
   font-size: 1.5rem;
 }
 
+.main-nav-left {
+  align-self:flex-start;
+}
+
 
 @media (max-width: 50rem)  {
-  .header {
-    background-color: #5667c8;
-  }
+
   .main {
     display: flex;
     flex-direction: column;
@@ -194,7 +196,7 @@ h1 {
     order: 1;
     border-left: 0;
   }
-  .main-nav {
+  .main-nav-left {
     order: 2;
     border-right: 0;
   }

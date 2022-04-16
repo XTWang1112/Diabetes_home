@@ -165,9 +165,53 @@ ul {
   border: none;
   cursor: pointer;
   border-radius: 100px;
+  background-color:transparent;
 }
 
+/*********************************/
+/*FOOTER*/
+/*********************************/
 footer {
-  height: 30rem;
-  color: #202b5a;
+  height: 19.6rem;
+  display: flex;
+  background-color: #5E8DB7;
 }
+
+.col--1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.col--2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.grid--footer {
+  display: flex;
+  column-gap: 50rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.copy-right {
+  font-size: 1.2rem;
+  color: #202B5A;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.address li {
+  font-size: 1.8rem;
+  color: #202B5A;
+}
+
+
+
