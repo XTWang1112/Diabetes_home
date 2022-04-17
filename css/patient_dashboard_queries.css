@@ -6,6 +6,10 @@
     font-size: 50%;
   }
 
+  footer {
+    height: 16rem;
+  }
+
   .header {
     justify-content: space-between;
     padding: 0 2rem;
@@ -82,10 +86,6 @@
 
   .copy-right {
     font-size: 1rem;
-  }
-
-  footer {
-    height: 16rem;
   }
 
   .main {

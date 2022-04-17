@@ -23,7 +23,7 @@ h1 {
 }
 
 /*********************************/
-/*Navigator Module(located left at desktop size, bottom at phone size*/
+/*SIDEBAR
 /*********************************/
 .main-nav-left-shade {
   display: none;
@@ -92,7 +92,7 @@ h1 {
   display: flex;
   align-items: center;
   flex-flow: column;
-  padding-top: 3rem;
+  padding-top: 4.5rem;
   gap: 2rem;
   background-color: #eaf4e4;
   width: 30rem;
