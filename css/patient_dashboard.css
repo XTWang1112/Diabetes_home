@@ -51,7 +51,8 @@ h1 {
   gap: 1rem;
 }
 
-.main-nav-link {
+.main-nav-link,
+.main-nav-left-link {
   color: #2d5215;
   display: inline-block;
 }
@@ -168,73 +169,22 @@ h1 {
 }
 
 /*********************************/
-/*Responsive*/
+/*MOBILE NAVIGATOR*/
 /*********************************/
-@media (max-width: 35rem) {
-  .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
-    padding: 0;
-  }
+.btn-mobile-nav {
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: none;
+  justify-self: end;
+}
 
-  .record-div {
-    order: 0;
-    margin-left: 2rem;
-  }
+.icon-mobile-nav {
+  height: 4.8rem;
+  width: 4.8rem;
+  color: #2d5215;
+}
 
-  .record-box {
-    width: 20rem;
-    height: 20rem;
-  }
-  .comments-section {
-    order: 1;
-    border-left: 0;
-  }
-  .main-nav-left {
-    order: 2;
-    border-right: 0;
-    position: fixed;
-    top: 88%;
-    width: 100%;
-    align-items: center;
-    background-color: #f1f1f1;
-    padding: 2rem;
-  }
-  .main-nav-left-shade {
-    display: block;
-    position: absolute;
-    background-color: rgb(125, 188, 87, 50%);
-    width: 10rem;
-    height: 10rem;
-    bottom: 1rem;
-    left: 40%;
-    border-radius: 20px;
-    z-index: -1;
-  }
-  .main-nav-left li {
-    flex-direction: column;
-    width: 9rem;
-  }
-  .main-nav-left li .main-nav-link {
-    font-size: 1rem;
-    font-weight: bold;
-  }
-
-  .main-nav-left .home-li {
-    margin-top: -0.8rem;
-    margin-left: 0;
-  }
-  .main-nav-left-list {
-    flex-direction: row;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    font-size: 2rem;
-    gap: 2rem;
-  }
-  footer {
-    display: none;
-  }
+.icon-mobile-nav[name="close-outline"] {
+  display: none;
 }
