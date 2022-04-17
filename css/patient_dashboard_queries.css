@@ -42,7 +42,7 @@
     gap: 3rem;
     align-items: center;
     justify-content: center;
-    transition: all 5s ease-in;
+    transition: all 0.5s ease-in;
     /* padding-left: 13rem; */
 
     opacity: 0;
