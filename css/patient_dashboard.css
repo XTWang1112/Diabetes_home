@@ -44,6 +44,11 @@ h1 {
   padding-right: 8rem;
 }
 
+.main-nav-left-link:hover,
+.main-nav-left-link:visited {
+  text-shadow: 0 1px 5px rgba(45, 82, 21, 0.3);
+}
+
 .home-li {
   margin-left: -0.7rem;
 }
