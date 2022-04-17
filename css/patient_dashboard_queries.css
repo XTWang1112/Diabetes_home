@@ -96,18 +96,48 @@
     padding: 0;
   }
 
+  .record-grid {
+    grid-template-columns: 1fr;
+    margin-left: 1rem;
+  }
+
   .record-div {
     order: 0;
-    margin-left: 2rem;
+    margin: 2rem;
   }
 
   .record-box {
-    width: 20rem;
-    height: 20rem;
+    width: 40rem;
+    height: 10rem;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 0;
   }
+
+  .blood-icon,
+  .step,
+  .scale {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .needle {
+    width: 5.5rem;
+    height: 6rem;
+  }
+
+  .record-box div {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.8rem;
+    align-items: center;
+  }
+
   .comments-section {
     order: 1;
     border-left: 0;
+    margin-left: 1rem;
   }
 
   .main-nav-left {

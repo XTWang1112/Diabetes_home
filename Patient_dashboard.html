@@ -29,7 +29,7 @@
   <body>
     <div class="viewport">
       <!-- nav-open -->
-      <header class="header nav-open">
+      <header class="header">
         <a class="web-logo" href="#"
           ><p class="logo">
             Diabetes@<span class="logo-at-home">Home</span>
@@ -99,26 +99,35 @@
             <h1>Record</h1>
             <h2 class="record-date">16/03/2022  Wed</h2>
           </div>
-          <div class="record-grid">
+          <div class="grid grid--2 record-grid">
             <a class="record-box blood-box" href="#">
-              <embed src="img/svg/blood-icon.svg" type="image/svg+xml" />
-              <p>Blood glucose level</p>
-              <p>(in nmol/L)</p>
+              <embed class = "blood-icon" src="img/svg/blood-icon.svg" type="image/svg+xml" />
+              <div>
+                <p>Blood glucose level</p>
+                <p>(in nmol/L)</p>
+                <!-- <p>300 nmol/L</p> -->
+              </div>
             </a>
             <a class="record-box weight-box" href="#">
-              <embed src="img/svg/weight-icon.svg" type="image/svg+xml" />
-              <p>Weight</p>
-              <p>(in kg)</p>
+              <embed class = "scale" src="img/svg/weight-icon.svg" type="image/svg+xml" />
+              <div>
+                <p>Weight</p>
+                <p>(in kg)</p>
+              </div>
             </a>
             <a class="record-box insulin-box" href="#">
-              <embed src="img/svg/insulin-icon.svg" type="image/svg+xml" />
-              <p>Insulin taken</p>
-              <p>(number of doses)</p>
+              <embed class = "needle" src="img/svg/insulin-icon.svg" type="image/svg+xml" />
+              <div>
+                <p>Insulin taken</p>
+                <p>(number of doses)</p>
+              </div>
             </a>
             <a class="record-box exercise-box" href="#">
-              <embed src="img/svg/step-icon.svg" type="image/svg+xml" />
-              <p>Exercise</p>
-              <p>(step count)</p>
+              <embed  class = "step" src="img/svg/step-icon.svg" type="image/svg+xml" />
+              <div>
+                <p>Exercise</p>
+                <p>(step count)</p>
+              </div>
             </a>
           </div> 
         </section>
