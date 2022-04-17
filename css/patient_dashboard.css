@@ -68,7 +68,6 @@ h1 {
   display: flex;
   justify-content: space-between;
   background-color: white;
-  height: 100rem;
   padding: 0 4.8rem;
   position: relative;
 }
@@ -89,16 +88,15 @@ h1 {
   grid-template-columns: repeat(2, 1fr);
   gap: 1.6rem;
 }
-
-.main-nav {
-  border-right: 0.1rem solid grey;
+.main-nav-left-shade {
+  display: none;
 }
 
-.main-nav-list {
+.main-nav-left-list {
   list-style: none;
   flex-direction: column;
   display: flex;
-  align-items: left;
+  align-items: flex-start;
   font-size: 2rem;
   gap: 5rem;
   padding-top: 5rem;
@@ -137,9 +135,35 @@ h1 {
   border-radius: 20px;
 }
 
+.blood-box {
+  overflow: hidden;
+}
+
+
+.blood-box::after {
+  content: "Finish";
+  position: absolute;
+  top: 10rem;
+  left: 50rem;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background-color: #ffd43b;
+  color: #333;
+  padding: 0.8rem 8rem;
+  transform: rotate(45deg);
+}
+
 .record-box > p {
+  color: black;
   text-align: center;
   font-size: 2rem;
+  transition: all 0.3s;
+}
+
+.record-box:hover > p {
+  font-size: 2.2rem;
+  
 }
 
 .comments-section {
@@ -166,7 +190,17 @@ h1 {
   border: 0;
   background-color: rgba(0, 0, 0, 0); /* transparent color */
   left: 90%;
+  cursor: pointer;
   position: relative;
+}
+
+.cross-button-icon {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.cross-button:hover .cross-button-icon {
+  color:orange;
 }
 
 .comments-box > p {
@@ -179,14 +213,18 @@ h1 {
 }
 
 
-@media (max-width: 50rem)  {
+@media (max-width: 35rem)  {
 
   .main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0;
   }
   .record-div {
     order: 0;
+    margin-left: 2rem;
   }
   .record-box {
     width: 20rem;
@@ -199,102 +237,47 @@ h1 {
   .main-nav-left {
     order: 2;
     border-right: 0;
+    position: fixed;
+    top: 88%;
+    width: 100%;
+    align-items: center;
+    background-color: #F1F1F1;
+    padding: 2rem;
   }
-  .main-nav-list {
+  .main-nav-left-shade {
+    display:block;
+    position: absolute;
+    background-color: rgb(125,188,87,50%);
+    width: 10rem;
+    height: 10rem;
+    bottom: 1rem;
+    left: 40%;
+    border-radius: 20px;
+    z-index: -1;
+  }
+  .main-nav-left li {
+    flex-direction: column;
+    width: 9rem;
+  }
+  .main-nav-left li .main-nav-link{
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .main-nav-left .home-li {
+    margin-top: -0.8rem;
+    margin-left: 0;
+  }
+  .main-nav-left-list {
     flex-direction: row;
     padding: 0;
-  }
-
-  html {
-    font-size: 50%;
-  }
-
-  .header {
-    justify-content: space-between;
-    padding: 0 2rem;
-  }
-
-  .back-logo {
-    gap: 1rem;
-  }
-
-  .main-nav-list {
-    flex-direction: column;
-    gap: 3rem;
-    align-items: flex-start;
-  }
-
-  .btn-mobile-nav {
-    display: block;
-    z-index: 1000;
-  }
-
-  .test {
+    list-style: none;
     display: flex;
-    justify-items: center;
+    font-size: 2rem;
+    gap: 2rem;
+    
   }
-
-  .main-nav {
-    background-color: rgba(255, 255, 255, 0.7);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    transform: translateX(100%);
-
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease-in;
-    /* padding-left: 13rem; */
-
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
-  }
-
-  .nav-open .main-nav {
-    opacity: 1;
-    pointer-events: auto;
-    visibility: visible;
-    transform: translateX(0);
-  }
-
-  .nav-open .icon-mobile-nav[name="close-outline"] {
-    display: block;
-  }
-
-  .nav-open .icon-mobile-nav[name="menu-outline"] {
-    display: none;
-  }
-
-  .bg-comment-input textarea {
-    width: 35rem;
-  }
-
-  .grid--footer {
-    column-gap: 3rem;
-  }
-
-  .address li {
-    font-size: 1.2rem;
-  }
-
-  .logo {
-    font-size: 1.8rem;
-    font-weight: 500;
-  }
-
-  .copy-right {
-    font-size: 1rem;
-  }
-
   footer {
-    height: 16rem;
+    display: none;
   }
 }
