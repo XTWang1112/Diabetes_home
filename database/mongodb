@@ -5,7 +5,7 @@ patient{
   patientID,
   patientName,
   screenName,
-  birthday,
+  birthday,(age)
   gender,
   biography,
   phoneNumber,
