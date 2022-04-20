@@ -1,0 +1,21 @@
+[
+    {  
+        "_id": {    
+        "$oid": "625fae2aa16e11d80b14faae"  
+        },  
+        "clinicianID": "000",  
+        "firstName": "Chris",  
+        "lastName": "Holland",  
+        "title": "Clinician PhD",  
+        "gender": "male",  
+        "phoneNumber": "xxxxxxxxx",  
+        "email": "xxxxx@outlook.com",  
+        "address": "xxxxxxxxx",  
+        "city": "Melbourne",  
+        "postCode": "xxxxxx",  
+        "password": "xxxxxxxxxx",  
+        "registerDate": "xxxxxx",  
+        "photoURL": "xxxxxx",  
+        "specialties": "xxxxxxxx"
+    }
+]

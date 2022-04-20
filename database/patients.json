@@ -4,7 +4,7 @@
         "$oid": "625d03bb4e88d20c58b4e42d"
         },
         "patientID": "000",
-        "patientNmae": "Pat",
+        "patientName": "Pat",
         "age": 36,
         "gender": "male",
         "biography": "xxxx",
@@ -19,10 +19,5 @@
         "Weight": 65,
         "Insulin taken": 3,
         "Exercise": 5000
-    },
-    {
-        "patientID": "001",
-        "patientName": "Avi"
-
     }
 ]
