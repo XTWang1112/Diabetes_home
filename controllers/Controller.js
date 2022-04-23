@@ -2,7 +2,7 @@ const patientData = require('../models/patients.js')
 
 // handle request to get all clinician data instances
 const getAllPatientData = (req, res) => {
-    res.render('Clinician_dashboard', {data: data})
+    res.render('Clinician_dashboard', {data: patientData})
 }
 
 
