@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="public/css/clinician_general.css" />
+    <link rel="stylesheet" href="public/css/clinician_dashboard.css" />
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <title>Diabetes@Home &dash; best friend for life</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="main-general-nav">
+            <ul class="main-nav-list">
+                <li>
+                    <a class="web-logo" href="#">
+                        <p class="logo">
+                            Diabetes@<span class="logo-at-home">Home</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="icon-link">
+                    <a class="main-nav-link nav-home" href="#">Home</a>
+                </li>
+                <li class="icon-link">
+                    <a class="main-nav-link nav-about-diabetes" href="#">About diabetes</a>
+                </li>
+                <li class="icon-link">
+                    <a class="main-nav-link nav-about-websites" href="#">About website</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="clinician-profile">
+            <img class="clinician-profile-photo" src="img/profile-photo/clinicianA.png" alt="load fail"
+                title="clinician profile" />
+        </div>
+    </header>
+
+
+
+
+
+    <main class="main">
+
+        <section class="main-titles">
+            <h1>Patient Dashboard</h1>
+            <button class="btn">
+                <h1 class="view-all-comments">View all comments</h1>
+            </button>
+        </section>
+        <section class="manage-add-section">
+            <button class="btn">
+                <p>Add patient</p>
+                <embed src="img/svg/Clinician-dashboard/manage-add-icon.svg" />
+            </button>
+        </section>
+        
+        <section class="patient-dashboards">
+            {{{body}}}
+        </section>
+
+    </main>
+
+
+    
+    <footer>
+        <div class="container grid grid--2 grid--footer ">
+            <div class="col--1">
+                <a class="web-footer-logo" href="#">
+                    <p class="logo">Diabetes@<span class="logo-at-home">Home</span></p>
+                </a>
+                <p class="copy-right">&copy;2022 Diabetes Home, Inc.</p>
+            </div>
+
+            <ul class="col--2 address">
+                <li><strong>Address:</strong> 813 Swanston St, Parkville VIC 3052</li>
+                <li><strong>Located in:</strong> University of Melbourne</li>
+                <li><strong>Phone:</strong> (03)9035 5511</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>
