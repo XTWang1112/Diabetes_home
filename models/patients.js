@@ -3,9 +3,9 @@ module.exports = [
         patientName: 'Pat',
         age: '36',
         gender: 'male',
-        Blood_glucose_level : '180',
-        Weight: '65',
-        Insulin_taken: '3',
-        Exercise: '5000'
+        blood_glucose_level : '180',
+        weight: '65',
+        insulin_taken: '3',
+        exercise: '5000'
     }
 ]
