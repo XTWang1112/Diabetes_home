@@ -1,4 +1,4 @@
-const patientData = require('../models/patients.json')
+const patientData = require('../models/patients.js')
 
 // handle request to get all clinician data instances
 const getAllPatientData = (req, res) => {
