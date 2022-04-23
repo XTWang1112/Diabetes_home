@@ -1,0 +1,23 @@
+{
+  "name": "diabetes_home",
+  "version": "1.0.0",
+  "description": "assignment",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XTWang1112/Diabetes_home.git"
+  },
+  "author": "Webbbber",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XTWang1112/Diabetes_home/issues"
+  },
+  "homepage": "https://github.com/XTWang1112/Diabetes_home#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.5"
+  }
+}
