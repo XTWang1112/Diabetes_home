@@ -1,13 +1,17 @@
+{{!-- specify the CSS file --}}
+<link rel="stylesheet" href="public/css/clinician_general.css" />
+<link rel="stylesheet" href="public/css/clinician_dashboard.css" />
+
+
+{{#each data}}
+
 <div class="dashboard-patient-box">
-
-    {{#with oneItem}}
-
 
     <div class="portfolio">
         <img class="patient-photo" src="img/profile-photo/Pat.png" />
         <div class="name-and-gender">
             <button class="btn">
-                <p class="name">{{this.patientName}}}</p>
+                <p class="name">{{this.patientName}}</p>
             </button>
             <p>{{this.gender}}</p>
         </div>
@@ -33,5 +37,7 @@
         </tr>
     </table>
 
-    {{/with}}
 </div>
+{{/each}}
+
+
