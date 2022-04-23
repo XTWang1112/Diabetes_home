@@ -1,165 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="public/css/patient_general.css" />
-    <link rel="stylesheet" href="public/css/patient_dashboard.css" />
-    <link rel="stylesheet" href="public/css/patient_dashboard_queries.css" />
 
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="public/css/patient_general.css" />
+  <link rel="stylesheet" href="public/css/patient_dashboard.css" />
+  <link rel="stylesheet" href="public/css/patient_dashboard_queries.css" />
 
-    <script defer src="script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    <title>Diabetes@Home &dash; best friend for life</title>
-  </head>
+  <script defer src="script.js"></script>
 
-  <body>
-    <div class="viewport">
-      <!-- nav-open -->
-      <header class="header">
-        <a class="web-logo" href="#"
-          ><p class="logo">
-            Diabetes@<span class="logo-at-home">Home</span>
-          </p></a
-        >
+  <title>Diabetes@Home &dash; best friend for life</title>
+</head>
 
-        <nav class="main-nav">
-          <ul class="main-nav-list">
-            <li class="icon-link">
-              <ion-icon class="nav-icon" name="medkit"></ion-icon>
-              <a class="main-nav-link" href="#">About diabetes</a>
-            </li>
-            <li class="icon-link">
-              <ion-icon class="nav-icon" name="people"></ion-icon>
-              <a class="main-nav-link" href="#">About website</a>
-            </li>
-            <li class="icon-link">
-              <ion-icon class="nav-icon" name="color-palette"></ion-icon>
-              <a class="main-nav-link" href="#">Setting theme</a>
-            </li>
-            <li class="icon-link">
-              <ion-icon class="nav-icon" name="key"></ion-icon>
-              <a class="main-nav-link" href="#">Setting password</a>
-            </li>
-            <li class="icon-link">
-              <ion-icon class="nav-icon" name="log-out"></ion-icon>
-              <a class="main-nav-link" href="#">Log out</a>
-            </li>
-          </ul>
-        </nav>
+<body>
+  <div class="viewport">
+    <!-- nav-open -->
+    <header class="header">
+      <a class="web-logo" href="#">
+        <p class="logo">
+          Diabetes@<span class="logo-at-home">Home</span>
+        </p>
+      </a>
 
-        <button class="btn-mobile-nav">
-          <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
-          <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
-        </button>
-      </header>
-
-      <main class="main">
-        <nav class="main-nav-left">
-          <ul class="main-nav-left-list">
-            <div class="main-nav-left-shade"></div>
-            <li class="svg-link">
-              <embed src="img/svg/data-icon.svg" type="image/svg+xml" />
-              <a class="main-nav-left-link" href="#">Data</a>
-            </li>
-            <li class="svg-link">
-              <embed src="img/svg/clinician-icon.svg" type="image/svg+xml" /> 
-              <a class="main-nav-left-link" href="#">Clinician</a>
-            </li>
-            <li class="svg-link home-li">
-              <embed src="img/svg/home-icon.svg" type="image/svg+xml" />
-              <a class="main-nav-left-link home-text" href="#">Home</a>
-            </li>
-            <li class="svg-link">
-              <embed src="img/svg/ranking-icon.svg" type="image/svg+xml" />
-              <a class="main-nav-left-link" href="#">Ranking</a>
-            </li>
-            <li class="svg-link">
-              <embed src="img/svg/me-icon.svg" type="image/svg+xml" />                    
-              <a class="main-nav-left-link" href="#">Me</a>
-            </li>
-          </ul>
-        </nav>
-
-        <section class="record-div">
-          <div class="record-top">
-            <h1>Record</h1>
-            <h2 class="record-date">16/03/2022  Wed</h2>
-          </div>
-          <div class="grid grid--2 record-grid">
-            <a class="record-box blood-box" href="#">
-              <embed class = "blood-icon" src="img/svg/blood-icon.svg" type="image/svg+xml" />
-              <div>
-                <p>Blood glucose level</p>
-                <p>(in nmol/L)</p>
-                <!-- <p>300 nmol/L</p> -->
-              </div>
-            </a>
-            <a class="record-box weight-box" href="#">
-              <embed class = "scale" src="img/svg/weight-icon.svg" type="image/svg+xml" />
-              <div>
-                <p>Weight</p>
-                <p>(in kg)</p>
-              </div>
-            </a>
-            <a class="record-box insulin-box" href="#">
-              <embed class = "needle" src="img/svg/insulin-icon.svg" type="image/svg+xml" />
-              <div>
-                <p>Insulin taken</p>
-                <p>(number of doses)</p>
-              </div>
-            </a>
-            <a class="record-box exercise-box" href="#">
-              <embed  class = "step" src="img/svg/step-icon.svg" type="image/svg+xml" />
-              <div>
-                <p>Exercise</p>
-                <p>(step count)</p>
-              </div>
-            </a>
-          </div> 
-        </section>
-
-        <section class="comments-section">
-          <h1>Comments</h1>
-          <div class="comments-div">
-            <div class="comments-box">
-              <button class="cross-button">
-                <ion-icon class="cross-button-icon" name="close-outline"></ion-icon>
-              </button>
-              <p>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. invidunt ut labore et dolore magna erat set aliquyam erat, sed diam voluptua. 
-              </p>
-            </div>
-      </main>
-    </div>
-
-    <footer>
-      <div class="container grid grid--2 grid--footer">
-        <div class="col--1">
-          <a class="web-footer-logo" href="#">
-            <p class="logo">Diabetes@<span class="logo-at-home">Home</span></p>
-          </a>
-          <p class="copy-right">&copy;2022 Diabetes Home, Inc.</p>
-        </div>
-        <ul class="col--2 address">
-          <li><strong>Address:</strong> 813 Swanston St, Parkville VIC 3052</li>
-          <li><strong>Located in:</strong> University of Melbourne</li>
-          <li><strong>Phone:</strong> (03)9035 5511</li>
+      <nav class="main-nav">
+        <ul class="main-nav-list">
+          <li class="icon-link">
+            <ion-icon class="nav-icon" name="medkit"></ion-icon>
+            <a class="main-nav-link" href="#">About diabetes</a>
+          </li>
+          <li class="icon-link">
+            <ion-icon class="nav-icon" name="people"></ion-icon>
+            <a class="main-nav-link" href="#">About website</a>
+          </li>
+          <li class="icon-link">
+            <ion-icon class="nav-icon" name="color-palette"></ion-icon>
+            <a class="main-nav-link" href="#">Setting theme</a>
+          </li>
+          <li class="icon-link">
+            <ion-icon class="nav-icon" name="key"></ion-icon>
+            <a class="main-nav-link" href="#">Setting password</a>
+          </li>
+          <li class="icon-link">
+            <ion-icon class="nav-icon" name="log-out"></ion-icon>
+            <a class="main-nav-link" href="#">Log out</a>
+          </li>
         </ul>
+      </nav>
+
+      <button class="btn-mobile-nav">
+        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+      </button>
+    </header>
+
+    <main class="main">
+      <nav class="main-nav-left">
+        <ul class="main-nav-left-list">
+          <div class="main-nav-left-shade"></div>
+          <li class="svg-link">
+            <embed src="img/svg/data-icon.svg" type="image/svg+xml" />
+            <a class="main-nav-left-link" href="#">Data</a>
+          </li>
+          <li class="svg-link">
+            <embed src="img/svg/clinician-icon.svg" type="image/svg+xml" />
+            <a class="main-nav-left-link" href="#">Clinician</a>
+          </li>
+          <li class="svg-link home-li">
+            <embed src="img/svg/home-icon.svg" type="image/svg+xml" />
+            <a class="main-nav-left-link home-text" href="#">Home</a>
+          </li>
+          <li class="svg-link">
+            <embed src="img/svg/ranking-icon.svg" type="image/svg+xml" />
+            <a class="main-nav-left-link" href="#">Ranking</a>
+          </li>
+          <li class="svg-link">
+            <embed src="img/svg/me-icon.svg" type="image/svg+xml" />
+            <a class="main-nav-left-link" href="#">Me</a>
+          </li>
+        </ul>
+      </nav>
+
+      <section class="record-div">
+        <div class="record-top">
+          <h1>Record</h1>
+          <h2 class="record-date">16/03/2022 Wed</h2>
+        </div>
+        <div class="grid grid--2 record-grid">
+          <a class="record-box blood-box" href="#">
+            <embed class="blood-icon" src="img/svg/blood-icon.svg" type="image/svg+xml" />
+            <div>
+              <p>Blood glucose level</p>
+              <p>(in nmol/L)</p>
+              <!-- <p>300 nmol/L</p> -->
+            </div>
+          </a>
+          <a class="record-box weight-box" href="#">
+            <embed class="scale" src="img/svg/weight-icon.svg" type="image/svg+xml" />
+            <div>
+              <p>Weight</p>
+              <p>(in kg)</p>
+            </div>
+          </a>
+          <a class="record-box insulin-box" href="#">
+            <embed class="needle" src="img/svg/insulin-icon.svg" type="image/svg+xml" />
+            <div>
+              <p>Insulin taken</p>
+              <p>(number of doses)</p>
+            </div>
+          </a>
+          <a class="record-box exercise-box" href="#">
+            <embed class="step" src="img/svg/step-icon.svg" type="image/svg+xml" />
+            <div>
+              <p>Exercise</p>
+              <p>(step count)</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="comments-section">
+        <h1>Comments</h1>
+        <div class="comments-div">
+          <div class="comments-box">
+            <button class="cross-button">
+              <ion-icon class="cross-button-icon" name="close-outline"></ion-icon>
+            </button>
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. invidunt ut labore et dolore magna erat set aliquyam
+              erat, sed diam voluptua.
+            </p>
+          </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="container grid grid--2 grid--footer">
+      <div class="col--1">
+        <a class="web-footer-logo" href="#">
+          <p class="logo">Diabetes@<span class="logo-at-home">Home</span></p>
+        </a>
+        <p class="copy-right">&copy;2022 Diabetes Home, Inc.</p>
       </div>
-    </footer>
-  </body>
+      <ul class="col--2 address">
+        <li><strong>Address:</strong> 813 Swanston St, Parkville VIC 3052</li>
+        <li><strong>Located in:</strong> University of Melbourne</li>
+        <li><strong>Phone:</strong> (03)9035 5511</li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
 </html>

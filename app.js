@@ -27,12 +27,24 @@ app.use(express.urlencoded({ extended: false })) // only needed for URL-encoded 
 const Router = require('./routes/Router')
 
 // the demo routes are added to the end of the '/clinician' path
-app.use('/clinician', Router)
+app.use('/Clinician_dashboard', Router)
 
-// 
-app.get('/', (req, res) => {
-    res.render('index.hbs')
+// render Clinician_dashboard page 
+app.get('/Clinician_dashboard', (req, res) => {
+    res.render('Clinician_dashboard.hbs', {
+        title: 'Clinician Dashboard',
+    })
 })
+
+
+// render Clinician_dashboard page
+// app.get('/Patient_dashboard', (req, res) => {
+//     res.render('Patient_dashboard.hbs', {
+//         title: 'Patient Dashboard',
+//         layout: 'Patient-template.hbs'
+//     })
+// })
+
 
 // Tells the app to listen on port 3000 and logs that information to the console.
 app.listen(3000, () => {
