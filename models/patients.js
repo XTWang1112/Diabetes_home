@@ -3,6 +3,7 @@ module.exports = [
         patientName: 'Pat',
         age: '36',
         gender: 'male',
+        photo_url: 'Pat.png',
         
         timestamp_blood_glucose_level: '24/4/2022',
         today_blood_glucose_level: '180',
