@@ -47,6 +47,6 @@ app.get('/Clinician_dashboard', (req, res) => {
 
 
 // Tells the app to listen on port 3000 and logs that information to the console.
-app.listen(3000, () => {
-    console.log('Demo app is listening on port 3000!')
+app.listen(80, () => {
+    console.log('Demo app is listening on port 80')
 })

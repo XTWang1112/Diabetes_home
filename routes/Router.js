@@ -12,5 +12,7 @@ Router.get('/', Controller.getAllPatientData)
 Router.post('/', Controller.insertData)
 
 
+// Router.get('/Patient_dashboard', Controller.getAllClinicianData)
+
 // export the router
 module.exports = Router
