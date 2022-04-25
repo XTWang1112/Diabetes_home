@@ -15,59 +15,71 @@
             </button>
             <p>{{this.gender}}</p>
         </div>
+
+        <p class="patient-age">Age: {{this.age}}</p>
     </div>
     <table>
         <tr>
             <td>Blood glucose Level: </td>
-            <td><span>
+            <td>
                 {{#compare this.timestamp_blood_glucose_level}}
-                    <span>{{this.today_blood_glucose_level}}</span>
-                    </span> nmol/L
+                    {{#compare_safety_range this.today_blood_glucose_level this.blood_glucose_level_lower_bound this.blood_glucose_level_upper_bound}}
+                            {{this.today_blood_glucose_level}} nmol/L
+                    {{else}}
+                        <font color="red">
+                            {{this.today_blood_glucose_level}} nmol/L
+                        </font>
+                    {{/compare_safety_range}}
                 {{else}}
-                    <span>No data today</span>
-                    </span>
+                    <font color="orange">No data today</font>
                 {{/compare}}
-                {{!-- compare current time and the recorded time in database --}}
-                {{!-- {{#if this.bloo_glucose_level}}
-                    <span>{{this.today_blood_glucose_level}}</span>
-                {{else}}
-                    <span>没有数据</span>
-                {{/if}} --}}
                 </td>
         </tr>
         <tr>
             <td>Weight:</td>
-            <td><span>
+            <td>
                 {{#compare this.timestamp_weight}}
-                    <span>{{this.today_weight}}</span>
-                    </span> kg
+                    {{#compare_safety_range this.today_weight this.weight_lower_bound this.weight_upper_bound}}
+                            {{this.today_weight}} kg
+                    {{else}}
+                        <font color="red">
+                            {{this.today_weight}} kg
+                        </font>
+                    {{/compare_safety_range}}
                 {{else}}
-                    <span>No data today</span>
-                    </span>
+                    <font color="orange">No data today</font>
                 {{/compare}}
                 </td>
         </tr>
         <tr>
             <td>Insulin taken:</td>
-            <td><span>
+            <td>
                 {{#compare this.timestamp_insulin_taken}}
-                    <span>{{this.today_insulin_taken}}</span>
-                    </span> doses
+                    {{#compare_safety_range this.today_insulin_taken this.insulin_taken_lower_bound this.insulin_taken_upper_bound}}
+                            {{this.today_insulin_taken}} doses
+                    {{else}}
+                        <font color="red">
+                            {{this.today_insulin_taken}} doses
+                        </font>
+                    {{/compare_safety_range}}
                 {{else}}
-                    <span>No data today</span>
-                    </span>
+                    <font color="orange">No data today</font>
                 {{/compare}}
                 </td>
         </tr>
         <tr>
             <td>Exercise:</td>
-            <td><span>
+            <td>
                 {{#compare this.timestamp_exercise}}
-                    <span>{{this.today_exercise}}</span>
-                    </span> steps
+                    {{#compare_safety_range this.today_exercise this.exercise_lower_bound this.exercise_upper_bound}}
+                            {{this.today_exercise}} steps
+                    {{else}}
+                        <font color="red">
+                            {{this.today_exercise}} steps
+                        </font>
+                    {{/compare_safety_range}}
                 {{else}}
-                    <span>No data today</span>
-                    </span>
+                    <font color="orange">No data today</font>
                 {{/compare}}
             </td>
         </tr>
