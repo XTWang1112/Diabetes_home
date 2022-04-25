@@ -31,6 +31,15 @@ hbs.registerHelper('compare', function(a,options){
    }
 });	
 
+hbs.registerHelper('compare_safety_range', function(a,b,c,options){
+    // a is record value, b is lower bound, c is upper bound
+    if(a >= b && a <= c){
+       return options.fn(this);
+    }
+    else{
+        return options.inverse(this);
+    }
+});
 
 
 
@@ -47,20 +56,31 @@ const Router = require('./routes/Router')
 app.use('/Clinician_dashboard', Router)
 
 // render Clinician_dashboard page 
+app.get('', (req, res) => {
+    res.send("<h1>The first page is under developing: please view http://localhost/patient and http://localhost/Clinician_dashboard</h1>")
+})
 app.get('/Clinician_dashboard', (req, res) => {
     res.render('Clinician_dashboard.hbs', {
         title: 'Clinician Dashboard',
     })
 })
 
-
 // render Clinician_dashboard page
-// app.get('/Patient_dashboard', (req, res) => {
-//     res.render('Patient_dashboard.hbs', {
-//         title: 'Patient Dashboard',
-//         layout: 'Patient-template.hbs'
+app.get('/Patient_dashboard', (req, res) => {
+    res.render('Patient_dashboard.hbs', {
+        title: 'Patient Dashboard',
+        layout: 'Patient-template.hbs'
+    })
+})
+
+// app.get('/Patient', (req, res) => {
+//     res.render('Patient_Dashboard', {
+//         layout: 'patient-template'
 //     })
 // })
+
+
+
 
 
 // Tells the app to listen on port 3000 and logs that information to the console.
