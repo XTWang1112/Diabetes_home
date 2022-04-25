@@ -8,11 +8,9 @@ const Controller = require('../controllers/Controller')
 // add a route to handle the get request for all patients' data
 Router.get('/', Controller.renderPatientDashboard)
 
-Router.get(':id', Controller.renderPatientDashboard)
-
 Router.get('/blood_glucose', Controller.renderPatientBloodRecord)
 
-Router.get('/blood_glucose:id', Controller.renderPatientBloodRecord)
+
 // Router.get('/Patient_dashboard', Controller.getAllClinicianData)
 
 // export the router
