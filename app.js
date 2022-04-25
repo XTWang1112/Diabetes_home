@@ -31,6 +31,17 @@ hbs.registerHelper('compare', function(a,options){
    }
 });	
 
+hbs.registerHelper('compare_safety_range', function(a,b,c,options){
+    // a is record value, b is lower bound, c is upper bound
+    if(a >= b && a <= c){
+       return options.fn(this);
+    }
+    else{
+        return options.inverse(this);
+    }
+});
+
+
 
 
 
