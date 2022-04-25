@@ -8,16 +8,25 @@ const getAllPatientData = (req, res) => {
 const renderPatientDashboard = (req, res) => {
     res.render('Patient_Dashboard', {
         data: patientData,
-        layout: 'patient-template'
+        layout: 'patient_template'
     })
 }
 
 const renderPatientBloodRecord = (req, res) => {
-    res.render('Blood_glucose', {
-        data: patientData,
-        layout: 'patient_record'
-    })
+    const data = patientData.find((data) => data.patientID == 1)
+    if (data) {
+        res.render('Blood_glucose', {
+            onePatient: data,
+            layout: 'patient_record_template'
+        })
+    } else {
+        // You can decide what to do if the data is not found.
+        // Currently, an empty list will be returned.
+        res.sendStatus(404)
+    }
 }
+
+
 
 /* 
 const getDataById = (req, res) => {
@@ -30,6 +39,12 @@ const getDataById = (req, res) => {
     }
 }
 */
+
+const insertDataaaa = (req, res) => {
+    const{patientName, age, gender, blood_glucose_level, weight, insulin_taken, exercise} = req.btn
+    patientData.push({patientName, age, gender, blood_glucose_level, weight, insulin_taken, exercise})
+    return res.redirect('back')
+}
 
 const insertData = (req, res) => {
     const{patientName, age, gender, blood_glucose_level, weight, insulin_taken, exercise} = req.btn

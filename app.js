@@ -63,11 +63,11 @@ app.get('', (req, res) => {
     res.send("<h1>The first page is under developing: please view http://localhost/patient and http://localhost/Clinician_dashboard</h1>")
 })
 
-app.get('/Clinician_dashboard', (req, res) => {
-    res.render('Clinician_dashboard.hbs', {
-        title: 'Clinician Dashboard',
-    })
-})
+// app.get('/Clinician_dashboard', (req, res) => {
+//     res.render('Clinician_dashboard.hbs', {
+//         title: 'Clinician Dashboard',
+//     })
+// })
 
 
 // app.get('/Patient', (req, res) => {
