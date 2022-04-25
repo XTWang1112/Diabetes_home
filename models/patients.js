@@ -5,7 +5,7 @@ module.exports = [
         gender: 'male',
         photo_url: 'Pat.png',
         
-        timestamp_blood_glucose_level: '24/4/2022',
+        timestamp_blood_glucose_level: '25/4/2022',
         today_blood_glucose_level: '180',
         
         timestamp_weight: '24/4/2022',

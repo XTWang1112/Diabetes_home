@@ -22,14 +22,11 @@
         <tr>
             <td>Blood glucose Level: </td>
             <td><span>
-
-                {{#compare this.timestamp_blood_glucose_level current_time}}
+                {{#compare this.timestamp_blood_glucose_level}}
                     <span>{{this.today_blood_glucose_level}}</span>
                 {{else}}
                     <span>No data recorded today</span>
                 {{/compare}}
-
-
                 {{!-- compare current time and the recorded time in database --}}
                 {{!-- {{#if this.bloo_glucose_level}}
                     <span>{{this.today_blood_glucose_level}}</span>
@@ -56,6 +53,3 @@
 </div>
 {{/each}}
 
-
-
-<script src="/compare.js"></script>
