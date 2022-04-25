@@ -138,6 +138,7 @@ h1 {
 .comments-section {
   border-left: 0.1rem solid grey;
   padding-left: 2rem;
+  width: 40rem;
 }
 
 .comments-div {
@@ -175,6 +176,10 @@ h1 {
 .comments-box > p {
   text-align: justify;
   font-size: 1.5rem;
+}
+
+.diappear {
+  display: none;
 }
 
 /*********************************/
