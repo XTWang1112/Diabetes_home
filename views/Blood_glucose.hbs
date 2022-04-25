@@ -24,9 +24,11 @@
       </div>
       <button class="btn btn--done">Done</button>
     </form>
+    {{#each data}}
     <ul class = "glucose-reminder">
-      <li>For your health, you have kept recording for <span>10</span> days.</li>
+      <li>For your health, you have kept recording for <span>{{this.insistDay}}</span> days.</li>
       <li>Keep recording, control diabetes, and enjoy wonderful life!</li>
-    </ul>    
+    </ul>  
+    {{/each}}  
   </div>
 </section>

@@ -1,9 +1,11 @@
 module.exports = [
     {
         patientName: 'Pat',
+        patientID: 1,
         age: 36,
         gender: 'male',
         photo_url: 'Pat.png',
+        insistDay : 0,
         
         timestamp_blood_glucose_level: '25/4/2022',
         today_blood_glucose_level: 180,
