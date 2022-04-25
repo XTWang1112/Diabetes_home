@@ -22,8 +22,10 @@
             <td><span>
                 {{#compare this.timestamp_blood_glucose_level}}
                     <span>{{this.today_blood_glucose_level}}</span>
+                    </span> nmol/L
                 {{else}}
-                    <span>No data recorded today</span>
+                    <span>No data today</span>
+                    </span>
                 {{/compare}}
                 {{!-- compare current time and the recorded time in database --}}
                 {{!-- {{#if this.bloo_glucose_level}}
@@ -31,20 +33,43 @@
                 {{else}}
                     <span>没有数据</span>
                 {{/if}} --}}
-
-                </span> nmol/L</td>
+                </td>
         </tr>
         <tr>
             <td>Weight:</td>
-            <td><span>{{this.today_weight}}</span> kg</td>
+            <td><span>
+                {{#compare this.timestamp_weight}}
+                    <span>{{this.today_weight}}</span>
+                    </span> kg
+                {{else}}
+                    <span>No data today</span>
+                    </span>
+                {{/compare}}
+                </td>
         </tr>
         <tr>
             <td>Insulin taken:</td>
-            <td><span>{{this.today_insulin_taken}}</span> doses</td>
+            <td><span>
+                {{#compare this.timestamp_insulin_taken}}
+                    <span>{{this.today_insulin_taken}}</span>
+                    </span> doses
+                {{else}}
+                    <span>No data today</span>
+                    </span>
+                {{/compare}}
+                </td>
         </tr>
         <tr>
             <td>Exercise:</td>
-            <td><span>{{this.today_exercise}}</span> steps</td>
+            <td><span>
+                {{#compare this.timestamp_exercise}}
+                    <span>{{this.today_exercise}}</span>
+                    </span> steps
+                {{else}}
+                    <span>No data today</span>
+                    </span>
+                {{/compare}}
+            </td>
         </tr>
     </table>
 

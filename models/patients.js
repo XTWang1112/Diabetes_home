@@ -11,7 +11,7 @@ module.exports = [
         timestamp_weight: '24/4/2022',
         today_weight: '65.0',
 
-        timestamp_insulin_taken: '24/4/2022',
+        timestamp_insulin_taken: '25/4/2022',
         today_insulin_taken: '3',
         
         timestamp_exercise: '24/4/2022',
