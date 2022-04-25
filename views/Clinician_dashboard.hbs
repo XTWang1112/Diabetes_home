@@ -8,7 +8,7 @@
 <div class="dashboard-patient-box">
 
     <div class="portfolio">
-        <img class="patient-photo" src="img/profile-photo/Pat.png" />
+        <img class="patient-photo" src="img/profile-photo/{{this.photo_url}}" />
         <div class="name-and-gender">
             <button class="btn">
                 <p class="name">{{this.patientName}}</p>
@@ -20,8 +20,21 @@
     </div>
     <table>
         <tr>
-            <td>Blood glucose Level:</td>
-            <td><span>{{this.today_blood_glucose_level}}</span> nmol/L</td>
+            <td>Blood glucose Level: </td>
+            <td><span>
+                {{#compare this.timestamp_blood_glucose_level}}
+                    <span>{{this.today_blood_glucose_level}}</span>
+                {{else}}
+                    <span>No data recorded today</span>
+                {{/compare}}
+                {{!-- compare current time and the recorded time in database --}}
+                {{!-- {{#if this.bloo_glucose_level}}
+                    <span>{{this.today_blood_glucose_level}}</span>
+                {{else}}
+                    <span>没有数据</span>
+                {{/if}} --}}
+
+                </span> nmol/L</td>
         </tr>
         <tr>
             <td>Weight:</td>
@@ -39,5 +52,4 @@
 
 </div>
 {{/each}}
-
 

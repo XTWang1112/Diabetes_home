@@ -51,6 +51,7 @@ h1 {
 
 .home-li {
   margin-left: -0.7rem;
+  text-shadow: 0 1px 5px rgba(86, 103, 200, 0.5);
 }
 
 .svg-link {
@@ -80,6 +81,7 @@ h1 {
 
 .record-date {
   margin: 1rem;
+  font-size: 2rem;
   color: #5667c8;
 }
 

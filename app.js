@@ -13,9 +13,26 @@ app.engine('hbs', exphbs.engine({
     extname: 'hbs'
 }));
 
-
 // set Handlebars view engine
 app.set('view engine', 'hbs')
+
+var current_time = new Date();
+var current_year = current_time.getFullYear();
+var current_month = current_time.getMonth() + 1;
+var current_date = current_time.getDate();
+var current_time = current_date + "/" + current_month + "/" + current_year;
+
+var hbs = require('handlebars');
+hbs.registerHelper('compare', function(a,options){
+    if(a == current_time){
+       return options.fn(this);
+    }else{
+      return options.inverse(this);
+   }
+});	
+
+
+
 
 app.use(express.static('public'))
 
