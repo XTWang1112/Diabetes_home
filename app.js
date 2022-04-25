@@ -43,8 +43,6 @@ hbs.registerHelper('compare_safety_range', function(a,b,c,options){
 
 
 
-
-
 app.use(express.static('public'))
 
 // Set up to handle POST requests
@@ -72,14 +70,14 @@ app.get('/Clinician_dashboard', (req, res) => {
 })
 
 
-
-// render Clinician_dashboard page
-// app.get('/Patient_dashboard', (req, res) => {
-//     res.render('Patient_dashboard.hbs', {
-//         title: 'Patient Dashboard',
-//         layout: 'Patient-template.hbs'
+// app.get('/Patient', (req, res) => {
+//     res.render('Patient_Dashboard', {
+//         layout: 'patient-template'
 //     })
 // })
+
+
+
 
 
 // Tells the app to listen on port 3000 and logs that information to the console.

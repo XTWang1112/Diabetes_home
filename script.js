@@ -33,8 +33,14 @@ const dt = document.querySelector(".record-date");
 dt.textContent = days[day] + " " + date + " " + months[month] + " " + year;
 
 const compareDateTime = function (date) {
-  if (date < new Date()) console.log(`${date} is past`);
-  else console.log(`${date} is not past`);
+  if (date < new Date()) return false;
+  else return true;
 };
 
-compareDateTime(new Date(2021, 3, 24));
+//////////////////////////////////////////////
+//close comment
+document
+  .querySelector(".cross-button-icon")
+  .addEventListener("click", function () {
+    document.querySelector(".comments-div").classList.add("diappear");
+  });

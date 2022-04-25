@@ -144,6 +144,8 @@
     order: 1;
     border-left: 0;
     margin-left: 1rem;
+    width: 45rem;
+    height: 22rem;
   }
 
   .main-nav-left {
