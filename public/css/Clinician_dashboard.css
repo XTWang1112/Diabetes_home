@@ -15,7 +15,7 @@ p {
 .main {
   background-color: #e5ebef;
   flex-flow: column;
-  height: 80rem;
+  height: calc(100vh - 11.4rem);
   padding: 3rem 10rem;
 }
 
@@ -39,18 +39,18 @@ p {
   margin: 1rem;
 }
 
-.manage-add-section p{
+.manage-add-section p {
   display: none;
-  position:fixed;
+  position: fixed;
   right: 1rem;
   top: 19rem;
   font-size: 1.8rem;
   font-weight: bold;
-  color:#5667c8
+  color: #5667c8;
 }
 
 .manage-add-section:hover p {
- display: block;
+  display: block;
 }
 
 .patient-dashboards {

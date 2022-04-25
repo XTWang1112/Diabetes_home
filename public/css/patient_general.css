@@ -183,10 +183,6 @@ footer {
 /*OTHER LAYOUT*/
 /*********************************/
 
-.viewport {
-  height: 100vh;
-}
-
 .container {
   max-width: 192rem;
   margin: 0 auto;

@@ -152,7 +152,7 @@
     order: 2;
     border-right: 0;
     position: absolute;
-    bottom: -12rem;
+    bottom: 0;
     width: 100%;
     align-items: center;
     background-color: #f1f1f1;
@@ -161,7 +161,7 @@
   }
 
   .comments-div {
-    height: 17rem;
+    height: 11rem;
     overflow: scroll;
   }
 
