@@ -31,7 +31,7 @@
                         </font>
                     {{/compare_safety_range}}
                 {{else}}
-                    No data today
+                    <font color="orange">No data today</font>
                 {{/compare}}
                 </td>
         </tr>
@@ -47,7 +47,7 @@
                         </font>
                     {{/compare_safety_range}}
                 {{else}}
-                    No data today
+                    <font color="orange">No data today</font>
                 {{/compare}}
                 </td>
         </tr>
@@ -63,7 +63,7 @@
                         </font>
                     {{/compare_safety_range}}
                 {{else}}
-                    No data today
+                    <font color="orange">No data today</font>
                 {{/compare}}
                 </td>
         </tr>
@@ -71,10 +71,15 @@
             <td>Exercise:</td>
             <td>
                 {{#compare this.timestamp_exercise}}
-                    {{this.today_exercise}}
-                    steps
+                    {{#compare_safety_range this.today_exercise this.exercise_lower_bound this.exercise_upper_bound}}
+                            {{this.today_exercise}} steps
+                    {{else}}
+                        <font color="red">
+                            {{this.today_exercise}} steps
+                        </font>
+                    {{/compare_safety_range}}
                 {{else}}
-                    No data today
+                    <font color="orange">No data today</font>
                 {{/compare}}
             </td>
         </tr>

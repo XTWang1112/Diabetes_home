@@ -17,7 +17,7 @@ module.exports = [
 
         timestamp_insulin_taken: '25/4/2022',
         today_insulin_taken: 10,
-        insulin_taken_lower_bound: 0,
+        insulin_taken_lower_bound: 2,
         insulin_taken_upper_bound: 5,
         
         timestamp_exercise: '24/4/2022',
