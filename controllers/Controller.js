@@ -5,6 +5,19 @@ const getAllPatientData = (req, res) => {
     res.render('Clinician_dashboard', {data: patientData})
 }
 
+const renderPatientDashboard = (req, res) => {
+    res.render('Patient_Dashboard', {
+        data: patientData,
+        layout: 'patient-template'
+    })
+}
+
+const renderPatientBloodRecord = (req, res) => {
+    res.render('Blood_glucose', {
+        data: patientData,
+        layout: 'patient_record'
+    })
+}
 
 /* 
 const getDataById = (req, res) => {
@@ -30,6 +43,8 @@ const insertData = (req, res) => {
 module.exports ={
     getAllPatientData,
     insertData,
+    renderPatientDashboard,
+    renderPatientBloodRecord
 }
 
 

@@ -53,25 +53,24 @@ app.use(express.urlencoded({ extended: false })) // only needed for URL-encoded 
 
 // link to our router
 const Router = require('./routes/Router')
+const PatientRouter = require('./routes/Patient_Router')
 
 // the demo routes are added to the end of the '/clinician' path
 app.use('/Clinician_dashboard', Router)
+app.use('/patient', PatientRouter)
+
 
 // render Clinician_dashboard page 
 app.get('', (req, res) => {
     res.send("<h1>The first page is under developing: please view http://localhost/patient and http://localhost/Clinician_dashboard</h1>")
 })
+
 app.get('/Clinician_dashboard', (req, res) => {
     res.render('Clinician_dashboard.hbs', {
         title: 'Clinician Dashboard',
     })
 })
 
-app.get('/Patient', (req, res) => {
-    res.render('Patient_Dashboard', {
-        layout: 'patient-template'
-    })
-})
 
 
 // render Clinician_dashboard page
