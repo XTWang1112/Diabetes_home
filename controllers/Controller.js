@@ -14,7 +14,10 @@ const Patient = mongoose.model('patient')
 const getAllPatientData = async(req, res) => {
     try {
         // we only need names and photos
-        const patients = await Patient.find({}, { patientName: true, patientID: true }).lean()
+        const patients = await Patient.find({}, { patientName: true, patientID: true, age: true,
+            gender: true,
+            photo_url: true,
+            insistDay : true, }).lean()
         console.log(patients)
         res.render('Clinician_dashboard', { "patients": patients })
     } catch (err) {
