@@ -1,3 +1,4 @@
+/* 
 module.exports = [
     {
         patientName: 'Pat',
@@ -76,4 +77,4 @@ module.exports = [
             }
         ]
     }
-]
+] */

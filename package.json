@@ -19,6 +19,10 @@
   "dependencies": {
     "express": "^4.17.3",
     "express-handlebars": "^6.0.5",
-    "jquery": "^3.6.0"
+    "jquery": "^3.6.0",
+    "mongoose": "^6.3.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0"
   }
 }

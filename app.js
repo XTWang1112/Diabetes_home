@@ -15,6 +15,8 @@ app.engine('hbs', exphbs.engine({
 
 // set Handlebars view engine
 app.set('view engine', 'hbs')
+// connect to database
+require('./models/db.js') 
 
 var current_time = new Date();
 var current_year = current_time.getFullYear();
@@ -81,6 +83,6 @@ app.get('', (req, res) => {
 
 
 // Tells the app to listen on port 3000 and logs that information to the console.
-app.listen(80, () => {
+app.listen(process.env.PORT || 80, () => {
     console.log('Demo app is listening on port 80')
 })
