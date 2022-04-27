@@ -43,16 +43,17 @@
       <a class="record-box blood-box" href="/patient/blood_glucose">
         <embed class="blood-icon" src="/img/svg/blood-icon.svg" type="image/svg+xml" />
         <div>
-          <p>{{this.today_blood_glucose_level}}</p>
+          <p>Blood glucose level</p>
+          <p class = "blood-glucos-data">{{this.today_blood_glucose_level}}</p>
           <p>(in nmol/L)</p>
-          <!-- <p>300 nmol/L</p> -->
         </div>
       </a>
       {{else}}
       <a class="record-box blood-box::after" href="/patient/blood_glucose">
         <embed class="blood-icon" src="/img/svg/blood-icon.svg" type="image/svg+xml" />
         <div>
-          <font color="red">No data today</font>
+          <p>Blood glucose level</p>
+          <p class = "no-data">Start your day:)</p>
         </div>
       </a>
       {{/compare}}
@@ -61,6 +62,7 @@
       <a class="record-box weight-box" href="#">
         <embed class="scale" src="/img/svg/weight-icon.svg" type="image/svg+xml" />
         <div>
+          <p>Weight</p>
           <p>{{this.today_weight}}</p>
           <p>(in kg)</p>
         </div>
@@ -69,7 +71,8 @@
       <a class="record-box weight-box" href="#">
         <embed class="scale" src="/img/svg/weight-icon.svg" type="image/svg+xml" />
         <div>
-          <font color="red">No data today</font>
+          <p>Weight</p>
+          <p class = "no-data">Start your day:)</p>
         </div>
       </a>
       {{/compare}}
@@ -80,6 +83,7 @@
       <a class="record-box insulin-box" href="#">
         <embed class="needle" src="/img/svg/insulin-icon.svg" type="image/svg+xml" />
         <div>
+          <p>Insulin taken</p>
           <p>{{this.today_insulin_taken}}</p>
           <p>(number of doses)</p>
         </div>
@@ -88,7 +92,8 @@
       <a class="record-box insulin-box" href="#">
         <embed class="needle" src="/img/svg/insulin-icon.svg" type="image/svg+xml" />
         <div>
-          <font color="red">No data today</font>
+          <p>Insulin taken</p>
+          <p class = "no-data">Start your day:)</p>
         </div>
       </a>
       {{/compare}}
@@ -98,6 +103,7 @@
       <a class="record-box exercise-box" href="#">
         <embed class="step" src="/img/svg/step-icon.svg" type="image/svg+xml" />
         <div>
+          <p>Exercise</p>
           <p>{{this.today_exercise}}</p>
           <p>(step count)</p>
         </div>
@@ -106,7 +112,8 @@
       <a class="record-box exercise-box" href="#">
         <embed class="step" src="/img/svg/step-icon.svg" type="image/svg+xml" />
         <div>
-          <font color="red">No data today</font>
+          <p>Exercise</p>
+          <p class = "no-data">Start your day:)</p>
         </div>
       </a>
       {{/compare}}
