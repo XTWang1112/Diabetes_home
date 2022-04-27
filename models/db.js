@@ -11,7 +11,6 @@ console.log(dbAddress);
 
 mongoose.connect( dbAddress, {
     useNewUrlParser: true,
-    // useFindAndModify: false,
     dbName: "diabetes"
   })
   .then(() => console.log('DB connection successful'));
