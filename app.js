@@ -1,9 +1,10 @@
+// Import express-handlebars
 const exphbs = require("express-handlebars");
 
 // Import express
 const express = require("express");
 
-// Set your app up as an express app
+// Set app as our server
 const app = express();
 
 // configure Handlebars
@@ -18,22 +19,24 @@ app.engine(
 
 // set Handlebars view engine
 app.set("view engine", "hbs");
+
 // connect to database
 require("./models/db.js");
 
-var current_time = new Date();
-var current_year = current_time.getFullYear();
-var current_month = current_time.getMonth() + 1;
-var current_date = current_time.getDate();
-var current_time = current_date + "/" + current_month + "/" + current_year;
 
 var hbs = require("handlebars");
+// get system time and compare it in the handlebars view model
 hbs.registerHelper("compare", function (a, options) {
-  if (a == current_time) {
-    return options.fn(this);
-  } else {
-    return options.inverse(this);
-  }
+    var current_time = new Date();
+    var current_year = current_time.getFullYear();
+    var current_month = current_time.getMonth() + 1;
+    var current_date = current_time.getDate();
+    var current_time = current_date + "/" + current_month + "/" + current_year;
+    if (a == current_time) {
+        return options.fn(this);
+    } else {
+        return options.inverse(this);
+    }
 });
 
 hbs.registerHelper("compare_safety_range", function (a, b, c, options) {
@@ -45,40 +48,29 @@ hbs.registerHelper("compare_safety_range", function (a, b, c, options) {
   }
 });
 
+// set gloabal static resource
 app.use(express.static("public"));
 
 // Set up to handle POST requests
 app.use(express.json()); // needed if POST data is in JSON format
 app.use(express.urlencoded({ extended: false })); // only needed for URL-encoded input
 
-// link to our router
+// link to our routers
 const ClinicianRouter = require("./routes/Clinician_Router");
 const PatientRouter = require("./routes/Patient_Router");
 
 // the demo routes are added to the end of the '/clinician' path
-app.use("/Clinician_dashboard", ClinicianRouter);
+app.use("/clinician", ClinicianRouter);
 app.use("/patient", PatientRouter);
 
 // render Clinician_dashboard page
 app.get("", (req, res) => {
   res.send(
-    "<h1>The first page is under developing: please view http://localhost/patient and http://localhost/Clinician_dashboard</h1>"
+    "<h1>The home page is under developing, please view: <br><a href='https://webbbbers-diabetes-home.herokuapp.com/patient'>https://webbbbers-diabetes-home.herokuapp.com/patient</a><br><a href='https://webbbbers-diabetes-home.herokuapp.com/clinician'>https://webbbbers-diabetes-home.herokuapp.com/clinician</a></h1>."
   );
 });
 
-// app.get('/Clinician_dashboard', (req, res) => {
-//     res.render('Clinician_dashboard.hbs', {
-//         title: 'Clinician Dashboard',
-//     })
-// })
-
-// app.get('/Patient', (req, res) => {
-//     res.render('Patient_Dashboard', {
-//         layout: 'patient-template'
-//     })
-// })
-
-// Tells the app to listen on port 3000 and logs that information to the console.
+// Tells the app to listen on port 80 and logs that information to the console.
 app.listen(process.env.PORT || 80, () => {
   console.log("Diabetes@Home listening on port 80");
 });

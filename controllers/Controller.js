@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
-
 const patientData = require('../models/patient')
-
+const pd = require('../models/patients')
 const Patient = mongoose.model('patient')
 
 
@@ -29,7 +28,7 @@ const getAllPatientData = async(req, res) => {
 
 const renderPatientDashboard = (req, res) => {
     res.render('Patient_Dashboard', {
-        data: patientData,
+        data: pd,
         layout: 'patient_template'
     })
 }
