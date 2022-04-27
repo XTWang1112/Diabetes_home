@@ -57,7 +57,7 @@ p {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 4.8rem;
-  overflow: auto;
+  /* overflow: auto; */
   justify-items: center;
   align-content: center;
 }
