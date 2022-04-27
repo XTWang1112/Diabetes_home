@@ -1,3 +1,4 @@
+/* 
 module.exports = [
     {
         patientName: 'Pat',
@@ -73,11 +74,7 @@ module.exports = [
             {
                 comment: 'This is a comment',
                 time: '23/4/2022'
-            },
-            {
-                comment: 'This is a comment',
-                time: '24/4/2022'
             }
         ]
     }
-]
+] */

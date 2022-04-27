@@ -1,9 +1,31 @@
-const patientData = require('../models/patients.js')
+const mongoose = require('mongoose')
+
+// const patientData = require('../models/patient')
+
+const Patient = mongoose.model('patient')
+
+
 
 // handle request to get all clinician data instances
-const getAllPatientData = (req, res) => {
+/* const getAllPatientData = (req, res) => {
     res.render('Clinician_dashboard', {data: patientData})
+} */
+
+const getAllPatientData = async(req, res) => {
+    try {
+        // we only need names and photos
+        const patients = await Patient.find({}, { patientName: true, patientID: true, age: true,
+            gender: true,
+            photo_url: true,
+            insistDay : true, }).lean()
+        console.log(patients)
+        res.render('Clinician_dashboard', { "patients": patients })
+    } catch (err) {
+        console.log(err)
+    }
 }
+
+
 
 const renderPatientDashboard = (req, res) => {
     res.render('Patient_Dashboard', {
@@ -12,7 +34,9 @@ const renderPatientDashboard = (req, res) => {
     })
 }
 
-const renderPatientBloodRecord = (req, res) => {
+
+
+/* const renderPatientBloodRecord = (req, res) => {
     const data = patientData.find((data) => data.patientID == 1)
     if (data) {
         res.render('Blood_glucose', {
@@ -33,7 +57,7 @@ const renderPatientBloodRecord = (req, res) => {
         res.sendStatus(404)
     }
     
-}
+} */
 
 
 
@@ -49,7 +73,7 @@ const getDataById = (req, res) => {
 }
 */
 
-const insertBloodGlucose = (req, res) => {
+/* const insertBloodGlucose = (req, res) => {
     console.log(req.query)
     return res.redirect('back')
 }
@@ -58,17 +82,17 @@ const insertData = (req, res) => {
     const{patientName, age, gender, blood_glucose_level, weight, insulin_taken, exercise} = req.btn
     patientData.push({patientName, age, gender, blood_glucose_level, weight, insulin_taken, exercise})
     return res.redirect('back')
-}
+} */
 
 
 
 // exports an object, which contain functions imported by router
 module.exports ={
     getAllPatientData,
-    insertData,
     renderPatientDashboard,
+    /* insertData,
     renderPatientBloodRecord,
-    insertBloodGlucose
+    insertBloodGlucose */
 }
 
 
