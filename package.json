@@ -4,7 +4,8 @@
   "description": "assignment",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "prettier": "prettier --single-quote --no-semi --tab-width 4 --write**/*.js *.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "mongoose": "^6.3.1"
   },
   "devDependencies": {
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0",
+    "prettier": "^2.6.2"
   }
 }
