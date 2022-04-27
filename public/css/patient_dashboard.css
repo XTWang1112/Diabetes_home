@@ -133,6 +133,20 @@ h1 {
   font-size: 2.2rem;
 }
 
+.blood-glucos-data {
+  font-weight: 500;
+  color: #5667c8;
+  font-size: 7.2rem;
+  margin: 1.2rem 0;
+}
+
+.no-data {
+  font-weight: 500;
+  color: #10454f;
+  font-size: 1.8rem;
+  margin-top: 3rem;
+}
+
 /*********************************/
 /*Comment Module*/
 /*********************************/

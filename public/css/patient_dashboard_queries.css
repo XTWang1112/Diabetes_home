@@ -140,6 +140,17 @@
     align-items: center;
   }
 
+  .blood-glucos-data {
+    font-size: 3.2rem;
+    margin: 0.4rem 0;
+  }
+
+  .no-data {
+    font-weight: 500;
+    font-size: 1.8rem;
+    margin-top: 1.5rem;
+  }
+
   .comments-section {
     order: 1;
     border-left: 0;
