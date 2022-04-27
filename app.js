@@ -12,7 +12,7 @@ app.engine(
   "hbs",
   exphbs.engine({
     layoutsDir: "views/layouts/",
-    defaultLayout: "main",
+    defaultLayout: "clinician_template",
     extname: "hbs",
   })
 );
