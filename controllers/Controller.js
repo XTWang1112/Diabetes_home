@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 const mongoose = require("mongoose");
+=======
+const mongoose = require('mongoose')
+const patientData = require('../models/patient')
+const pd = require('../models/patients')
+const Patient = mongoose.model('patient')
+>>>>>>> 08e8c8cd65254ebefe4fa8e58ba6a6050dc14a60
 
 const patientData = require("../models/patient");
 
@@ -31,11 +38,21 @@ const getAllPatientData = async (req, res) => {
 };
 
 const renderPatientDashboard = (req, res) => {
+<<<<<<< HEAD
   res.render("Patient_Dashboard", {
     data: patientData,
     layout: "patient_template",
   });
 };
+=======
+    res.render('Patient_Dashboard', {
+        data: pd,
+        layout: 'patient_template'
+    })
+}
+
+
+>>>>>>> 08e8c8cd65254ebefe4fa8e58ba6a6050dc14a60
 
 const renderPatientBloodRecord = (req, res) => {
   const data = patientData;
