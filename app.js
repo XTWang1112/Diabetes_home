@@ -52,11 +52,11 @@ app.use(express.json()) // needed if POST data is in JSON format
 app.use(express.urlencoded({ extended: false })) // only needed for URL-encoded input
 
 // link to our router
-const Clinician_Router = require('./routes/Clinician_Router')
+const ClinicianRouter = require('./routes/Clinician_Router')
 const PatientRouter = require('./routes/Patient_Router')
 
 // the demo routes are added to the end of the '/clinician' path
-app.use('/Clinician_dashboard', Clinician_Router)
+app.use('/Clinician_dashboard', ClinicianRouter)
 app.use('/patient', PatientRouter)
 
 

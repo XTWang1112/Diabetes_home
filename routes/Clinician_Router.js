@@ -9,7 +9,7 @@ const Controller = require('../controllers/Controller')
 Router.get('/', Controller.getAllPatientData)
 
 // add a new JSON object to the database
-Router.post('/', Controller.insertData)
+// Router.post('/', Controller.insertData)
 
 // export the router
 module.exports = Router
