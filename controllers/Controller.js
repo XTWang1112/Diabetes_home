@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-// const patientData = require('../models/patient')
+const patientData = require('../models/patient')
 
 const Patient = mongoose.model('patient')
 
@@ -36,8 +36,8 @@ const renderPatientDashboard = (req, res) => {
 
 
 
-/* const renderPatientBloodRecord = (req, res) => {
-    const data = patientData.find((data) => data.patientID == 1)
+const renderPatientBloodRecord = (req, res) => {
+    const data = patientData
     if (data) {
         res.render('Blood_glucose', {
             onePatient: data,
@@ -56,8 +56,7 @@ const renderPatientDashboard = (req, res) => {
         // Currently, an empty list will be returned.
         res.sendStatus(404)
     }
-    
-} */
+} 
 
 
 
@@ -90,9 +89,7 @@ const insertData = (req, res) => {
 module.exports ={
     getAllPatientData,
     renderPatientDashboard,
-    /* insertData,
     renderPatientBloodRecord,
-    insertBloodGlucose */
 }
 
 
