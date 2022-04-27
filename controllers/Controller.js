@@ -1,16 +1,12 @@
+// import the models data
 const mongoose = require('mongoose')
 const patientData = require('../models/patient')
 const pd = require('../models/patients')
+
 const Patient = mongoose.model('patient')
 
 
-
-// handle request to get all clinician data instances
-/* const getAllPatientData = (req, res) => {
-    res.render('Clinician_dashboard', {data: patientData})
-} */
-
-const getAllPatientData = async(req, res) => {
+const renderClinicianDashboard = async(req, res) => {
     try {
         // we only need names and photos
         const patients = await Patient.find({}, { patientName: true, patientID: true, age: true,
@@ -86,7 +82,7 @@ const insertData = (req, res) => {
 
 // exports an object, which contain functions imported by router
 module.exports ={
-    getAllPatientData,
+    renderClinicianDashboard,
     renderPatientDashboard,
     renderPatientBloodRecord,
 }
