@@ -1,5 +1,5 @@
 
-module.exports = [
+/* module.exports = [
     {
         patientName: 'Pat',
         patientID: 1,
@@ -77,4 +77,4 @@ module.exports = [
             }
         ]
     }
-] 
+]  */
