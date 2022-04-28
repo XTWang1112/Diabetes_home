@@ -17,7 +17,7 @@ const renderClinicianDashboard = async (req, res) => {
           insistDay: true,
       }).lean();
 
-      const today = new Date(new Date().toDataString()).getTime()
+      const today = new Date(new Date().toDateString()).getTime()
       const tomorrow = today + 24 * 3600 * 1000
 
       for(patient of patients){
