@@ -8,10 +8,19 @@ const patientSchema = new mongoose.Schema({
     gender: String,
     photo_url: String,
     insistDay : Number,
+
+    today_blood_glucose_level:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref: 'bloodGlucoseModel'
+    },
+
+    today_weight: Number,
+    today_insulin_taken: Number,
+    today_exercise: Number
 })
 
 // Compile the schema into a model
-const Patient = mongoose.model("patient", patientSchema, 'patients')
+const patientModel = mongoose.model("patients",patientSchema)
 
 // Make the model available to other files
-module.exports = Patient
+module.exports = patientModel

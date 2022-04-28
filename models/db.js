@@ -27,3 +27,4 @@ mongoose.connect( dbAddress, {
   })
 
   require("./patient")
+  require("./bloodGlucose")

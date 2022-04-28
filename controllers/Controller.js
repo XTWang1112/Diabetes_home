@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 const patientData = require("../models/patient");
 const pd = require("../models/patients");
-const Patient = mongoose.model("patient");
+const patientModel = mongoose.model("patients");
 
 
 const renderClinicianDashboard = async (req, res) => {
   try {
     // we only need names and photos
-    const patients = await Patient.find(
+    const patients = await patientModel.find(
       {},
       {
         patientName: true,
@@ -16,6 +16,11 @@ const renderClinicianDashboard = async (req, res) => {
         gender: true,
         photo_url: true,
         insistDay: true,
+
+        today_blood_glucose_level: true,
+        today_weight: true,
+        today_insulin_taken: true,
+        today_exercise: true
       }
     ).lean();
     console.log(patients);
