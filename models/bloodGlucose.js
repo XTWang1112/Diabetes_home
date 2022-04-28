@@ -2,9 +2,10 @@ const mongoose = require("mongoose")
 
 // Declare a bloodGlucose mongoose schema
 const bloodGlucoseSchema = new mongoose.Schema({
-    time: Date,
+    patient_id: { type: mongoose.Schema.Types.ObjectId, ref: 'patients' },
     value: Number,
-    comment: String
+    comment: String,
+    time: Number,
 })
 
 // Compile the schema into bloodGlucose model

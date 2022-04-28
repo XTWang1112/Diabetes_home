@@ -29,7 +29,6 @@
     </ul>
   </nav>
 
-  {{#each data}}
 
   <section class="record-div">
     <div class="record-top">
@@ -39,12 +38,12 @@
     <div class="grid grid--2 record-grid">
 
 
-      {{#compare this.timestamp_blood_glucose_level}}
+      {{#if patient.timestamp_blood_glucose_level}}
       <a class="record-box blood-box" href="/patient/blood_glucose">
         <embed class="blood-icon" src="/img/svg/blood-icon.svg" type="image/svg+xml" />
         <div>
           <p>Blood glucose level</p>
-          <p class = "blood-glucos-data">{{this.today_blood_glucose_level}}</p>
+          <p class = "blood-glucos-data">{{patient.today_blood_glucose_level}}</p>
           <p>(in nmol/L)</p>
         </div>
       </a>
@@ -56,14 +55,14 @@
           <p class = "no-data">Start your day:)</p>
         </div>
       </a>
-      {{/compare}}
+      {{/if}}
 
-      {{#compare this.timestamp_weight}}
+      {{#compare patient.timestamp_weight}}
       <a class="record-box weight-box" href="#">
         <embed class="scale" src="/img/svg/weight-icon.svg" type="image/svg+xml" />
         <div>
           <p>Weight</p>
-          <p>{{this.today_weight}}</p>
+          <p>{{patient.today_weight}}</p>
           <p>(in kg)</p>
         </div>
       </a>
@@ -84,7 +83,7 @@
         <embed class="needle" src="/img/svg/insulin-icon.svg" type="image/svg+xml" />
         <div>
           <p>Insulin taken</p>
-          <p>{{this.today_insulin_taken}}</p>
+          <p>{{patient.today_insulin_taken}}</p>
           <p>(number of doses)</p>
         </div>
       </a>
@@ -99,12 +98,12 @@
       {{/compare}}
 
 
-      {{#compare this.timestamp_blood_pressure}}
+      {{#compare patient.timestamp_blood_pressure}}
       <a class="record-box exercise-box" href="#">
         <embed class="step" src="/img/svg/step-icon.svg" type="image/svg+xml" />
         <div>
           <p>Exercise</p>
-          <p>{{this.today_exercise}}</p>
+          <p>{{patient.today_exercise}}</p>
           <p>(step count)</p>
         </div>
       </a>
@@ -133,13 +132,10 @@
           <ion-icon class="cross-button-icon" name="close-outline"></ion-icon>
         </button>
         <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-          et dolore magna aliquyam erat, sed diam voluptua. invidunt ut labore et dolore magna erat set aliquyam
-          erat, sed diam voluptua.
+          {{this}}
         </p>
       </div>
     </div>
     {{/each}}
   
-{{/each}}
 </main>
