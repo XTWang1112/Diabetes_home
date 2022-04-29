@@ -21,7 +21,7 @@
       <tr>
         <td>Blood glucose Level: </td>
         <td>
-          {{#compare this.timestamp_blood_glucose_level}}
+          {{#if this.timestamp_blood_glucose_level}}
             {{#compare_safety_range
               this.today_blood_glucose_level
               this.blood_glucose_level_lower_bound
@@ -37,7 +37,7 @@
             {{/compare_safety_range}}
           {{else}}
             <font color="orange">No data today</font>
-          {{/compare}}
+          {{/if}}
         </td>
       </tr>
       <tr>

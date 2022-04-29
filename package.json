@@ -11,18 +11,18 @@
     "type": "git",
     "url": "git+https://github.com/XTWang1112/Diabetes_home.git"
   },
-  "author": "Webbbber",
+  "author": "Webbbbers",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/XTWang1112/Diabetes_home/issues"
   },
   "homepage": "https://github.com/XTWang1112/Diabetes_home#readme",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-handlebars": "^6.0.5",
     "jquery": "^3.6.0",
-    "mongoose": "^6.3.1",
-    "dotenv": "^16.0.0"
+    "mongoose": "^6.3.1"
   },
   "devDependencies": {
     "prettier": "^2.6.2"

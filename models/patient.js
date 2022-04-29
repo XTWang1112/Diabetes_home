@@ -7,16 +7,7 @@ const patientSchema = new mongoose.Schema({
     age: Number,
     gender: String,
     photo_url: String,
-    insistDay : Number,
-
-    today_blood_glucose_level:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref: 'bloodGlucoseModel'
-    },
-
-    today_weight: Number,
-    today_insulin_taken: Number,
-    today_exercise: Number
+    insistDay: Number,
 })
 
 // Compile the schema into a model
