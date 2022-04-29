@@ -101,6 +101,7 @@ h1 {
   width: 30rem;
   height: 30rem;
   border-radius: 20px;
+  position: relative;
 }
 
 .blood-box {
@@ -108,10 +109,10 @@ h1 {
   position: relative;
 }
 
-.blood-box::after {
-  content: "Finish";
+.finish {
+  /* content: "Finish"; */
   position: absolute;
-  right: -8rem;
+  right: -8.5rem;
   top: 1.2rem;
   text-transform: uppercase;
   font-size: 1.4rem;

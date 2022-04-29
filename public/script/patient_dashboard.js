@@ -35,3 +35,11 @@ document
   .addEventListener("click", function () {
     document.querySelector(".comments-div").classList.add("diappear");
   });
+
+if (
+  document.querySelector(".blood-glucos-data").textContent == "no data today"
+) {
+  console.log("hi");
+  document.querySelector(".finish").style.display = "none";
+  document.querySelector(".blood-glucos-data").style.fontSize = "3.2rem";
+}
