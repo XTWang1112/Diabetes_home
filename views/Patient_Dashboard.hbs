@@ -29,16 +29,13 @@
     </ul>
   </nav>
 
-
   <section class="record-div">
     <div class="record-top">
       <h1>Record</h1>
       <h2 class="record-date"></h2>
     </div>
     <div class="grid grid--2 record-grid">
-
-
-
+      {{!-- display blood glucose data --}}
       <a class="record-box blood-box" href="/patient/blood_glucose">
         <embed class="blood-icon" src="/img/svg/blood-icon.svg" type="image/svg+xml" />
         <div>
@@ -47,9 +44,7 @@
           <p>(in nmol/L)</p>
         </div>
       </a>
-
-
-
+      {{!-- display weight data --}}
       <a class="record-box weight-box" href="#">
         <embed class="scale" src="/img/svg/weight-icon.svg" type="image/svg+xml" />
         <div>
@@ -58,10 +53,7 @@
           <p>(in kg)</p>
         </div>
       </a>
-
-
-
-
+      {{!-- display insulin taken data --}}
       <a class="record-box insulin-box" href="#">
         <embed class="needle" src="/img/svg/insulin-icon.svg" type="image/svg+xml" />
         <div>
@@ -70,10 +62,7 @@
           <p>(number of doses)</p>
         </div>
       </a>
-
-
-
-
+      {{!-- display exercise data --}}
       <a class="record-box exercise-box" href="#">
         <embed class="step" src="/img/svg/step-icon.svg" type="image/svg+xml" />
         <div>
@@ -82,27 +71,23 @@
           <p>(step count)</p>
         </div>
       </a>
-
-
     </div>
   </section>
 
-
-
   <section class="comments-section">
     <h1>Comments</h1>
-    {{#each comments}}
     <div class="comments-div">
       <div class="comments-box">
         <button class="cross-button">
           <ion-icon class="cross-button-icon" name="close-outline"></ion-icon>
         </button>
         <p>
-          {{this}}
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Donec euismod, nisl eget consectetur consectetur,
+          nisi nunc ultrices nunc, eu aliquet nunc nisi eu
+          diam.
         </p>
       </div>
-    </div>
-    {{/each}}
-  
+    </div> 
 
 </main>
