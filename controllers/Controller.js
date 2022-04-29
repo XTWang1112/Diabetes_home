@@ -98,7 +98,7 @@ const renderPatientDashboard = async(req, res) => {
         patient.timestamp_blood_glucose_level = bloodGlucose_result.time
         patient.blood_glucose_level_lower_bound = patient_result.bloodGlucose_lowerBound
         patient.blood_glucose_level_upper_bound = patient_result.bloodGlucose_upperBound
-        comments.push(bloodGlucose_result.comment)
+        // comments.push(bloodGlucose_result.comment)
     }else{
         patient.today_blood_glucose_level = 0
         patient.today_blood_glucose_level = "no data today"
@@ -125,7 +125,7 @@ const renderPatientBloodRecord = async(req, res) => {
             let patient_id = '6267d6bb8b206aade8b24198'
             let patientBloodRecord = {
                 patient_id,
-                value: parseInt(patinet_blood_glucose),
+                value: patinet_blood_glucose,
                 comment: glucose_comment,
                 time: new Date().getTime(),
             }

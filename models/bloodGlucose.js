@@ -1,4 +1,5 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+
 
 // Declare a bloodGlucose mongoose schema
 const bloodGlucoseSchema = new mongoose.Schema({
