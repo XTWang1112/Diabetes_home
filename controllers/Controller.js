@@ -1,7 +1,6 @@
 const req = require("express/lib/request");
 const mongoose = require("mongoose");
 const patientData = require("../models/patient");
-// const pd = require("../models/patients");
 const patientModel = mongoose.model("patients");
 const bloodGlucoseModel = mongoose.model("bloodGlucoses");
 const weightModel = mongoose.model("weights");
