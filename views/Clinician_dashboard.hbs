@@ -43,7 +43,7 @@
       <tr>
         <td>Weight:</td>
         <td>
-          {{#compare this.timestamp_weight}}
+          {{#if this.timestamp_weight}}
             {{#compare_safety_range
               this.today_weight
               this.weight_lower_bound
@@ -59,13 +59,13 @@
             {{/compare_safety_range}}
           {{else}}
             <font color="orange">No data today</font>
-          {{/compare}}
+          {{/if}}
         </td>
       </tr>
       <tr>
         <td>Insulin taken:</td>
         <td>
-          {{#compare this.timestamp_insulin_taken}}
+          {{#if this.timestamp_insulin_taken}}
             {{#compare_safety_range
               this.today_insulin_taken
               this.insulin_taken_lower_bound
@@ -81,13 +81,13 @@
             {{/compare_safety_range}}
           {{else}}
             <font color="orange">No data today</font>
-          {{/compare}}
+          {{/if}}
         </td>
       </tr>
       <tr>
         <td>Exercise:</td>
         <td>
-          {{#compare this.timestamp_exercise}}
+          {{#if this.timestamp_exercise}}
             {{#compare_safety_range
               this.today_exercise
               this.exercise_lower_bound
@@ -103,7 +103,7 @@
             {{/compare_safety_range}}
           {{else}}
             <font color="orange">No data today</font>
-          {{/compare}}
+          {{/if}}
         </td>
       </tr>
     </table>

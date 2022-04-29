@@ -8,6 +8,9 @@ const patientSchema = new mongoose.Schema({
   gender: String,
   photo_url: String,
   insistDay: Number,
+
+  bloodGlucose_lowerBound: Number,
+  bloodGlucose_upperBound: Number,
 });
 
 // Compile the schema into a model

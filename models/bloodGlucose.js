@@ -6,6 +6,8 @@ const bloodGlucoseSchema = new mongoose.Schema({
     value: Number,
     comment: String,
     time: Number,
+    /* bloodGlucose_lowerBound: Number,
+    bloodGlucose_upperBound: Number, */
 })
 
 // Compile the schema into bloodGlucose model

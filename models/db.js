@@ -28,3 +28,6 @@ mongoose.connect( dbAddress, {
 
   require("./patient")
   require("./bloodGlucose")
+  require("./weight")
+  require("./insulinTaken")
+  require("./exercise")
