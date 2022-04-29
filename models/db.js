@@ -4,9 +4,12 @@ const mongoose = require("mongoose");
 
 console.log(process.env.PORT);
 
+const dbAddress =
+  "mongodb+srv://Webbbbers:NKWKsAYmRdZlz27G@cluster0.p0aj3.mongodb.net/diabetes?retryWrites=true&w=majority";
+
 // Connect to the MongoDB
 mongoose
-  .connect(process.env.MONGOURL, {
+  .connect(dbAddress, {
     useNewUrlParser: true,
     dbName: "diabetes",
   })
