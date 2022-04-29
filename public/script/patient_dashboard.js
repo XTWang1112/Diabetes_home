@@ -36,10 +36,10 @@ document
     document.querySelector(".comments-div").classList.add("diappear");
   });
 
-if (
-  document.querySelector(".blood-glucos-data").textContent == "no data today"
-) {
-  console.log("hi");
+//////////////////////////////////////////////
+//if no data
+const noData = document.querySelector(".blood-glucos-data");
+if (noData.textContent == "no data today") {
+  noData.classList.add("no-data");
   document.querySelector(".finish").style.display = "none";
-  document.querySelector(".blood-glucos-data").style.fontSize = "3.2rem";
 }
