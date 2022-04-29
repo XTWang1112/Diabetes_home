@@ -7,6 +7,7 @@ const weightModel = mongoose.model("weights");
 const insulineTakenModel = mongoose.model("insulinTakens");
 const exerciseModel = mongoose.model("exercises");
 
+// The function to redner clinician dashboard
 const renderClinicianDashboard = async (req, res) => {
   try {
     const patients = await patientModel
@@ -25,19 +26,24 @@ const renderClinicianDashboard = async (req, res) => {
         }
       )
       .lean();
-
+    
+    // Get Current date
     const today = new Date(new Date().toDateString()).getTime();
     const tomorrow = today + 24 * 3600 * 1000;
-
+    
+    // Get each patient's latest blood glucose and weight  value
     for (patient of patients) {
       console.log(patient.patientName);
 
+      // Select the curent day's data
       let query = {
         patient_id: patient._id,
         time: { $gte: today },
         time: { $lte: tomorrow },
       };
       console.log(query);
+
+      // sort blood glucose value according to date and time
       let bloodGlucose_result = await bloodGlucoseModel.findOne(query).sort({
         _id: -1,
       });
@@ -46,6 +52,7 @@ const renderClinicianDashboard = async (req, res) => {
 
       if (bloodGlucose_result) {
         console.log(bloodGlucose_result);
+        // get the latest bloodGlucose value
         patient.today_blood_glucose_level = bloodGlucose_result.value;
         patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
         patient.blood_glucose_level_lower_bound =
@@ -57,6 +64,7 @@ const renderClinicianDashboard = async (req, res) => {
         patient.today_blood_glucose_level = "No data today";
       }
 
+      // sort weight value according to date and time
       let weight_result = await weightModel.findOne(query).sort({
         _id: -1,
       });
@@ -77,14 +85,17 @@ const renderClinicianDashboard = async (req, res) => {
     console.log(err);
   }
 };
-
+ 
+// The function to get the current value of each data and render the patient dashboard
 const renderPatientDashboard = async (req, res) => {
   let patient_id = "6267d6bb8b206aade8b24198";
+  // find the patient using its id
   let patient = await patientModel.findById(patient_id).lean();
   console.log(patient.patientName);
 
   const today = new Date(new Date().toDateString()).getTime();
   const tomorrow = today + 24 * 3600 * 1000;
+  // Select the curent day's data
   let query = {
     patient_id: patient._id,
     time: { $gte: today },
@@ -96,6 +107,7 @@ const renderPatientDashboard = async (req, res) => {
   });
 
   let patient_result = await patientModel.findOne(query);
+  // Declare a comments array
   comments = [];
   if (bloodGlucose_result) {
     console.log(bloodGlucose_result);
@@ -119,6 +131,8 @@ const renderPatientDashboard = async (req, res) => {
   });
 };
 
+
+// The fucntion to render patient blood record page
 const renderPatientBloodRecord = async (req, res) => {
   const data = patientData;
   if (data) {
@@ -126,6 +140,7 @@ const renderPatientBloodRecord = async (req, res) => {
       onePatient: data,
       layout: "patient_record_template",
     });
+    // request the patient comment and bloodGlucose value from the input
     var glucose_comment = req.query.glucose_comment || "no comments";
     var patinet_blood_glucose = req.query.patinet_blood_glucose;
     if (glucose_comment && patinet_blood_glucose) {
@@ -136,6 +151,7 @@ const renderPatientBloodRecord = async (req, res) => {
         comment: glucose_comment,
         time: new Date().getTime(),
       };
+      // create the patient bloodRecord
       await bloodGlucoseModel.create({
         ...patientBloodRecord,
       });
@@ -144,6 +160,7 @@ const renderPatientBloodRecord = async (req, res) => {
     res.sendStatus(404);
   }
 };
+
 
 module.exports = {
   renderClinicianDashboard,
