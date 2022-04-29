@@ -11,6 +11,9 @@ const patientSchema = new mongoose.Schema({
 
     bloodGlucose_lowerBound: Number,
     bloodGlucose_upperBound: Number,
+    weight_lowerBound: Number,
+    weight_upperBound: Number,
+    
 })
 
 // Compile the schema into a model

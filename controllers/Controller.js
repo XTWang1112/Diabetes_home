@@ -39,14 +39,14 @@ const renderClinicianDashboard = async (req, res) => {
               _id: -1,
           })
 
-          let bloodGlucose_boundResult = await patientModel.findOne(query)
+          let patient_result = await patientModel.findOne(query)
           
           if(bloodGlucose_result){
               console.log(bloodGlucose_result)
               patient.today_blood_glucose_level = bloodGlucose_result.value
               patient.timestamp_blood_glucose_level = bloodGlucose_result.time
-              patient.blood_glucose_level_lower_bound = bloodGlucose_boundResult.bloodGlucose_lowerBound
-              patient.blood_glucose_level_upper_bound = bloodGlucose_boundResult.bloodGlucose_upperBound
+              patient.blood_glucose_level_lower_bound = patient_result.bloodGlucose_lowerBound
+              patient.blood_glucose_level_upper_bound = patient_result.bloodGlucose_upperBound
           }else{
               patient.today_blood_glucose_level = 0
               patient.today_blood_glucose_level = "No data today"
@@ -89,14 +89,16 @@ const renderPatientDashboard = async(req, res) => {
     let bloodGlucose_result = await bloodGlucoseModel.findOne(query).sort({
         _id: -1,
     })
+
+    let patient_result = await patientModel.findOne(query)
     comments = []
     if(bloodGlucose_result){
         console.log(bloodGlucose_result)
         patient.today_blood_glucose_level = bloodGlucose_result.value
         patient.timestamp_blood_glucose_level = bloodGlucose_result.time
-        patient.blood_glucose_level_lower_bound = 10
-        patient.blood_glucose_level_upper_bound = 1000
-        comments.push(bloodGlucose_result.comment)
+        patient.blood_glucose_level_lower_bound = patient_result.bloodGlucose_lowerBound
+        patient.blood_glucose_level_upper_bound = patient_result.bloodGlucose_upperBound
+        // comments.push(bloodGlucose_result.comment)
     }else{
         patient.today_blood_glucose_level = 0
         patient.today_blood_glucose_level = "no data today"
