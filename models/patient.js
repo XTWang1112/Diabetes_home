@@ -1,17 +1,17 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 // Declare a Mongoose Schema
 const patientSchema = new mongoose.Schema({
-    patientName: String,
-    patientID: Number,
-    age: Number,
-    gender: String,
-    photo_url: String,
-    insistDay: Number,
-})
+  patientName: String,
+  patientID: Number,
+  age: Number,
+  gender: String,
+  photo_url: String,
+  insistDay: Number,
+});
 
 // Compile the schema into a model
-const patientModel = mongoose.model("patients",patientSchema)
+const patientModel = mongoose.model("patients", patientSchema);
 
 // Make the model available to other files
-module.exports = patientModel
+module.exports = patientModel;
