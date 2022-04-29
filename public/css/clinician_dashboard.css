@@ -72,7 +72,7 @@ p {
   border-radius: 20px;
   padding: 1rem;
 
-  box-shadow: 0 2px 2px 2px rgba(94, 142, 183, 0.5);
+  box-shadow: 0 2px 2px 2px rgba(94, 142, 183, 0.1);
 }
 
 .dashboard-patient-box > .portfolio {
