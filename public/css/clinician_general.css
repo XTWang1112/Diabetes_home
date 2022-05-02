@@ -49,7 +49,7 @@ html {
 body {
   line-height: 1;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 }
 
@@ -165,10 +165,6 @@ p {
   color: #5667c8;
 }
 
-.add-patient:hover p {
-  display: block;
-}
-
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -198,6 +194,7 @@ p {
 a:link,
 a:visited {
   text-decoration: none;
+  cursor: pointer;
 }
 
 ul {

@@ -1,40 +1,51 @@
 {{! specify the CSS file }}
-<link rel="stylesheet" href="css/clinician_general.css" />
-<link rel="stylesheet" href="css/clinician_dashboard.css" />
+<link rel='stylesheet' href='/css/clinician_dashboard.css' />
 
-<main class="main">
-  <section class="main-titles">
-    <div class="breadcrumbs">
+<main class='main'>
+  <section class='main-titles'>
+    <div class='breadcrumbs'>
       <h1>Dashboard</h1>
     </div>
-    <button class="btn">
-      <h1 class="view-all-comments">View all comments</h1>
+    <button class='btn'>
+      <h1 class='view-all-comments'>View all comments</h1>
     </button>
   </section>
-  <section class="manage-add-section">
-    <button class="btn add-patient">
-      <p>Add patient</p>
-      <embed src="img/svg/Clinician-dashboard/manage-add-icon.svg" />
-    </button>
+  <section class='manage-add-section'>
+    <a href='/clinician/add-patient' class='btn add-patient'>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        class='add'
+        fill='none'
+        viewBox='0 0 24 24'
+        stroke='currentColor'
+        stroke-width='2'
+      >
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M12 4v16m8-8H4'
+        ></path>
+      </svg>
+    </a>
   </section>
 
-  <section class="patient-dashboards">
+  <section class='patient-dashboards'>
     {{#each patients}}
       {{! Iterate through all users in db, and display their data }}
-      <div class="dashboard-patient-box">
+      <div class='dashboard-patient-box'>
         {{! personal info }}
-        <div class="portfolio">
+        <div class='portfolio'>
           <img
-            class="patient-photo"
-            src="img/profile-photo/{{this.photo_url}}"
+            class='patient-photo'
+            src='/img/profile-photo/{{this.photo_url}}'
           />
-          <div class="name-and-gender">
-            <button class="btn">
-              <p class="name">{{this.patientName}}</p>
+          <div class='name-and-gender'>
+            <button class='btn'>
+              <p class='name'>{{this.patientName}}</p>
             </button>
             <p>{{this.gender}}</p>
           </div>
-          <p class="patient-age">age: {{this.age}}</p>
+          <p class='patient-age'>age: {{this.age}}</p>
         </div>
         {{! table to display data }}
         <table>
@@ -51,13 +62,13 @@
                   {{this.today_blood_glucose_level}}
                   mmol/L
                 {{else}}
-                  <font color="red">
+                  <font color='red'>
                     {{this.today_blood_glucose_level}}
                     mmol/L
                   </font>
                 {{/compare_safety_range}}
               {{else}}
-                <font color="orange">No data today</font>
+                <font color='orange'>No data today</font>
               {{/if}}
             </td>
           </tr>
@@ -74,13 +85,13 @@
                   {{this.today_weight}}
                   kg
                 {{else}}
-                  <font color="red">
+                  <font color='red'>
                     {{this.today_weight}}
                     kg
                   </font>
                 {{/compare_safety_range}}
               {{else}}
-                <font color="orange">No data today</font>
+                <font color='orange'>No data today</font>
               {{/if}}
             </td>
           </tr>
@@ -97,13 +108,13 @@
                   {{this.today_insulin_taken}}
                   doses
                 {{else}}
-                  <font color="red">
+                  <font color='red'>
                     {{this.today_insulin_taken}}
                     doses
                   </font>
                 {{/compare_safety_range}}
               {{else}}
-                <font color="orange">No data today</font>
+                <font color='orange'>No data today</font>
               {{/if}}
             </td>
           </tr>
@@ -120,13 +131,13 @@
                   {{this.today_exercise}}
                   steps
                 {{else}}
-                  <font color="red">
+                  <font color='red'>
                     {{this.today_exercise}}
                     steps
                   </font>
                 {{/compare_safety_range}}
               {{else}}
-                <font color="orange">No data today</font>
+                <font color='orange'>No data today</font>
               {{/if}}
             </td>
           </tr>
