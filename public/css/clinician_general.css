@@ -17,13 +17,14 @@ Paragraph default: 1.6
 
 ----02 COLORS
 
-- Primary: 
+- Primary: #e5ebef #2264B1
 -Icon: 
 
 - Tints:  
-- Shades: 
+- Shades: box-shadow: 0 2px 2px 2px rgba(94, 142, 183, 0.1);
+          box-shadow: 0 0 0 0.8rem rgba(94, 142, 183, 0.4);
 - Accents:
-- Greys  
+- Greys: #343a40 #495057 #868e96
 
 ----05 SHADOWS
  
@@ -50,6 +51,14 @@ body {
   font-weight: 400;
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.5rem;
 }
 
 /*********************************/
@@ -106,11 +115,63 @@ body {
 
 /* new */
 .nav-home {
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .logo-at-home {
   color: #202b5a;
+}
+
+/*********************************/
+/*Breadcrumbs*/
+/*********************************/
+.clinician-profile-photo {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+}
+
+.main {
+  background-color: #e5ebef;
+  flex-flow: column;
+  height: calc(100vh - 11.4rem);
+  padding: 3rem 10rem;
+}
+
+.main-titles {
+  display: flex;
+  justify-content: space-between;
+  color: #5667c8;
+}
+
+.main-titles .view-all-comments:hover,
+.main-titles .view-all-comments:active {
+  text-decoration: underline;
+}
+
+.manage-add-section {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+}
+
+.manage-add-section p {
+  display: none;
+  position: fixed;
+  right: 1rem;
+  top: 19rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #5667c8;
+}
+
+.add-patient:hover p {
+  display: block;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
 }
 
 /*********************************/
@@ -165,7 +226,7 @@ ul {
   border: none;
   cursor: pointer;
   border-radius: 100px;
-  background-color:transparent;
+  background-color: transparent;
 }
 
 /*********************************/
@@ -174,7 +235,7 @@ ul {
 footer {
   height: 19.6rem;
   display: flex;
-  background-color: #5E8DB7;
+  background-color: #5e8db7;
 }
 
 .col--1 {
@@ -199,7 +260,7 @@ footer {
 
 .copy-right {
   font-size: 1.2rem;
-  color: #202B5A;
+  color: #202b5a;
 }
 
 .address {
@@ -210,8 +271,5 @@ footer {
 
 .address li {
   font-size: 1.8rem;
-  color: #202B5A;
+  color: #202b5a;
 }
-
-
-

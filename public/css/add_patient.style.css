@@ -1,0 +1,99 @@
+/*********************************/
+/*Breadcrumbs*/
+/*********************************/
+.chevron-right {
+  color: #495057;
+  height: 2.4rem;
+}
+
+.dashboard {
+  font-weight: normal;
+}
+
+/*********************************/
+/*Form*/
+/*********************************/
+.main {
+  position: relative;
+}
+
+.register-area {
+  height: 70.9rem;
+  width: 126rem;
+  box-shadow: 0 2px 2px 2px rgba(94, 142, 183, 0.1);
+  border-radius: 1.2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.upload-photo {
+  height: 32.8rem;
+  width: 26rem;
+  background-color: white;
+}
+
+.btn-upload {
+  background-color: #2264b1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2.2rem;
+  width: 13.5rem;
+  height: 4rem;
+}
+
+.upload-photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7.2rem;
+  align-items: center;
+  margin-top: 6.4rem;
+  margin-left: 6.4rem;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.patient-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1rem;
+  height: 60%;
+  margin-top: 6.4rem;
+}
+
+.patient-details input,
+.patient-details select {
+  width: 34.8rem;
+  height: 6.5rem;
+  padding-left: 1.2rem;
+  font-size: 2.4rem;
+  border-radius: 1.6rem;
+  border: none;
+}
+
+.patient-details *:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.4rem rgba(94, 142, 183, 0.5);
+}
+
+.btn-register {
+  background-color: #2264b1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 3rem;
+  width: 23.6rem;
+  height: 7.5rem;
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+}
