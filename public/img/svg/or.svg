@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="230" height="21" viewBox="0 0 230 21">
+  <g  transform="translate(-74 -502)">
+    <line x2="102" transform="translate(74 513)" fill="none" stroke="#707070" stroke-width="1"/>
+    <line x2="102" transform="translate(202 513)" fill="none" stroke="#707070" stroke-width="1"/>
+    <text id="or" transform="translate(180 518)" fill="#2d5215" font-size="15" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="0" y="0">or</tspan></text>
+  </g>
+</svg>

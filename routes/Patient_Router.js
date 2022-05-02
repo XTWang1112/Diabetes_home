@@ -10,5 +10,9 @@ Router.get('/', Controller.renderPatientDashboard)
 
 Router.get('/blood_glucose', Controller.renderPatientBloodRecord)
 
+Router.get('/login', Controller.renderPatientLogin)
+
+Router.post('/login', Controller.postPatientLogin)
+
 // export the router
 module.exports = Router
