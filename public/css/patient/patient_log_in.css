@@ -1,0 +1,90 @@
+main {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  background: url("../../img/login-photo.jpeg");
+}
+
+.patient-logo {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 1rem;
+  margin-top: 5rem;
+}
+
+.patient-logo .patient-word-logo {
+  font-size: 2rem;
+  color: #2D5215;
+  font-weight: bold;
+  text-align: center;
+  margin: auto;
+  margin-left: 1rem;
+  padding: 1rem;
+  background-color: rgb(125, 188, 87, 0.3);
+  border:#45811F 0.3rem solid;
+  border-radius: 20px;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 40rem;
+  width: 30rem;
+  background-color: rgba(194, 219, 192, 0.7);
+  margin:auto;
+  margin-top: 5rem;
+  margin-bottom: 15rem;
+  padding: 2rem;
+  border-radius: 20px;
+  border: #2D5215 solid 0.1rem;
+}
+
+.login-box form {
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.login-box .input-email,
+.login-box .input-pwd {
+  height: 5rem;
+  font-size: 2rem;
+}
+
+.login-box label {
+  font-size: 1.5rem;
+  color: #2D5215;
+  font-weight: 500;
+}
+
+.login-box .rememberThisDevice-box {
+ padding-left: 2rem;
+}
+
+.login-box button {
+  width: 18rem;
+  height: 4rem;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 800;
+  background-color: rgb(69, 129, 31, 0.9);
+  border: grey solid 0.1rem;
+  border-radius: 20px;
+}
+
+.login-box a {
+  text-decoration: underline;
+}
+
+
+
+@media (max-width: 35em) {
+  main {
+    background: url("../../img/patient-login-pic.png");
+  }
+}
