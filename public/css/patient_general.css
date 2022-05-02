@@ -259,3 +259,98 @@ textarea {
 .btn--done:active {
   color: #dff1ca;
 }
+
+
+@media (max-width: 35em) {
+  html {
+    font-size: 50%;
+  }
+
+  body {
+    position: relative;
+  }
+
+  footer {
+    height: 19rem;
+    position: sticky;
+    bottom: 0;
+  }
+
+  .header {
+    justify-content: space-between;
+    padding: 0 2rem;
+  }
+
+  .back-logo {
+    gap: 1rem;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+
+  .btn-mobile-nav {
+    display: block;
+    z-index: 1000;
+  }
+
+  .main-nav {
+    background-color: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transform: translateX(100%);
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in;
+    /* padding-left: 13rem; */
+
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    z-index: 999;
+  }
+
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+    z-index: 999;
+  }
+
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    display: block;
+  }
+
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    display: none;
+  }
+
+  .grid--footer {
+    column-gap: 3rem;
+  }
+
+  .address li {
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
+  .copy-right {
+    font-size: 1rem;
+  }
+}

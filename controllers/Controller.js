@@ -165,9 +165,21 @@ const renderPatientBloodRecord = async (req, res) => {
   }
 };
 
+const renderPatientLogin = (req, res) => {
+  res.render('Patient_login', {
+    layout: 'no_layouts',
+  });
+};
+
+const postPatientLogin = (req, res) => {
+  console.log(req.body);
+  console.log(req.body.input_email);
+};
+
 module.exports = {
   renderClinicianDashboard,
   renderPatientDashboard,
   renderPatientBloodRecord,
-  renderAddPatient,
+  renderPatientLogin,
+  postPatientLogin,
 };
