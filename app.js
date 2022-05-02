@@ -23,20 +23,19 @@ app.set("view engine", "hbs");
 // connect to database
 require("./models/db.js");
 
-
 var hbs = require("handlebars");
 // get system time and compare it in the handlebars view model
 hbs.registerHelper("compare", function (a, options) {
-    var current_time = new Date();
-    var current_year = current_time.getFullYear();
-    var current_month = current_time.getMonth() + 1;
-    var current_date = current_time.getDate();
-    var current_time = current_date + "/" + current_month + "/" + current_year;
-    if (a == current_time) {
-        return options.fn(this);
-    } else {
-        return options.inverse(this);
-    }
+  var current_time = new Date();
+  var current_year = current_time.getFullYear();
+  var current_month = current_time.getMonth() + 1;
+  var current_date = current_time.getDate();
+  var current_time = current_date + "/" + current_month + "/" + current_year;
+  if (a == current_time) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
 });
 
 hbs.registerHelper("compare_safety_range", function (a, b, c, options) {
@@ -53,7 +52,9 @@ app.use(express.static("public"));
 
 // Set up to handle POST requests
 app.use(express.json()); // needed if POST data is in JSON format
-app.use(express.urlencoded({ extended: false })); // only needed for URL-encoded input
+app.use(express.urlencoded({
+  extended: false
+})); // only needed for URL-encoded input
 
 // link to our routers
 const ClinicianRouter = require("./routes/Clinician_Router");
