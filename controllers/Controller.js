@@ -21,6 +21,7 @@ const renderClinicianDashboard = async (req, res) => {
           gender: true,
           photo_url: true,
           insistDay: true,
+          birthday: true,
 
           bloodGlucose_lowerBound: true,
           bloodGlucose_upperBound: true,
@@ -50,6 +51,18 @@ const renderClinicianDashboard = async (req, res) => {
       });
 
       let patient_result = await patientModel.findOne(query);
+
+      // 传如数据是patient_result.birthday, 输出用patient.birthday
+      // manipulate input birthday and calculate age
+      birth = Date.parse(patient_result.birthday.replace('/-/g', "/"));
+      if (birth) {
+        var year = 1000 * 60 * 60 * 24 * 365;
+        var now = new Date();
+        var birthday = new Date(birth);
+        patient.birthday = parseInt((now - birthday) / year);
+      }
+
+
 
       if (bloodGlucose_result) {
         console.log(bloodGlucose_result);
