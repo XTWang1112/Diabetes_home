@@ -21,12 +21,15 @@ const renderClinicianDashboard = async (req, res) => {
           gender: true,
           photo_url: true,
           insistDay: true,
+          birthday: true,
 
           bloodGlucose_lowerBound: true,
           bloodGlucose_upperBound: true,
         }
       )
       .lean();
+
+
 
     // Get Current date
     const today = new Date(new Date().toDateString()).getTime();
@@ -51,15 +54,28 @@ const renderClinicianDashboard = async (req, res) => {
 
       let patient_result = await patientModel.findOne(query);
 
+
+      // 传如数据是patient_result.birthday, 输出用patient.birthday
+      // manipulate input birthday and calculate age
+      birth = Date.parse(patient_result.birthday.replace('/-/g', "/"));
+      if (birth) {
+        var year = 1000 * 60 * 60 * 24 * 365;
+        var now = new Date();
+        var birthday = new Date(birth);
+        patient.birthday = parseInt((now - birthday) / year);
+      }
+
+
       if (bloodGlucose_result) {
         console.log(bloodGlucose_result);
         // get the latest bloodGlucose value
+
         patient.today_blood_glucose_level = bloodGlucose_result.value;
         patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
-        patient.blood_glucose_level_lower_bound =
-          patient_result.bloodGlucose_lowerBound;
-        patient.blood_glucose_level_upper_bound =
-          patient_result.bloodGlucose_upperBound;
+        
+        patient.blood_glucose_level_lower_bound = patient_result.bloodGlucose_lowerBound;
+        patient.blood_glucose_level_upper_bound = patient_result.bloodGlucose_upperBound;
+      
       } else {
         patient.today_blood_glucose_level = 0;
         patient.today_blood_glucose_level = 'No data today';
@@ -110,17 +126,19 @@ const renderPatientDashboard = async (req, res) => {
   });
 
   let patient_result = await patientModel.findOne(query);
+
   // Declare a comments array
   comments = [];
   if (bloodGlucose_result) {
     console.log(bloodGlucose_result);
+
     patient.today_blood_glucose_level = bloodGlucose_result.value;
     patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
-    patient.blood_glucose_level_lower_bound =
-      patient_result.bloodGlucose_lowerBound;
-    patient.blood_glucose_level_upper_bound =
-      patient_result.bloodGlucose_upperBound;
+
+    patient.blood_glucose_level_lower_bound = patient_result.bloodGlucose_lowerBound;
+    patient.blood_glucose_level_upper_bound = patient_result.bloodGlucose_upperBound;
     // comments.push(bloodGlucose_result.comment)
+
   } else {
     patient.today_blood_glucose_level = 0;
     patient.today_blood_glucose_level = 'no data today';
