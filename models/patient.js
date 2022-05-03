@@ -8,6 +8,7 @@ const patientSchema = new mongoose.Schema({
   gender: String,
   photo_url: String,
   insistDay: Number,
+  birthday: String,
 
   bloodGlucose_lowerBound: Number,
   bloodGlucose_upperBound: Number,
