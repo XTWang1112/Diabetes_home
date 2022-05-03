@@ -17,7 +17,7 @@ const renderClinicianDashboard = async (req, res) => {
         {
           patientName: true,
           patientID: true,
-          age: true,
+
           gender: true,
           photo_url: true,
           insistDay: true,
