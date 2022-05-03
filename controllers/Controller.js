@@ -38,11 +38,14 @@ const renderClinicianDashboard = async (req, res) => {
       console.log(patient.patientName);
 
       // Select the curent day's data
+      // 如果要用js操作mongoDB参数，把要操作的对象加到query里面，否则不会进行loop循环patient
       let query = {
         patient_id: patient._id,
         time: { $gte: today },
         time: { $lte: tomorrow },
+        birthday: patient.birthday,
       };
+
       console.log(query);
 
       // sort blood glucose value according to date and time
@@ -54,14 +57,14 @@ const renderClinicianDashboard = async (req, res) => {
 
       // 传如数据是patient_result.birthday, 输出用patient.birthday
       // manipulate input birthday and calculate age
+
       birth = Date.parse(patient_result.birthday.replace('/-/g', "/"));
       if (birth) {
         var year = 1000 * 60 * 60 * 24 * 365;
-        var now = new Date();
+        var currTime = new Date();
         var birthday = new Date(birth);
-        patient.birthday = parseInt((now - birthday) / year);
+        patient.birthday = parseInt((currTime - birthday) / year);
       }
-
 
 
       if (bloodGlucose_result) {
@@ -69,10 +72,8 @@ const renderClinicianDashboard = async (req, res) => {
         // get the latest bloodGlucose value
         patient.today_blood_glucose_level = bloodGlucose_result.value;
         patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
-        patient.blood_glucose_level_lower_bound =
-          patient_result.bloodGlucose_lowerBound;
-        patient.blood_glucose_level_upper_bound =
-          patient_result.bloodGlucose_upperBound;
+        patient.blood_glucose_level_lower_bound = patient_result.bloodGlucose_lowerBound;
+        patient.blood_glucose_level_upper_bound = patient_result.bloodGlucose_upperBound;
       } else {
         patient.today_blood_glucose_level = 0;
         patient.today_blood_glucose_level = 'No data today';
