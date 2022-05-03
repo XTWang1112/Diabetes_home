@@ -1,6 +1,6 @@
 main {
   display: flex;
-  height: 100%;
+  height: 75rem;
   flex-direction: column;
   background: url("../../img/login-photo.jpeg");
 }
@@ -32,14 +32,16 @@ main {
   justify-content: space-around;
   align-items: center;
   height: 40rem;
-  width: 30rem;
-  background-color: rgba(194, 219, 192, 0.7);
+  width: 33rem;
+  background-color: rgba(218, 235, 221, 0.8);
   margin:auto;
   margin-top: 5rem;
   margin-bottom: 15rem;
   padding: 2rem;
   border-radius: 20px;
-  border: #2D5215 solid 0.1rem;
+  border: rgb(93, 93, 93) solid 0.1rem;
+  box-shadow: 0px 5px 15px 0px rgba(43, 85, 40, 0.6);
+  /* box-shadow: offset-x offset-y blur spread color */
 }
 
 .login-box form {
@@ -50,10 +52,28 @@ main {
   align-items: center;
 }
 
+.login-box .input-email-box,
+.login-box .input-pwd-box {
+  display: flex;
+  width: 26rem;
+  height: 5.5rem;
+  background-color: white;
+  justify-content: space-around;
+  padding: auto;
+  margin: auto;
+  border-radius: 20px;
+  border: rgb(173, 173, 173) solid 0.2rem;
+}
+
+.input-pwd-box embed {
+  width: 2.5rem;
+}
+
 .login-box .input-email,
 .login-box .input-pwd {
   height: 5rem;
   font-size: 2rem;
+  border: transparent;
 }
 
 .login-box label {
@@ -70,6 +90,7 @@ main {
   width: 18rem;
   height: 4rem;
   color: white;
+  margin-top: 2rem;
   font-size: 1.8rem;
   font-weight: 800;
   background-color: rgb(69, 129, 31, 0.9);
@@ -79,6 +100,19 @@ main {
 
 .login-box a {
   text-decoration: underline;
+  color: #2D5215;
+}
+
+.need_to_register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #2D5215;
+}
+
+.need_to_register div {
+  padding: auto;
+  color: #2D5215;
 }
 
 
