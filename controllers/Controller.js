@@ -91,6 +91,10 @@ const renderAddPatient = async (req, res) => {
   res.render('Add_patient');
 };
 
+const renderPatientDetails = async (req, res) => {
+  res.render('Patient_details');
+};
+
 // The function to get the current value of each data and render the patient dashboard
 const renderPatientDashboard = async (req, res) => {
   let patient_id = '6267d6bb8b206aade8b24198';
@@ -170,4 +174,5 @@ module.exports = {
   renderPatientDashboard,
   renderPatientBloodRecord,
   renderAddPatient,
+  renderPatientDetails,
 };
