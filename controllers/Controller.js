@@ -17,7 +17,7 @@ const renderClinicianDashboard = async (req, res) => {
         {
           patientName: true,
           patientID: true,
-          age: true,
+
           gender: true,
           photo_url: true,
           insistDay: true,
@@ -44,6 +44,7 @@ const renderClinicianDashboard = async (req, res) => {
         patient_id: patient._id,
         time: { $gte: today },
         time: { $lte: tomorrow },
+        birthday: patient.birthday,
       };
       console.log(query);
 
