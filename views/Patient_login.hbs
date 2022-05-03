@@ -29,9 +29,15 @@
       <div class="patient-word-logo">patient</div>
     </div>
     <div class = "login-box">
-      <form action="#" method="post">
-        <input class="input-email" name="input_email" type="email" placeholder="  Email Address">
-        <input class="input-pwd" name="input_pwd" type="password" placeholder="  Password" >
+      <form action="/patient" method="post">
+        <div class="input-email-box">
+          <embed src="../img/svg/email.svg">
+          <input class="input-email" type="email" placeholder="  Email Address">
+        </div>
+        <div class="input-pwd-box">
+          <embed src="../img/svg/password.svg" >
+          <input class="input-pwd" type="password" placeholder="  Password" >
+        </div>
         <div class="rememberThisDevice-box">
           <input type="checkbox" id="rememberThisDevice" name="rememberThisDevice" checked>
           <label for="rememberThisDevice">Keep me logged in on this 
@@ -41,7 +47,10 @@
       </form>
       
       <embed src="../img/svg/or.svg">
-      <a href="#">Need to register?</a>
+      <div class="need_to_register" href="#">
+        <div>Need to register? </div>
+        <div>Contact with your clinician</div>
+      </div>
       <a href="#">Forget the password?</a>
       
     </div>
