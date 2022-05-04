@@ -1,4 +1,5 @@
 const req = require('express/lib/request');
+const { render } = require('express/lib/response');
 const res = require('express/lib/response');
 const mongoose = require('mongoose');
 const patientData = require('../models/patient');
@@ -163,6 +164,12 @@ const renderPatientBloodRecord = async (req, res) => {
   }
 };
 
+  const renderPatientWeight = (req, res) => {
+    res.render('weight', {layout: "patient_record_template"})
+  }
+
+
+
 const renderPatientLogin = (req, res) => {
   res.render('Patient_login', {
     layout: 'no_layouts'
@@ -178,6 +185,7 @@ module.exports = {
   renderClinicianDashboard,
   renderPatientDashboard,
   renderPatientBloodRecord,
+  renderPatientWeight,
   renderPatientLogin,
   postPatientLogin
 };

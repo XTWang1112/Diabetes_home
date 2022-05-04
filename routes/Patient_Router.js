@@ -14,5 +14,7 @@ Router.get('/login', Controller.renderPatientLogin)
 
 Router.post('/login', Controller.postPatientLogin)
 
+Router.get("/weight", Controller.renderPatientWeight)
+
 // export the router
 module.exports = Router
