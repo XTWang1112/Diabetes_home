@@ -66,6 +66,8 @@ const PatientRouter = require('./routes/Patient_Router');
 app.use('/clinician', ClinicianRouter);
 app.use('/patient', PatientRouter);
 
+
+
 // render Clinician_dashboard page
 app.get('', (req, res) => {
   res.send(

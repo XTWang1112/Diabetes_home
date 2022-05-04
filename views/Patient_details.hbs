@@ -6,69 +6,44 @@
   <div class='subheader'>
     <div class='breadcrumbs'>
       <h1 class='normal-weight'><a href='/clinician'>Dashboard</a></h1>
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        class='chevron-right'
-        fill='none'
-        viewBox='0 0 24 24'
-        stroke='currentColor'
-        stroke-width='2'
-      >
-        <path
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          d='M9 5l7 7-7 7'
-        ></path>
+      <svg xmlns='http://www.w3.org/2000/svg' class='chevron-right' fill='none' viewBox='0 0 24 24'
+        stroke='currentColor' stroke-width='2'>
+        <path stroke-linecap='round' stroke-linejoin='round' d='M9 5l7 7-7 7'></path>
       </svg>
+
       <h1>{%Patient Name%}</h1>
     </div>
     <div class='subheader-right'>
       <btn class='btn btn--print' onclick='window.print();'>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          class='print'
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
-          stroke-width='2'
-        >
-          <path
-            stroke-linecap='round'
-            stroke-linejoin='round'
-            d='M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z'
-          ></path>
+        <svg xmlns='http://www.w3.org/2000/svg' class='print' fill='none' viewBox='0 0 24 24' stroke='currentColor'
+          stroke-width='2'>
+          <path stroke-linecap='round' stroke-linejoin='round'
+            d='M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z'>
+          </path>
         </svg>
       </btn>
 
       <btn class='btn btn-remove-patient'>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          class='remove-patient'
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
-          stroke-width='2'
-        >
-          <path
-            stroke-linecap='round'
-            stroke-linejoin='round'
-            d='M9 13h6M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z'
-          ></path>
+        <svg xmlns='http://www.w3.org/2000/svg' class='remove-patient' fill='none' viewBox='0 0 24 24'
+          stroke='currentColor' stroke-width='2'>
+          <path stroke-linecap='round' stroke-linejoin='round'
+            d='M9 13h6M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z'></path>
         </svg>
         REMOVE PATIENT
       </btn>
     </div>
   </div>
-
+{{!-- {{#each patients}} --}}
   <div class='body'>
     <div class='gird11'>
       <div class='message-card'>
         <img class='patient-img' src='#' alt='' title='patient photo' />
-        <h1>{%PATIENT_NAME%}</h1>
+        {{!-- <h1>{{this.patientName}}</h1> --}}
+        <h1>{%patientName%}</h1>
         <p>{%EMAIL%}</p>
         <btn class='btn btn-send-message'>Send Message</btn>
       </div>
-
+{{!-- {{/each}} --}}
       <div class='details-card'>
         <p><strong>Gender</strong><br />{%GENDER%}</p>
         <p><strong>Birthday</strong><br />{%DOB%}</p>
@@ -144,25 +119,14 @@
       <p>Latest changes saved by:</p>
       <div class='subfoot'>
         <div class='last-change-doc'>
-          <svg
-            class='doctor-icon'
-            xmlns='http://www.w3.org/2000/svg'
-            width='27.563'
-            height='31.539'
-            viewBox='0 0 27.563 31.539'
-          >
-            <path
-              id='Path_103'
-              data-name='Path 103'
+          <svg class='doctor-icon' xmlns='http://www.w3.org/2000/svg' width='27.563' height='31.539'
+            viewBox='0 0 27.563 31.539'>
+            <path id='Path_103' data-name='Path 103'
               d='M131.8,86.23a8.975,8.975,0,0,0,2.9-6.624V71.025a1.023,1.023,0,0,0-.238-.921c-1.72-1.834-4.966-2.973-8.468-2.973-3.3,0-6.337,1-8.127,2.673l0,0a1.023,1.023,0,0,0-.473.866v8.935a8.975,8.975,0,0,0,2.937,6.66,11.834,11.834,0,0,0-7.964,10.248,2.006,2.006,0,0,0,.491,1.508,1.9,1.9,0,0,0,1.422.647H138a1.9,1.9,0,0,0,1.421-.647,2.008,2.008,0,0,0,.491-1.51A11.907,11.907,0,0,0,131.8,86.23Zm.911-15v6.609a15.785,15.785,0,0,0-13.336-.013V71.171a10.415,10.415,0,0,1,6.616-2A10.6,10.6,0,0,1,132.715,71.233Zm-13.309,8.919.03.039c1.354-1.105,3.878-1.792,6.588-1.792,2.764,0,5.346.73,6.658,1.862a6.65,6.65,0,0,1-13.277-.108Zm-5.056,16.476a10.01,10.01,0,0,1,5.32-7.869,6.9,6.9,0,0,0-.31,2.031v.529a2.124,2.124,0,0,0-1.009,1.812,2.062,2.062,0,1,0,4.122,0,2.12,2.12,0,0,0-1.126-1.877V90.79a4.743,4.743,0,0,1,1.007-2.93c.1-.017.2-.041.3-.056l.022-.005a8.437,8.437,0,0,0,6.736,0,4.727,4.727,0,0,1,1.049,2.988v.44a2.1,2.1,0,0,0-1.027,1.809v1.253a.828.828,0,1,0,1.655,0V93.039a.394.394,0,0,1,.223-.358.974.974,0,0,0,.141.015.944.944,0,0,0,.163-.017.394.394,0,0,1,.227.36v1.253a.828.828,0,1,0,1.655,0V93.039a2.1,2.1,0,0,0-1.052-1.823v-.426a6.883,6.883,0,0,0-.4-2.3,9.907,9.907,0,0,1,5.879,8.136H114.351Zm6.062-3.914a.417.417,0,1,1-.405.417A.412.412,0,0,1,120.413,92.714Z'
-              transform='translate(-112.357 -67.13)'
-            ></path>
-            <path
-              id='Path_104'
-              data-name='Path 104'
+              transform='translate(-112.357 -67.13)'></path>
+            <path id='Path_104' data-name='Path 104'
               d='M439.741,166.6h.657v.657a1.181,1.181,0,1,0,2.362,0V166.6h.657a1.181,1.181,0,0,0,0-2.362h-.657v-.657a1.181,1.181,0,1,0-2.362,0v.657h-.657a1.181,1.181,0,1,0,0,2.362Z'
-              transform='translate(-427.794 -158.495)'
-            ></path>
+              transform='translate(-427.794 -158.495)'></path>
           </svg>
           <p>{%CNAME%}</p>
         </div>
@@ -210,19 +174,11 @@
               </div>
             </div>
             <btn class='btn btn-view-message'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                class='message'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-                stroke-width='2'
-              >
-                <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  d='M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z'
-                ></path>
+              <svg xmlns='http://www.w3.org/2000/svg' class='message' fill='none' viewBox='0 0 24 24'
+                stroke='currentColor' stroke-width='2'>
+                <path stroke-linecap='round' stroke-linejoin='round'
+                  d='M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z'>
+                </path>
               </svg>
             </btn>
           </div>
@@ -242,25 +198,12 @@
   </div>
   <div class='support-message disappear'>
     <btn class='btn btn-close'>
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        class='close'
-        fill='none'
-        viewBox='0 0 24 24'
-        stroke='currentColor'
-        stroke-width='2'
-      >
-        <path
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          d='M6 18L18 6M6 6l12 12'
-        ></path>
+      <svg xmlns='http://www.w3.org/2000/svg' class='close' fill='none' viewBox='0 0 24 24' stroke='currentColor'
+        stroke-width='2'>
+        <path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12'></path>
       </svg>
     </btn>
-    <textarea
-      name='support massage'
-      placeholder='Type your message...'
-    ></textarea>
+    <textarea name='support massage' placeholder='Type your message...'></textarea>
     <btn class='btn btn-send'>Send</btn>
   </div>
 </main>
