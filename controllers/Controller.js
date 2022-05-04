@@ -165,9 +165,16 @@ const renderPatientBloodRecord = async (req, res) => {
 };
 
   const renderPatientWeight = (req, res) => {
-    res.render('weight', {layout: "patient_record_template"})
+    res.render('Weight_record', {layout: "patient_record_template"})
   }
 
+  const renderPatientInsulin = (req, res) => {
+    res.render('Insulin_record', {layout: "patient_record_template"})
+  }
+
+  const renderPatientExcercise = (req, res) => {
+    res.render('Excercise_record', {layout: "patient_record_template"})
+  }
 
 
 const renderPatientLogin = (req, res) => {
@@ -186,6 +193,8 @@ module.exports = {
   renderPatientDashboard,
   renderPatientBloodRecord,
   renderPatientWeight,
+  renderPatientInsulin,
+  renderPatientExcercise,
   renderPatientLogin,
   postPatientLogin
 };

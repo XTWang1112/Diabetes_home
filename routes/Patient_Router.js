@@ -16,5 +16,8 @@ Router.post('/login', Controller.postPatientLogin)
 
 Router.get("/weight", Controller.renderPatientWeight)
 
+Router.get("/insulin", Controller.renderPatientInsulin)
+
+Router.get("/excercise", Controller.renderPatientExcercise)
 // export the router
 module.exports = Router
