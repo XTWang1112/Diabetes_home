@@ -108,6 +108,7 @@ const renderAddPatient = async (req, res) => {
 const renderPatientDetails = async (req, res) => {
   try{
     // 通过req之类的方法取出指定的patientID
+
     // let patient_id = req.params.patient_id;
     let patient_id = '6267d6bb8b206aade8b24198';
 
@@ -175,7 +176,7 @@ const renderPatientDashboard = async (req, res) => {
     patient.today_blood_glucose_level = 0;
     patient.today_blood_glucose_level = 'no data today';
   }
-
+  
   console.log(comments);
   res.render('Patient_Dashboard', {
     patient,
@@ -250,6 +251,7 @@ const renderPatientBloodRecord = async (req, res) => {
       // });
 
       // 如果今天的血糖值为空，则插入一条新的血糖值
+      // find patient的
       if(!onePatientBloodRecord.today_blood_glucose_level){
         
         // create the patient bloodRecord
@@ -260,8 +262,9 @@ const renderPatientBloodRecord = async (req, res) => {
       // 如果今天有血糖值，则更新血糖值
       else{
         await bloodGlucoseModel.updateOne({
-      }
-    )}
+
+        }
+      )}
     }
     } else {
     res.sendStatus(404);

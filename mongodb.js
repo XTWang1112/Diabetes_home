@@ -28,7 +28,7 @@ const patientModel = mongoose.model("patients", patientSchema);
   "patientID": 1,
   "gender": "male",
   "photo_url": "Pat.png",
-  "insistDay": 0,
+  "insistDay": 0, // 收到的complete数量 除以 注册天数
   "birthday": "1988-01-01",
   "bloodGlucose_lowerBound": {
     "$numberDecimal": "3.3"
@@ -36,27 +36,32 @@ const patientModel = mongoose.model("patients", patientSchema);
   "bloodGlucose_upperBound": {
     "$numberDecimal": "6.1"
   }
-  record:[
-    {
-      "time": "2020-04-03T00:00:00.000Z",
-      blood_glucose_level: 10,
-      weight: 10,
-      exercise: 10,
-      insulin: 10,
-    },
-    {
-      time: "2020-04-02T00:00:00.000Z",
-      blood_glucose_level: 10,
-      weight: 10,
-      exercise: 10,
-      insulin: 10,
-    },
-    {
-      time: "2020-04-01T00:00:00.000Z",
-      blood_glucose_level: 10,
-      weight: 10,
-      exercise: 10,
-      insulin: 10,
-    },
-  ]
+
+}
+
+
+record:
+{
+  "time": "2020-04-03",
+  blood_glucose_level: 10,
+  weight: 10,
+  exercise: 10,
+  insulin: 10,
+  compete: true
+},
+{
+  time: "2020-04-02",
+  blood_glucose_level: 10,
+  weight: 10,
+  exercise: 10,
+  insulin: 10,
+  compete: true
+},
+{
+  time: "2020-04-01",
+  blood_glucose_level: 10,
+  weight: 10,
+  exercise: 10,
+  insulin: 10,
+  compete: true
 }
