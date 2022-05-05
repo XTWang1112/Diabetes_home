@@ -1,6 +1,8 @@
 <link rel='stylesheet' href='/css/patient_details.css' />
 <script defer src='../script/patient_details.js'></script>
 
+{{#with patient}}
+
 <main class='main'>
   <div class='overlay disappear'></div>
   <div class='subheader'>
@@ -33,20 +35,22 @@
       </btn>
     </div>
   </div>
-{{!-- {{#each patients}} --}}
+
   <div class='body'>
     <div class='gird11'>
       <div class='message-card'>
         <img class='patient-img' src='#' alt='' title='patient photo' />
-        {{!-- <h1>{{this.patientName}}</h1> --}}
-        <h1>{%patientName%}</h1>
+
+        <h1>{{this.patientName}}</h1>
+        {{!-- <h1>{%patientName%}</h1> --}}
+
         <p>{%EMAIL%}</p>
         <btn class='btn btn-send-message'>Send Message</btn>
       </div>
-{{!-- {{/each}} --}}
+
       <div class='details-card'>
-        <p><strong>Gender</strong><br />{%GENDER%}</p>
-        <p><strong>Birthday</strong><br />{%DOB%}</p>
+        <p><strong>Gender</strong><br />{{this.gender}}</p>
+        <p><strong>Birthday</strong><br />{{this.birthday}}</p>
         <p><strong>Phone Number</strong><br />{%TEL #%}</p>
         <p><strong>Street Address</strong><br />{%STREET%}</p>
         <p><strong>City</strong><br />{%CITY%}</p>
@@ -207,3 +211,5 @@
     <btn class='btn btn-send'>Send</btn>
   </div>
 </main>
+
+{{/with}}

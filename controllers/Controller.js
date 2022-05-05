@@ -13,7 +13,7 @@ const exerciseModel = mongoose.model('exercises');
 // The function to redner clinician dashboard
 const renderClinicianDashboard = async (req, res) => {
   try {
-    // find 对应的 patient
+    // find patientModel里面全部病人的数据
     const patients = await patientModel.find({},
         {
           patientName: true,
@@ -53,7 +53,7 @@ const renderClinicianDashboard = async (req, res) => {
 
       let patient_result = await patientModel.findOne(query);
 
-      // 传如数据是patient_result.birthday, 输出用patient.birthday
+      // 输出用patient.birthday
       // manipulate input birthday and calculate age
       birth = Date.parse(patient_result.birthday.replace('/-/g', "/"));
       if (birth) {
@@ -106,30 +106,34 @@ const renderAddPatient = async (req, res) => {
 
 
 const renderPatientDetails = async (req, res) => {
-  // try{
-  //   // find 对应的 patient
-  //   const patients = await patientModel.find({}, {
-  //       patientName: true,
-  //       patientID: true,
+  try{
+    // 通过req之类的方法取出指定的patientID
+    // let patient_id = req.params.patient_id;
+    let patient_id = '6267d6bb8b206aade8b24198';
 
-  //       gender: true,
-  //       photo_url: true,
-  //       insistDay: true,
-  //       birthday: true,
+    let patient = await patientModel.findById(patient_id).lean();
 
-  //       bloodGlucose_lowerBound: true,
-  //       bloodGlucose_upperBound: true,
-  //     }).lean();
+    /*
+    let query = {
+      patient_id: patient_id,
+    };
+    let patient_result = await patientModel.findOne(query);
+    */
 
-
+    /* 
+      根据日期，找出那一天血糖录入的数据。用前面类似query定义的方法。
+      let bloodGlucose_result = await bloodGlucoseModel.findOne(query).sort({
+        _id: -1,
+      });
+    */
 
     res.render('Patient_details', {
-      
+      patient: patient,
     });
 
-  // }catch(err){
-  //   console.log(err);
-  // }
+  }catch(err){
+    console.log(err);
+  }
 };
 
 
@@ -139,7 +143,7 @@ const renderPatientDashboard = async (req, res) => {
   let patient_id = '6267d6bb8b206aade8b24198';
   // find the patient using its id
   let patient = await patientModel.findById(patient_id).lean();
-  console.log(patient.patientName);
+  // console.log(patient.patientName);
 
   const today = new Date(new Date().toDateString()).getTime();
   const tomorrow = today + 24 * 3600 * 1000;
@@ -155,17 +159,17 @@ const renderPatientDashboard = async (req, res) => {
     _id: -1,
   });
 
+  // 定义了query的需求，赋值给patient_result
   let patient_result = await patientModel.findOne(query);
+
   // Declare a comments array
   comments = [];
   if (bloodGlucose_result) {
     console.log(bloodGlucose_result);
     patient.today_blood_glucose_level = bloodGlucose_result.value;
     patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
-    patient.blood_glucose_level_lower_bound =
-      patient_result.bloodGlucose_lowerBound;
-    patient.blood_glucose_level_upper_bound =
-      patient_result.bloodGlucose_upperBound;
+    patient.blood_glucose_level_lower_bound = patient_result.bloodGlucose_lowerBound;
+    patient.blood_glucose_level_upper_bound = patient_result.bloodGlucose_upperBound;
     // comments.push(bloodGlucose_result.comment)
   } else {
     patient.today_blood_glucose_level = 0;
@@ -204,11 +208,17 @@ const renderPatientBloodRecord = async (req, res) => {
   // console.log(onePatientBloodRecord);
 
   // 挑选出这个人的今天的血糖数据
+  let onePatientBloodRecord = await bloodGlucoseModel.find({
+    patient_id,
+    time: { $gte: new Date(search_day).getTime() },
+    time: { $lte: new Date(search_day).getTime() + 24 * 3600 * 1000 },
+  }).lean();
   let todayBloodRecord = await bloodGlucoseModel.find({patient_id, 
     time: {
       $gte: Date.parse(search_day), 
       $lte: Date.parse(search_day) + 24 * 3600 * 1000
     }}).lean();
+
 
   console.log(todayBloodRecord);
 
