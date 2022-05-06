@@ -4,7 +4,7 @@ const mongoose = require("mongoose")
 const weightSchema = new mongoose.Schema({
     patient_id: { type: mongoose.Schema.Types.ObjectId, ref: 'patients' },
     value: Number,
-    time: Number
+    time: String,
 })
 
 // Compile the schema into weight model

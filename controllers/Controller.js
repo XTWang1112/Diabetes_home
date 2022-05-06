@@ -1,7 +1,7 @@
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 const mongoose = require('mongoose');
-const patientData = require('../models/patient');
+// const patientData = require('../models/patient');
 
 const patientModel = require('../models/patient');
 
@@ -30,20 +30,27 @@ const renderClinicianDashboard = async (req, res) => {
       ).lean();
 
     // Get Current date
-    const today = new Date(new Date().toDateString()).getTime();
-    const tomorrow = today + 24 * 3600 * 1000;
+    // const today = new Date(new Date().toDateString()).getTime();
+    // const tomorrow = today + 24 * 3600 * 1000;
 
+    // 获取当前日-月-年
+    const date = new Date();
+    const thisYear = date.getFullYear();
+    const thisMonth = date.getMonth() + 1;
+    const thisDay = date.getDate();
+    const today_date = thisDay + '-' + thisMonth + '-' + thisYear;
+
+    
     // Get each patient's latest blood glucose and weight  value
     for (patient of patients) {
+
       console.log(patient.patientName);
 
       // Select the curent day's data
       // 如果要用js操作mongoDB参数，把要操作的对象加到query里面，否则不会进行loop循环patient
       let query = {
         patient_id: patient._id,
-        time: { $gte: today },
-        time: { $lte: tomorrow },
-        birthday: patient.birthday,
+        time: { $eq: today_date },
       };
 
       // sort blood glucose value according to date and time
@@ -63,9 +70,10 @@ const renderClinicianDashboard = async (req, res) => {
         patient.birthday = parseInt((currTime - birthday) / year);
       }
 
+
       // 判断血糖是否超标
+
       if (bloodGlucose_result) {
-        console.log(bloodGlucose_result);
         // get the latest bloodGlucose value
         patient.today_blood_glucose_level = bloodGlucose_result.value;
         patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
@@ -91,51 +99,17 @@ const renderClinicianDashboard = async (req, res) => {
         patient.today_weight = 'No data today';
       }
     }
-    console.log(patients);
+    console.log("这是patients" + patients.patientName);
     res.render('Clinician_dashboard', {
-      patients: patients 
+      patients: patients
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-const renderAddPatient = async (req, res) => {
-  res.render('Add_patient');
-};
 
 
-const renderPatientDetails = async (req, res) => {
-  try{
-    // 通过req之类的方法取出指定的patientID
-
-    // let patient_id = req.params.patient_id;
-    let patient_id = '6267d6bb8b206aade8b24198';
-
-    let patient = await patientModel.findById(patient_id).lean();
-
-    /*
-    let query = {
-      patient_id: patient_id,
-    };
-    let patient_result = await patientModel.findOne(query);
-    */
-
-    /* 
-      根据日期，找出那一天血糖录入的数据。用前面类似query定义的方法。
-      let bloodGlucose_result = await bloodGlucoseModel.findOne(query).sort({
-        _id: -1,
-      });
-    */
-
-    res.render('Patient_details', {
-      patient: patient,
-    });
-
-  }catch(err){
-    console.log(err);
-  }
-};
 
 
 
@@ -277,6 +251,4 @@ module.exports = {
   renderClinicianDashboard,
   renderPatientDashboard,
   renderPatientBloodRecord,
-  renderAddPatient,
-  renderPatientDetails,
 };

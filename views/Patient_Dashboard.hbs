@@ -36,6 +36,9 @@
     </div>
     <div class="grid grid--2 record-grid">
       {{!-- display blood glucose data --}}
+
+      {{!-- {{#with person}}
+      {{#if this.bloodGlucose_record}} --}}
       <a class="record-box blood-box" href="/patient/blood_glucose">
         <embed class="blood-icon" src="/img/svg/blood-icon.svg" type="image/svg+xml" />
         <div>
@@ -47,6 +50,8 @@
           finish
         </div>
       </a>
+      {{!-- {{#else}}
+      {{/with}} --}}
       {{!-- display weight data --}}
       <a class="record-box weight-box" href="#">
         <embed class="scale" src="/img/svg/weight-icon.svg" type="image/svg+xml" />

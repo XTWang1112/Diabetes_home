@@ -3,11 +3,17 @@ const express = require('express');
 const Router = express.Router();
 
 const Controller = require('../controllers/Controller');
+// controller = ctrler
+const ctrlerPatientDetail = require('../controllers/ctrlerPatientDetail');
+const ctrlerAddPatient = require('../controllers/ctrlerAddPatient');
+
+
+const { renderPatientDetails } = require('../controllers/ctrlerPatientDetail');
 
 // add a route to handle the get request for all patients' data
 Router.get('/', Controller.renderClinicianDashboard);
-Router.get('/add-patient', Controller.renderAddPatient);
-Router.get('/patientname', Controller.renderPatientDetails);
+Router.get('/add-patient', ctrlerAddPatient.renderAddPatient);
+Router.get('/patientname', ctrlerPatientDetail.renderPatientDetails);
 
 // export the router
 module.exports = Router;

@@ -2,7 +2,7 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 
-console.log(process.env.PORT);
+// console.log(process.env.PORT); 输出会导致undefined
 
 const dbAddress =
   "mongodb+srv://Webbbbers:NKWKsAYmRdZlz27G@cluster0.p0aj3.mongodb.net/diabetes?retryWrites=true&w=majority";
