@@ -19,5 +19,8 @@ Router.get("/weight", Controller.renderPatientWeight)
 Router.get("/insulin", Controller.renderPatientInsulin)
 
 Router.get("/excercise", Controller.renderPatientExcercise)
+
+Router.get("/ranking", Controller.renderPatientRanking)
+
 // export the router
 module.exports = Router

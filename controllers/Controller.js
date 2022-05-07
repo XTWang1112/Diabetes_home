@@ -177,16 +177,22 @@ const renderPatientBloodRecord = async (req, res) => {
   }
 
 
-const renderPatientLogin = (req, res) => {
-  res.render('Patient_login', {
-    layout: 'no_layouts'
+  const renderPatientLogin = (req, res) => {
+    res.render('Patient_login', {
+      layout: 'no_layouts'
+    })
+  }
+
+const renderPatientRanking = (req, res) => {
+  res.render('patient_ranking', {
+    layout: "patient_template"
   })
 }
+  const postPatientLogin = (req, res) => {
+    console.log(req.body)
+    console.log(req.body.input_email)
+  }
 
-const postPatientLogin = (req, res) => {
-  console.log(req.body)
-  console.log(req.body.input_email)
-}
 
 module.exports = {
   renderClinicianDashboard,
@@ -196,5 +202,6 @@ module.exports = {
   renderPatientInsulin,
   renderPatientExcercise,
   renderPatientLogin,
-  postPatientLogin
+  postPatientLogin,
+  renderPatientRanking
 };
