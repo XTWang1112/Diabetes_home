@@ -13,7 +13,7 @@
         <path stroke-linecap='round' stroke-linejoin='round' d='M9 5l7 7-7 7'></path>
       </svg>
 
-      <h1>{%Patient Name%}</h1>
+      <h1>{{this.patientName}}</h1>
     </div>
     <div class='subheader-right'>
       <btn class='btn btn--print' onclick='window.print();'>
@@ -39,23 +39,23 @@
   <div class='body'>
     <div class='gird11'>
       <div class='message-card'>
-        <img class='patient-img' src='#' alt='' title='patient photo' />
+        <img class='patient-img' src='/img/profile-photo/{{this.photo_url}}' alt='' title='patient photo' />
 
         <h1>{{this.patientName}}</h1>
         {{!-- <h1>{%patientName%}</h1> --}}
 
-        <p>{%EMAIL%}</p>
+        <p>{{this.email}}</p>
         <btn class='btn btn-send-message'>Send Message</btn>
       </div>
 
       <div class='details-card'>
         <p><strong>Gender</strong><br />{{this.gender}}</p>
         <p><strong>Birthday</strong><br />{{this.birthday}}</p>
-        <p><strong>Phone Number</strong><br />{%TEL #%}</p>
-        <p><strong>Street Address</strong><br />{%STREET%}</p>
-        <p><strong>City</strong><br />{%CITY%}</p>
-        <p><strong>Postal Code</strong><br />{%POSTAL%}</p>
-        <p><strong>Registered Date</strong><br />{%DATE%}</p>
+        <p><strong>Phone Number</strong><br />{{this.phone_number}}</p>
+        <p><strong>Street Address</strong><br />{{this.address}}</p>
+        <p><strong>City</strong><br />{{this.city}}</p>
+        <p><strong>Postal Code</strong><br />{{this.postcode}}</p>
+        <p><strong>Registered Date</strong><br />{{this.register_date}}</p>
       </div>
 
       <div class='time-series-card'>
@@ -173,7 +173,7 @@
               <div class='col3'>
                 <div>
                   <p>Clinician</p>
-                  <p>{%CNAME%}</p>
+                  <p>{{this.clinician}}</p>
                 </div>
               </div>
             </div>

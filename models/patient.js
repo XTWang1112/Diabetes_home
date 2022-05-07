@@ -10,6 +10,12 @@ const patientSchema = new mongoose.Schema({
   insistDay: Number,
   birthday: String,
   city: String,
+  email: String,
+  address: String,
+  register_date: String,
+  phone_number: Number,
+  postcode: Number,
+  clinician: String,
 
   bloodGlucose_lowerBound: Number,
   bloodGlucose_upperBound: Number,
