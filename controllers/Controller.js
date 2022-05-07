@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 // const patientData = require('../models/patient');
 
 const patientModel = require('../models/patient');
+const recordModel = mongoose.model('records');
 
 const bloodGlucoseModel = mongoose.model('bloodGlucoses');
 const weightModel = mongoose.model('weights');
