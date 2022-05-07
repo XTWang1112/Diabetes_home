@@ -1,10 +1,7 @@
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 const mongoose = require('mongoose');
-// const patientData = require('../models/patient');
-
 const patientModel = require('../models/patient');
-
 const bloodGlucoseModel = mongoose.model('bloodGlucoses');
 const weightModel = mongoose.model('weights');
 const insulineTakenModel = mongoose.model('insulinTakens');
@@ -48,9 +45,10 @@ const renderClinicianDashboard = async (req, res) => {
 
       // Select the curent day's data
       // 如果要用js操作mongoDB参数，把要操作的对象加到query里面，否则不会进行loop循环patient
+      // 把time注释掉就能显示patient的记录
       let query = {
         patient_id: patient._id,
-        time: { $eq: today_date },
+        // time: { $eq: today_date },
       };
 
       // sort blood glucose value according to date and time
@@ -58,11 +56,13 @@ const renderClinicianDashboard = async (req, res) => {
         _id: -1,
       });
 
-      let patient_result = await patientModel.findOne(query);
+      // patient_result在循环的时候，是不会跟着loop的patient切换到下一位
+      // let patient_result = await patientModel.findOne(query);
 
       // 输出用patient.birthday
       // manipulate input birthday and calculate age
-      birth = Date.parse(patient_result.birthday.replace('/-/g', "/"));
+      birth = Date.parse(patient.birthday.replace('/-/g', "/"));
+
       if (birth) {
         var year = 1000 * 60 * 60 * 24 * 365;
         var currTime = new Date();
@@ -73,33 +73,34 @@ const renderClinicianDashboard = async (req, res) => {
 
       // 判断血糖是否超标
 
-      if (bloodGlucose_result) {
-        // get the latest bloodGlucose value
-        patient.today_blood_glucose_level = bloodGlucose_result.value;
-        patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
-        patient.blood_glucose_level_lower_bound = patient_result.bloodGlucose_lowerBound;
-        patient.blood_glucose_level_upper_bound = patient_result.bloodGlucose_upperBound;
-      } else {
-        patient.today_blood_glucose_level = 0;
-        patient.today_blood_glucose_level = 'No data today';
-      }
+      // if (bloodGlucose_result) {
+      //   // get the latest bloodGlucose value
+      //   patient.today_blood_glucose_level = bloodGlucose_result.value;
+      //   patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
+      //   patient.blood_glucose_level_lower_bound = patient_result.bloodGlucose_lowerBound;
+      //   patient.blood_glucose_level_upper_bound = patient_result.bloodGlucose_upperBound;
+      // } else {
+      //   patient.today_blood_glucose_level = 0;
+      //   patient.today_blood_glucose_level = 'No data today';
+      // }
 
       // sort weight value according to date and time
-      let weight_result = await weightModel.findOne(query).sort({
-        _id: -1,
-      });
-      if (weight_result) {
-        console.log(weight_result);
-        patient.today_weight = weight_result.value;
-        patient.timestamp_weight = weight_result.time;
-        patient.weight_lower_bound = 40;
-        patient.weight_upper_bound = 85;
-      } else {
-        patient.today_weight = 0;
-        patient.today_weight = 'No data today';
-      }
+      // let weight_result = await weightModel.findOne(query).sort({
+      //   _id: -1,
+      // });
+      // if (weight_result) {
+      //   console.log(weight_result);
+      //   patient.today_weight = weight_result.value;
+      //   patient.timestamp_weight = weight_result.time;
+      //   patient.weight_lower_bound = 40;
+      //   patient.weight_upper_bound = 85;
+      // } else {
+      //   patient.today_weight = 0;
+      //   patient.today_weight = 'No data today';
+      // }
+      
     }
-    console.log("这是patients" + patients.patientName);
+
     res.render('Clinician_dashboard', {
       patients: patients
     });
