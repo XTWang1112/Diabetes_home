@@ -22,5 +22,12 @@ Router.get("/excercise", Controller.renderPatientExcercise)
 
 Router.get("/ranking", Controller.renderPatientRanking)
 
+Router.get("/me", Controller.renderPatientMe)
+
+Router.get("/clinician", Controller.renderPatientClinician)
+
+Router.get("/data", Controller.renderPatientData)
+
+
 // export the router
 module.exports = Router
