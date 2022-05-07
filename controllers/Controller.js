@@ -2,6 +2,8 @@ const req = require('express/lib/request');
 const res = require('express/lib/response');
 const mongoose = require('mongoose');
 const patientModel = require('../models/patient');
+const recordModel = mongoose.model('records');
+
 const bloodGlucoseModel = mongoose.model('bloodGlucoses');
 const weightModel = mongoose.model('weights');
 const insulineTakenModel = mongoose.model('insulinTakens');

@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 // Declare a Mongoose Schema
 const patientSchema = new mongoose.Schema({
-  patientName: String,
+  firstName: String,
+  lastName: String,
   patientID: Number,
   age: Number,
   gender: String,
@@ -10,12 +11,11 @@ const patientSchema = new mongoose.Schema({
   insistDay: Number,
   birthday: String,
   city: String,
-  email: String,
-  address: String,
-  register_date: String,
-  phone_number: Number,
-  postcode: Number,
-  clinician: String,
+  streetAddress: String,
+  postalCode: Number,
+  Email: String,
+  phoneNumber: Number,
+
 
   bloodGlucose_lowerBound: Number,
   bloodGlucose_upperBound: Number,
