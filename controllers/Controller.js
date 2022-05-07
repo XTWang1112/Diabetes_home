@@ -2,12 +2,9 @@ const req = require('express/lib/request');
 const res = require('express/lib/response');
 const mongoose = require('mongoose');
 const patientModel = require('../models/patient');
-const recordModel = mongoose.model('records');
+const recordModel = require('../models/record');
 
-const bloodGlucoseModel = mongoose.model('bloodGlucoses');
-const weightModel = mongoose.model('weights');
-const insulineTakenModel = mongoose.model('insulinTakens');
-const exerciseModel = mongoose.model('exercises');
+
 
 // The function to redner clinician dashboard
 const renderClinicianDashboard = async (req, res) => {
@@ -54,7 +51,7 @@ const renderClinicianDashboard = async (req, res) => {
       };
 
       // sort blood glucose value according to date and time
-      let bloodGlucose_result = await bloodGlucoseModel.findOne(query).sort({
+      let bloodGlucose_result = await recordModel.findOne(query).sort({
         _id: -1,
       });
 
@@ -133,7 +130,7 @@ const renderPatientDashboard = async (req, res) => {
   };
   console.log(query);
   // 倒着sort id，找到最新的数据
-  let bloodGlucose_result = await bloodGlucoseModel.findOne(query).sort({
+  let bloodGlucose_result = await recordModel.findOne(query).sort({
     _id: -1,
   });
 
@@ -186,12 +183,12 @@ const renderPatientBloodRecord = async (req, res) => {
   // console.log(onePatientBloodRecord);
 
   // 挑选出这个人的今天的血糖数据
-  let onePatientBloodRecord = await bloodGlucoseModel.find({
+  let onePatientBloodRecord = await recordModel.find({
     patient_id,
     time: { $gte: new Date(search_day).getTime() },
     time: { $lte: new Date(search_day).getTime() + 24 * 3600 * 1000 },
   }).lean();
-  let todayBloodRecord = await bloodGlucoseModel.find({patient_id, 
+  let todayBloodRecord = await recordModel.find({patient_id, 
     time: {
       $gte: Date.parse(search_day), 
       $lte: Date.parse(search_day) + 24 * 3600 * 1000
@@ -232,13 +229,13 @@ const renderPatientBloodRecord = async (req, res) => {
       if(!onePatientBloodRecord.today_blood_glucose_level){
         
         // create the patient bloodRecord
-        await bloodGlucoseModel.create({
+        await recordModel.create({
           ...patientBloodRecord
         });
       }
       // 如果今天有血糖值，则更新血糖值
       else{
-        await bloodGlucoseModel.updateOne({
+        await recordModel.updateOne({
 
         }
       )}
