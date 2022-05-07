@@ -65,10 +65,15 @@ body {
   position: relative;
 }
 
+.web-logo{
+  display: flex;
+}
+
 .logo {
   font-size: 2.5rem;
   font-weight: 600;
   color: white;
+  margin: auto;
 }
 
 .logo-at-home {

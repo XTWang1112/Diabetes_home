@@ -1,31 +1,28 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-<link rel="stylesheet" href="/css/blood_glucose_style.css" />
-
+<link rel="stylesheet" href="/css/patient_record.css" />
 
 <section>
   <div class="container">
-    <h2 class="blood-glucose-head">
-      <span class="material-icons blood-glucose-icon">
-        bloodtype
-      </span>
-      Blood glucose level
+    <h2 class="record-head">
+      <embed class="scale" src="../img/svg/weight-icon.svg" type="image/svg+xml" />
+       &nbsp; weight
     </h2>
     {{!-- form to submit data --}}
-    <form class="blood-glucose-data" name="blood-glucose">
-      <div class="blood-glucos-input">
+    <form class="record-data" name="record_form">
+      <div class="record-input-div">
         <label for="data">Input Here</label>
-        <input id="blood-glucose" type="number" step="0.1" placeholder="in mmol/L" name="patinet_blood_glucose"
+        <input id="record" type="number" step="0.1" placeholder="in kg" name="patinet_weight"
           required />
       </div>
 
       <div class="bg-comment-input">
         <p>Comment:</p>
-        <textarea rows="5" cols="30" name="glucose_comment" placeholder="How do you feel today:)"></textarea>
+        <textarea rows="5" cols="30" name="record_comment" placeholder="How do you feel today:)"></textarea>
       </div>
       <button class="btn btn--done">Done</button>
     </form>
 
-    <ul class="glucose-reminder">
+    <ul class="record-reminder">
       <li>For your health, you have kept recording for
         {{#with onePatient}}<span>{{this.insistDay}}</span>{{/with}}
         days.</li>

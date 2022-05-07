@@ -3,9 +3,9 @@ section {
 }
 
 /*********************************/
-/*BLOOD GLUCOSE DATA INPUT*/
+/*RECORD DATA INPUT*/
 /*********************************/
-.blood-glucose-head {
+.record-head {
   font-size: 3rem;
   font-weight: 500;
   color: #343a40;
@@ -15,19 +15,18 @@ section {
   margin: 7.2rem auto;
 }
 
-.blood-glucose-icon {
-  color: #f03e3e;
+.record-head embed {
   font-size: 4.4rem;
 }
 
-.blood-glucose-data {
+.record-data {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5rem;
 }
 
-.blood-glucose-data div label,
+.record-data div label,
 .bg-comment-input p {
   display: block;
   color: #10454f;
@@ -35,7 +34,7 @@ section {
   font-weight: 400;
 }
 
-.blood-glucos-input,
+.record-input-div,
 .bg-comment-input {
   display: flex;
   flex-direction: column;
@@ -43,12 +42,12 @@ section {
   gap: 1.2rem;
 }
 
-.blood-glucos-input input,
+.record-input-div input,
 .bg-comment-input textarea {
   background-color: #eaf4e4;
 }
 
-.blood-glucos-input input {
+.record-input-div input {
   width: 24rem;
   height: 7rem;
   font-size: 3rem;
@@ -67,15 +66,15 @@ section {
   font-family: "Poppins", sans-serif;
 }
 
-.blood-glucose-data *:focus {
+.record-data *:focus {
   outline: none;
   box-shadow: 0 0 0 0.8rem rgba(177, 215, 154, 0.5);
 }
 
 /*********************************/
-/*BLOOD GLUCOSE REMINDER*/
+/*RECORD REMINDER*/
 /*********************************/
-.glucose-reminder {
+.record-reminder {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -83,12 +82,12 @@ section {
   margin: 7.2rem auto;
 }
 
-.glucose-reminder li {
+.record-reminder li {
   font-size: 1.5rem;
   color: #495057;
 }
 
-.glucose-reminder li span {
+.record-reminder li span {
   color: #7dbc57;
   font-weight: 600;
 }
@@ -210,12 +209,12 @@ section {
     height: 16rem;
   }
 
-  .glucose-reminder {
+  .record-reminder {
     padding-right: 3.2rem;
     gap: 2rem;
   }
 
-  .glucose-reminder li {
+  .record-reminder li {
     font-size: 2rem;
   }
 }
