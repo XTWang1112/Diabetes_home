@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="/css/patient/patient_data.css">
+
+<main>
+  <nav class="main-nav-left">
+    <ul class="main-nav-left-list">
+      <div class="main-nav-left-shade"></div>
+      <li class="svg-link">
+        <embed src="/img/svg/data-icon.svg" type="image/svg+xml" />
+        <a class="main-nav-left-link" href="#">Data</a>
+      </li>
+      <li class="svg-link">
+        <embed src="/img/svg/clinician-icon.svg" type="image/svg+xml" />
+        <a class="main-nav-left-link" href="#">Clinician</a>
+      </li>
+      <li class="svg-link home-li">
+        <embed src="/img/svg/home-icon.svg" type="image/svg+xml" />
+        <a class="main-nav-left-link home-text" href="#">Home</a>
+      </li>
+      <li class="svg-link">
+        <embed src="/img/svg/ranking-icon.svg" type="image/svg+xml" />
+        <a class="main-nav-left-link" href="#">Ranking</a>
+      </li>
+      <li class="svg-link">
+        <embed src="/img/svg/me-icon.svg" type="image/svg+xml" />
+        <a class="main-nav-left-link" href="#">Me</a>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="clinician_box">
+    <div class="index_router">
+      <div class="router_header">History</div>
+      <select>
+        <option value="1">Blood glucose level</option>
+        <option value="1">Exercise</option>
+        <option value="1">Weight</option>
+        <option value="1">Insulin taken</option>
+      </select>
+    </div>
+    <div>
+      <embed class="insert_chart" src="/img/svg/chart_blood.svg">
+    </div>
+    <div class="data_table">
+      <div class="table_name">in nmol/L (empty stomach)</div>
+      <div class="table_div">
+        <table>
+        {{!-- <tr>
+          <th>Data</th>
+          <th>Date</th>
+        </tr> --}}
+        <tr>
+          <td class="data_td">8</td>
+          <td class="date_td">1 Mar 2022</td>
+        </tr>
+        <tr>
+          <td class="data_td">8</td>
+          <td class="date_td">1 Mar 2022</td>
+        </tr>
+        <tr>
+          <td class="data_td">8</td>
+          <td class="date_td">1 Mar 2022</td>
+        </tr>
+        <tr>
+          <td class="data_td">8</td>
+          <td class="date_td">1 Mar 2022</td>
+        </tr>
+        <tr>
+          <td class="data_td">8</td>
+          <td class="date_td">1 Mar 2022</td>
+        </tr>
+      </table>
+      </div>
+    </div>
+    
+  </section>
+</main>
