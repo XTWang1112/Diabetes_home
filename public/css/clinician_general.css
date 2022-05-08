@@ -126,6 +126,11 @@ p {
 /*********************************/
 /*Breadcrumbs*/
 /*********************************/
+.chevron-right {
+  color: #495057;
+  height: 2.4rem;
+}
+
 .clinician-profile-photo {
   width: 8rem;
   height: 8rem;
