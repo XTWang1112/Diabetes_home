@@ -76,6 +76,6 @@ app.get('', (req, res) => {
 });
 
 // Tells the app to listen on port 8080 and logs that information to the console.
-app.listen(process.env.PORT || 8080, () => {
+app.listen(process.env.PORT || 80, () => {
   console.log('Diabetes@Home listening on port 8080');
 });
