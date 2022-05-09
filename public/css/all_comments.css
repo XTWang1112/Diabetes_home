@@ -49,3 +49,8 @@
 .date {
   color: #707070;
 }
+
+.comments a:link,
+.comments a:visited {
+  color: black;
+}

@@ -204,26 +204,17 @@
 }
 
 .btn-da {
-  color: #707fcf;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
+  background-color: #707fcf;
+  color: white;
+  border-radius: 0.8rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #707070;
+  transition: all 0.3s;
 }
 
 .btn-da:hover {
-  text-decoration: underline;
-}
-
-.btn-all-comments {
-  color: #707fcf;
-  font-size: 1.8rem;
-}
-
-.btn-all-comments:hover {
-  text-decoration: underline;
-}
-
-.record-header div {
-  display: flex;
-  gap: 3.6rem;
+  transform: scale(1.1);
 }
 
 .record-hist {

@@ -7,130 +7,147 @@
       <h1>Dashboard</h1>
     </div>
     <button class='btn'>
-      <h1 class='view-all-comments'>View all comments</h1>
+      <a class='view-all-comments' href='/clinician/all-comments'><h1>View all
+          comments</h1></a>
     </button>
   </section>
   <section class='manage-add-section'>
     <a href='/clinician/add-patient' class='btn add-patient'>
-      <svg xmlns='http://www.w3.org/2000/svg' class='add' fill='none' viewBox='0 0 24 24' stroke='currentColor'
-        stroke-width='2'>
-        <path stroke-linecap='round' stroke-linejoin='round' d='M12 4v16m8-8H4'></path>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        class='add'
+        fill='none'
+        viewBox='0 0 24 24'
+        stroke='currentColor'
+        stroke-width='2'
+      >
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M12 4v16m8-8H4'
+        ></path>
       </svg>
     </a>
   </section>
 
   <section class='patient-dashboards'>
     {{#each patients}}
-    {{! Iterate through all users in db, and display their data }}
-    <div class='dashboard-patient-box'>
-      {{! personal info }}
-      <div class='portfolio'>
-        <img class='patient-photo' src='/img/profile-photo/{{this.photo_url}}' />
-        <div class='name-and-gender'>
-          <button class='btn'>
-            <a href='/clinician/patientname' class='name'>{{this.patientName}}</a>
-          </button>
-          <p>{{this.gender}}</p>
+      {{! Iterate through all users in db, and display their data }}
+      <div class='dashboard-patient-box'>
+        {{! personal info }}
+        <div class='portfolio'>
+          <img
+            class='patient-photo'
+            src='/img/profile-photo/{{this.photo_url}}'
+          />
+          <div class='name-and-gender'>
+            <button class='btn'>
+              <a
+                href='/clinician/patientname'
+                class='name'
+              >{{this.patientName}}</a>
+            </button>
+            <p>{{this.gender}}</p>
+          </div>
+          <p class='patient-age'>age: {{this.birthday}}</p>
         </div>
-        <p class='patient-age'>age: {{this.birthday}}</p>
-      </div>
-      {{! table to display data }}
-      <table>
-        {{! Blood glucose level }}
-        <tr>
-          <td>Blood glucose Level: </td>
-          <td>
-            {{#if this.timestamp_blood_glucose_level}}
-            {{#compare_safety_range
+        {{! table to display data }}
+        <table>
+          {{! Blood glucose level }}
+          <tr>
+            <td>Blood glucose Level: </td>
+            <td>
+              {{#if this.timestamp_blood_glucose_level}}
+                {{#compare_safety_range
                   this.today_blood_glucose_level
                   this.blood_glucose_level_lower_bound
                   this.blood_glucose_level_upper_bound
                 }}
-            {{this.today_blood_glucose_level}}
-            mmol/L
-            {{else}}
-            <font color='red'>
-              {{this.today_blood_glucose_level}}
-              mmol/L
-            </font>
-            {{/compare_safety_range}}
-            {{else}}
-            <font color='orange'>No data today</font>
-            {{/if}}
-          </td>
-        </tr>
-        {{! Weight }}
-        <tr>
-          <td>Weight:</td>
-          <td>
-            {{#if this.timestamp_weight}}
-            {{#compare_safety_range
+                  {{this.today_blood_glucose_level}}
+                  mmol/L
+                {{else}}
+                  <font color='red'>
+                    {{this.today_blood_glucose_level}}
+                    mmol/L
+                  </font>
+                {{/compare_safety_range}}
+              {{else}}
+                <font color='orange'>No data today</font>
+              {{/if}}
+            </td>
+          </tr>
+          {{! Weight }}
+          <tr>
+            <td>Weight:</td>
+            <td>
+              {{#if this.timestamp_weight}}
+                {{#compare_safety_range
                   this.today_weight
                   this.weight_lower_bound
                   this.weight_upper_bound
                 }}
-            {{this.today_weight}}
-            kg
-            {{else}}
-            <font color='red'>
-              {{this.today_weight}}
-              kg
-            </font>
-            {{/compare_safety_range}}
-            {{else}}
-            <font color='orange'>No data today</font>
-            {{/if}}
-          </td>
-        </tr>
-        {{! Insulin taken }}
-        <tr>
-          <td>Insulin taken:</td>
-          <td>
-            {{#if this.timestamp_insulin_taken}}
-            {{#compare_safety_range
+                  {{this.today_weight}}
+                  kg
+                {{else}}
+                  <font color='red'>
+                    {{this.today_weight}}
+                    kg
+                  </font>
+                {{/compare_safety_range}}
+              {{else}}
+                <font color='orange'>No data today</font>
+              {{/if}}
+            </td>
+          </tr>
+          {{! Insulin taken }}
+          <tr>
+            <td>Insulin taken:</td>
+            <td>
+              {{#if this.timestamp_insulin_taken}}
+                {{#compare_safety_range
                   this.today_insulin_taken
                   this.insulin_taken_lower_bound
                   this.insulin_taken_upper_bound
                 }}
-            {{this.today_insulin_taken}}
-            doses
-            {{else}}
-            <font color='red'>
-              {{this.today_insulin_taken}}
-              doses
-            </font>
-            {{/compare_safety_range}}
-            {{else}}
-            <font color='orange'>No data today</font>
-            {{/if}}
-          </td>
-        </tr>
-        {{! Exercise }}
-        <tr>
-          <td>Exercise:</td>
-          <td>
-            {{#if this.timestamp_exercise}}
-            {{#compare_safety_range
+                  {{this.today_insulin_taken}}
+                  doses
+                {{else}}
+                  <font color='red'>
+                    {{this.today_insulin_taken}}
+                    doses
+                  </font>
+                {{/compare_safety_range}}
+              {{else}}
+                <font color='orange'>No data today</font>
+              {{/if}}
+            </td>
+          </tr>
+          {{! Exercise }}
+          <tr>
+            <td>Exercise:</td>
+            <td>
+              {{#if this.timestamp_exercise}}
+                {{#compare_safety_range
                   this.today_exercise
                   this.exercise_lower_bound
                   this.exercise_upper_bound
                 }}
-            {{this.today_exercise}}
-            steps
-            {{else}}
-            <font color='red'>
-              {{this.today_exercise}}
-              steps
-            </font>
-            {{/compare_safety_range}}
-            {{else}}
-            <font color='orange'>No data today</font>
-            {{/if}}
-          </td>
-        </tr>
-      </table>
+                  {{this.today_exercise}}
+                  steps
+                {{else}}
+                  <font color='red'>
+                    {{this.today_exercise}}
+                    steps
+                  </font>
+                {{/compare_safety_range}}
+              {{else}}
+                <font color='orange'>No data today</font>
+              {{/if}}
+            </td>
+          </tr>
+        </table>
 
-    </div>
+      </div>
     {{/each}}
   </section>
 </main>
