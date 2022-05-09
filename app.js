@@ -7,6 +7,12 @@ const express = require('express');
 // Set app as our server
 const app = express();
 
+/* const passport = require('passport')
+const flash = require('express-flash')
+const session = require('express-session')
+
+app.use(flash()) */
+
 // configure Handlebars
 app.engine(
   'hbs',

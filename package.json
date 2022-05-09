@@ -20,10 +20,14 @@
   "dependencies": {
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "express-flash": "^0.0.2",
     "express-handlebars": "^6.0.5",
+    "express-session": "^1.17.2",
     "jquery": "^3.6.0",
     "mongoose": "^6.3.1",
-    "mongoose-double": "^0.0.1"
+    "mongoose-double": "^0.0.1",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "prettier": "^2.6.2"

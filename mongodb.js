@@ -1,4 +1,4 @@
-// Declare a Mongoose Schema
+/* // Declare a Mongoose Schema
 const patientSchema = new mongoose.Schema({
   patientName: String,
   patientID: Number,
@@ -110,3 +110,4 @@ record:
   insulin: 10,
   compete: true
 }
+ */
