@@ -27,53 +27,77 @@ main {
 }
 
 .login-box {
+  height: 40rem;
+  width: 43rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  height: 40rem;
-  width: 33rem;
   background-color: rgba(218, 235, 221, 0.8);
   margin: auto;
   margin-top: 5rem;
   margin-bottom: 15rem;
   padding: 2rem;
-  border-radius: 20px;
+  border-radius: 3.6rem;
   border: rgb(93, 93, 93) solid 0.1rem;
   box-shadow: 0px 5px 15px 0px rgba(43, 85, 40, 0.6);
   /* box-shadow: offset-x offset-y blur spread color */
 }
 
-.login-box form {
-  height: 25rem;
+.login-form {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  gap: 1.2rem;
 }
 
-.login-box .input-email-box,
-.login-box .input-pwd-box {
+.login-form div:first-child {
   display: flex;
-  width: 26rem;
-  height: 5.5rem;
-  background-color: white;
-  justify-content: space-around;
-  padding: auto;
-  margin: auto;
-  border-radius: 20px;
-  border: rgb(173, 173, 173) solid 0.2rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
-.input-pwd-box embed {
-  width: 2.5rem;
-}
-
-.login-box .input-email,
-.login-box .input-pwd {
-  height: 5rem;
+input[type="email"] {
+  height: 4rem;
+  width: 30rem;
+  padding: 0.7rem 0 0.7rem 5.2rem;
+  color: #707070;
+  border: 1px solid transparent;
+  border-radius: 2.4rem;
+  display: block;
+  background: white
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='test' fill='none' viewBox='0 0 24 24' stroke='grey' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' /%3E%3C/svg%3E")
+    no-repeat;
   font-size: 2rem;
-  border: transparent;
+  background-position-x: 1.2rem;
+}
+
+input[type="password"] {
+  height: 4rem;
+  width: 30rem;
+  padding: 0.7rem 0 0.7rem 5.2rem;
+  color: #707070;
+  border: 1px solid transparent;
+  border-radius: 2.4rem;
+  display: block;
+  background: white
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='grey' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z' /%3E%3C/svg%3E")
+    no-repeat;
+  font-size: 2rem;
+  background-position-x: 1.2rem;
+}
+
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+  color: #707070;
+  font-family: inherit;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none !important;
+  border: 2px solid #2d5215;
 }
 
 .login-box label {
@@ -88,14 +112,20 @@ main {
 
 .login-box button {
   width: 18rem;
-  height: 4rem;
+  height: 4.5rem;
   color: white;
   margin-top: 2rem;
-  font-size: 1.8rem;
+  font-size: 2.6rem;
   font-weight: 800;
   background-color: rgb(69, 129, 31, 0.9);
   border: grey solid 0.1rem;
-  border-radius: 20px;
+  border-radius: 2.4rem;
+  transition: all 0.3s;
+}
+
+.login-box button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }
 
 .login-box a {
@@ -110,13 +140,33 @@ main {
   color: #2d5215;
 }
 
-.need_to_register div {
+.need_to_register p {
   padding: auto;
   color: #2d5215;
+  font-size: 1.5rem;
+}
+
+.login-box a:link,
+.login-box a:visited {
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.login-box a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 35em) {
+  html {
+    font-size: 50%;
+  }
+
   main {
     background: url("../../img/patient-login-pic.png");
+  }
+
+  .login-box {
+    width: 40rem;
   }
 }

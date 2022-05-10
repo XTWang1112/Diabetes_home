@@ -1,6 +1,3 @@
-FIXME: //viewport //input box //input box logo //remember account tick //button
-//cursor//textbox gap between//Abouts webpages
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -31,18 +28,10 @@ FIXME: //viewport //input box //input box logo //remember account tick //button
         <div class="patient-word-logo">patient</div>
       </div>
       <div class="login-box">
-        <form action="/patient" method="post">
-          <div class="input-email-box">
-            <embed src="../img/svg/email.svg" />
-            <input
-              class="input-email"
-              type="email"
-              placeholder="  Email Address"
-            />
-          </div>
-          <div class="input-pwd-box">
-            <embed src="../img/svg/password.svg" />
-            <input class="input-pwd" type="password" placeholder="  Password" />
+        <form action="/patient" class="login-form" method="post">
+          <div>
+            <input type="email" placeholder="Email Address" />
+            <input type="password" placeholder="Password" />
           </div>
           <div class="rememberThisDevice-box">
             <input
@@ -51,15 +40,16 @@ FIXME: //viewport //input box //input box logo //remember account tick //button
               name="rememberThisDevice"
               checked
             />
-            <label for="rememberThisDevice">sldgbsa lfbslkhb vlsk</label>
+            <label for="rememberThisDevice">Keep me log in on this trusted
+              device</label>
           </div>
           <button type="submit">Log In</button>
         </form>
 
         <embed src="../img/svg/or.svg" />
-        <div class="need_to_register" href="#">
-          <div>Need to register? </div>
-          <div>Contact with your clinician</div>
+        <div class="need_to_register">
+          <p>Need to register? </p>
+          <p>Contact with your clinician</p>
         </div>
         <a href="#">Forget the password?</a>
 

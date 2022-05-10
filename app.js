@@ -52,17 +52,21 @@ app.use(express.static("public"));
 
 // Set up to handle POST requests
 app.use(express.json()); // needed if POST data is in JSON format
-app.use(express.urlencoded({
-  extended: false
-})); // only needed for URL-encoded input
+app.use(
+  express.urlencoded({
+    extended: false,
+  })
+); // only needed for URL-encoded input
 
 // link to our routers
 const ClinicianRouter = require("./routes/Clinician_Router");
 const PatientRouter = require("./routes/Patient_Router");
+const beforeLoginRouter = require("./routes/Before_login_Router");
 
 // the demo routes are added to the end of the '/clinician' path
 app.use("/clinician", ClinicianRouter);
 app.use("/patient", PatientRouter);
+app.use("/guest", beforeLoginRouter);
 
 // render Clinician_dashboard page
 app.get("", (req, res) => {
