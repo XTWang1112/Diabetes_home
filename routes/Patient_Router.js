@@ -19,7 +19,7 @@ Router.get("/weight", Controller.renderPatientWeight);
 
 Router.get("/insulin", Controller.renderPatientInsulin);
 
-Router.get("/excercise", Controller.renderPatientExcercise);
+Router.get("/exercise", Controller.renderPatientExercise);
 
 Router.get("/ranking", Controller.renderPatientRanking);
 

@@ -65,7 +65,7 @@ body {
   position: relative;
 }
 
-.web-logo{
+.web-logo {
   display: flex;
 }
 
@@ -265,8 +265,6 @@ textarea {
   color: #dff1ca;
 }
 
-
-
 /*********************************/
 /*********************************/
 /*Responsive Design*/
@@ -278,6 +276,10 @@ textarea {
 @media (max-width: 75em) {
   .grid--footer {
     column-gap: 10rem;
+  }
+
+  .main-nav-list {
+    gap: 1.2rem;
   }
 }
 

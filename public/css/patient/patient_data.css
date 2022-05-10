@@ -21,14 +21,11 @@ h2 {
   padding-bottom: 1rem;
 }
 
-
-
 /*********************************/
 /*Clinician box*/
 /*********************************/
 .clinician_box {
-  padding-left: 2rem;
-  padding-top: 5rem;
+  margin: 3.6rem auto 0 auto;
   width: 90rem;
 }
 
@@ -38,12 +35,12 @@ h2 {
 }
 
 .index_router .router_header {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-right: 15rem;
 }
 
 .insert_chart {
-  width: 80rem;
+  width: 75rem;
 }
 
 .data_table {
@@ -56,20 +53,26 @@ h2 {
 
 .data_table .table_div {
   width: 75rem;
+  height: 40rem;
   margin-top: 2rem;
   padding-left: 2rem;
-  padding-right: 2rem;
-  background-color: #F2F1D3;
+  background-color: #f2f1d3;
   border-radius: 20px;
+  overflow: hidden;
 }
 
 .data_table table {
-  width: 71rem;
-  color:#5667C8;
+  width: 70rem;
+  color: #5667c8;
   font-size: 2rem;
   font-weight: 800;
   padding: 1rem 3rem;
   border-collapse: collapse;
+}
+
+select {
+  border-radius: 1.2rem;
+  transform: scale(1.1);
 }
 
 td {
@@ -77,11 +80,9 @@ td {
   border-bottom: #80828e solid 0.11rem;
 }
 
-
 .date_td {
   text-align: end;
 }
-
 
 /*********************************/
 /*SIDEBAR
@@ -113,6 +114,9 @@ td {
 
 .home-li {
   margin-left: -0.7rem;
+}
+
+.data-li {
   text-shadow: 0 1px 5px rgba(86, 103, 200, 0.5);
 }
 
@@ -128,12 +132,9 @@ td {
   display: inline-block;
 }
 
-.home-text {
+.data-text {
   font-weight: bold;
 }
-
-
-
 
 /*********************************/
 /*MOBILE NAVIGATOR*/
@@ -156,7 +157,6 @@ td {
   display: none;
 }
 
-
 /*********************************/
 /*********************************/
 /*Responsive*/
@@ -165,12 +165,13 @@ td {
 
 /* tablet size: 1200px - 560px */
 /* 75em = 1200px */
-@media (max-width: 75em) {
+@media (max-width: 65em) {
   .insert_chart {
     width: 55rem;
   }
   .data_table .table_div {
     width: 55rem;
+    height: 25rem;
   }
 
   .data_table table {
@@ -178,19 +179,22 @@ td {
   }
 }
 
-
-
 @media (max-width: 35em) {
+  .clinician_box {
+    padding: 0 2.4rem;
+  }
+
   .insert_chart {
-    width: 45rem;
+    width: 40rem;
   }
 
   .data_table .table_div {
-    width: 45rem;
+    width: 40rem;
+    height: 40rem;
   }
 
   .data_table table {
-    width: 41rem;
+    width: 36rem;
   }
 
   html {
@@ -293,7 +297,6 @@ td {
     padding: 0;
   }
 
-
   .main-nav-left {
     order: 2;
     border-right: 0;
@@ -305,7 +308,6 @@ td {
     padding: 2rem;
     z-index: 1;
   }
-
 
   /* .main-nav-left-shade {
     display: block;

@@ -21,8 +21,6 @@ h2 {
   padding-bottom: 1rem;
 }
 
-
-
 /*********************************/
 /*Me box*/
 /*********************************/
@@ -53,7 +51,6 @@ h2 {
 .info_box .name {
   font-size: 4rem;
   font-weight: 600;
-
 }
 
 .info_box .id_div {
@@ -72,7 +69,7 @@ h2 {
 }
 
 .bio_box {
-  background-color: #EAF4E4;
+  background-color: #eaf4e4;
   padding: 2rem;
   border-radius: 10px;
   margin-bottom: 2rem;
@@ -84,21 +81,18 @@ h2 {
 }
 
 .badget_box {
-  background-color: #EAF4E4;
+  background-color: #eaf4e4;
   padding: 2rem;
   border-radius: 10px;
 }
 
 .info_spec_box .green {
-  color: #7DBC57;
+  color: #7dbc57;
 }
-
-
 
 /*********************************/
 /*SIDEBAR
 /*********************************/
-
 
 .main-nav-left-shade {
   display: none;
@@ -127,6 +121,9 @@ h2 {
 
 .home-li {
   margin-left: -0.7rem;
+}
+
+.me-li {
   text-shadow: 0 1px 5px rgba(86, 103, 200, 0.5);
 }
 
@@ -142,12 +139,9 @@ h2 {
   display: inline-block;
 }
 
-.home-text {
+.me-text {
   font-weight: bold;
 }
-
-
-
 
 /*********************************/
 /*MOBILE NAVIGATOR*/
@@ -170,7 +164,6 @@ h2 {
   display: none;
 }
 
-
 /*********************************/
 /*********************************/
 /*Responsive*/
@@ -186,11 +179,10 @@ h2 {
 }
 
 @media (max-width: 35em) {
-  
   .me_box {
-    width: 46rem;
+    transform: scale(0.9);
+    padding: 0;
   }
-
 
   html {
     font-size: 50%;
@@ -292,7 +284,6 @@ h2 {
     padding: 0;
   }
 
-
   .main-nav-left {
     order: 2;
     border-right: 0;
@@ -304,7 +295,6 @@ h2 {
     padding: 2rem;
     z-index: 1;
   }
-
 
   /* .main-nav-left-shade {
     display: block;

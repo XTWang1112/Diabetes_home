@@ -170,8 +170,8 @@ const renderPatientInsulin = (req, res) => {
   res.render("Insulin_record", { layout: "patient_record_template" });
 };
 
-const renderPatientExcercise = (req, res) => {
-  res.render("Excercise_record", { layout: "patient_record_template" });
+const renderPatientExercise = (req, res) => {
+  res.render("Exercise_record", { layout: "patient_record_template" });
 };
 
 const renderPatientLogin = (req, res) => {
@@ -222,7 +222,7 @@ module.exports = {
   renderPatientBloodRecord,
   renderPatientWeight,
   renderPatientInsulin,
-  renderPatientExcercise,
+  renderPatientExercise,
   renderPatientLogin,
   postPatientLogin,
   renderPatientRanking,

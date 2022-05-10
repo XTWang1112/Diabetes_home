@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="/css/patient_dashboard.css" />
 <link rel="stylesheet" href="/css/patient_dashboard_queries.css" />
 
-
 <main class="main">
   <nav class="main-nav-left">
     <ul class="main-nav-left-list">
@@ -35,9 +34,13 @@
       <h2 class="record-date"></h2>
     </div>
     <div class="grid grid--2 record-grid">
-      {{!-- display blood glucose data --}}
+      {{! display blood glucose data }}
       <a class="record-box blood-box" href="/patient/blood_glucose">
-        <embed class="blood-icon" src="/img/svg/blood-icon.svg" type="image/svg+xml" />
+        <embed
+          class="blood-icon"
+          src="/img/svg/blood-icon.svg"
+          type="image/svg+xml"
+        />
         <div>
           <p>Blood glucose level</p>
           <p class="blood-glucos-data">{{patient.today_blood_glucose_level}}</p>
@@ -47,34 +50,51 @@
           finish
         </div>
       </a>
-      {{!-- display weight data --}}
-      <a class="record-box weight-box" href="#">
-        <embed class="scale" src="/img/svg/weight-icon.svg" type="image/svg+xml" />
+      {{! display weight data }}
+      <a class="record-box weight-box" href="/patient/weight">
+        <embed
+          class="scale"
+          src="/img/svg/weight-icon.svg"
+          type="image/svg+xml"
+        />
         <div>
           <p>Weight</p>
           {{!-- <p>{{patient.today_weight}}</p> --}}
           <p class="no-data">no data today</p>
           <p>(in kg)</p>
         </div>
+        <div class="finish">
+          finish
+        </div>
       </a>
-      {{!-- display insulin taken data --}}
-      <a class="record-box insulin-box" href="#">
-        <embed class="needle" src="/img/svg/insulin-icon.svg" type="image/svg+xml" />
+      {{! display insulin taken data }}
+      <a class="record-box insulin-box" href="/patient/insulin">
+        <embed
+          class="needle"
+          src="/img/svg/insulin-icon.svg"
+          type="image/svg+xml"
+        />
         <div>
           <p>Insulin taken</p>
           {{!-- <p>{{patient.today_insulin_taken}}</p> --}}
           <p class="no-data">no data today</p>
           <p>(number of doses)</p>
         </div>
+        <div class="finish">
+          finish
+        </div>
       </a>
-      {{!-- display exercise data --}}
-      <a class="record-box exercise-box" href="#">
+      {{! display exercise data }}
+      <a class="record-box exercise-box" href="/patient/exercise">
         <embed class="step" src="/img/svg/step-icon.svg" type="image/svg+xml" />
         <div>
           <p>Exercise</p>
           {{!-- <p>{{patient.today_exercise}}</p> --}}
           <p class="no-data">no data today</p>
           <p>(step count)</p>
+        </div>
+        <div class="finish">
+          finish
         </div>
       </a>
     </div>
