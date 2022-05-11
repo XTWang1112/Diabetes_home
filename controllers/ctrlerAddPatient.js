@@ -2,26 +2,44 @@ const req = require('express/lib/request');
 const res = require('express/lib/response');
 const patientModel = require('../models/patient');
 
+function generatePassword(){
+    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var passwordLength = 12;
+    var password = "";
+    for(var i=0; i<=passwordLength; i++){
+        var randomNumber = Math.floor(Math.random() * chars.length);
+        password += chars.substring(randomNumber, randomNumber + 1);
+    }
+
+    return password
+
+}
 
 
-/* const renderAddPatient = async(req, res, next) => {
+
+const renderAddPatient = async(req, res, next) => {
     console.log("注册开始")
+    console.log("get")
     res.render('Add_patient')
-} */
+}
 
 const registerPatient = async(req, res) => {
-    console.log("kaishi")
+    console.log("post")
+    console.log("start Register")
     console.log(req.body)
+    var newPassword = generatePassword()
+    console.log(newPassword)
     
     newPatient = new patientModel({
-        /* firstName: req.body.first_name,
-        lastName: req.body.last_name, */
-        /* email:  req.body.email,
+        firstName: req.body.first_name,
+        lastName: req.body.last_name,
+        email:  req.body.email,
         phoneNumber: req.body.phone_number,
         streetAddress:  req.body.street,
         birthday:  req.body.year_birth,
-        postalCode:  req.body.postal, */
+        postalCode:  req.body.postal,
         city:  req.body.city,
+        password: generatePassword(),
     })
     console.log(newPatient)   
     await newPatient.save()
@@ -58,6 +76,6 @@ const registerPatient = async(req, res) => {
 
 
 module.exports = {
-    /* renderAddPatient, */
+    renderAddPatient,
     registerPatient,
 };
