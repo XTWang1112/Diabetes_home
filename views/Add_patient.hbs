@@ -22,7 +22,7 @@
     <h1>Register Patient</h1>
   </div>
 
-  <form action='' class='register-area'>
+  <form action='/add-patient' class='register-area' method='POST'>
     <div class='upload-photo'>
       <img
         class='clinician-profile-photo'
@@ -42,7 +42,7 @@
           id='first-name'
           type='text'
           placeholder='First Name'
-          name='first-name'
+          name='first_name'
           required
         />
       </label>
@@ -51,7 +51,7 @@
           id='last-name'
           type='text'
           placeholder='Last Name'
-          name='last-name'
+          name='last_name'
           required
         />
       </label>
@@ -69,7 +69,7 @@
           id='phone-number'
           type='number'
           placeholder='Phone Number'
-          name='phone-number'
+          name='phone_number'
           required
         />
       </label>
@@ -78,7 +78,7 @@
           id='year-birth'
           type='number'
           placeholder='Year of Birth'
-          name='year-birth'
+          name='year_birth'
           required
         />
       </label>
@@ -103,7 +103,7 @@
       </label>
     </div>
 
-    <button class='btn btn-register'>Register</button>
+    <button type="submit" class='btn btn-register'>Register</button>
 
   </form>
 
@@ -125,7 +125,7 @@
       </svg>
     </btn>
     <h1 class='message'>Register successfully!</h1>
-    <p>Account: {%EMAIL%}</p>
+    <p>Account: {{this.email}}</p>
     <p>Password: {%PASSWORD%}</p>
   </div>
 </main>
