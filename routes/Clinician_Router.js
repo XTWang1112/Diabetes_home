@@ -1,5 +1,4 @@
 const express = require('express');
-
 const Router = express.Router();
 
 const Controller = require('../controllers/Controller');
@@ -15,11 +14,12 @@ const { renderPatientDetails } = require('../controllers/ctrlerPatientDetail');
 // add a route to handle the get request for all patients' data
 Router.get('/', Controller.renderClinicianDashboard);
 Router.get('/add-patient', ctrlerRenderPatient.renderAddPatient);
-Router.post('/add-patient', ctrlerAddPatient.registerPatient);
+// Router.post('/add-patient', ctrlerAddPatient.registerPatient);
 
 Router.get('/all-comments', ctrlerAllComments.renderAllComments);
 Router.get('/patientname', ctrlerPatientDetail.renderPatientDetails);
 Router.get('/patientname/all-notes', ctrlerAllNotes.renderAllNotes);
+
 
 
 

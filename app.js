@@ -58,11 +58,7 @@ app.use(express.static(__dirname + '/public'));
 
 // Set up to handle POST requests
 app.use(express.json()); // needed if POST data is in JSON format
-app.use(
-  express.urlencoded({
-    extended: false,
-  })
-); // only needed for URL-encoded input
+app.use(express.urlencoded({ extended: false })); // only needed for URL-encoded input
 
 // link to our routers
 const ClinicianRouter = require('./routes/Clinician_Router');
@@ -71,6 +67,29 @@ const PatientRouter = require('./routes/Patient_Router');
 // the demo routes are added to the end of the '/clinician' path
 app.use('/clinician', ClinicianRouter);
 app.use('/patient', PatientRouter);
+
+
+// set constant for patientModel
+const patientModel = require('./models/patient');
+
+// 注册用户
+app.post('/add-patient', async (req, res) => {  // using POST for Postman demo
+  const newPatient = new patientModel({
+    firstName: req.body.first_name,
+    lastName: req.body.last_name,
+    email:  req.body.email,
+    phoneNumber: req.body.phone_number,
+    streetAddress:  req.body.street,
+    birthday:  req.body.year_birth,
+    postalCode:  req.body.postal,
+    city:  req.body.city,
+  })
+  newPatient.save((err, patient) => {
+    if (err) res.send(err)
+    return res.send(patient)
+  })
+})
+
 
 
 
@@ -82,6 +101,6 @@ app.get('', (req, res) => {
 });
 
 // Tells the app to listen on port 8080 and logs that information to the console.
-app.listen(process.env.PORT || 80, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log('Diabetes@Home listening on port 8080');
 });
