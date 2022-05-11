@@ -60,14 +60,14 @@ const renderClinicianDashboard = async (req, res) => {
 
       // 输出用patient.birthday
       // manipulate input birthday and calculate age
-      birth = Date.parse(patient.birthday.replace('/-/g', "/"));
+      /* birth = Date.parse(patient.birthday.replace('/-/g', "/"));
 
       if (birth) {
         var year = 1000 * 60 * 60 * 24 * 365;
         var currTime = new Date();
         var birthday = new Date(birth);
         patient.birthday = parseInt((currTime - birthday) / year);
-      }
+      } */
 
 
       // 判断血糖是否超标

@@ -7,6 +7,12 @@ const express = require('express');
 // Set app as our server
 const app = express();
 
+/* const passport = require('passport')
+const flash = require('express-flash')
+const session = require('express-session')
+
+app.use(flash()) */
+
 // configure Handlebars
 app.engine(
   'hbs',
@@ -76,6 +82,6 @@ app.get('', (req, res) => {
 });
 
 // Tells the app to listen on port 8080 and logs that information to the console.
-app.listen(process.env.PORT || 8080, () => {
+app.listen(process.env.PORT || 80, () => {
   console.log('Diabetes@Home listening on port 8080');
 });
