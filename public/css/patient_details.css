@@ -226,6 +226,10 @@
   overflow: scroll;
 }
 
+.record-hist::-webkit-scrollbar {
+  display: none;
+}
+
 .hist-card {
   width: 97rem;
   height: 10rem;
@@ -358,6 +362,10 @@
   border: none;
   word-break: break-all;
   overflow: scroll;
+}
+
+.notes::-webkit-scrollbar {
+  display: none;
 }
 
 .notes:focus {
