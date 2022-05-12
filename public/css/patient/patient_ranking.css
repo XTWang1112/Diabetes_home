@@ -24,7 +24,7 @@ h1 {
   align-items: center;
   width: 70rem;
   padding: 2rem;
-  margin: auto;
+  margin: 27rem auto 0 auto;
 
   transform: scale(1.5);
 }
@@ -188,7 +188,7 @@ h1 {
   color: #2d5215;
 }
 
-.icon-mobile-nav[name="close-outline"] {
+.icon-mobile-nav[name='close-outline'] {
   display: none;
 }
 
@@ -277,11 +277,11 @@ h1 {
     z-index: 999;
   }
 
-  .nav-open .icon-mobile-nav[name="close-outline"] {
+  .nav-open .icon-mobile-nav[name='close-outline'] {
     display: block;
   }
 
-  .nav-open .icon-mobile-nav[name="menu-outline"] {
+  .nav-open .icon-mobile-nav[name='menu-outline'] {
     display: none;
   }
 

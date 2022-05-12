@@ -1,7 +1,6 @@
 const req = require('express/lib/request');
 const { render } = require('express/lib/response');
 const res = require('express/lib/response');
-const mongoose = require('mongoose');
 const patientModel = require('../models/patient');
 const recordModel = require('../models/record');
 
@@ -102,118 +101,220 @@ const renderClinicianDashboard = async (req, res) => {
       patients: patients,
     });
   } catch (err) {
-    console.log(err);
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
   }
 };
 
 // The function to get the current value of each data and render the patient dashboard
 const renderPatientDashboard = async (req, res) => {
-  let patient_id = '6267d6bb8b206aade8b24198';
-  // find the patient using its id
-  let patient = await patientModel.findById(patient_id).lean();
-  // console.log(patient.patientName);
+  try {
+    let patient_id = '6267d6bb8b206aade8b24198';
+    // find the patient using its id
+    let patient = await patientModel.findById(patient_id).lean();
+    // console.log(patient.patientName);
 
-  const today = new Date(new Date().toDateString()).getTime();
-  const tomorrow = today + 24 * 3600 * 1000;
-  // Select the curent day's data
-  let query = {
-    patient_id: patient._id,
-    time: { $gte: today },
-    time: { $lte: tomorrow },
-  };
-  console.log(query);
-  // 倒着sort id，找到最新的数据
-  let bloodGlucose_result = await recordModel.findOne(query).sort({
-    _id: -1,
-  });
+    const today = new Date(new Date().toDateString()).getTime();
+    const tomorrow = today + 24 * 3600 * 1000;
+    // Select the curent day's data
+    let query = {
+      patient_id: patient._id,
+      time: { $gte: today },
+      time: { $lte: tomorrow },
+    };
+    console.log(query);
+    // 倒着sort id，找到最新的数据
+    let bloodGlucose_result = await recordModel.findOne(query).sort({
+      _id: -1,
+    });
 
-  // 定义了query的需求，赋值给patient_result
-  let patient_result = await patientModel.findOne(query);
+    // 定义了query的需求，赋值给patient_result
+    let patient_result = await patientModel.findOne(query);
 
-  // Declare a comments array
-  comments = [];
-  if (bloodGlucose_result) {
-    console.log(bloodGlucose_result);
-    patient.today_blood_glucose_level = bloodGlucose_result.value;
-    patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
-    patient.blood_glucose_level_lower_bound =
-      patient_result.bloodGlucose_lowerBound;
-    patient.blood_glucose_level_upper_bound =
-      patient_result.bloodGlucose_upperBound;
-    // comments.push(bloodGlucose_result.comment)
-  } else {
-    patient.today_blood_glucose_level = 0;
-    patient.today_blood_glucose_level = 'no data today';
+    // Declare a comments array
+    comments = [];
+    if (bloodGlucose_result) {
+      console.log(bloodGlucose_result);
+      patient.today_blood_glucose_level = bloodGlucose_result.value;
+      patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
+      patient.blood_glucose_level_lower_bound =
+        patient_result.bloodGlucose_lowerBound;
+      patient.blood_glucose_level_upper_bound =
+        patient_result.bloodGlucose_upperBound;
+      // comments.push(bloodGlucose_result.comment)
+    } else {
+      patient.today_blood_glucose_level = 0;
+      patient.today_blood_glucose_level = 'no data today';
+    }
+
+    console.log(comments);
+    res.render('Patient_Dashboard', {
+      patient,
+      comments,
+      layout: 'patient_template',
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
   }
-
-  console.log(comments);
-  res.render('Patient_Dashboard', {
-    patient,
-    comments,
-    layout: 'patient_template',
-  });
 };
 
 const renderPatientWeight = (req, res) => {
-  res.render('Weight_record', { layout: 'patient_record_template' });
+  try {
+    res.render('Weight_record', { layout: 'patient_record_template' });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 const renderPatientInsulin = (req, res) => {
-  res.render('Insulin_record', { layout: 'patient_record_template' });
+  try {
+    res.render('Insulin_record', { layout: 'patient_record_template' });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 const renderPatientExercise = (req, res) => {
-  res.render('Exercise_record', { layout: 'patient_record_template' });
+  try {
+    res.render('Exercise_record', { layout: 'patient_record_template' });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 const renderPatientLogin = (req, res) => {
-  res.render('Patient_login', {
-    layout: 'no_layouts',
-  });
+  try {
+    res.render('Patient_login', {
+      layout: 'no_layouts',
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 const renderPatientRanking = (req, res) => {
-  res.render('patient_ranking', {
-    layout: 'patient_template',
-  });
+  try {
+    res.render('patient_ranking', {
+      layout: 'patient_template',
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
+
 const postPatientLogin = (req, res) => {
-  console.log(req.body);
-  console.log(req.body.input_email);
+  try {
+    console.log(req.body);
+    console.log(req.body.input_email);
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 const renderPatientMe = (req, res) => {
-  res.render('patient_me', {
-    layout: 'patient_template',
-  });
+  try {
+    res.render('patient_me', {
+      layout: 'patient_template',
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 const renderPatientClinician = (req, res) => {
-  res.render('patient_clinician', {
-    layout: 'patient_template',
-  });
+  try {
+    res.render('patient_clinician', {
+      layout: 'patient_template',
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 const renderPatientData = (req, res) => {
-  res.render('patient_data', {
-    layout: 'patient_template',
-  });
+  try {
+    res.render('patient_data', {
+      layout: 'patient_template',
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 const renderAboutWebsite = (req, res) => {
-  res.render('About_website', { layout: 'info_template' });
+  try {
+    res.render('About_website', { layout: 'info_template' });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 const renderAboutDiabetes = (req, res) => {
-  res.render('About_diabetes', { layout: 'info_template' });
+  try {
+    res.render('About_diabetes', { layout: 'info_template' });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 const renderLoginAboutWebsite = (req, res) => {
-  res.render('About_website', { layout: 'patient_template' });
+  try {
+    res.render('About_website', { layout: 'patient_template' });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 const renderLoginAboutDiabetes = (req, res) => {
-  res.render('About_diabetes', { layout: 'patient_template' });
+  try {
+    res.render('About_diabetes', { layout: 'patient_template' });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 module.exports = {
