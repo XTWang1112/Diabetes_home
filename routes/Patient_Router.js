@@ -9,10 +9,11 @@ const ctrlerPatientBloodRecord = require('../controllers/ctrlerPatientBloodRecor
 // add a route to handle the get request for all patients' data
 Router.get('/', Controller.renderPatientDashboard);
 
-//pathway should not from patient
-FIXME: Router.get('/login', Controller.renderPatientLogin);
-
 Router.post('/login', Controller.postPatientLogin);
+
+Router.get('/about-website', Controller.renderLoginAboutWebsite);
+
+Router.get('/about-diabetes', Controller.renderLoginAboutDiabetes);
 
 Router.get('/weight', Controller.renderPatientWeight);
 

@@ -208,6 +208,14 @@ const renderAboutDiabetes = (req, res) => {
   res.render('About_diabetes', { layout: 'info_template' });
 };
 
+const renderLoginAboutWebsite = (req, res) => {
+  res.render('About_website', { layout: 'patient_template' });
+};
+
+const renderLoginAboutDiabetes = (req, res) => {
+  res.render('About_diabetes', { layout: 'patient_template' });
+};
+
 module.exports = {
   renderClinicianDashboard,
   renderPatientDashboard,
@@ -222,4 +230,6 @@ module.exports = {
   renderPatientData,
   renderAboutWebsite,
   renderAboutDiabetes,
+  renderLoginAboutWebsite,
+  renderLoginAboutDiabetes,
 };
