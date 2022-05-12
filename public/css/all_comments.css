@@ -1,0 +1,56 @@
+/*****************************
+/*subheader
+*****************************/
+.patient-img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: grey solid 0.2rem;
+}
+
+.subheader {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 1.2rem 0;
+  justify-content: space-between;
+}
+
+/*****************************
+/*comments
+*****************************/
+.comments {
+  height: 70rem;
+  width: 164rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  overflow: scroll;
+  margin-top: 1.2rem;
+}
+
+.comment {
+  width: 164rem;
+  height: 19.6rem;
+  background-color: white;
+  border-radius: 1.2rem;
+  overflow: scroll;
+  padding: 0 2rem;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.comment div {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.date {
+  color: #707070;
+}
+
+.comments a:link,
+.comments a:visited {
+  color: black;
+}

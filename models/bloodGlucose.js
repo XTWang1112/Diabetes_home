@@ -6,7 +6,7 @@ const bloodGlucoseSchema = new mongoose.Schema({
     patient_id: { type: mongoose.Schema.Types.ObjectId, ref: 'patients' },
     value: Number,
     comment: String,
-    time: Number,
+    time: String,
     
 })
 

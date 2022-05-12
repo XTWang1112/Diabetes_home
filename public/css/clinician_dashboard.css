@@ -57,6 +57,29 @@ p {
 .add-patient:hover p {
   display: block;
 }
+.view-all-comments:link,
+.view-all-comments:visited {
+  color: black;
+}
+
+.add {
+  height: 3.6rem;
+  width: 3.6rem;
+  color: #2264b1;
+}
+
+.add-patient:link,
+.add-patient:visited {
+  color: #2264b1;
+}
+
+/* .add-patient:hover::after {
+  content: 'Add patient';
+  display: block;
+  position: absolute;
+  right: 0;
+  font-size: 1.4rem;
+} */
 
 .patient-dashboards {
   display: grid;
@@ -116,4 +139,9 @@ p {
   font-size: 1.8rem;
   font-weight: bold;
   padding-bottom: 0.5rem;
+}
+
+.name:link,
+.name:visited {
+  color: #2264b1;
 }

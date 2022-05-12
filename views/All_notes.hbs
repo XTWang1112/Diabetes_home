@@ -1,0 +1,50 @@
+<link rel='stylesheet' href='/../css/clinician_general.css' />
+<link rel='stylesheet' href='/../css/all_notes.css' />
+
+<main class='main'>
+  <div class='breadcrumbs'>
+    <h1 class='normal-weight'><a href='/clinician'>Dashboard</a></h1>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      class='chevron-right'
+      fill='none'
+      viewBox='0 0 24 24'
+      stroke='currentColor'
+      stroke-width='2'
+    >
+      <path
+        stroke-linecap='round'
+        stroke-linejoin='round'
+        d='M9 5l7 7-7 7'
+      ></path>
+    </svg>
+    <h1 class='normal-weight'><a href='/clinician/patientname'>{%Patient Name%}</a></h1>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      class='chevron-right'
+      fill='none'
+      viewBox='0 0 24 24'
+      stroke='currentColor'
+      stroke-width='2'
+    >
+      <path
+        stroke-linecap='round'
+        stroke-linejoin='round'
+        d='M9 5l7 7-7 7'
+      ></path>
+    </svg>
+    <h1>All notes</h1>
+  </div>
+
+  <div class='subheader'>
+    <img class='patient-img' src='#' alt='' title='patient photo' />
+    <h2>{%PATIENT NAME%}</h2>
+  </div>
+
+  <div class='notes'>
+    <div class='note'>
+      <p>{%NOTE%}</p>
+      <p class='date'>{%DATE%}</p>
+    </div>
+  </div>
+</main>

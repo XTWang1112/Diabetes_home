@@ -1,0 +1,50 @@
+/*****************************
+/*subheader
+*****************************/
+.patient-img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: grey solid 0.2rem;
+}
+
+.subheader {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 1.2rem 0;
+}
+
+/*****************************
+/*notes
+*****************************/
+.notes {
+  height: 70rem;
+  width: 164rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  overflow: scroll;
+}
+
+.note {
+  width: 164rem;
+  height: 19.6rem;
+  background-color: white;
+  border-radius: 1.2rem;
+  overflow: scroll;
+  padding: 4rem 2rem;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.note p {
+  font-size: 2rem;
+}
+
+.date {
+  position: absolute;
+  top: 10%;
+  right: 3%;
+  color: #707070;
+}

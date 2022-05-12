@@ -1,111 +1,114 @@
-<link rel="stylesheet" href="/css/patient_dashboard.css" />
-<link rel="stylesheet" href="/css/patient_dashboard_queries.css" />
+<link rel='stylesheet' href='/css/patient_dashboard.css' />
+<link rel='stylesheet' href='/css/patient_dashboard_queries.css' />
 
-<main class="main">
-  <nav class="main-nav-left">
-    <ul class="main-nav-left-list">
-      <div class="main-nav-left-shade"></div>
-      <li class="svg-link">
-        <embed src="/img/svg/data-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link" href="patient/data">Data</a>
+<main class='main'>
+  <nav class='main-nav-left'>
+    <ul class='main-nav-left-list'>
+      <div class='main-nav-left-shade'></div>
+      <li class='svg-link'>
+        <embed src='/img/svg/data-icon.svg' type='image/svg+xml' />
+        <a class='main-nav-left-link' href='patient/data'>Data</a>
       </li>
-      <li class="svg-link">
-        <embed src="/img/svg/clinician-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link" href="patient/clinician">Clinician</a>
+      <li class='svg-link'>
+        <embed src='/img/svg/clinician-icon.svg' type='image/svg+xml' />
+        <a class='main-nav-left-link' href='patient/clinician'>Clinician</a>
       </li>
-      <li class="svg-link home-li">
-        <embed src="/img/svg/home-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link home-text" href="patient">Home</a>
+      <li class='svg-link home-li'>
+        <embed src='/img/svg/home-icon.svg' type='image/svg+xml' />
+        <a class='main-nav-left-link home-text' href='patient'>Home</a>
       </li>
-      <li class="svg-link">
-        <embed src="/img/svg/ranking-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link" href="patient/ranking">Ranking</a>
+      <li class='svg-link'>
+        <embed src='/img/svg/ranking-icon.svg' type='image/svg+xml' />
+        <a class='main-nav-left-link' href='patient/ranking'>Ranking</a>
       </li>
-      <li class="svg-link">
-        <embed src="/img/svg/me-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link" href="patient/me">Me</a>
+      <li class='svg-link'>
+        <embed src='/img/svg/me-icon.svg' type='image/svg+xml' />
+        <a class='main-nav-left-link' href='patient/me'>Me</a>
       </li>
     </ul>
   </nav>
 
-  <section class="record-div">
-    <div class="record-top">
+  <section class='record-div'>
+    <div class='record-top'>
       <h1>Record</h1>
-      <h2 class="record-date"></h2>
+      <h2 class='record-date'></h2>
     </div>
-    <div class="grid grid--2 record-grid">
+    <div class='grid grid--2 record-grid'>
       {{! display blood glucose data }}
-      <a class="record-box blood-box" href="/patient/blood_glucose">
+
+      {{!-- {{#with person}}
+      {{#if this.bloodGlucose_record}} --}}
+      <a class='record-box blood-box' href='/patient/blood_glucose'>
         <embed
-          class="blood-icon"
-          src="/img/svg/blood-icon.svg"
-          type="image/svg+xml"
+          class='blood-icon'
+          src='/img/svg/blood-icon.svg'
+          type='image/svg+xml'
         />
         <div>
           <p>Blood glucose level</p>
-          <p class="blood-glucos-data">{{patient.today_blood_glucose_level}}</p>
+          <p class='blood-glucos-data'>{{patient.today_blood_glucose_level}}</p>
           <p>(in mmol/L)</p>
         </div>
-        <div class="finish">
+        <div class='finish'>
           finish
         </div>
       </a>
       {{! display weight data }}
-      <a class="record-box weight-box" href="/patient/weight">
+      <a class='record-box weight-box' href='/patient/weight'>
         <embed
-          class="scale"
-          src="/img/svg/weight-icon.svg"
-          type="image/svg+xml"
+          class='scale'
+          src='/img/svg/weight-icon.svg'
+          type='image/svg+xml'
         />
         <div>
           <p>Weight</p>
           {{!-- <p>{{patient.today_weight}}</p> --}}
-          <p class="no-data">no data today</p>
+          <p class='no-data'>no data today</p>
           <p>(in kg)</p>
         </div>
-        <div class="finish">
+        <div class='finish'>
           finish
         </div>
       </a>
       {{! display insulin taken data }}
-      <a class="record-box insulin-box" href="/patient/insulin">
+      <a class='record-box insulin-box' href='/patient/insulin'>
         <embed
-          class="needle"
-          src="/img/svg/insulin-icon.svg"
-          type="image/svg+xml"
+          class='needle'
+          src='/img/svg/insulin-icon.svg'
+          type='image/svg+xml'
         />
         <div>
           <p>Insulin taken</p>
           {{!-- <p>{{patient.today_insulin_taken}}</p> --}}
-          <p class="no-data">no data today</p>
+          <p class='no-data'>no data today</p>
           <p>(number of doses)</p>
         </div>
-        <div class="finish">
+        <div class='finish'>
           finish
         </div>
       </a>
       {{! display exercise data }}
-      <a class="record-box exercise-box" href="/patient/exercise">
-        <embed class="step" src="/img/svg/step-icon.svg" type="image/svg+xml" />
+      <a class='record-box exercise-box' href='/patient/exercise'>
+        <embed class='step' src='/img/svg/step-icon.svg' type='image/svg+xml' />
         <div>
           <p>Exercise</p>
           {{!-- <p>{{patient.today_exercise}}</p> --}}
-          <p class="no-data">no data today</p>
+          <p class='no-data'>no data today</p>
           <p>(step count)</p>
         </div>
-        <div class="finish">
+        <div class='finish'>
           finish
         </div>
       </a>
     </div>
   </section>
 
-  <section class="comments-section">
+  <section class='comments-section'>
     <h1>Comments</h1>
-    <div class="comments-div">
-      <div class="comments-box">
-        <button class="cross-button">
-          <ion-icon class="cross-button-icon" name="close-outline"></ion-icon>
+    <div class='comments-div'>
+      <div class='comments-box'>
+        <button class='cross-button'>
+          <ion-icon class='cross-button-icon' name='close-outline'></ion-icon>
         </button>
         <p>
           Well done Pat! Keep going! Enjoy your wonderful life 🏃‍♂️

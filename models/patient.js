@@ -1,13 +1,32 @@
 const mongoose = require("mongoose");
+/* const validator = require('validator'); */
 
 // Declare a Mongoose Schema
 const patientSchema = new mongoose.Schema({
-  patientName: String,
+  firstName: String,
+  lastName: String,
   patientID: Number,
   age: Number,
   gender: String,
   photo_url: String,
   insistDay: Number,
+  birthday: String,
+  
+  email: {
+    type: String,
+    lowercase: true,
+    /* validate: [validator.isEmail, 'Please provide a valid email'] */
+  },
+
+  password: {
+    type: String,
+  },
+  
+  phoneNumber: Number,
+  city: String,
+  streetAddress: String,
+  postalCode: Number,
+
 
   bloodGlucose_lowerBound: Number,
   bloodGlucose_upperBound: Number,

@@ -17,16 +17,17 @@ Paragraph default: 1.6
 
 ----02 COLORS
 
-- Primary: #e5ebef #2264B1
+- Primary: #e5ebef #2264B1 #5E8DB7
 -Icon: 
 
 - Tints:  
-- Shades: box-shadow: 0 2px 2px 2px rgba(94, 142, 183, 0.1);
-          box-shadow: 0 0 0 0.8rem rgba(94, 142, 183, 0.4);
+- Shades: #202b5a #707FCF
 - Accents:
-- Greys: #343a40 #495057 #868e96
+- Greys: #343a40 #495057 #868e96 #707070
 
 ----05 SHADOWS
+box-shadow: 0 2px 2px 2px rgba(94, 142, 183, 0.1);
+box-shadow: 0 0 0 0.8rem rgba(94, 142, 183, 0.4);
  
 
 ----06 BORDER-RADIUS
@@ -49,7 +50,7 @@ html {
 body {
   line-height: 1;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 }
 
@@ -125,10 +126,33 @@ p {
 /*********************************/
 /*Breadcrumbs*/
 /*********************************/
+.chevron-right {
+  color: #495057;
+  height: 2.4rem;
+}
+
 .clinician-profile-photo {
   width: 8rem;
   height: 8rem;
   border-radius: 50%;
+}
+
+.breadcrumbs {
+  color: #2264b1;
+}
+
+.normal-weight {
+  font-weight: normal;
+}
+
+.normal-weight a:link,
+.normal-weight a:visited {
+  color: #2264b1;
+}
+
+.normal-weight a:hover {
+  color: #2264b1;
+  text-decoration: underline;
 }
 
 .main {
@@ -165,10 +189,6 @@ p {
   color: #5667c8;
 }
 
-.add-patient:hover p {
-  display: block;
-}
-
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -198,6 +218,7 @@ p {
 a:link,
 a:visited {
   text-decoration: none;
+  cursor: pointer;
 }
 
 ul {

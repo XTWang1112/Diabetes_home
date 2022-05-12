@@ -1,0 +1,40 @@
+<link rel='stylesheet' href='/../css/clinician_general.css' />
+<link rel='stylesheet' href='/../css/all_comments.css' />
+
+<main class='main'>
+  <div class='breadcrumbs'>
+    <h1 class='normal-weight'><a href='/clinician'>Dashboard</a></h1>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      class='chevron-right'
+      fill='none'
+      viewBox='0 0 24 24'
+      stroke='currentColor'
+      stroke-width='2'
+    >
+      <path
+        stroke-linecap='round'
+        stroke-linejoin='round'
+        d='M9 5l7 7-7 7'
+      ></path>
+    </svg>
+    <h1>All comments</h1>
+  </div>
+
+  <div class='comments'>
+    <a href='/clinician/patientname'>
+      <div class='comment'>
+        <div class='subheader'>
+          <div>
+            <img class='patient-img' src='#' alt='' title='patient photo' />
+            <h2>{%PATIENT NAME%}</h2>
+          </div>
+          <p class='date'>{%DATE%}</p>
+        </div>
+        <p>{%COMMENT%}</p>
+
+      </div>
+    </a>
+
+  </div>
+</main>
