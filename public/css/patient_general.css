@@ -48,7 +48,7 @@ html {
 body {
   line-height: 1;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 }
 
@@ -353,11 +353,11 @@ textarea {
     z-index: 999;
   }
 
-  .nav-open .icon-mobile-nav[name="close-outline"] {
+  .nav-open .icon-mobile-nav[name='close-outline'] {
     display: block;
   }
 
-  .nav-open .icon-mobile-nav[name="menu-outline"] {
+  .nav-open .icon-mobile-nav[name='menu-outline'] {
     display: none;
   }
 
@@ -377,4 +377,22 @@ textarea {
   .copy-right {
     font-size: 1rem;
   }
+}
+
+/*********************************/
+/*INFO pages*/
+/*********************************/
+.subheader {
+  background-color: #7dbc57 !important;
+}
+
+h1,
+h2,
+p {
+  color: #343a40 !important;
+}
+
+.login:link,
+.login:visited {
+  color: #2d5215 !important;
 }

@@ -153,6 +153,15 @@ h2 {
   margin: 1.2rem 0;
 }
 
+.login:link,
+:visited {
+  color: #1f2b5a;
+}
+
+.login:hover {
+  text-decoration: underline;
+}
+
 main p {
   font-size: 3rem;
   padding: 0 4.8rem;
@@ -177,7 +186,7 @@ iframe {
 
 .diabetes-list,
 ol {
-  list-style: "-";
+  list-style: '-';
   margin-left: 6.2rem;
   margin-bottom: 2.4rem;
 }
@@ -271,5 +280,13 @@ ol li {
 
   .member img {
     margin-bottom: 0.2rem;
+  }
+
+  .website {
+    height: auto;
+  }
+
+  ol {
+    margin: 0 2.4rem 2.4rem 6.2rem;
   }
 }
