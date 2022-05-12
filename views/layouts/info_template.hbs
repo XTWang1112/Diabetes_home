@@ -1,0 +1,75 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/before_login_general.css" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <title>{{title}}</title>
+  </head>
+
+  <body>
+    <!-- nav-open -->
+    <header class="header">
+      <a class="web-logo" href="#">
+        <p class="logo">
+          Diabetes@<span class="logo-at-home">Home</span>
+        </p>
+      </a>
+
+      <nav class="main-nav">
+        <ul class="main-nav-list">
+          <li class="icon-link">
+            <ion-icon class="nav-icon" name="medkit"></ion-icon>
+            <a class="main-nav-link" href="/guest/about-diabetes">About diabetes</a>
+          </li>
+          <li class="icon-link">
+            <ion-icon class="nav-icon" name="people"></ion-icon>
+            <a class="main-nav-link" href="/guest/about-website">About website</a>
+          </li>
+
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main">
+
+      <section>
+        {{{body}}}
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="container grid grid--2 grid--footer">
+        <div class="col--1">
+          <a class="web-footer-logo" href="#">
+            <p class="logo">Diabetes@<span class="logo-at-home">Home</span></p>
+          </a>
+          <p class="copy-right">&copy;2022 Diabetes Home, Inc.</p>
+        </div>
+
+        <ul class="col--2 address">
+          <li><strong>Address:</strong> 813 Swanston St, Parkville VIC 3052</li>
+          <li><strong>Located in:</strong> University of Melbourne</li>
+          <li><strong>Phone:</strong> (03)9035 5511</li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+
+</html>

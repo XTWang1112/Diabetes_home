@@ -1,4 +1,5 @@
 const req = require('express/lib/request');
+const { render } = require('express/lib/response');
 const res = require('express/lib/response');
 const mongoose = require('mongoose');
 const patientData = require('../models/patient');
@@ -87,10 +88,6 @@ const renderClinicianDashboard = async (req, res) => {
   }
 };
 
-const renderAddPatient = async (req, res) => {
-  res.render('Add_patient');
-};
-
 // The function to get the current value of each data and render the patient dashboard
 const renderPatientDashboard = async (req, res) => {
   let patient_id = '6267d6bb8b206aade8b24198';
@@ -165,21 +162,73 @@ const renderPatientBloodRecord = async (req, res) => {
   }
 };
 
+const renderPatientWeight = (req, res) => {
+  res.render('Weight_record', { layout: 'patient_record_template' });
+};
+
+const renderPatientInsulin = (req, res) => {
+  res.render('Insulin_record', { layout: 'patient_record_template' });
+};
+
+const renderPatientExercise = (req, res) => {
+  res.render('Exercise_record', { layout: 'patient_record_template' });
+};
+
 const renderPatientLogin = (req, res) => {
   res.render('Patient_login', {
     layout: 'no_layouts',
   });
 };
 
+const renderPatientRanking = (req, res) => {
+  res.render('patient_ranking', {
+    layout: 'patient_template',
+  });
+};
 const postPatientLogin = (req, res) => {
   console.log(req.body);
   console.log(req.body.input_email);
+};
+
+const renderPatientMe = (req, res) => {
+  res.render('patient_me', {
+    layout: 'patient_template',
+  });
+};
+
+const renderPatientClinician = (req, res) => {
+  res.render('patient_clinician', {
+    layout: 'patient_template',
+  });
+};
+
+const renderPatientData = (req, res) => {
+  res.render('patient_data', {
+    layout: 'patient_template',
+  });
+};
+
+const renderAboutWebsite = (req, res) => {
+  res.render('About_website', { layout: 'info_template' });
+};
+
+const renderAboutDiabetes = (req, res) => {
+  res.render('About_diabetes', { layout: 'info_template' });
 };
 
 module.exports = {
   renderClinicianDashboard,
   renderPatientDashboard,
   renderPatientBloodRecord,
+  renderPatientWeight,
+  renderPatientInsulin,
+  renderPatientExercise,
   renderPatientLogin,
   postPatientLogin,
+  renderPatientRanking,
+  renderPatientMe,
+  renderPatientClinician,
+  renderPatientData,
+  renderAboutWebsite,
+  renderAboutDiabetes,
 };

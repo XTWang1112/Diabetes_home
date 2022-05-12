@@ -65,10 +65,15 @@ body {
   position: relative;
 }
 
+.web-logo {
+  display: flex;
+}
+
 .logo {
   font-size: 2.5rem;
   font-weight: 600;
   color: white;
+  margin: auto;
 }
 
 .logo-at-home {
@@ -260,8 +265,6 @@ textarea {
   color: #dff1ca;
 }
 
-
-
 /*********************************/
 /*********************************/
 /*Responsive Design*/
@@ -273,6 +276,10 @@ textarea {
 @media (max-width: 75em) {
   .grid--footer {
     column-gap: 10rem;
+  }
+
+  .main-nav-list {
+    gap: 1.2rem;
   }
 }
 

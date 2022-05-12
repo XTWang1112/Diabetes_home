@@ -1,6 +1,24 @@
 /*********************************/
 /*Responsive*/
 /*********************************/
+@media (max-width: 65em) {
+  html {
+    font-size: 50%;
+  }
+
+  .record-div {
+    transform: scale(0.9);
+  }
+
+  .comments-section {
+    transform: scale(0.9);
+  }
+
+  .comments-div {
+    transform: scale(0.85);
+  }
+}
+
 @media (max-width: 35em) {
   html {
     font-size: 50%;
@@ -14,6 +32,18 @@
     height: 16rem;
     position: sticky;
     bottom: 0;
+  }
+
+  .record-div {
+    transform: scale(1);
+  }
+
+  .comments-section {
+    transform: scale(1);
+  }
+
+  .comments-div {
+    transform: scale(1);
   }
 
   .header {

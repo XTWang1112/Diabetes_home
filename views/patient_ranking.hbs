@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="/css/patient/patient_ranking.css" />
+
+<main>
+  <nav class="main-nav-left">
+    <ul class="main-nav-left-list">
+      <div class="main-nav-left-shade"></div>
+      <li class="svg-link">
+        <embed src="/img/svg/data-icon.svg" type="image/svg+xml" />
+        <a class="main-nav-left-link" href="data">Data</a>
+      </li>
+      <li class="svg-link">
+        <embed src="/img/svg/clinician-icon.svg" type="image/svg+xml" />
+        <a class="main-nav-left-link" href="clinician">Clinician</a>
+      </li>
+      <li class="svg-link home-li">
+        <embed src="/img/svg/home-icon.svg" type="image/svg+xml" />
+        <a
+          class="main-nav-left-link home-text"
+          href="http://localhost:8080/patient"
+        >Home</a>
+      </li>
+      <li class="svg-link rank-li">
+        <embed src="/img/svg/ranking-icon.svg" type="image/svg+xml" />
+        <a class="main-nav-left-link rank-text" href="ranking">Ranking</a>
+      </li>
+      <li class="svg-link">
+        <embed src="/img/svg/me-icon.svg" type="image/svg+xml" />
+        <a class="main-nav-left-link" href="me">Me</a>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="ranking_box">
+    <div class="podium_container">
+      <img class="podium_photo no1" src="" />
+      <img class="podium_photo no2" src="" />
+      <img class="podium_photo no3" src="" />
+      <embed
+        class="podium_svg"
+        src="/img/svg/leaderboard.svg"
+        type="image/svg+xml"
+      />
+    </div>
+    <div class="ranking_list">
+      <ol>
+        <li>
+          <div class="ranking_number">1</div>
+          <img class="ranking_photo" src="" />
+          <div class="ranking_name">{%PATIENTNAME%}</div>
+          <div class="ranking_data">
+            <div class="insist_data">{%INSIST_DAYS%}</div>
+            <div class="percentage_data">{%PERSENTAGE%}</div>
+          </div>
+        </li>
+        <li>
+          <div class="ranking_number">2</div>
+          <img class="ranking_photo" src="" />
+          <div class="ranking_name">{%PATIENTNAME%}</div>
+          <div class="ranking_data">
+            <div class="insist_data">{%INSIST_DAYS%}</div>
+            <div class="percentage_data">{%PERSENTAGE%}</div>
+          </div>
+        </li>
+        <li>
+          <div class="ranking_number">3</div>
+          <img class="ranking_photo" src="" />
+          <div class="ranking_name">{%PATIENTNAME%}</div>
+          <div class="ranking_data">
+            <div class="insist_data">{%INSIST_DAYS%}</div>
+            <div class="percentage_data">{%PERSENTAGE%}</div>
+          </div>
+        </li>
+        <li>
+          <div class="ranking_number">4</div>
+          <img class="ranking_photo" src="" />
+          <div class="ranking_name">{%PATIENTNAME%}</div>
+          <div class="ranking_data">
+            <div class="insist_data">{%INSIST_DAYS%}</div>
+            <div class="percentage_data">{%PERSENTAGE%}</div>
+          </div>
+        </li>
+        <li>
+          <div class="ranking_number">5</div>
+          <img class="ranking_photo" src="" />
+          <div class="ranking_name">{%PATIENTNAME%}</div>
+          <div class="ranking_data">
+            <div class="insist_data">{%INSIST_DAYS%}</div>
+            <div class="percentage_data">{%PERSENTAGE%}</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+  </section>
+</main>

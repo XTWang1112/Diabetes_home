@@ -1,0 +1,51 @@
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/css/patient_record.css" />
+
+<section>
+  <div class="container">
+    <h2 class="record-head">
+      <embed
+        class="scale"
+        src="../img/svg/insulin-icon.svg"
+        type="image/svg+xml"
+      />
+      &nbsp; Insulin Taken
+    </h2>
+    {{! form to submit data }}
+    <form class="record-data" name="record_form">
+      <div class="record-input-div">
+        <label for="data">Input Here</label>
+        <input
+          id="record"
+          type="number"
+          step="0.1"
+          placeholder="in doses"
+          name="patinet_weight"
+          required
+        />
+      </div>
+
+      <div class="bg-comment-input">
+        <p>Comment:</p>
+        <textarea
+          rows="5"
+          cols="30"
+          name="record_comment"
+          placeholder="How do you feel today:)"
+        ></textarea>
+      </div>
+      <button class="btn btn--done">Done</button>
+    </form>
+
+    <ul class="record-reminder">
+      <li>For your health, you have kept recording for
+        {{#with onePatient}}<span>{{this.insistDay}}</span>{{/with}}
+        days.</li>
+      <li>Keep recording, control diabetes, and enjoy wonderful life!</li>
+    </ul>
+
+  </div>
+</section>
