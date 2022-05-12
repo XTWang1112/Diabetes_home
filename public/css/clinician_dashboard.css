@@ -17,6 +17,11 @@ p {
   flex-flow: column;
   height: calc(100vh - 11.4rem);
   padding: 3rem 10rem;
+  overflow: scroll;
+}
+
+.main::-webkit-scrollbar {
+  display: none;
 }
 
 .main-titles {
