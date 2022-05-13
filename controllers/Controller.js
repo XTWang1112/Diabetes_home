@@ -40,7 +40,6 @@ const renderClinicianDashboard = async (req, res) => {
 
     // Get each patient's latest blood glucose and weight  value
     for (patient of patients) {
-      console.log(patient.patientName);
 
       // Select the curent day's data
       // 如果要用js操作mongoDB参数，把要操作的对象加到query里面，否则不会进行loop循环patient
