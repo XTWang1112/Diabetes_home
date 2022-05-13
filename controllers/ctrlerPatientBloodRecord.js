@@ -3,7 +3,10 @@ const res = require('express/lib/response');
 
 const mongoose = require('mongoose');
 const patientModel = require('../models/patient');
+const recordModel = require('../models/record');
+
 const bloodGlucoseModel = mongoose.model('bloodGlucoses');
+
 
 
 // The fucntion to render patient blood record page
@@ -20,17 +23,22 @@ const renderPatientBloodRecord = async (req, res) => {
     // console.log("submit的data的病人名字" + data.patientName);
 
     // find id 对应的 patient
-    let patient_id = '6267d6bb8b206aade8b24198';
+    let find_id = '6267d6bb8b206aade8b24198';
+    let patient_id = 1;
 
-    let search_day = "4-5-2022";
+    let search_day = "13-5-2022";
 
-    let onePatient = await patientModel.findById(patient_id).lean();
-    // 要找的这个人的所有血糖数据
-    // let onePatientBloodRecord = await bloodGlucoseModel.find({patient_id}).lean();
-    // console.log(onePatientBloodRecord);
+    // 找出这个人的个人数据
+    let onePatientRecord = await patientModel.findById(find_id).lean();
 
-    // 挑选出这个人的今天的血糖数据
-    let onePatientBloodRecord = await bloodGlucoseModel.find({
+
+    // 以下代码有问题
+    // let onePatientRecord = await patientModel.findById(patient_id).lean();
+
+
+    // 挑选出这个人的今天录入的所有数据
+
+    let onePatientBloodRecord = await recordModel.find({
         patient_id,
         time: {
             $gte: new Date(search_day).getTime()
@@ -39,26 +47,35 @@ const renderPatientBloodRecord = async (req, res) => {
             $lte: new Date(search_day).getTime() + 24 * 3600 * 1000
         },
     }).lean();
-    let todayBloodRecord = await bloodGlucoseModel.find({
-        patient_id,
-        time: {
-            $gte: Date.parse(search_day),
-            $lte: Date.parse(search_day) + 24 * 3600 * 1000
+    // let todayBloodRecord = await bloodGlucoseModel.find({
+    //     patient_id,
+    //     time: {
+    //         $gte: Date.parse(search_day),
+    //         $lte: Date.parse(search_day) + 24 * 3600 * 1000
+    //     }
+    // }).lean();
+
+
+    // 检查数据是否存在，如果不存在返回false
+    function checkRecordComplete(checkRecordComplete) {
+        if (checkRecordComplete == "undefined") {
+            return false;
+        } else {
+            return true;
         }
-    }).lean();
-
-    // 输出是空的[] 无法确定是否有数据在里面
-    // console.log(todayBloodRecord);
+    }
 
 
-    if (onePatient) {
+    if (onePatientRecord) {
         // 渲染血糖上传页面
         res.render('Blood_glucose', {
-            onePatient: onePatient,
+            onePatient: onePatientRecord,
             layout: 'patient_record_template',
         });
 
         // request the patient comment and bloodGlucose value from the input
+
+        // query 用get post用 req.body.glucose_comment
         var glucose_comment = req.query.glucose_comment || 'no comments';
         var patinet_blood_glucose = req.query.patinet_blood_glucose;
 
@@ -66,33 +83,55 @@ const renderPatientBloodRecord = async (req, res) => {
 
             let patientBloodRecord = {
                 patient_id,
-                value: patinet_blood_glucose,
-                comment: glucose_comment,
+                blood_glucose_level: patinet_blood_glucose,
+                blood_glucose_level_comment: glucose_comment,
                 time: today,
+                complete: false,
             };
 
-
-            // create the patient bloodRecord
-            // await bloodGlucoseModel.create({
-            //   ...patientBloodRecord
-            // });
-
-            // 如果今天的血糖值为空，则插入一条新的血糖值
-            // find patient的
-            if (!onePatientBloodRecord.today_blood_glucose_level) {
-
-                // create the patient bloodRecord
-                await bloodGlucoseModel.create({
+            // 如果今天没有录入数据，则插入一条新的血糖值
+            if (!onePatientBloodRecord) {
+                await recordModel.create({
                     ...patientBloodRecord
                 });
             }
-            // 如果今天有血糖值，则更新血糖值
-            else {
-                await bloodGlucoseModel.updateOne({
+            // 如果今天的血糖值为空(!blood_glu_level 要为true)，同时他被要求录入血糖值的数据(bloodGlu_record要为true)，则更新今天的血糖值
+            else if(!onePatientBloodRecord.blood_glucose_level && onePatientRecord.bloodGlucose_record){
+                await recordModel.updateOne({
+                    patient_id,
+                    time: today,
+                    blood_glucose_level: patinet_blood_glucose,
+                    blood_glucose_level_comment: glucose_comment,
+                })
 
+                // 如果四个数据都存在，则将complete修改为true
+                if(checkRecordComplete(onePatientBloodRecord.blood_glucose_level) && checkRecordComplete(onePatientBloodRecord.weight)
+                    && checkRecordComplete(onePatientBloodRecord.exercise) && checkRecordComplete(onePatientBloodRecord.insulinTaken)){
+
+                    console.log("complete修改为true");
+
+
+                    await recordModel.updateOne({
+                        complete: true
+                    })
+                    // 得到complete为true的标记之后，给patient的insist day + 1
+                    await patientModel.updateOne({
+                        // insistDay +1
+                        insistDay: onePatientRecord.insistDay + 1
+                    })
+
+                }
+
+
+            }else{
+                // 如果今天的血糖值不为空，则更新今天的血糖值
+                await recordModel.updateOne({
+                    blood_glucose_level: patinet_blood_glucose,
+                    blood_glucose_level_comment: glucose_comment,
                 })
             }
         }
+
     } else {
         res.sendStatus(404);
     }
@@ -101,6 +140,5 @@ const renderPatientBloodRecord = async (req, res) => {
 
 
 module.exports = {
-
     renderPatientBloodRecord,
 };
