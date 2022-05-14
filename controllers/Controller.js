@@ -189,10 +189,13 @@ const renderPatientMe = (req, res) => {
 };
 
 const renderPatientClinician = (req, res) => {
+  let support_message = await patientModel.find(patient_id).lean();
   res.render('patient_clinician', {
+    support_message: support_message ,
     layout: 'patient_template',
   });
 };
+
 
 const renderPatientData = (req, res) => {
   res.render('patient_data', {
