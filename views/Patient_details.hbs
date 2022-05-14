@@ -271,11 +271,16 @@
           ></path>
         </svg>
       </btn>
-      <textarea
-        name='support massage'
-        placeholder='Type your message...'
-      ></textarea>
-      <btn class='btn btn-send'>Send</btn>
+
+      <form action="/clinician/patientname" class="login-form" method="POST">
+        <label for="support_message">
+          <textarea
+          name='support_message'
+          placeholder='Type your message...'
+          ></textarea>
+        </label>
+        <button type="submit" class='btn btn-send'>Send</button>
+      </form> 
     </div>
   </main>
 

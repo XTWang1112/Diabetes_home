@@ -33,12 +33,21 @@ const renderPatientDetails = async (req, res) => {
       patient: patient,
     });
 
+
   } catch (err) {
     console.log(err);
   }
 };
 
+ const saveSupportMessage = async(req, res) => {
+  let message = req.body.support_message
+  let patient_id = '6267d6bb8b206aade8b24198';
+  let patient = await patientModel.findById(patient_id).lean();
+  console.log(patient);
+ }
+
 
 module.exports = {
   renderPatientDetails,
+  saveSupportMessage,
 };
