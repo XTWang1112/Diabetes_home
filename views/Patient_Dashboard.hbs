@@ -111,9 +111,15 @@
           <ion-icon class='cross-button-icon' name='close-outline'></ion-icon>
         </button>
         <p>
-          Well done Pat! Keep going! Enjoy your wonderful life 🏃‍♂️
+          {{support_message}}
         </p>
       </div>
     </div>
+    <script>
+      console.log("!")
+      if ({{support_message}}) {
+        console.log("!")
+      } 
+    </script>
   </section>
 </main>
