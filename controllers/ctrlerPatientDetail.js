@@ -1,3 +1,4 @@
+const { handle } = require('express/lib/application');
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 
@@ -41,10 +42,9 @@ const renderPatientDetails = async (req, res) => {
 
  const saveSupportMessage = async(req, res) => {
   let message = req.body.support_message
-  let patient_id = '6267d6bb8b206aade8b24198';
-  let patient = await patientModel.findById(patient_id).lean();
-  console.log(patient);
+  patientModel.updateOne({patientID: 1}, {support_message: message}).then(result => console.log("Try to change support message"));
  }
+ 
 
 
 module.exports = {
