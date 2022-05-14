@@ -13,6 +13,12 @@ const renderPatientDetails = async (req, res) => {
     let patient_id = '6267d6bb8b206aade8b24198';
 
     let patient = await patientModel.findById(patient_id).lean();
+
+    // 测试使用getDataById方式获取每个patient数据
+    // const data = await patientModel.find((data) => data.patient_id === req.params.id)
+
+    // if
+
     /*
     let query = {
       patient_id: patient_id,
