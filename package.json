@@ -1,6 +1,9 @@
 {
   "name": "diabetes_home",
   "version": "1.0.0",
+  "engines": {
+    "node": ">= 10.0.0"
+  },
   "description": "assignment",
   "main": "script.js",
   "scripts": {

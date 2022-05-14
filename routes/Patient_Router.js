@@ -5,6 +5,9 @@ const Router = express.Router();
 
 const Controller = require('../controllers/Controller');
 const ctrlerPatientBloodRecord = require('../controllers/ctrlerPatientBloodRecord');
+const ctrlerPatientExercise = require('../controllers/ctrlerPatientExercise');
+const ctrlerPatientWeight = require('../controllers/ctrPatientWeight');
+const ctrlerPatientInsulin = require('../controllers/ctrPatientInsulin');
 
 // add a route to handle the get request for all patients' data
 Router.get('/', Controller.renderPatientDashboard);
@@ -15,11 +18,11 @@ Router.get('/about-website', Controller.renderLoginAboutWebsite);
 
 Router.get('/about-diabetes', Controller.renderLoginAboutDiabetes);
 
-Router.get('/weight', Controller.renderPatientWeight);
+Router.get('/weight', ctrlerPatientWeight.renderPatientWeight);
 
-Router.get('/insulin', Controller.renderPatientInsulin);
+Router.get('/insulin', ctrlerPatientInsulin.renderPatientInsulin);
 
-Router.get('/exercise', Controller.renderPatientExercise);
+Router.get('/exercise', ctrlerPatientExercise.renderPatientExercise);
 
 Router.get('/ranking', Controller.renderPatientRanking);
 
