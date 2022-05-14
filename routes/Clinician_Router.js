@@ -17,6 +17,7 @@ Router.get('/add-patient', ctrlerAddPatient.renderAddPatient);
 Router.post('/add-patient', ctrlerAddPatient.registerPatient);
 Router.get('/all-comments', ctrlerAllComments.renderAllComments);
 Router.get('/patientname', ctrlerPatientDetail.renderPatientDetails);
+Router.post('/patientname', ctrlerPatientDetail.saveSupportMessage);
 Router.get('/patientname/all-notes', ctrlerAllNotes.renderAllNotes);
 
 // export the router

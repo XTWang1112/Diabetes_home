@@ -41,8 +41,8 @@ const registerPatient = async(req, res) => {
         city:  req.body.city,
         password: generatePassword(),
     })
-    console.log(newPatient)   
-    await newPatient.save()
+    console.log(newPatient);   
+    newPatient.save();
         
 
         

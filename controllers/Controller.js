@@ -111,7 +111,7 @@ const renderPatientDashboard = async (req, res) => {
   // find the patient using its id
   let patient = await patientModel.findById(patient_id).lean();
   // console.log(patient.patientName);
-
+  
   const today = new Date(new Date().toDateString()).getTime();
   const tomorrow = today + 24 * 3600 * 1000;
   // Select the curent day's data
@@ -120,7 +120,7 @@ const renderPatientDashboard = async (req, res) => {
     time: { $gte: today },
     time: { $lte: tomorrow },
   };
-  console.log(query);
+  // console.log(query);
   // 倒着sort id，找到最新的数据
   let bloodGlucose_result = await recordModel.findOne(query).sort({
     _id: -1,
@@ -132,7 +132,7 @@ const renderPatientDashboard = async (req, res) => {
   // Declare a comments array
   comments = [];
   if (bloodGlucose_result) {
-    console.log(bloodGlucose_result);
+    // console.log(bloodGlucose_result);
     patient.today_blood_glucose_level = bloodGlucose_result.value;
     patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
     patient.blood_glucose_level_lower_bound =
@@ -145,10 +145,11 @@ const renderPatientDashboard = async (req, res) => {
     patient.today_blood_glucose_level = 'no data today';
   }
 
-  console.log(comments);
+  support_message = patient.support_message;
+  // console.log(comments);
   res.render('Patient_Dashboard', {
     patient,
-    comments,
+    support_message: support_message,
     layout: 'patient_template',
   });
 };
@@ -187,11 +188,17 @@ const renderPatientMe = (req, res) => {
   });
 };
 
-const renderPatientClinician = (req, res) => {
+const renderPatientClinician = async(req, res) => {
+  let patient_id = '6267d6bb8b206aade8b24198';
+  // find the patient using its id
+  let patient = await patientModel.findById(patient_id);
+  support_message = patient.support_message;
   res.render('patient_clinician', {
+    support_message,
     layout: 'patient_template',
   });
 };
+
 
 const renderPatientData = (req, res) => {
   res.render('patient_data', {

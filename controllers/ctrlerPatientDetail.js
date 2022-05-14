@@ -1,3 +1,4 @@
+const { handle } = require('express/lib/application');
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 
@@ -33,12 +34,20 @@ const renderPatientDetails = async (req, res) => {
       patient: patient,
     });
 
+
   } catch (err) {
     console.log(err);
   }
 };
 
+ const saveSupportMessage = async(req, res) => {
+  let message = req.body.support_message
+  patientModel.updateOne({patientID: 1}, {support_message: message}).then(result => console.log("Try to change support message"));
+ }
+ 
+
 
 module.exports = {
   renderPatientDetails,
+  saveSupportMessage,
 };
