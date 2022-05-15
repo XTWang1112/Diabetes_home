@@ -226,11 +226,21 @@ const postPatientLogin = (req, res) => {
   }
 };
 
-const renderPatientMe = (req, res) => {
+const renderPatientMe = async (req, res) => {
   try {
+    const patient = await patientModel
+      .findById('6267d6bb8b206aade8b24198')
+      .lean();
     res.render('patient_me', {
+      patient,
       layout: 'patient_template',
     });
+    // res.status(200).json({
+    //   status: 'success',
+    //   data: {
+    //     patient,
+    //   },
+    // });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
