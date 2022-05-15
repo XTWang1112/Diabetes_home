@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // Declare a Mongoose Schema
 const recordSchema = new mongoose.Schema({
   time: String,
-  patientID: Number,
+  patientID: { type: mongoose.Schema.Types.ObjectId, ref: 'patients' },
 
   blood_glucose_level: Number,
   blood_glucose_level_comment: String,
