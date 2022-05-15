@@ -7,11 +7,18 @@ const express = require('express');
 // Set app as our server
 const app = express();
 
-/* const passport = require('passport')
+const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 
-app.use(flash()) */
+require('./config/passport')(passport);
+app.use(flash())
+app.use(seesion({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {maxAge: 300000}
+}))
 
 // configure Handlebars
 app.engine(
