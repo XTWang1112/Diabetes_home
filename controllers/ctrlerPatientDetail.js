@@ -46,9 +46,11 @@ const renderPatientDetails = async (req, res) => {
 };
 
 const saveSupportMessage = async (req, res) => {
+  console.log("saveSupportMessage running")
+  let patient_id = '6267d6bb8b206aade8b24198';
   let message = req.body.support_message;
   patientModel
-    .updateOne({ patientID: 1 }, { support_message: message })
+    .updateOne({ _id: patient_id }, { support_message: message })
     .then((result) => console.log('Try to change support message'));
 };
 
