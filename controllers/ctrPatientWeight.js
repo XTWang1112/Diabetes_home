@@ -9,14 +9,14 @@ const renderPatientWeight = async (req, res) => {
   const today = current_day + '-' + current_month + '-' + current_year;
 
   const find_id = '6267d6bb8b206aade8b24198';
-  const patient_id = 1;
+  // const patient_id = 1;
   const search_day = '13-5-2022';
 
   const onePatientRecord = await patientModel.findById(find_id).lean();
 
   const onePatientWeight = await recordModel
     .find({
-      patient_id,
+      find_id,
       time: {
         $gte: new Date(search_day).getTime(),
         $lte: new Date(search_day).getTime() + 24 * 3600 * 1000,
@@ -47,8 +47,8 @@ const renderPatientWeight = async (req, res) => {
     const patinet_weight = req.query.patinet_weight;
 
     if (weight_comment && patinet_weight) {
-      const patientweight = {
-        patient_id,
+      const patientWeight = {
+        find_id,
         weight: patinet_weight,
         weight_comment: weight_comment,
         time: today,
@@ -64,7 +64,7 @@ const renderPatientWeight = async (req, res) => {
       // 如果今天的血糖值为空(!blood_glu_level 要为true)，同时他被要求录入血糖值的数据(bloodGlu_record要为true)，则更新今天的血糖值
       else if (!onePatientWeight.weight && onePatientRecord.weight_record) {
         await recordModel.updateOne({
-          patient_id,
+          find_id,
           time: today,
           weight: patinet_weight,
           weight_comment: weight_comment,

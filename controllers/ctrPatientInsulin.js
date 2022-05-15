@@ -9,14 +9,14 @@ const renderPatientInsulin = async (req, res) => {
   const today = current_day + '-' + current_month + '-' + current_year;
 
   const find_id = '6267d6bb8b206aade8b24198';
-  const patient_id = 1;
+  // const patient_id = 1;
   const search_day = '13-5-2022';
 
   const onePatientRecord = await patientModel.findById(find_id).lean();
 
   const onePatientInsulin = await recordModel
     .find({
-      patient_id,
+      find_id,
       time: {
         $gte: new Date(search_day).getTime(),
         $lte: new Date(search_day).getTime() + 24 * 3600 * 1000,
@@ -48,7 +48,7 @@ const renderPatientInsulin = async (req, res) => {
 
     if (insulin_comment && patinet_insulin) {
       const patientInsulin = {
-        patient_id,
+        find_id,
         insulinTaken: patinet_insulin,
         insulinTaken_comment: insulin_comment,
         time: today,
@@ -67,7 +67,7 @@ const renderPatientInsulin = async (req, res) => {
         onePatientRecord.insulinTaken_record
       ) {
         await recordModel.updateOne({
-          patient_id,
+          find_id,
           time: today,
           insulinTaken: patinet_insulin,
           insulinTaken_comment: insulin_comment,
