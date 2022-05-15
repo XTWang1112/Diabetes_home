@@ -13,6 +13,8 @@ const renderPatientBloodRecord = async (req, res) => {
     var current_month = new Date().getMonth() + 1;
     var current_day = new Date().getDate();
     var today = current_day + '-' + current_month + '-' + current_year;
+    var tomorrow = current_day + 1 + '-' + current_month + '-' + current_year;
+
 
     // const data = patientData;
 
@@ -39,16 +41,50 @@ const renderPatientBloodRecord = async (req, res) => {
 
     // 挑选出这个人的今天录入的所有数据
 
-    let onePatientBloodRecord = await recordModel
-        .find({
-            find_id,
-            time: {
-                $gte: new Date(search_day).getTime(),
-            },
-            time: {
-                $lte: new Date(search_day).getTime() + 24 * 3600 * 1000,
-            },
-        }).lean();
+    // let onePatientBloodRecord = await recordModel
+    //     .find({
+    //         find_id,
+    //         time: {
+    //             $gte: new Date(search_day).getTime(),
+    //         },
+    //         time: {
+    //             $lte: new Date(search_day).getTime() + 24 * 3600 * 1000,
+    //         },
+    //     }).lean();
+
+    // 定义变量时间戳。保存今天的ISODate
+    let today_time = new Date().toISOString();
+    console.log(today_time);
+    console.log("今天"+today);
+    console.log("明天"+tomorrow);
+
+    // var gtTime = '2022-05-15T00:00:00.000Z';
+    // var ltTime = '2022-05-15T23:59:59.999Z';
+
+    let onePatientBloodRecord = await recordModel.find({
+        find_id,
+        time: {
+            $gte: new Date(`${today}T00:00:00.000Z`),
+        },
+        time: {
+            // 小于今天的时间
+            $lte: new Date(`${today}T23:59:59.999Z`),
+        },
+    }).lean();
+
+    // 输出ISODate 2022-05-14T16:00:00.000Z
+    var test = new Date(`${current_year}-${current_month}-${current_day}`);
+    console.log("ISOTime: " + test);
+    // var test2 = new Date(`${today}T00:00:00.000Z`).toDateString();
+    // console.log("ISOTime再次测试: " + test2);
+    var test3 = new Date(tomorrow).getTime();
+    console.log("ISOTime转换成时间戳: " + typeof(test3));
+
+
+
+
+    // console.log(new Date(onePatientBloodRecord.time));
+
     // let todayBloodRecord = await bloodGlucoseModel.find({
     //     patient_id,
     //     time: {
@@ -84,7 +120,7 @@ const renderPatientBloodRecord = async (req, res) => {
                 find_id,
                 blood_glucose_level: patinet_blood_glucose,
                 blood_glucose_level_comment: glucose_comment,
-                time: today,
+                time: today_time,
                 complete: false,
             };
 
@@ -96,7 +132,7 @@ const renderPatientBloodRecord = async (req, res) => {
 
             
             // onePatientBloodRecord存在的时候为True，不存在的时候不为false
-            if (!onePatientBloodRecord) {
+            if (!onePatientBloodRecord.blood_glucose_level) {
                 console.log("还在create");
                 await recordModel.create({
                     ...patientBloodRecord,
