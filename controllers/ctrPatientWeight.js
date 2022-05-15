@@ -45,7 +45,6 @@ const renderPatientWeight = async (req, res) => {
         weight: patinet_weight,
         weight_comment: weight_comment,
         time: today,
-        complete: false,
       };
 
       if (onePatientWeight.length === 0) {

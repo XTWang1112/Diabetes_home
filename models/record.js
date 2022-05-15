@@ -16,8 +16,6 @@ const recordSchema = new mongoose.Schema({
 
   insulinTaken: Number,
   insulinTaken_comment: String,
-
-  complete: Boolean,
 });
 
 // Compile the schema into a model
