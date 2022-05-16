@@ -30,9 +30,9 @@
     </ul>
   </nav>
 
-  <section class="clinician_box">
+  <section class="data_box">
     <div class="index_router">
-      <div class="router_header">History</div>
+      <div class="router_header">History graph</div>
       <select>
         <option value="1">Blood glucose level</option>
         <option value="1">Exercise</option>
@@ -44,33 +44,49 @@
       <embed class="insert_chart" src="/img/svg/chart_blood.svg" />
     </div>
     <div class="data_table">
-      <div class="table_name">in nmol/L (empty stomach)</div>
+      <div class="table_name">History data Table</div>
       <div class="table_div">
         <table>
-          {{! <tr>
-          <th>Data</th>
-          <th>Date</th>
-        </tr> }}
           <tr>
-            <td class="data_td">8</td>
-            <td class="date_td">1 Mar 2022</td>
-          </tr>
-          <tr>
-            <td class="data_td">8</td>
-            <td class="date_td">1 Mar 2022</td>
-          </tr>
-          <tr>
-            <td class="data_td">8</td>
-            <td class="date_td">1 Mar 2022</td>
-          </tr>
-          <tr>
-            <td class="data_td">8</td>
-            <td class="date_td">1 Mar 2022</td>
-          </tr>
-          <tr>
-            <td class="data_td">8</td>
-            <td class="date_td">1 Mar 2022</td>
-          </tr>
+            <th>Date</th>
+            <th>Blood Glucose</th>
+            <th>Exercise</th>
+            <th>Weight</th>
+            <th>Insulin Taken</th>
+          </tr> 
+          {{#each record}}
+            <tr>
+              <td class="date_td">{{time}}</td>
+              <td class="data_td">
+                {{#if blood_glucose_level}}
+                  {{blood_glucose_level}} mmol/L
+                {{else}} 
+                  /
+                {{/if}}
+              </td>
+              <td class="data_td">
+                {{#if exercise}}
+                  {{exercise}} step(s)
+                {{else}} 
+                  /
+                {{/if}}
+              </td>
+              <td class="data_td">
+                {{#if weight}}
+                  {{weight}} kg(s)
+                {{else}} 
+                  /
+                {{/if}}
+              </td>
+              <td class="data_td">
+                {{#if insulinTaken}}
+                  {{insulinTaken}} dose(s)
+                {{else}} 
+                  /
+                {{/if}}
+              </td>
+            </tr>
+          {{/each}}
         </table>
       </div>
     </div>

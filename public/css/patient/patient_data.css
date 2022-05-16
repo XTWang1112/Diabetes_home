@@ -24,7 +24,7 @@ h2 {
 /*********************************/
 /*Clinician box*/
 /*********************************/
-.clinician_box {
+.data_box {
   margin: 3.6rem auto 0 auto;
   width: 90rem;
 }
@@ -58,7 +58,7 @@ h2 {
   padding-left: 2rem;
   background-color: #f2f1d3;
   border-radius: 20px;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .data_table table {
@@ -78,10 +78,11 @@ select {
 td {
   height: 4rem;
   border-bottom: #80828e solid 0.11rem;
+  text-align: center;
 }
 
 .date_td {
-  text-align: end;
+  text-align: center;
 }
 
 /*********************************/

@@ -291,10 +291,22 @@ const renderPatientClinician = async (req, res) => {
   });
 };
 
-const renderPatientData = (req, res) => {
+const renderPatientData = async(req, res) => {
+  let patient_id = '6267d6bb8b206aade8b24198';
+  // find the patient using its id
+  let record = await recordModel.find({patientObjectID: patient_id}).lean();
+  for (var i = 0; i < record.length; i++) {
+    date = new Date(record[i].time).toLocaleDateString();
+    record[i].time = date;
+  }
+  
+  if (record) {
+    console.log("get the record from data base, now sending them to render");
+  }
   try {
     res.render('patient_data', {
       layout: 'patient_template',
+      record,
     });
   } catch (err) {
     res.status(404).json({
