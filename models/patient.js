@@ -18,12 +18,8 @@ const patientSchema = new mongoose.Schema({
   birthday: Number,
   register_date: Number,
   support_message: String,
-<<<<<<< HEAD
   support_message_date: String,
   
-=======
-
->>>>>>> 92eeb54e564f01300e17ec8048404c8ceb55c516
   email: {
     type: String,
     lowercase: true,
