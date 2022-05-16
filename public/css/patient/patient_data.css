@@ -22,7 +22,7 @@ h2 {
 }
 
 /*********************************/
-/*Clinician box*/
+/*Data box*/
 /*********************************/
 .data_box {
   margin: 3.6rem auto 0 auto;
@@ -56,6 +56,7 @@ h2 {
   height: 40rem;
   margin-top: 2rem;
   padding-left: 2rem;
+  padding-top: 1rem;
   background-color: #f2f1d3;
   border-radius: 20px;
   overflow: scroll;
@@ -185,8 +186,13 @@ td {
 }
 
 @media (max-width: 35em) {
-  .clinician_box {
+  .data_box {
     padding: 0 2.4rem;
+  }
+
+  .index_router .router_header {
+    font-size: 2rem;
+    margin-right: 10rem;
   }
 
   .insert_chart {
@@ -199,8 +205,10 @@ td {
   }
 
   .data_table table {
+    font-size: 1rem;
     width: 36rem;
   }
+
 
   html {
     font-size: 50%;
