@@ -15,7 +15,7 @@ const patientSchema = new mongoose.Schema({
   gender: String,
   photo_url: String,
   engagementRate: Number,
-  birthday: Number,
+  birthday: String,
   register_date: Number,
   support_message: String,
   support_message_date: String,
