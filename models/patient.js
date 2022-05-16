@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 /* const validator = require('validator'); */
 
 const supportMessageSchema = new mongoose.Schema({
@@ -14,11 +14,16 @@ const patientSchema = new mongoose.Schema({
   age: Number,
   gender: String,
   photo_url: String,
-  insistDay: Number,
-  birthday: String,
+  engagementRate: Number,
+  birthday: Number,
+  register_date: Number,
   support_message: String,
+<<<<<<< HEAD
   support_message_date: String,
   
+=======
+
+>>>>>>> 92eeb54e564f01300e17ec8048404c8ceb55c516
   email: {
     type: String,
     lowercase: true,
@@ -28,12 +33,11 @@ const patientSchema = new mongoose.Schema({
   password: {
     type: String,
   },
-  
+
   phoneNumber: Number,
   city: String,
   streetAddress: String,
   postalCode: Number,
-
 
   bloodGlucose_lowerBound: Number,
   bloodGlucose_upperBound: Number,
@@ -42,7 +46,7 @@ const patientSchema = new mongoose.Schema({
 });
 
 // Compile the schema into a model
-const patientModel = mongoose.model("patients", patientSchema);
+const patientModel = mongoose.model('patients', patientSchema);
 
 // Make the model available to other files
 module.exports = patientModel;

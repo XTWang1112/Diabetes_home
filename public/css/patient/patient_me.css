@@ -160,7 +160,11 @@ h2 {
   color: #2d5215;
 }
 
-.icon-mobile-nav[name="close-outline"] {
+.icon-mobile-nav[name='close-outline'] {
+  display: none;
+}
+
+.disappear {
   display: none;
 }
 
@@ -180,7 +184,7 @@ h2 {
 
 @media (max-width: 35em) {
   .me_box {
-    transform: scale(0.9);
+    transform: scale(0.8);
     padding: 0;
   }
 
@@ -251,11 +255,11 @@ h2 {
     z-index: 999;
   }
 
-  .nav-open .icon-mobile-nav[name="close-outline"] {
+  .nav-open .icon-mobile-nav[name='close-outline'] {
     display: block;
   }
 
-  .nav-open .icon-mobile-nav[name="menu-outline"] {
+  .nav-open .icon-mobile-nav[name='menu-outline'] {
     display: none;
   }
 

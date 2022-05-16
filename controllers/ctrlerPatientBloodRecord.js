@@ -1,28 +1,17 @@
-const req = require('express/lib/request');
-const res = require('express/lib/response');
-
-const mongoose = require('mongoose');
 const patientModel = require('../models/patient');
 const recordModel = require('../models/record');
 
-const bloodGlucoseModel = mongoose.model('bloodGlucoses');
-
 // The fucntion to render patient blood record page
 const renderPatientBloodRecord = async (req, res) => {
-  var current_year = new Date().getFullYear();
-  var current_month = new Date().getMonth() + 1;
-  var current_day = new Date().getDate();
-  //   var today = current_day + '-' + current_month + '-' + current_year;
-  var tomorrow = current_day + 1 + '-' + current_month + '-' + current_year;
-
+  const current_year = new Date().getFullYear();
+  const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
+  const current_day = new Date().getDate();
   // find id 对应的 patient
-  let find_id = '6267d6bb8b206aade8b24198';
-  //   let patient_id = 1;
-  const search_day = '2022-05-15T00:00:00.000Z';
-  let today = new Date('2022-05-15').getTime();
-
-  let onePatientRecord = await patientModel.findById(find_id).lean();
-
+  const find_id = '6267d6bb8b206aade8b24198';
+  const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
+  const today = new Date().getTime();
+  const onePatientRecord = await patientModel.findById(find_id).lean();
+  console.log(current_month);
   const onePatientBloodRecord = await recordModel
     .find(
       {
@@ -36,12 +25,11 @@ const renderPatientBloodRecord = async (req, res) => {
         if (err) {
           console.log(err);
         }
+        console.log('hi');
         return result;
       }
     )
     .clone();
-
-  console.log('aaaaaa' + onePatientBloodRecord);
 
   if (onePatientRecord) {
     // 渲染血糖上传页面
@@ -49,11 +37,11 @@ const renderPatientBloodRecord = async (req, res) => {
       onePatient: onePatientRecord,
       layout: 'patient_record_template',
     });
-    var glucose_comment = req.query.glucose_comment || 'no comments';
-    var patinet_blood_glucose = req.query.patinet_blood_glucose;
+    const glucose_comment = req.query.glucose_comment || 'no comments';
+    const patinet_blood_glucose = req.query.patinet_blood_glucose;
 
     if (glucose_comment && patinet_blood_glucose) {
-      let patientBloodRecord = {
+      const patientBloodRecord = {
         find_id,
         blood_glucose_level: patinet_blood_glucose,
         blood_glucose_level_comment: glucose_comment,
@@ -61,7 +49,6 @@ const renderPatientBloodRecord = async (req, res) => {
         complete: false,
       };
       if (onePatientBloodRecord.length === 0) {
-        console.log('还在create:');
         await recordModel.create({
           ...patientBloodRecord,
         });
