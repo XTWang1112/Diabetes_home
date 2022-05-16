@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 /* const validator = require('validator'); */
 
+const supportMessageSchema = new mongoose.Schema({
+  support_message: String,
+  date: String,
+})
+
 // Declare a Mongoose Schema
 const patientSchema = new mongoose.Schema({
   firstName: String,
@@ -13,7 +18,8 @@ const patientSchema = new mongoose.Schema({
   birthday: Number,
   register_date: Number,
   support_message: String,
-
+  support_message_date: String,
+  
   email: {
     type: String,
     lowercase: true,
