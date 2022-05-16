@@ -65,7 +65,7 @@ h2 {
   width: 70rem;
   color: #5667c8;
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 500;
   padding: 1rem 3rem;
   border-collapse: collapse;
 }
@@ -73,6 +73,10 @@ h2 {
 select {
   border-radius: 1.2rem;
   transform: scale(1.1);
+}
+
+th {
+  font-weight: 800;
 }
 
 td {
