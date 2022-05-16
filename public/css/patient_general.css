@@ -34,6 +34,18 @@ Medium:
 
 */
 
+/*********************************/
+/* root setting*/
+/*********************************/
+:root {
+  --light_color: #7dbc57;
+  --dark_color: #2d5215;
+}
+
+
+/*********************************/
+/* general setting*/
+/*********************************/
 * {
   padding: 0;
   margin: 0;
@@ -61,7 +73,7 @@ body {
   grid-template-columns: 1fr 5fr;
   height: 11.4rem;
   padding: 0 4.8rem;
-  background-color: #7dbc57;
+  background-color: var(--light_color);
   position: relative;
 }
 
@@ -134,7 +146,7 @@ body {
 footer {
   height: 19.6rem;
   display: flex;
-  background-color: #7dbc57;
+  background-color: var(--light_color);
 }
 
 .col--1 {
