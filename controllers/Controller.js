@@ -244,8 +244,10 @@ const renderPatientClinician = async (req, res) => {
   // find the patient using its id
   let patient = await patientModel.findById(patient_id);
   support_message = patient.support_message;
+  message_date = patient.support_message_date;
   res.render('patient_clinician', {
     support_message,
+    message_date,
     layout: 'patient_template',
   });
 };
