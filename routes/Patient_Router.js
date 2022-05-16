@@ -9,6 +9,7 @@ const ctrlerPatientExercise = require('../controllers/ctrlerPatientExercise');
 const ctrlerPatientWeight = require('../controllers/ctrPatientWeight');
 const ctrlerPatientInsulin = require('../controllers/ctrPatientInsulin');
 const ctrlerPatientMe = require('../controllers/ctrPatientMe');
+const ctrlerPatientRanking = require('../controllers/ctrPatientRanking');
 
 // add a route to handle the get request for all patients' data
 Router.get('/', Controller.renderPatientDashboard);
@@ -25,7 +26,7 @@ Router.get('/insulin', ctrlerPatientInsulin.renderPatientInsulin);
 
 Router.get('/exercise', ctrlerPatientExercise.renderPatientExercise);
 
-Router.get('/ranking', Controller.renderPatientRanking);
+Router.get('/ranking', ctrlerPatientRanking.renderPatientRanking);
 
 Router.get('/me', ctrlerPatientMe.renderPatientMe);
 
