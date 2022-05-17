@@ -59,44 +59,48 @@
       </div>
 
       <form action="/clinician/{{this._id}}" class='time-series-card' method="POST">
+        {{!-- Blood glucose level --}}
         <div class='check'>
-          <input type='checkbox' name='blood-glucose-level' />
+          <input type='checkbox' name='bloodGlucose_record' />
           <label for='blood-glucose-level'><strong>Blood glucose level</strong></label>
           <div class='bounds'>
             <label for='blood-glucose-lb'>Min</label>
-            <input name='blood-glucose-lb' type='number' />
+            <input name='bloodGlucose_lb' type='number' step="0.1"/>
             <label for='blood-glucose-ub'>Max</label>
-            <input name='blood-glucose-ub' type='number' />
+            <input name='bloodGlucose_ub' type='number' step="0.1"/>
           </div>
         </div>
+        {{!-- insulinTaken --}}
         <div class='check'>
-          <input type='checkbox' name='insulin-taken' />
+          <input type='checkbox' name='insulinTaken_record' />
           <label for='insulin-taken'><strong>Insulin taken</strong></label>
           <div class='bounds'>
             <label for='insulin-taken-lb'>Min</label>
-            <input name='insulin-taken-lb' type='number' />
+            <input name='insulinTaken_lb' type='number' step="0.1"/>
             <label for='insulin-takene-ub'>Max</label>
-            <input name='insulin-taken-ub' type='number' />
+            <input name='insulinTaken_ub' type='number' step="0.1"/>
           </div>
         </div>
+        {{!-- weight --}}
         <div class='check'>
-          <input type='checkbox' name='weight' />
+          <input type='checkbox' name='weight_record' />
           <label for='weight'><strong>Weight</strong></label>
           <div class='bounds'>
             <label for='weight-lb'>Min</label>
-            <input name='weight_lb' type='number' />
+            <input name='weight_lb' type='number' step="0.1"/>
             <label for='weight-ub'>Max</label>
-            <input name='weight-ub' type='number' />
+            <input name='weight_ub' type='number' step="0.1"/>
           </div>
         </div>
+        {{!-- exercise --}}
         <div class='check'>
-          <input type='checkbox' name='exercise' />
+          <input type='checkbox' name='exercise_record' />
           <label for='exercise'><strong>Exercise</strong></label>
           <div class='bounds'>
             <label for='exercise-lb'>Min</label>
-            <input name='exercise-lb' type='number' />
+            <input name='exercise_lb' type='number' step="0.1"/>
             <label for='exercise-ub'>Max</label>
-            <input name='exercise-ub' type='number' />
+            <input name='exercise_ub' type='number'step="0.1" />
           </div>
         </div>
         <button type="submit" , class='btn btn-change'>Change</button>
@@ -199,8 +203,8 @@
           <path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12'></path>
         </svg>
       </btn>
-
-      <form action="/clinician/patientname" class="login-form" method="POST">
+{{!-- <form action="/clinician/{{this._id}}/message" class="login-form" method="POST"></form> --}}
+      <form action="/clinician/" class="login-form" method="POST">
         <label for="support_message">
           <textarea name='support_message' placeholder='Type your message...'></textarea>
         </label>

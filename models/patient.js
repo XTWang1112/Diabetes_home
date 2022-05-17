@@ -39,6 +39,11 @@ const patientSchema = new mongoose.Schema({
   bloodGlucose_upperBound: Number,
   weight_lowerBound: Number,
   weight_upperBound: Number,
+
+  bloodGlucose_record: Boolean,
+  weight_record: Boolean,
+  insulinTaken_record: Boolean,
+  exercise_record: Boolean,
 });
 
 // Compile the schema into a model
