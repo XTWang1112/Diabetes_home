@@ -32,14 +32,9 @@ const setTimeSeries = async (req, res) => {
 
     // patientModel.updateOne({ weight_lowerBound: req.body.weight_lb })
 
-    // newPateint = new patientModel({
-    //   weight_lowerBound: req.body.weight_lb
-    // });
-    // await newPatient.save();
-    // console.log("体重的lb是：" + newPateint)
-    console.log("病人： " + patient);
-    var test_id = "628366b430c62f1b691951e0";
-    console.log("病人id： " + test_id);
+    // console.log("病人： " + patient);
+    // var test_id = "628366b430c62f1b691951e0";
+    // console.log("病人id： " + test_id);
 
     var bloodGlucose_update = req.body.bloodGlucose_record;
     // bloodGlucose的判定
@@ -73,7 +68,7 @@ const setTimeSeries = async (req, res) => {
       exercise_update = true;
     }
 
-    console.log("personal id" + req.params.id);
+    console.log("personalid :" + req.params.id);
 
     console.log("血糖测试" + bloodGlucose_update);
     console.log("血糖lb测试" + req.body.bloodGlucose_lb);
@@ -86,8 +81,12 @@ const setTimeSeries = async (req, res) => {
 
     console.log("第一次update完毕");
 
-    await patientModel.updateOne({
-      _id: req.params.id,
+    const matchID = req.params.id;
+
+    await patientModel.updateOne(
+      { _id: matchID },
+      {
+      // _id: req.params.id,
       // bloodGlucose
       bloodGlucose_record: bloodGlucose_update,
       bloodGlucose_lowerBound: req.body.bloodGlucose_lb,
@@ -106,7 +105,7 @@ const setTimeSeries = async (req, res) => {
       // exercise
       exercise_record: exercise_update,
       exercise_lowerBound: req.body.exercise_lb,
-      exercise_upperBound: req.body.exercise_ub
+      exercise_upperBound: req.body.exercise_ub,
     });
     console.log("更新完毕");
     // 以下为测试输出，可删
@@ -117,6 +116,7 @@ const setTimeSeries = async (req, res) => {
     // console.log("测试lb" + weight_lb);
     // console.log("测试ub" + weight_ub);
   } catch (err) {
+    console.log("出错了：" + err);
     res.status(404).json({
       status: 'fail',
       message: err,
