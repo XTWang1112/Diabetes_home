@@ -58,16 +58,10 @@
         <p><strong>Registered Date</strong><br />{{this.register_date}}</p>
       </div>
 
-<<<<<<< HEAD
-      <form class='time-series-card'>
-        <div class='check'>
-          <input type='checkbox' name='blood-glucose-level' />
-=======
       <form action="/clinician/{{this._id}}" class='time-series-card' method="POST">
         {{!-- Blood glucose level --}}
         <div class='check'>
           <input type='checkbox' name='bloodGlucose_record' />
->>>>>>> 82e20e6e7729fc1638a0f7ab769fb6cf3e22643b
           <label for='blood-glucose-level'><strong>Blood glucose level</strong></label>
           <div class='bounds'>
             <label for='blood-glucose-lb'>Min</label>

@@ -10,6 +10,7 @@ const ctrlerPatientWeight = require('../controllers/ctrPatientWeight');
 const ctrlerPatientInsulin = require('../controllers/ctrPatientInsulin');
 const ctrlerPatientMe = require('../controllers/ctrPatientMe');
 const ctrlerPatientRanking = require('../controllers/ctrPatientRanking');
+const ctrChangePassword = require('../controllers/ctrChangePassword');
 
 // add a route to handle the get request for all patients' data
 Router.get('/', Controller.renderPatientDashboard);
@@ -34,6 +35,7 @@ Router.get('/clinician', Controller.renderPatientClinician);
 
 Router.get('/data', Controller.renderPatientData);
 Router.get('/blood_glucose', ctrlerPatientBloodRecord.renderPatientBloodRecord);
+Router.get('/change-password', ctrChangePassword.renderChangePassword);
 
 // export the router
 module.exports = Router;
