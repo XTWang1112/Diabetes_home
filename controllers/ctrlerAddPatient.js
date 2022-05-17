@@ -1,6 +1,8 @@
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 const patientModel = require('../models/patient');
+const bcrypt = require("bcrypt");
+const SALT_FACTOR = 10;
 
 function generatePassword() {
   var chars =
@@ -36,20 +38,28 @@ const registerPatient = async (req, res) => {
     var newPassword = generatePassword();
     console.log(newPassword);
 
+    
     newPatient = new patientModel({
-      firstName: req.body.first_name,
-      lastName: req.body.last_name,
-      email: req.body.email,
-      phoneNumber: req.body.phone_number,
-      streetAddress: req.body.street,
-      birthday: req.body.year_birth,
-      // age: new Date(req.body.year_birth).getFullYear() - new Date().getFullYear();
-      postalCode: req.body.postal,
-      city: req.body.city,
-      password: generatePassword(),
+        firstName: req.body.first_name,
+        lastName: req.body.last_name,
+        email: req.body.email,
+        phoneNumber: req.body.phone_number,
+        streetAddress: req.body.street,
+        birthday: req.body.year_birth,
+        // age: new Date(req.body.year_birth).getFullYear() - new Date().getFullYear();
+        postalCode: req.body.postal,
+        city: req.body.city,
+        password: generatePassword(),
     });
     console.log(newPatient);
-    await newPatient.save();
+    console.log(newPatient.password);
+
+    bcrypt.hash(newPatient.password, SALT_FACTOR, function(err, hash) {
+        newPatient.password = hash
+        newPatient.save();
+    })
+    
+ 
   } catch (err) {
     res.status(400).json({
       status: 'fail',

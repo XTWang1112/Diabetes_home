@@ -215,9 +215,20 @@ const renderPatientRanking = (req, res) => {
 };
 
 const postPatientLogin = (req, res) => {
+  const input_email = req.body.email;
+  const input_password = req.body.password;
+  console.log(input_email);
+  console.log(input_password)
   try {
-    console.log(req.body);
-    console.log(req.body.input_email);
+    patientModel.findOne({email: input_email}, function(err, foundUser){
+      if(foundUser){
+        bcrypt.compare(input_password, foundUser.password, function(err, result){
+          if(result === true){
+            console.log("登陆成功")
+          }
+        })
+      }
+    })
   } catch (err) {
     res.status(404).json({
       status: 'fail',
