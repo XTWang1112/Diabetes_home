@@ -9,20 +9,22 @@ const renderClinicianDashboard = async (req, res) => {
   try {
     // find patientModel里面全部病人的数据
     const patients = await patientModel
-      .find({}, {
-        patientName: true,
-        patientID: true,
+      .find(
+        {},
+        {
+          patientName: true,
+          patientID: true,
 
-        gender: true,
-        photo_url: true,
-        insistDay: true,
-        birthday: true,
+          gender: true,
+          photo_url: true,
+          insistDay: true,
+          birthday: true,
 
-        bloodGlucose_lowerBound: true,
-        bloodGlucose_upperBound: true,
-      })
+          bloodGlucose_lowerBound: true,
+          bloodGlucose_upperBound: true,
+        }
+      )
       .lean();
-
 
     // Get Current date
     // const today = new Date(new Date().toDateString()).getTime();
@@ -36,8 +38,6 @@ const renderClinicianDashboard = async (req, res) => {
     // const today_date = thisDay + '-' + thisMonth + '-' + thisYear;
     // 输出用patient.birthday
     // manipulate input birthday and calculate age
-
-
 
     // Get each patient's latest blood glucose and weight  value
     for (patient of patients) {
@@ -53,7 +53,7 @@ const renderClinicianDashboard = async (req, res) => {
       // let bloodGlucose_result = await recordModel.findOne(query).sort({
       //   _id: -1,
       // });
-      try{
+      try {
         birth = Date.parse(patient.birthday);
         if (birth) {
           var year = 1000 * 60 * 60 * 24 * 365;
@@ -61,18 +61,15 @@ const renderClinicianDashboard = async (req, res) => {
           var birthday = new Date(birth);
           patient.birthday = parseInt((currTime - birthday) / year);
         }
-      }catch(err){
+      } catch (err) {
         console.log(err);
       }
-      
-
 
       // 通过Unix time 计算病人年龄，暂时不用
       // patient.birthday = Math.floor((new Date().getTime() - patient.birthday) / 1000 / 60 / 60 / 24 / 365);
 
       // patient_result在循环的时候，是不会跟着loop的patient切换到下一位
       // let patient_result = await patientModel.findOne(query);
-
 
       // 判断血糖是否超标
 
@@ -127,10 +124,10 @@ const renderPatientDashboard = async (req, res) => {
   let query = {
     patient_id: patient._id,
     time: {
-      $gte: today
+      $gte: today,
     },
     time: {
-      $lte: tomorrow
+      $lte: tomorrow,
     },
   };
   // console.log(query);
@@ -170,7 +167,7 @@ const renderPatientDashboard = async (req, res) => {
 const renderPatientWeight = (req, res) => {
   try {
     res.render('Weight_record', {
-      layout: 'patient_record_template'
+      layout: 'patient_record_template',
     });
   } catch (err) {
     res.status(404).json({
@@ -183,7 +180,7 @@ const renderPatientWeight = (req, res) => {
 const renderPatientInsulin = (req, res) => {
   try {
     res.render('Insulin_record', {
-      layout: 'patient_record_template'
+      layout: 'patient_record_template',
     });
   } catch (err) {
     res.status(404).json({
@@ -196,7 +193,7 @@ const renderPatientInsulin = (req, res) => {
 const renderPatientExercise = (req, res) => {
   try {
     res.render('Exercise_record', {
-      layout: 'patient_record_template'
+      layout: 'patient_record_template',
     });
   } catch (err) {
     res.status(404).json({
@@ -247,10 +244,12 @@ const renderPatientClinician = async (req, res) => {
 const renderPatientData = async (req, res) => {
   let patient_id = '6267d6bb8b206aade8b24198';
   // find the patient using its id
-  let record = await recordModel.find({
-    patientObjectID: patient_id
-  }).lean();
-  for (var i = 0; i < record.length; i++) {
+  let record = await recordModel
+    .find({
+      patientObjectID: patient_id,
+    })
+    .lean();
+  for (let i = 0; i < record.length; i++) {
     date = new Date(record[i].time).toLocaleDateString();
     record[i].time = date;
   }
@@ -274,7 +273,7 @@ const renderPatientData = async (req, res) => {
 const renderAboutWebsite = (req, res) => {
   try {
     res.render('About_website', {
-      layout: 'info_template'
+      layout: 'info_template',
     });
   } catch (err) {
     res.status(404).json({
@@ -287,7 +286,7 @@ const renderAboutWebsite = (req, res) => {
 const renderAboutDiabetes = (req, res) => {
   try {
     res.render('About_diabetes', {
-      layout: 'info_template'
+      layout: 'info_template',
     });
   } catch (err) {
     res.status(404).json({
@@ -300,7 +299,7 @@ const renderAboutDiabetes = (req, res) => {
 const renderLoginAboutWebsite = (req, res) => {
   try {
     res.render('About_website', {
-      layout: 'patient_template'
+      layout: 'patient_template',
     });
   } catch (err) {
     res.status(404).json({
@@ -313,7 +312,7 @@ const renderLoginAboutWebsite = (req, res) => {
 const renderLoginAboutDiabetes = (req, res) => {
   try {
     res.render('About_diabetes', {
-      layout: 'patient_template'
+      layout: 'patient_template',
     });
   } catch (err) {
     res.status(404).json({

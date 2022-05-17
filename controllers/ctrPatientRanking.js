@@ -1,5 +1,4 @@
 const patientModel = require('../models/patient');
-const recordModel = require('../models/record');
 
 const renderPatientRanking = async (req, res) => {
   try {

@@ -161,7 +161,7 @@
 /*********************************/
 .record-card {
   width: 110.2rem;
-  height: 39rem;
+  height: 45rem;
   background-color: white;
   border-radius: 1.2rem;
   position: relative;
@@ -169,7 +169,7 @@
 
 .background {
   width: 103rem;
-  height: 35rem;
+  height: 40rem;
   background-color: #e5ebef;
   border-radius: 1.8rem;
   padding: 1rem 3rem;
@@ -207,7 +207,7 @@
 
 .record-hist {
   width: 97rem;
-  height: 45rem;
+  height: 33rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -231,7 +231,7 @@
 
 .cols {
   display: grid;
-  grid-template-columns: 1fr 3.5fr 1fr;
+  grid-template-columns: 1.5fr 3fr;
 }
 
 .col1 {
@@ -293,11 +293,11 @@
   width: 3.6rem;
   height: 3.6rem;
   color: #707fcf;
-  margin-right: 1.4rem;
+  margin-right: 5rem;
 }
 
 .col1 .sep {
-  right: -15%;
+  right: -5rem;
 }
 
 .sep {
@@ -412,6 +412,10 @@
 
 .patient-message-card h2 {
   margin-top: 1.2rem;
+}
+
+.message-box::-webkit-scrollbar {
+  display: none;
 }
 
 .show-message {

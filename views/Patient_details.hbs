@@ -1,7 +1,7 @@
 <link rel='stylesheet' href='/css/patient_details.css' />
 <script defer src='../script/patient_details.js'></script>
 
-{{#with patient}}
+{{#with data.patient}}
 
 <main class='main'>
   <div class='overlay disappear'></div>
@@ -134,6 +134,7 @@
         <p>{%DATE%}</p>
       </div>
     </div>
+{{/with}}
 
     <div class='record-card'>
       <div class='background'>
@@ -142,37 +143,40 @@
           <btn class='btn btn-da'>View Data Analysis</btn>
         </div>
         <div class='record-hist'>
+        {{#each data.records}}
           <div class='hist-card'>
             <div class='cols'>
               <div class='col1'>
-                <p>{%DATE%}</p>
+                <p>{{this.time}}</p>
                 <div class='sep'></div>
               </div>
               <div class='col2'>
                 <div>
                   <p>Blood glucose level</p>
-                  <p>{%DATA%}</p>
+                  <p>{{this.exercise}}</p>
                 </div>
                 <div>
                   <p>Weight</p>
-                  <p>{%DATA%}</p>
+                  <p>{{this.weight}}</p>
                 </div>
                 <div>
                   <p>Insulin taken</p>
-                  <p>{%DATA%}</p>
+                  <p>{{this.insulinTaken}}</p>
                 </div>
                 <div>
                   <p>Exercise</p>
-                  <p>{%DATA%}</p>
+                  <p>{{this.exercise}}</p>
                 </div>
                 <div class='sep'></div>
               </div>
-              <div class='col3'>
+              {{!-- <div class='col3'>
                 <div>
                   <p>Clinician</p>
+                  {{#with data.patient}}
                   <p>{{this.clinician}}</p>
+                  {{/with}}
                 </div>
-              </div>
+              </div> --}}
             </div>
             <btn class='btn btn-view-message'>
               <svg xmlns='http://www.w3.org/2000/svg' class='message' fill='none' viewBox='0 0 24 24'
@@ -183,10 +187,10 @@
               </svg>
             </btn>
           </div>
-        </div>
-      </div>
+        {{/each}}
+      </div>  
     </div>
-
+    </div>
     <div class='patient-message-card disappear'>
       <h2>Patient's Comment</h2>
       <div class='show-message'>
@@ -213,4 +217,16 @@
     </div>
 </main>
 
-{{/with}}
+<script>
+  const toDate = function(number){
+    const date = new Date(number*1);
+    return `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+  }
+
+  const records = document.querySelectorAll(".col1")
+  for(let i = 0; i < records.length; i++){
+    const inNumber = records[i].querySelector("p").textContent;
+    const inString = toDate(inNumber);
+    records[i].querySelector("p").textContent = inString;
+  }
+</script>
