@@ -23,6 +23,25 @@ const renderPatientDetails = async (req, res) => {
   }
 };
 
+const setTimeSeries = async (req, res) => {
+  try {
+    let patient = await patientModel.findById(req.params.id).lean()
+    // console.log("体重的lb是：" + req.body.weight_lb)
+    // console.log("全部数据是：" + req.body)
+
+    // patientModel.updateOne({ weight_lowerBound: req.body.weight })
+
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
+
+
+
 const saveSupportMessage = async (req, res) => {
   console.log("saveSupportMessage running")
   let patient_id = '6267d6bb8b206aade8b24198';
@@ -38,5 +57,6 @@ const saveSupportMessage = async (req, res) => {
 
 module.exports = {
   renderPatientDetails,
+  setTimeSeries,
   saveSupportMessage,
 };

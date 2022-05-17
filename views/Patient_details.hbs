@@ -58,62 +58,49 @@
         <p><strong>Registered Date</strong><br />{{this.register_date}}</p>
       </div>
 
-      <div class='time-series-card'>
-        {{!-- Blood glucose level --}}
-        <form class='bg-form'>
-          <div class='check'>
-            <input type='checkbox' name='blood-glucose-level' />
-            <label for='blood-glucose-level'><strong>Blood glucose level</strong></label>
-          </div>
+      <form action="/clinician/{{this._id}}" class='time-series-card' method="POST">
+        <div class='check'>
+          <input type='checkbox' name='blood-glucose-level' />
+          <label for='blood-glucose-level'><strong>Blood glucose level</strong></label>
           <div class='bounds'>
             <label for='blood-glucose-lb'>Min</label>
             <input name='blood-glucose-lb' type='number' />
             <label for='blood-glucose-ub'>Max</label>
             <input name='blood-glucose-ub' type='number' />
           </div>
-        </form>
-        {{!-- insulin taken --}}
-        <form class='it-form'>
-          <div class='check'>
-            <input type='checkbox' name='insulin-taken' />
-            <label for='insulin-taken'><strong>Insulin taken</strong></label>
-          </div>
+        </div>
+        <div class='check'>
+          <input type='checkbox' name='insulin-taken' />
+          <label for='insulin-taken'><strong>Insulin taken</strong></label>
           <div class='bounds'>
             <label for='insulin-taken-lb'>Min</label>
             <input name='insulin-taken-lb' type='number' />
             <label for='insulin-takene-ub'>Max</label>
             <input name='insulin-taken-ub' type='number' />
           </div>
-        </form>
-        {{!-- weight --}}
-        <form class='wt-form'>
-          <div class='check'>
-            <input type='checkbox' name='weight' />
-            <label for='weight'><strong>Weight</strong></label>
-          </div>
+        </div>
+        <div class='check'>
+          <input type='checkbox' name='weight' />
+          <label for='weight'><strong>Weight</strong></label>
           <div class='bounds'>
             <label for='weight-lb'>Min</label>
-            <input name='weight-lb' type='number' />
+            <input name='weight_lb' type='number' />
             <label for='weight-ub'>Max</label>
             <input name='weight-ub' type='number' />
           </div>
-        </form>
-        {{!-- exercise --}}
-        <form class='ex-form'>
-          <div class='check'>
-            <input type='checkbox' name='exercise' />
-            <label for='exercise'><strong>Exercise</strong></label>
-          </div>
+        </div>
+        <div class='check'>
+          <input type='checkbox' name='exercise' />
+          <label for='exercise'><strong>Exercise</strong></label>
           <div class='bounds'>
             <label for='exercise-lb'>Min</label>
             <input name='exercise-lb' type='number' />
             <label for='exercise-ub'>Max</label>
             <input name='exercise-ub' type='number' />
           </div>
-        </form>
-
-        <btn class='btn btn-change'>Change</btn>
-      </div>
+        </div>
+        <button type="submit" , class='btn btn-change'>Change</button>
+      </form>
     </div>
 
     <div class='note-card'>
@@ -207,32 +194,19 @@
     </div>
     <div class='support-message disappear'>
       <btn class='btn btn-close'>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          class='close'
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
-          stroke-width='2'
-        >
-          <path
-            stroke-linecap='round'
-            stroke-linejoin='round'
-            d='M6 18L18 6M6 6l12 12'
-          ></path>
+        <svg xmlns='http://www.w3.org/2000/svg' class='close' fill='none' viewBox='0 0 24 24' stroke='currentColor'
+          stroke-width='2'>
+          <path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12'></path>
         </svg>
       </btn>
 
       <form action="/clinician/patientname" class="login-form" method="POST">
         <label for="support_message">
-          <textarea
-          name='support_message'
-          placeholder='Type your message...'
-          ></textarea>
+          <textarea name='support_message' placeholder='Type your message...'></textarea>
         </label>
         <button type="submit" class='btn btn-send'>Send</button>
-      </form> 
+      </form>
     </div>
-  </main>
+</main>
 
 {{/with}}

@@ -19,6 +19,7 @@ Router.get('/all-comments', ctrlerAllComments.renderAllComments);
 Router.get('/:id', ctrlerPatientDetail.renderPatientDetails);
 // Router.get('/patientname', ctrlerPatientDetail.renderPatientDetails);
 Router.post('/:id', ctrlerPatientDetail.saveSupportMessage);
+Router.post('/:id', ctrlerPatientDetail.setTimeSeries);
 Router.get('/patientname/all-notes', ctrlerAllNotes.renderAllNotes);
 
 // export the router

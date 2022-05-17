@@ -54,7 +54,7 @@ const renderClinicianDashboard = async (req, res) => {
       //   _id: -1,
       // });
       try{
-        birth = Date.parse(patient.birthday.replace('/-/g', "/"));
+        birth = Date.parse(patient.birthday);
         if (birth) {
           var year = 1000 * 60 * 60 * 24 * 365;
           var currTime = new Date();
