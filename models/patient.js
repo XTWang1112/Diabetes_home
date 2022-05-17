@@ -39,6 +39,10 @@ const patientSchema = new mongoose.Schema({
   bloodGlucose_upperBound: Number,
   weight_lowerBound: Number,
   weight_upperBound: Number,
+  exercise_lowerBound: Number,
+  exercise_upperBound: Number,
+  insulinTaken_lowerBound: Number,
+  insulinTaken_upperBound: Number,
 
   bloodGlucose_record: Boolean,
   weight_record: Boolean,

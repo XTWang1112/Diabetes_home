@@ -1,3 +1,8 @@
+const { handle } = require('express/lib/application');
+const req = require('express/lib/request');
+const { redirect } = require('express/lib/response');
+const res = require('express/lib/response');
+
 const patientModel = require('../models/patient');
 const recordModel = require('../models/record');
 
@@ -109,6 +114,7 @@ const setTimeSeries = async (req, res) => {
     });
   }
 };
+
 const saveSupportMessage = async (req, res) => {
   console.log('saveSupportMessage running');
   // let patient_id = '6267d6bb8b206aade8b24198';
