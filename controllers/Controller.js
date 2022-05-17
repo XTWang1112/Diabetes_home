@@ -1,6 +1,3 @@
-const req = require('express/lib/request');
-
-const res = require('express/lib/response');
 const patientModel = require('../models/patient');
 const recordModel = require('../models/record');
 
@@ -26,33 +23,11 @@ const renderClinicianDashboard = async (req, res) => {
       )
       .lean();
 
-    // Get Current date
-    // const today = new Date(new Date().toDateString()).getTime();
-    // const tomorrow = today + 24 * 3600 * 1000;
-
-    // 获取当前日-月-年
-    // const date = new Date();
-    // const thisYear = date.getFullYear();
-    // const thisMonth = date.getMonth() + 1;
-    // const thisDay = date.getDate();
-    // const today_date = thisDay + '-' + thisMonth + '-' + thisYear;
-    // 输出用patient.birthday
-    // manipulate input birthday and calculate age
-
-    // Get each patient's latest blood glucose and weight  value
     for (patient of patients) {
-      // Select the curent day's data
-      // 如果要用js操作mongoDB参数，把要操作的对象加到query里面，否则不会进行loop循环patient
-      // 把time注释掉就能显示patient的记录
       let query = {
         patient_id: patient._id,
-        // time: { $eq: today_date },
       };
 
-      // sort blood glucose value according to date and time
-      // let bloodGlucose_result = await recordModel.findOne(query).sort({
-      //   _id: -1,
-      // });
       try {
         birth = Date.parse(patient.birthday);
         if (birth) {
@@ -113,34 +88,30 @@ const renderClinicianDashboard = async (req, res) => {
 
 // The function to get the current value of each data and render the patient dashboard
 const renderPatientDashboard = async (req, res) => {
-  let patient_id = '6267d6bb8b206aade8b24198';
+  const patient_id = req.params.id;
   // find the patient using its id
-  let patient = await patientModel.findById(patient_id).lean();
+  const patient = await patientModel.findById(patient_id).lean();
   // console.log(patient.patientName);
 
   const today = new Date(new Date().toDateString()).getTime();
   const tomorrow = today + 24 * 3600 * 1000;
   // Select the curent day's data
-  let query = {
+  const query = {
     patient_id: patient._id,
     time: {
       $gte: today,
-    },
-    time: {
       $lte: tomorrow,
     },
   };
-  // console.log(query);
   // 倒着sort id，找到最新的数据
-  let bloodGlucose_result = await recordModel.findOne(query).sort({
+  const bloodGlucose_result = await recordModel.findOne(query).sort({
     _id: -1,
   });
 
   // 定义了query的需求，赋值给patient_result
-  let patient_result = await patientModel.findOne(query);
+  const patient_result = await patientModel.findOne(query);
 
   // Declare a comments array
-  comments = [];
   if (bloodGlucose_result) {
     // console.log(bloodGlucose_result);
     patient.today_blood_glucose_level = bloodGlucose_result.value;
@@ -149,58 +120,18 @@ const renderPatientDashboard = async (req, res) => {
       patient_result.bloodGlucose_lowerBound;
     patient.blood_glucose_level_upper_bound =
       patient_result.bloodGlucose_upperBound;
-    // comments.push(bloodGlucose_result.comment)
   } else {
     patient.today_blood_glucose_level = 0;
     patient.today_blood_glucose_level = 'no data today';
   }
 
-  support_message = patient.support_message;
+  const support_message = patient.support_message;
   // console.log(comments);
   res.render('Patient_Dashboard', {
     patient,
     support_message: support_message,
     layout: 'patient_template',
   });
-};
-
-const renderPatientWeight = (req, res) => {
-  try {
-    res.render('Weight_record', {
-      layout: 'patient_record_template',
-    });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err,
-    });
-  }
-};
-
-const renderPatientInsulin = (req, res) => {
-  try {
-    res.render('Insulin_record', {
-      layout: 'patient_record_template',
-    });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err,
-    });
-  }
-};
-
-const renderPatientExercise = (req, res) => {
-  try {
-    res.render('Exercise_record', {
-      layout: 'patient_record_template',
-    });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err,
-    });
-  }
 };
 
 const renderPatientLogin = (req, res) => {
@@ -216,41 +147,31 @@ const renderPatientLogin = (req, res) => {
   }
 };
 
-const postPatientLogin = (req, res) => {
-  try {
-    console.log(req.body);
-    console.log(req.body.input_email);
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err,
-    });
-  }
-};
-
 const renderPatientClinician = async (req, res) => {
-  let patient_id = '6267d6bb8b206aade8b24198';
-  // find the patient using its id
-  let patient = await patientModel.findById(patient_id);
-  support_message = patient.support_message;
-  message_date = patient.support_message_date;
+  const patient_id = req.params.id;
+  const patient = await patientModel.findById(patient_id).lean();
+  const support_message = patient.support_message;
+  const message_date = patient.support_message_date;
   res.render('patient_clinician', {
-    support_message,
-    message_date,
+    patient,
+    support_message: support_message,
+    message_date: message_date,
     layout: 'patient_template',
   });
 };
 
 const renderPatientData = async (req, res) => {
-  let patient_id = '6267d6bb8b206aade8b24198';
+  const patient_id = req.params.id;
+  const patient = await patientModel.findById(patient_id).lean();
+
   // find the patient using its id
-  let record = await recordModel
+  const record = await recordModel
     .find({
       patientObjectID: patient_id,
     })
     .lean();
   for (let i = 0; i < record.length; i++) {
-    date = new Date(record[i].time).toLocaleDateString();
+    const date = new Date(record[i].time).toLocaleDateString();
     record[i].time = date;
   }
 
@@ -259,8 +180,9 @@ const renderPatientData = async (req, res) => {
   }
   try {
     res.render('patient_data', {
+      patient,
+      record: record,
       layout: 'patient_template',
-      record,
     });
   } catch (err) {
     res.status(404).json({
@@ -296,9 +218,12 @@ const renderAboutDiabetes = (req, res) => {
   }
 };
 
-const renderLoginAboutWebsite = (req, res) => {
+const renderLoginAboutWebsite = async (req, res) => {
   try {
+    const patient_id = req.params.id;
+    const patient = await patientModel.findById(patient_id).lean();
     res.render('About_website', {
+      patient,
       layout: 'patient_template',
     });
   } catch (err) {
@@ -309,9 +234,12 @@ const renderLoginAboutWebsite = (req, res) => {
   }
 };
 
-const renderLoginAboutDiabetes = (req, res) => {
+const renderLoginAboutDiabetes = async (req, res) => {
   try {
+    const patient_id = req.params.id;
+    const patient = await patientModel.findById(patient_id).lean();
     res.render('About_diabetes', {
+      patient,
       layout: 'patient_template',
     });
   } catch (err) {
@@ -325,11 +253,7 @@ const renderLoginAboutDiabetes = (req, res) => {
 module.exports = {
   renderClinicianDashboard,
   renderPatientDashboard,
-  renderPatientWeight,
-  renderPatientInsulin,
-  renderPatientExercise,
   renderPatientLogin,
-  postPatientLogin,
   renderPatientClinician,
   renderPatientData,
   renderAboutWebsite,

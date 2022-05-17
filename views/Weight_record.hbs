@@ -9,7 +9,7 @@
     <h2 class='record-head'>
       <embed
         class='scale'
-        src='../img/svg/weight-icon.svg'
+        src='/img/svg/weight-icon.svg'
         type='image/svg+xml'
       />
       &nbsp; weight
@@ -41,9 +41,11 @@
     </form>
 
     <ul class='record-reminder'>
-      <li>For your health, you have kept recording for
-        {{#with onePatient}}<span>{{this.insistDay}}</span>{{/with}}
-        days.</li>
+      {{#with patient}}
+        <li>For your health, you have kept recording for
+          <span>{{this.insistDay}}</span>
+          days.</li>
+      {{/with}}
       <li>Keep recording, control diabetes, and enjoy wonderful life!</li>
     </ul>
 

@@ -4,14 +4,13 @@ const mongoose = require('mongoose');
 const supportMessageSchema = new mongoose.Schema({
   support_message: String,
   date: String,
-})
+});
 
 // Declare a Mongoose Schema
 const patientSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   patientID: Number,
-  age: Number,
   gender: String,
   photo_url: String,
   engagementRate: Number,
@@ -19,7 +18,7 @@ const patientSchema = new mongoose.Schema({
   register_date: Number,
   support_message: String,
   support_message_date: String,
-  
+
   email: {
     type: String,
     lowercase: true,

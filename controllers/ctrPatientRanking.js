@@ -18,7 +18,10 @@ const renderPatientRanking = async (req, res) => {
         $limit: 3,
       },
     ]);
+    const patient_id = req.params.id;
+    const patient = await patientModel.findById(patient_id).lean();
     res.render('patient_ranking', {
+      patient: patient,
       data: {
         top5,
         top3,

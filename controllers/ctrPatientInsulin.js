@@ -5,11 +5,11 @@ const renderPatientInsulin = async (req, res) => {
   const current_year = new Date().getFullYear();
   const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
   const current_day = new Date().getDate();
-  const find_id = '6267d6bb8b206aade8b24198';
+  const find_id = req.params.id;
   const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
   const today = new Date().getTime();
 
-  const onePatientRecord = await patientModel.findById(find_id).lean();
+  const patient = await patientModel.findById(find_id).lean();
 
   const onePatientInsulin = await recordModel
     .find(
@@ -29,9 +29,9 @@ const renderPatientInsulin = async (req, res) => {
     )
     .clone();
 
-  if (onePatientRecord) {
+  if (patient) {
     res.render('Insulin_record', {
-      onePatientRecord,
+      patient,
       layout: 'patient_record_template',
     });
 
@@ -53,7 +53,7 @@ const renderPatientInsulin = async (req, res) => {
         });
       } else if (
         onePatientInsulin.length !== 0 &&
-        onePatientRecord.insulinTaken_record
+        patient.insulinTaken_record
       ) {
         await recordModel.updateOne({
           find_id,

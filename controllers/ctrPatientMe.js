@@ -3,7 +3,7 @@ const recordModel = require('../models/record');
 
 const renderPatientMe = async (req, res) => {
   try {
-    const find_id = '6267d6bb8b206aade8b24198';
+    const find_id = req.params.id;
     const patient = await patientModel.findById(find_id).lean();
     const patientReg = await patientModel.findOne(
       { find_id },
@@ -37,7 +37,7 @@ const renderPatientMe = async (req, res) => {
       engagementRate: engagementRate,
     });
     res.render('patient_me', {
-      patient,
+      patient: patient,
       layout: 'patient_template',
     });
     // res.status(200).json({
