@@ -16,8 +16,10 @@ Router.get('/', Controller.renderClinicianDashboard);
 Router.get('/add-patient', ctrlerAddPatient.renderAddPatient);
 Router.post('/add-patient', ctrlerAddPatient.registerPatient);
 Router.get('/all-comments', ctrlerAllComments.renderAllComments);
-Router.get('/patientname', ctrlerPatientDetail.renderPatientDetails);
-Router.post('/patientname', ctrlerPatientDetail.saveSupportMessage);
+Router.get('/:id', ctrlerPatientDetail.renderPatientDetails);
+// Router.get('/patientname', ctrlerPatientDetail.renderPatientDetails);
+// Router.post('/:id/message', ctrlerPatientDetail.saveSupportMessage);
+Router.post('/:id', ctrlerPatientDetail.setTimeSeries);
 Router.get('/patientname/all-notes', ctrlerAllNotes.renderAllNotes);
 
 // export the router
