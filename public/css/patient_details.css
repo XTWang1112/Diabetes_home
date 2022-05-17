@@ -123,37 +123,25 @@
   padding-right: 9.6rem;
 }
 
-.bg-form input,
-.it-form input,
-.wt-form input,
-.ex-form input {
+.time-series-card input {
   accent-color: #202b5a;
   width: 5.7rem;
   height: 2.1rem;
   font-family: inherit;
 }
 
-.bg-form label,
-.it-form label,
-.wt-form label,
-.ex-form label {
+.time-series-card label {
   font-size: 1.6rem;
   color: #495057;
 }
 
-.bg-form,
-.it-form,
-.wt-form,
-.ex-form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 2rem;
-}
-
 .check {
   display: flex;
-  align-content: center;
+  align-items: center;
+}
+
+.bounds {
+  margin-left: 2.4rem;
 }
 
 .btn-change {

@@ -58,57 +58,49 @@
         <p><strong>Registered Date</strong><br />{{this.register_date}}</p>
       </div>
 
-      <div class='time-series-card'>
-        <form class='bg-form'>
-          <div class='check'>
-            <input type='checkbox' name='blood-glucose-level' />
-            <label for='blood-glucose-level'><strong>Blood glucose level</strong></label>
-          </div>
+      <form class='time-series-card'>
+        <div class='check'>
+          <input type='checkbox' name='blood-glucose-level' />
+          <label for='blood-glucose-level'><strong>Blood glucose level</strong></label>
           <div class='bounds'>
             <label for='blood-glucose-lb'>Min</label>
             <input name='blood-glucose-lb' type='number' />
             <label for='blood-glucose-ub'>Max</label>
             <input name='blood-glucose-ub' type='number' />
           </div>
-        </form>
-        <form class='it-form'>
-          <div class='check'>
-            <input type='checkbox' name='insulin-taken' />
-            <label for='insulin-taken'><strong>Insulin taken</strong></label>
-          </div>
+        </div>
+        <div class='check'>
+          <input type='checkbox' name='insulin-taken' />
+          <label for='insulin-taken'><strong>Insulin taken</strong></label>
           <div class='bounds'>
             <label for='insulin-taken-lb'>Min</label>
             <input name='insulin-taken-lb' type='number' />
             <label for='insulin-takene-ub'>Max</label>
             <input name='insulin-taken-ub' type='number' />
           </div>
-        </form>
-        <form class='wt-form'>
-          <div class='check'>
-            <input type='checkbox' name='weight' />
-            <label for='weight'><strong>Weight</strong></label>
-          </div>
+        </div>
+        <div class='check'>
+          <input type='checkbox' name='weight' />
+          <label for='weight'><strong>Weight</strong></label>
           <div class='bounds'>
             <label for='weight-lb'>Min</label>
             <input name='weight-lb' type='number' />
             <label for='weight-ub'>Max</label>
             <input name='weight-ub' type='number' />
           </div>
-        </form>
-        <form class='ex-form'>
-          <div class='check'>
-            <input type='checkbox' name='exercise' />
-            <label for='exercise'><strong>Exercise</strong></label>
-          </div>
+        </div>
+        <div class='check'>
+          <input type='checkbox' name='exercise' />
+          <label for='exercise'><strong>Exercise</strong></label>
           <div class='bounds'>
             <label for='exercise-lb'>Min</label>
             <input name='exercise-lb' type='number' />
             <label for='exercise-ub'>Max</label>
             <input name='exercise-ub' type='number' />
           </div>
-        </form>
-        <btn class='btn btn-change'>Change</btn>
-      </div>
+        </div>
+        <btn type = "submit", class='btn btn-change'>Change</btn>
+      </form>
     </div>
 
     <div class='note-card'>
