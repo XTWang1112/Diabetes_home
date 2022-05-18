@@ -28,7 +28,7 @@
         <div class="patient-word-logo">patient</div>
       </div>
       <div class="login-box">
-        <form action="/guest/login" class="login-form" method="post">
+        <form action="/guest/login" href='/patient/{{this._id}}' class="login-form" method="post">
           <div>
             <input type="email" placeholder="Email Address" name="email" />
             <input type="password" placeholder="Password" name="password" />
@@ -43,7 +43,7 @@
             <label for="rememberThisDevice">Keep me log in on this trusted
               device</label>
           </div>
-          <button href='/patient/{{this.id}}' type="submit">Log In</button>
+          <button type="submit">Log In</button>
         </form>
 
         <embed src="../img/svg/or.svg" />

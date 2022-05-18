@@ -226,7 +226,9 @@ const postPatientLogin = (req, res) => {
         bcrypt.compare(input_password, foundUser.password, function(err, result){
           if(result === true){
             console.log("登陆成功")
-            res.redirect('/patient/{{this._id}}')
+            console.log("登陆用户的id是： " + foundUser._id)
+
+            res.redirect('/patient/' + foundUser._id)
           }else{
             console.log("登陆失败")
           }

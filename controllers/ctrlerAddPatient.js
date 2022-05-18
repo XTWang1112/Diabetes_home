@@ -55,15 +55,16 @@ const registerPatient = async (req, res, next) => {
     console.log(newPatient);
     console.log(newPatient.password);
 
-    
+    res.render('Add_patient', {account: newPatient.email, password: newPatient.password});
 
     bcrypt.hash(newPatient.password, SALT_FACTOR, function(err, hash) {
         newPatient.password = hash
         newPatient.save();
     })
 
-    /* alert("Your email: " + newPatient.email + " Your password； " + newPatient.password) */
-    res.redirect('/clinician')
+    
+    /* alert("Your email: " + newPatient.email + " Your password； " + newPatient.password)
+    res.redirect('/clinician') */
     
  
   } catch (err) {
