@@ -48,85 +48,73 @@
       <h1>Record</h1>
       <h2 class='record-date'></h2>
     </div>
-    {{#with patient}}
-      <div class='grid grid--2 record-grid'>
-        {{! display blood glucose data }}
+    <div class='grid grid--2 record-grid'>
+      <a
+        class='record-box blood-box'
+        href='/patient/{{patient._id}}/blood-glucose'
+      >
+        <embed
+          class='blood-icon'
+          src='/img/svg/blood-icon.svg'
+          type='image/svg+xml'
+        />
+        <div>
+          <p>Blood glucose level</p>
+          <p class='time-series'>{{latestRecord.blood_glucose_level}}</p>
+          <p>(in mmol/L)</p>
+        </div>
+        <div class='finish'>
+          finish
+        </div>
+      </a>
 
-        {{!-- {{#if this.bloodGlucose_record}} --}}
-        <a
-          class='record-box blood-box'
-          href='/patient/{{this._id}}/blood-glucose'
-        >
-          <embed
-            class='blood-icon'
-            src='/img/svg/blood-icon.svg'
-            type='image/svg+xml'
-          />
-          <div>
-            <p>Blood glucose level</p>
-            <p class='blood-glucos-data'>{11}</p>
-            <p>(in mmol/L)</p>
-          </div>
-          <div class='finish'>
-            finish
-          </div>
-        </a>
-        {{! display weight data }}
-        <a class='record-box weight-box' href='/patient/{{this._id}}/weight'>
-          <embed
-            class='scale'
-            src='/img/svg/weight-icon.svg'
-            type='image/svg+xml'
-          />
-          <div>
-            <p>Weight</p>
-            {{!-- <p>{{patient.today_weight}}</p> --}}
-            <p class='no-data'>no data today</p>
-            <p>(in kg)</p>
-          </div>
-          <div class='finish'>
-            finish
-          </div>
-        </a>
-        {{! display insulin taken data }}
-        <a class='record-box insulin-box' href='/patient/{{this._id}}/insulin'>
-          <embed
-            class='needle'
-            src='/img/svg/insulin-icon.svg'
-            type='image/svg+xml'
-          />
-          <div>
-            <p>Insulin taken</p>
-            {{!-- <p>{{patient.today_insulin_taken}}</p> --}}
-            <p class='no-data'>no data today</p>
-            <p>(number of doses)</p>
-          </div>
-          <div class='finish'>
-            finish
-          </div>
-        </a>
-        {{! display exercise data }}
-        <a
-          class='record-box exercise-box'
-          href='/patient/{{this._id}}/exercise'
-        >
-          <embed
-            class='step'
-            src='/img/svg/step-icon.svg'
-            type='image/svg+xml'
-          />
-          <div>
-            <p>Exercise</p>
-            {{!-- <p>{{patient.today_exercise}}</p> --}}
-            <p class='no-data'>no data today</p>
-            <p>(step count)</p>
-          </div>
-          <div class='finish'>
-            finish
-          </div>
-        </a>
-      </div>
-    {{/with}}
+      <a class='record-box weight-box' href='/patient/{{patient._id}}/weight'>
+        <embed
+          class='scale'
+          src='/img/svg/weight-icon.svg'
+          type='image/svg+xml'
+        />
+        <div>
+          <p>Weight</p>
+          <p class='time-series'>{{latestRecord.weight}}</p>
+          <p>(in kg)</p>
+        </div>
+        <div class='finish'>
+          finish
+        </div>
+      </a>
+
+      <a class='record-box insulin-box' href='/patient/{{patient._id}}/insulin'>
+        <embed
+          class='needle'
+          src='/img/svg/insulin-icon.svg'
+          type='image/svg+xml'
+        />
+        <div>
+          <p>Insulin taken</p>
+          <p class='time-series'>{{latestRecord.insulinTaken}}</p>
+          <p>(number of doses)</p>
+        </div>
+        <div class='finish'>
+          finish
+        </div>
+      </a>
+
+      <a
+        class='record-box exercise-box'
+        href='/patient/{{patient._id}}/exercise'
+      >
+        <embed class='step' src='/img/svg/step-icon.svg' type='image/svg+xml' />
+        <div>
+          <p>Exercise</p>
+          <p class='time-series'>{{latestRecord.exercise}}</p>
+          <p>(step count)</p>
+        </div>
+        <div class='finish'>
+          finish
+        </div>
+      </a>
+    </div>
   </section>
 
   <section class='comments-section'>
@@ -141,8 +129,5 @@
         </p>
       </div>
     </div>
-    <script>
-      console.log("!") if ({{support_message}}) { console.log("!") }
-    </script>
   </section>
 </main>

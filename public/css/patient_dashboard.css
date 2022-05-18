@@ -83,7 +83,7 @@ h1 {
 .record-date {
   margin: 1rem;
   font-size: 2rem;
-  color: #5667c8;
+  color: #5667c8 !important;
 }
 
 .record-grid {
@@ -135,9 +135,9 @@ h1 {
   font-size: 2.2rem;
 }
 
-.blood-glucos-data {
+.time-series {
   font-weight: 500;
-  color: #5667c8;
+  color: #5667c8 !important;
   font-size: 4.8rem;
   margin: 1.2rem 0;
 }
@@ -195,7 +195,7 @@ h1 {
   font-size: 1.5rem;
 }
 
-.diappear {
+.disappear {
   display: none;
 }
 
@@ -216,6 +216,6 @@ h1 {
   color: #2d5215;
 }
 
-.icon-mobile-nav[name="close-outline"] {
+.icon-mobile-nav[name='close-outline'] {
   display: none;
 }

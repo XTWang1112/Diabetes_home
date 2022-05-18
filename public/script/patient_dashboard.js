@@ -1,45 +1,43 @@
 //////////////////////////////////////////////
 //patient dashboard date time
-const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "April",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
+  'Jan',
+  'Feb',
+  'Mar',
+  'April',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
 ];
-var year = new Date().getFullYear();
-var month = new Date().getMonth();
-var date = new Date().getDate();
-var day = new Date().getDay();
+const year = new Date().getFullYear();
+const month = new Date().getMonth();
+const date = new Date().getDate();
+const day = new Date().getDay();
 
-const dt = document.querySelector(".record-date");
-dt.textContent = days[day] + " " + date + " " + months[month] + " " + year;
-
-const compareDateTime = function (date) {
-  if (date < new Date()) return false;
-  else return true;
-};
+const dt = document.querySelector('.record-date');
+dt.textContent = days[day] + ' ' + date + ' ' + months[month] + ' ' + year;
 
 //////////////////////////////////////////////
 //close comment
 document
-  .querySelector(".cross-button-icon")
-  .addEventListener("click", function () {
-    document.querySelector(".comments-div").classList.add("diappear");
+  .querySelector('.cross-button-icon')
+  .addEventListener('click', function () {
+    document.querySelector('.comments-div').classList.add('disappear');
   });
 
 //////////////////////////////////////////////
-//if no data
-const noData = document.querySelector(".blood-glucos-data");
-if (noData.textContent == "no data today") {
-  noData.classList.add("no-data");
-  document.querySelector(".finish").style.display = "none";
+//if finish
+
+const data = document.querySelectorAll('.time-series');
+const finish = document.querySelectorAll('.finish');
+for (let i = 0; i < 4; i++) {
+  if (isNaN(data[i].textContent)) {
+    finish[i].classList.add('disappear');
+  }
 }

@@ -5,16 +5,16 @@ const recordSchema = new mongoose.Schema({
   time: Number,
   patientObjectID: { type: mongoose.Schema.Types.ObjectId, ref: 'patients' },
 
-  blood_glucose_level: Number,
+  blood_glucose_level: { type: String, default: 'no data today' },
   blood_glucose_level_comment: String,
 
-  weight: Number,
+  weight: { type: String, default: 'no data today' },
   weight_comment: String,
 
-  exercise: Number,
+  exercise: { type: String, default: 'no data today' },
   exercise_comment: String,
 
-  insulinTaken: Number,
+  insulinTaken: { type: String, default: 'no data today' },
   insulinTaken_comment: String,
 });
 

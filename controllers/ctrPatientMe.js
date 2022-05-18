@@ -13,7 +13,7 @@ const renderPatientMe = async (req, res) => {
     const records = await recordModel
       .find(
         {
-          find_id,
+          patientObjectID: find_id,
         },
         (err, result) => {
           if (err) {

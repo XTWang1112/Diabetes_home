@@ -86,52 +86,30 @@ const renderClinicianDashboard = async (req, res) => {
   }
 };
 
-// The function to get the current value of each data and render the patient dashboard
 const renderPatientDashboard = async (req, res) => {
   const patient_id = req.params.id;
-  // find the patient using its id
   const patient = await patientModel.findById(patient_id).lean();
-  // console.log(patient.patientName);
 
-  const today = new Date(new Date().toDateString()).getTime();
-  const tomorrow = today + 24 * 3600 * 1000;
-  // Select the curent day's data
-  const query = {
-    patient_id: patient._id,
-    time: {
-      $gte: today,
-      $lte: tomorrow,
-    },
-  };
-  // 倒着sort id，找到最新的数据
-  const bloodGlucose_result = await recordModel.findOne(query).sort({
-    _id: -1,
-  });
-
-  // 定义了query的需求，赋值给patient_result
-  const patient_result = await patientModel.findOne(query);
-
-  // Declare a comments array
-  if (bloodGlucose_result) {
-    // console.log(bloodGlucose_result);
-    patient.today_blood_glucose_level = bloodGlucose_result.value;
-    patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
-    patient.blood_glucose_level_lower_bound =
-      patient_result.bloodGlucose_lowerBound;
-    patient.blood_glucose_level_upper_bound =
-      patient_result.bloodGlucose_upperBound;
-  } else {
-    patient.today_blood_glucose_level = 0;
-    patient.today_blood_glucose_level = 'no data today';
-  }
-
+  const latestRecord = await recordModel
+    .find({ patientObjectID: patient_id })
+    .sort({ time: -1 })
+    .limit(-1)
+    .lean();
   const support_message = patient.support_message;
-  // console.log(comments);
   res.render('Patient_Dashboard', {
-    patient,
+    patient: patient,
+    latestRecord: latestRecord[0],
     support_message: support_message,
     layout: 'patient_template',
   });
+  // res.status(200).json({
+  //   status: 'success',
+  //   data: {
+  //     patient: patient,
+  //     record: latestRecord,
+  //     support_message: support_message,
+  //   },
+  // });
 };
 
 const renderPatientLogin = (req, res) => {
