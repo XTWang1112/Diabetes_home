@@ -30,6 +30,8 @@ Router.get(
 //side nav
 Router.get('/:id/ranking', ctrlerPatientRanking.renderPatientRanking);
 Router.get('/:id/me', ctrlerPatientMe.renderPatientMe);
+Router.post('/:id/me/change-nick-name', ctrlerPatientMe.changeNickName);
+Router.get('/:id/me/change-nick-name', ctrlerPatientMe.changeNickName);
 Router.get('/:id/clinician', Controller.renderPatientClinician);
 Router.get('/:id/data', Controller.renderPatientData);
 

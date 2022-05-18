@@ -1,4 +1,6 @@
 <link rel='stylesheet' href='/css/patient/patient_me.css' />
+<script defer src='/script/changeNickName.js'></script>
+
 {{#with patient}}
   <main>
     <nav class='main-nav-left'>
@@ -48,11 +50,13 @@
         <div class='name_id_box'>
           <div class='name'>{{this.firstName}} {{this.lastName}}</div>
           <div class='id_div'>Nick Name:
-            <span class='nick_name'>{{this.patientName}}</span></div>
+            <span class='nick_name'>{{this.nickname}}</span></div>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" class="change_info h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <btn class="btn btn-change-nick-name">
+          <svg xmlns="http://www.w3.org/2000/svg" class="change_info h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
         </svg>
+        </btn>
       </div>
       <div class='info_spec_box'>
         <div class='city_div'>City:<span
@@ -67,7 +71,7 @@
       </div>
       <div class='bio_box'>
         <h2 class='bio_header'>Bio</h2>
-        <div class='bio_content'>Hi, friend. My name Pat, from a village in east
+        <div class='bio_content'>Hi, friend. I am a patient in this website, from a village in east
           west Melb. Nice to meet you.</div>
       </div>
       <div class='badget_box'>
@@ -81,6 +85,20 @@
         </div>
       </div>
     </section>
+    <div class='nick_div disappear'>
+      <btn class='btn btn-close'>
+        <svg xmlns='http://www.w3.org/2000/svg' class='close' fill='none' viewBox='0 0 24 24' stroke='currentColor'
+          stroke-width='2'>
+          <path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12'></path>
+        </svg>
+      </btn>
+      <form action="/patient/{{this._id}}/me/change-nick-name" class="login-form" method="POST">
+        <label for="new_nick_name">
+          <textarea name='new_nick_name' placeholder=' Change your nick name to...'></textarea>
+        </label>
+        <button type="submit" class='btn btn-send'>Change</button>
+      </form>
+    </div>
   </main>
 {{/with}}
 
