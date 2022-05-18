@@ -1,4 +1,15 @@
 /*********************************/
+/* root setting*/
+/*********************************/
+:root {
+  --light_color: #7dbc57;
+  --dark_color: #2d5215;
+  --bg_color: #eaf4e4;
+}
+
+
+
+/*********************************/
 /*MAIN*/
 /*********************************/
 main {
@@ -153,7 +164,7 @@ h1 {
 }
 
 .rank-text {
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .svg-link {
@@ -162,9 +173,17 @@ h1 {
   gap: 1rem;
 }
 
-.main-nav-link,
+.svg-link path {
+  fill: var(--dark_color);
+}
+
+.svg-link .me_icon {
+  fill: transparent;
+  stroke: var(--dark_color);
+}
+
 .main-nav-left-link {
-  color: #2d5215;
+  color: var(--dark_color);
   display: inline-block;
 }
 

@@ -1,4 +1,14 @@
 /*********************************/
+/* root setting*/
+/*********************************/
+:root {
+  --light_color: #7dbc57;
+  --dark_color: #2d5215;
+  --bg_color: #eaf4e4;
+}
+
+
+/*********************************/
 /*MAIN*/
 /*********************************/
 main {
@@ -16,7 +26,7 @@ h1 {
 }
 
 h2 {
-  color: #2d5215;
+  color: var(--dark_color);
   font-size: 3rem;
   padding-bottom: 1rem;
 }
@@ -76,7 +86,11 @@ h2 {
 .spec .spec_content {
   padding: 2rem;
   text-align: justify;
+<<<<<<< HEAD
   background-color: #eaf4e4;
+=======
+  background-color: var(--bg_color);
+>>>>>>> theme
   border-radius: 20px;
 }
 
@@ -110,7 +124,10 @@ h2 {
 /*********************************/
 /*SIDEBAR
 /*********************************/
+<<<<<<< HEAD
 
+=======
+>>>>>>> theme
 .main-nav-left-shade {
   display: none;
 }
@@ -138,6 +155,9 @@ h2 {
 
 .clinician-li {
   margin-left: -0.7rem;
+}
+
+.clinician-li {
   text-shadow: 0 1px 5px rgba(86, 103, 200, 0.5);
 }
 
@@ -147,9 +167,17 @@ h2 {
   gap: 1rem;
 }
 
-.main-nav-link,
+.svg-link path {
+  fill: var(--dark_color);
+}
+
+.svg-link .me_icon {
+  fill: transparent;
+  stroke: var(--dark_color);
+}
+
 .main-nav-left-link {
-  color: #2d5215;
+  color: var(--dark_color);
   display: inline-block;
 }
 
@@ -157,6 +185,11 @@ h2 {
   font-weight: bold;
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> theme
 /*********************************/
 /*MOBILE NAVIGATOR*/
 /*********************************/
@@ -171,7 +204,7 @@ h2 {
 .icon-mobile-nav {
   height: 4.8rem;
   width: 4.8rem;
-  color: #2d5215;
+  color: var(--dark_color);
 }
 
 .icon-mobile-nav[name='close-outline'] {

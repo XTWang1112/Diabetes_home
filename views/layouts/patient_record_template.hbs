@@ -15,11 +15,19 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 
+<<<<<<< HEAD
     <script defer src="/script/mobileNav.js"></script>
     <script defer src="/script/record.js"></script>
 
     <title>Diabetes@Home &dash; best friend for life</title>
   </head>
+=======
+  <script defer src="/script/mobileNav.js"></script>
+  <script defer src="/script/record.js"></script>
+   <script defer src='/script/changeTheme.js'></script> 
+  <title>Diabetes@Home &dash; best friend for life</title>
+</head>
+>>>>>>> theme
 
   <body>
     {{#with patient}}
@@ -45,17 +53,17 @@
               <ion-icon class="nav-icon" name="people"></ion-icon><a class="main-nav-link" href="/patient/{{this._id}}/about-website">About website</a>
             </li>
 
-            <li class="icon-link">
-              <ion-icon class="nav-icon" name="color-palette"></ion-icon><a class="main-nav-link" href="#">Setting theme</a>
-            </li>
-            <li class="icon-link">
-              <ion-icon class="nav-icon" name="key"></ion-icon><a class="main-nav-link" href="/patient/change-password">Setting password</a>
-            </li class="icon-link">
-            <li class="icon-link">
-              <ion-icon class="nav-icon" name="log-out"></ion-icon><a class="main-nav-link" href="#">Log out</a>
-            </li>
-          </ul>
-        </nav>
+        <li class="icon-link">
+          <ion-icon class="nav-icon" name="color-palette"></ion-icon><button class="main-nav-link theme_btn" onclick="changeTheme()">Setting theme</button>
+        </li>
+        <li class="icon-link">
+          <ion-icon class="nav-icon" name="key"></ion-icon><a class="main-nav-link" href="#">Setting password</a>
+        </li class="icon-link">
+        <li class="icon-link">
+          <ion-icon class="nav-icon" name="log-out"></ion-icon><a class="main-nav-link" href="#">Log out</a>
+        </li>
+      </ul>
+    </nav>
 
         <button class="btn-mobile-nav">
           <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
