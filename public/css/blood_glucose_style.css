@@ -45,7 +45,7 @@ section {
 
 .blood-glucos-input input,
 .bg-comment-input textarea {
-  background-color: #eaf4e4;
+  background-color: var(--bg_color);
 }
 
 .blood-glucos-input input {
@@ -53,7 +53,7 @@ section {
   height: 7rem;
   font-size: 3rem;
   text-align: center;
-  border: 3px solid #91c358;
+  border: 3px solid var(--light_color);
 }
 
 .bg-comment-input textarea {
@@ -89,7 +89,7 @@ section {
 }
 
 .glucose-reminder li span {
-  color: #7dbc57;
+  color: var(--light_color);
   font-weight: 600;
 }
 

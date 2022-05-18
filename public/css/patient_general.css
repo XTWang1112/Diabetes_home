@@ -273,7 +273,7 @@ textarea {
 }
 
 .btn--done {
-  background-image: linear-gradient(to right, #1eb75b, #95d04f);
+  background-color: var(--light_color);
   width: 19rem;
   height: 5.8rem;
   font-size: 3rem;
