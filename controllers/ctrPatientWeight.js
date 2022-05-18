@@ -42,10 +42,9 @@ const renderPatientWeight = async (req, res) => {
 
     if (weight_comment && patinet_weight) {
       const patientWeight = {
-        find_id,
+        patientObjectID: find_id,
         weight: patinet_weight,
         weight_comment: weight_comment,
-        time: today,
       };
 
       if (onePatientWeight.length === 0) {

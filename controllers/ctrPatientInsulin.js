@@ -40,11 +40,10 @@ const renderPatientInsulin = async (req, res) => {
 
     if (insulin_comment && patinet_insulin) {
       const patientInsulin = {
-        find_id,
+        patientObjectID: find_id,
         insulinTaken: patinet_insulin,
         insulinTaken_comment: insulin_comment,
         time: today,
-        complete: false,
       };
 
       if (onePatientInsulin.length === 0) {
