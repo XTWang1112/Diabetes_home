@@ -24,9 +24,9 @@ const patientSchema = new mongoose.Schema({
   gender: {
     type: String,
     required: [true, 'A patient must have a gender'],
-    enum: {
+    String: {
       values: ['-', 'Female', 'Male'],
-      message: 'Only support gender - female of male',
+      message: 'Only support gender - female or male',
     },
   },
   photo_url: { type: String, default: 'chris.jpg' },
