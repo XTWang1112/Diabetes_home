@@ -8,6 +8,8 @@ const Controller = require('../controllers/Controller');
 Router.get('/about-website', Controller.renderAboutWebsite);
 Router.get('/about-diabetes', Controller.renderAboutDiabetes);
 Router.get('/login', Controller.renderPatientLogin);
+Router.post('/login', Controller.postPatientLogin);
+
 
 // export the router
 module.exports = Router;

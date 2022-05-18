@@ -3,6 +3,7 @@ const { render } = require('express/lib/response');
 const res = require('express/lib/response');
 const patientModel = require('../models/patient');
 const recordModel = require('../models/record');
+const bcrypt = require("bcrypt")
 
 // The function to redner clinician dashboard
 const renderClinicianDashboard = async (req, res) => {
@@ -225,6 +226,8 @@ const postPatientLogin = (req, res) => {
         bcrypt.compare(input_password, foundUser.password, function(err, result){
           if(result === true){
             console.log("登陆成功")
+          }else{
+            console.log("登陆失败")
           }
         })
       }

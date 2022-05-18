@@ -12,8 +12,6 @@ const ctrlerPatientInsulin = require('../controllers/ctrPatientInsulin');
 // add a route to handle the get request for all patients' data
 Router.get('/', Controller.renderPatientDashboard);
 
-Router.post('/login', Controller.postPatientLogin);
-
 Router.get('/about-website', Controller.renderLoginAboutWebsite);
 
 Router.get('/about-diabetes', Controller.renderLoginAboutDiabetes);
