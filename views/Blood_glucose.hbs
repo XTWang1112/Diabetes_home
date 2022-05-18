@@ -4,7 +4,7 @@
 />
 <link rel='stylesheet' href='/css/blood_glucose_style.css' />
 
-<section>
+<main>
   <div class='container'>
     <h2 class='blood-glucose-head'>
       <span class='material-icons blood-glucose-icon'>
@@ -40,10 +40,10 @@
 
     <ul class='glucose-reminder'>
       <li>For your health, you have kept recording for
-        {{#with onePatient}}<span>{{this.insistDay}}</span>{{/with}}
+        {{#with patient}}<span>{{this.insistDay}}</span>{{/with}}
         days.</li>
       <li>Keep recording, control diabetes, and enjoy wonderful life!</li>
     </ul>
 
   </div>
-</section>
+</main>

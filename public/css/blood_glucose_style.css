@@ -1,4 +1,4 @@
-section {
+main {
   height: calc(100vh - 11.4rem);
 }
 
@@ -64,7 +64,7 @@ section {
 
 .bg-comment-input textarea::placeholder {
   text-align: center;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .blood-glucose-data *:focus {
@@ -110,11 +110,9 @@ section {
   color: #2d5215;
 }
 
-.icon-mobile-nav[name="close-outline"] {
+.icon-mobile-nav[name='close-outline'] {
   display: none;
 }
-
-
 
 /*********************************/
 /*********************************/
@@ -177,11 +175,11 @@ section {
     transform: translateX(0);
   }
 
-  .nav-open .icon-mobile-nav[name="close-outline"] {
+  .nav-open .icon-mobile-nav[name='close-outline'] {
     display: block;
   }
 
-  .nav-open .icon-mobile-nav[name="menu-outline"] {
+  .nav-open .icon-mobile-nav[name='menu-outline'] {
     display: none;
   }
 

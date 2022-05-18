@@ -53,7 +53,7 @@ const renderPatientWeight = async (req, res) => {
         });
       } else if (onePatientWeight.length !== 0 && patient.weight_record) {
         await recordModel.updateOne({
-          find_id,
+          patientObjectID: find_id,
           time: today,
           weight: patinet_weight,
           weight_comment: weight_comment,

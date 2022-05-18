@@ -53,7 +53,7 @@ const renderPatientExercise = async (req, res) => {
         });
       } else if (onePatientExercise.length !== 0 && patient.exercise_record) {
         await recordModel.updateOne({
-          find_id,
+          patientObjectID: find_id,
           time: today,
           exercise: patinet_exercise,
           exercise_comment: exercise_comment,

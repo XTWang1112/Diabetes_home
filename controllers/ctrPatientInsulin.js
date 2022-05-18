@@ -55,7 +55,7 @@ const renderPatientInsulin = async (req, res) => {
         patient.insulinTaken_record
       ) {
         await recordModel.updateOne({
-          find_id,
+          patientObjectID: find_id,
           time: today,
           insulinTaken: patinet_insulin,
           insulinTaken_comment: insulin_comment,
