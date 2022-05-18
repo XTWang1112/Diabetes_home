@@ -55,9 +55,9 @@ h1 {
   width: 70rem;
   height: 65rem;
   padding: 2rem;
-  margin: 20rem auto 0 auto;
+  margin: 10rem auto 0 auto;
 
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 
 .podium_container {
@@ -241,6 +241,29 @@ h1 {
     font-size: 50%;
   }
 
+  .podium_container svg {
+    width: 38rem;
+  }
+
+  .no1 {
+    top: -1.0rem;
+    left: 15.2rem;
+    border: #ead26f solid 0.3rem;
+  }
+  
+  .no2 {
+    top: 1.8rem;
+    left: 2.9rem;
+    border: #bababa solid 0.3rem;
+  }
+  
+  .no3 {
+    top: 3.2rem;
+    right: 2.2rem;
+    border: #af9d54 solid 0.3rem;
+  }
+
+
   .ranking_box {
     transform: scale(1.2);
     padding: 0;
@@ -396,6 +419,7 @@ h1 {
     gap: 2rem;
   }
 
+  
   .ranking_box {
     transform: scale(1);
     padding: 0;
