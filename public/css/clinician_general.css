@@ -114,6 +114,13 @@ p {
   gap: 1rem;
 }
 
+.theme_btn {
+  text-decoration: none;
+  border:0;
+	outline:none;
+  background-color: transparent;
+}
+
 /* new */
 .nav-home {
   font-weight: normal;

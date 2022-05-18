@@ -228,6 +228,31 @@ const renderLoginAboutDiabetes = async (req, res) => {
   }
 };
 
+// change Theme
+const changeTheme = async(req,res) => {
+  let patient_id = '6267d6bb8b206aade8b24198';
+  let patient = await patientModel.findById(patient_id);
+  theme_preference = patient.theme_preference;
+  currentColor = theme_preference;
+  if (currentColor == "blue") {
+    patientModel.updateOne({_id: patient_id}, {theme_preference: "green"})
+    .then((result) => console.log('Try to change color perference to green', result.acknowledged));
+    res.send("green");
+  } else if (currentColor == "green") {
+    patientModel.updateOne({_id: patient_id}, {theme_preference: "blue"})
+    .then((result) => console.log('Try to change color perference to blue', result.acknowledged));
+    res.send("blue");
+  }
+}
+
+const setTheme = async(req,res) => {
+  let patient_id = '6267d6bb8b206aade8b24198';
+  let patient = await patientModel.findById(patient_id);
+  theme_preference = patient.theme_preference;
+  res.send(theme_preference);
+}
+
+
 module.exports = {
   renderClinicianDashboard,
   renderPatientDashboard,
@@ -238,4 +263,6 @@ module.exports = {
   renderAboutDiabetes,
   renderLoginAboutWebsite,
   renderLoginAboutDiabetes,
+  changeTheme,
+  setTheme,
 };

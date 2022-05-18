@@ -17,6 +17,8 @@ Router.get('/:id', Controller.renderPatientDashboard);
 Router.get('/:id/about-website', Controller.renderLoginAboutWebsite);
 Router.get('/:id/about-diabetes', Controller.renderLoginAboutDiabetes);
 Router.get('/:id/change-password', ctrChangePassword.renderChangePassword);
+Router.get('/getTheme', Controller.setTheme);
+Router.post('/changeTheme', Controller.changeTheme);
 //data input
 Router.get('/:id/weight', ctrlerPatientWeight.renderPatientWeight);
 Router.get('/:id/insulin', ctrlerPatientInsulin.renderPatientInsulin);
@@ -28,6 +30,8 @@ Router.get(
 //side nav
 Router.get('/:id/ranking', ctrlerPatientRanking.renderPatientRanking);
 Router.get('/:id/me', ctrlerPatientMe.renderPatientMe);
+Router.post('/:id/me/change-nick-name', ctrlerPatientMe.changeNickName);
+Router.get('/:id/me/change-nick-name', ctrlerPatientMe.changeNickName);
 Router.get('/:id/clinician', Controller.renderPatientClinician);
 Router.get('/:id/data', Controller.renderPatientData);
 

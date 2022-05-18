@@ -1,4 +1,13 @@
 /*********************************/
+/* root setting*/
+/*********************************/
+:root {
+  --light_color: #7dbc57;
+  --dark_color: #2d5215;
+  --bg_color: #eaf4e4;
+}
+
+/*********************************/
 /*MAIN*/
 /*********************************/
 main {
@@ -16,7 +25,7 @@ h1 {
 }
 
 h2 {
-  color: #2d5215;
+  color: var(--dark_color);
   font-size: 3rem;
   padding-bottom: 1rem;
 }
@@ -33,8 +42,20 @@ h2 {
 
 .info_box {
   display: flex;
-  color: #2d5215;
+  justify-content: space-between;
+  color: var(--dark_color);
   width: 45rem;
+}
+
+.btn-change-nick-name {
+  margin: auto;
+}
+
+.change_info {
+  fill: var(--light_color);
+  display: flex;
+  width:5rem;
+  height:5rem ;
 }
 
 .name_id_box {
@@ -63,13 +84,13 @@ h2 {
   font-size: 2rem;
   font-weight: 600;
   gap: 2rem;
-  color: #2d5215;
+  color: var(--dark_color);
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
 .bio_box {
-  background-color: #eaf4e4;
+  background-color: var(--bg_color);
   padding: 2rem;
   border-radius: 10px;
   margin-bottom: 2rem;
@@ -81,13 +102,13 @@ h2 {
 }
 
 .badget_box {
-  background-color: #eaf4e4;
+  background-color: var(--bg_color);
   padding: 2rem;
   border-radius: 10px;
 }
 
 .info_spec_box .green {
-  color: #7dbc57;
+  color: var(--light_color);
 }
 
 /*********************************/
@@ -133,14 +154,27 @@ h2 {
   gap: 1rem;
 }
 
-.main-nav-link,
+.svg-link path {
+  fill: var(--dark_color);
+}
+
+.svg-link .me_icon {
+  fill: transparent;
+  stroke: var(--dark_color);
+}
+
+
 .main-nav-left-link {
-  color: #2d5215;
+  color: var(--dark_color);
   display: inline-block;
 }
 
 .me-text {
   font-weight: bold;
+}
+
+.home-li {
+  margin-left: -0.7rem;
 }
 
 /*********************************/
@@ -157,11 +191,74 @@ h2 {
 .icon-mobile-nav {
   height: 4.8rem;
   width: 4.8rem;
-  color: #2d5215;
+  color: var(--dark_color);
 }
 
 .icon-mobile-nav[name='close-outline'] {
   display: none;
+}
+
+
+/*********************************/
+/*Give support message*/
+/*********************************/
+.main {
+  position: relative;
+}
+
+.nick_div {
+  height: 20rem;
+  width: 40rem;
+  background-color: var(--bg_color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  border: 1px solid #202b5a;
+  border-radius: 1.2rem;
+  padding: 3rem;
+}
+
+.nick_div textarea {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  height: 10rem;
+  width: 35rem;
+  background-color: #ffffff;
+  font-family: inherit;
+  border: none;
+  word-break: break-all;
+  overflow: scroll;
+  font-size: 2rem;
+  color: #202b5a;
+}
+
+.nick_div textarea::placeholder {
+  color: #202b5a;
+  font-weight: 500;
+}
+
+.nick_div textarea:focus {
+  outline: none;
+}
+
+.close {
+  height: 2.4rem;
+  width: 2.4rem;
+  position: fixed;
+  right: 5%;
+  top: 5%;
+}
+
+.btn-send {
+  background-color: var(--dark_color);
+  color: white;
+  font-size: 2.5rem;
+  padding: 0.4rem 1.2rem;
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
 }
 
 .disappear {

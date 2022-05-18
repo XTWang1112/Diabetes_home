@@ -40,7 +40,8 @@ const patientSchema = new mongoose.Schema({
   register_date: { type: Number, default: Date.now() },
   support_message: { type: String, trime: true },
   support_message_date: String,
-
+  theme_preference: String,
+  
   email: {
     type: String,
     trime: true,
