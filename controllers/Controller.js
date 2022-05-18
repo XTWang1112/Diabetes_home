@@ -109,7 +109,7 @@ const renderClinicianDashboard = async (req, res) => {
 
 // The function to get the current value of each data and render the patient dashboard
 const renderPatientDashboard = async (req, res) => {
-  let patient_id = '6267d6bb8b206aade8b24198';
+  let patient_id = req.params.id;
   // find the patient using its id
   let patient = await patientModel.findById(patient_id).lean();
   // console.log(patient.patientName);
@@ -226,6 +226,7 @@ const postPatientLogin = (req, res) => {
         bcrypt.compare(input_password, foundUser.password, function(err, result){
           if(result === true){
             console.log("登陆成功")
+            res.redirect('/patient/{{this._id}}')
           }else{
             console.log("登陆失败")
           }

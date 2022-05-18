@@ -63,7 +63,7 @@ const registerPatient = async (req, res, next) => {
     })
 
     /* alert("Your email: " + newPatient.email + " Your password； " + newPatient.password) */
-    redirect("/clinician")
+    res.redirect('/clinician')
     
  
   } catch (err) {
