@@ -67,10 +67,11 @@
       <label for='phone-number'>
         <input
           id='phone-number'
-          type='number'
+          type='tel'
           placeholder='Phone Number'
           name='phone_number'
-          pattern='.{5,11}'
+          maxlength='11'
+          minlength='9'
           required
         />
       </label>
@@ -101,10 +102,11 @@
       <label for='postal'>
         <input
           id='postal'
-          type='number'
+          type='tel'
           placeholder='Postal Code'
           name='postal'
-          pattern='.{.4}'
+          maxlength='4'
+          minlength='4'
         />
       </label>
       <label for='city'>
