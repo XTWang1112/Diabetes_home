@@ -40,11 +40,10 @@ const renderPatientExercise = async (req, res) => {
 
     if (exercise_comment && patinet_exercise) {
       const patientExercise = {
-        find_id,
+        patientObjectID: find_id,
         exercise: patinet_exercise,
         exercise_comment: exercise_comment,
         time: today,
-        complete: false,
       };
 
       // 如果今天没有录入数据，则插入一条新的血糖值
@@ -54,7 +53,7 @@ const renderPatientExercise = async (req, res) => {
         });
       } else if (onePatientExercise.length !== 0 && patient.exercise_record) {
         await recordModel.updateOne({
-          find_id,
+          patientObjectID: find_id,
           time: today,
           exercise: patinet_exercise,
           exercise_comment: exercise_comment,

@@ -41,11 +41,10 @@ const renderPatientBloodRecord = async (req, res) => {
 
     if (glucose_comment && patinet_blood_glucose) {
       const patientBloodRecord = {
-        find_id,
         blood_glucose_level: patinet_blood_glucose,
         blood_glucose_level_comment: glucose_comment,
         time: today,
-        complete: false,
+        patientObjectID: find_id,
       };
       if (onePatientBloodRecord.length === 0) {
         await recordModel.create({
@@ -56,7 +55,7 @@ const renderPatientBloodRecord = async (req, res) => {
         patient.bloodGlucose_record
       ) {
         await recordModel.updateOne({
-          find_id,
+          patientObjectID: find_id,
           time: today,
           blood_glucose_level: patinet_blood_glucose,
           blood_glucose_level_comment: glucose_comment,

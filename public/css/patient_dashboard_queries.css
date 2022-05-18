@@ -99,11 +99,11 @@
     z-index: 999;
   }
 
-  .nav-open .icon-mobile-nav[name="close-outline"] {
+  .nav-open .icon-mobile-nav[name='close-outline'] {
     display: block;
   }
 
-  .nav-open .icon-mobile-nav[name="menu-outline"] {
+  .nav-open .icon-mobile-nav[name='menu-outline'] {
     display: none;
   }
 
@@ -170,15 +170,13 @@
     align-items: center;
   }
 
-  .blood-glucos-data {
+  .time-series {
     font-size: 3.2rem;
     margin: 0.4rem 0;
   }
 
-  .no-data {
-    font-weight: 500;
-    font-size: 1.8rem;
-    margin: 1rem;
+  .disappear {
+    display: none !important;
   }
 
   .comments-section {
