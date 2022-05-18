@@ -67,20 +67,29 @@
       <label for='phone-number'>
         <input
           id='phone-number'
-          type='number'
+          type='tel'
           placeholder='Phone Number'
           name='phone_number'
+          maxlength='11'
+          minlength='9'
           required
         />
       </label>
-      <label for='year-birth'>
+      <label for='birthday'>
         <input
           id='year-birth'
-          type='number'
+          type='date'
           placeholder='Year of Birth'
-          name='year_birth'
+          name='birthday'
           required
         />
+      </label>
+      <label for='gender'>
+        <select name='gender' id='gender' required>
+          <option value='-' selected>-</option>
+          <option value='Female' selected>Female</option>
+          <option value='Male' selected>Male</option>
+        </select>
       </label>
       <label for='street'>
         <input
@@ -93,9 +102,11 @@
       <label for='postal'>
         <input
           id='postal'
-          type='number'
+          type='tel'
           placeholder='Postal Code'
           name='postal'
+          maxlength='4'
+          minlength='4'
         />
       </label>
       <label for='city'>
@@ -125,7 +136,8 @@
       </svg>
     </btn>
     <h1 class='message'>Register successfully!</h1>
-    <p class='account'>Account: {{this.email}}</p>
-    <p class='password'>Password: {{%PASSWORD%}}</p>
+    <p class='account'>Account: {{account}}</p>
+    <p class='password'>Password: {{password}}</p>
+
   </div>
 </main>

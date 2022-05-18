@@ -20,13 +20,18 @@
 /*comments
 *****************************/
 .comments {
-  height: 70rem;
+  height: 84rem;
   width: 164rem;
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
   overflow: scroll;
   margin-top: 1.2rem;
+}
+
+.comments::-webkit-scrollbar,
+.comment::-webkit-scrollbar {
+  display: none;
 }
 
 .comment {

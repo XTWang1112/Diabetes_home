@@ -1,95 +1,82 @@
-<link rel="stylesheet" href="/css/patient/patient_ranking.css" />
-
+<link rel='stylesheet' href='/css/patient/patient_ranking.css' />
 <main>
-  <nav class="main-nav-left">
-    <ul class="main-nav-left-list">
-      <div class="main-nav-left-shade"></div>
-      <li class="svg-link">
-        <embed src="/img/svg/data-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link" href="data">Data</a>
-      </li>
-      <li class="svg-link">
-        <embed src="/img/svg/clinician-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link" href="clinician">Clinician</a>
-      </li>
-      <li class="svg-link home-li">
-        <embed src="/img/svg/home-icon.svg" type="image/svg+xml" />
-        <a
-          class="main-nav-left-link home-text"
-          href="/patient"
-        >Home</a>
-      </li>
-      <li class="svg-link rank-li">
-        <embed src="/img/svg/ranking-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link rank-text" href="ranking">Ranking</a>
-      </li>
-      <li class="svg-link">
-        <embed src="/img/svg/me-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link" href="me">Me</a>
-      </li>
-    </ul>
-  </nav>
+  {{#with patient}}
+    <nav class='main-nav-left'>
+      <ul class='main-nav-left-list'>
+        <div class='main-nav-left-shade'></div>
+        <li class='svg-link'>
+          <embed src='/img/svg/data-icon.svg' type='image/svg+xml' />
+          <a
+            class='main-nav-left-link'
+            href='/patient/{{this._id}}/data'
+          >Data</a>
+        </li>
+        <li class='svg-link'>
+          <embed src='/img/svg/clinician-icon.svg' type='image/svg+xml' />
+          <a
+            class='main-nav-left-link'
+            href='/patient/{{this._id}}/clinician'
+          >Clinician</a>
+        </li>
+        <li class='svg-link home-li'>
+          <embed src='/img/svg/home-icon.svg' type='image/svg+xml' />
+          <a
+            class='main-nav-left-link home-text'
+            href='/patient/{{this._id}}'
+          >Home</a>
+        </li>
+        <li class='svg-link rank-li'>
+          <embed src='/img/svg/ranking-icon.svg' type='image/svg+xml' />
+          <a
+            class='main-nav-left-link rank-text'
+            href='/patient/{{this._id}}/ranking'
+          >Ranking</a>
+        </li>
+        <li class='svg-link'>
+          <embed src='/img/svg/me-icon.svg' type='image/svg+xml' />
+          <a class='main-nav-left-link' href='/patient/{{this._id}}/me'>Me</a>
+        </li>
+      </ul>
+    </nav>
+  {{/with}}
 
-  <section class="ranking_box">
-    <div class="podium_container">
-      <img class="podium_photo no1" src="" />
-      <img class="podium_photo no2" src="" />
-      <img class="podium_photo no3" src="" />
+  <section class='ranking_box'>
+    <div class='podium_container'>
+      {{#each data.top3}}
+        <img class='podium_photo' src='/img/profile-photo/{{this.photo_url}}' />
+      {{/each}}
       <embed
-        class="podium_svg"
-        src="/img/svg/leaderboard.svg"
-        type="image/svg+xml"
+        class='podium_svg'
+        src='/img/svg/leaderboard.svg'
+        type='image/svg+xml'
       />
     </div>
-    <div class="ranking_list">
+    <div class='ranking_list'>
       <ol>
-        <li>
-          <div class="ranking_number">1</div>
-          <img class="ranking_photo" src="" />
-          <div class="ranking_name">{%PATIENTNAME%}</div>
-          <div class="ranking_data">
-            <div class="insist_data">{%INSIST_DAYS%}</div>
-            <div class="percentage_data">{%PERSENTAGE%}</div>
-          </div>
-        </li>
-        <li>
-          <div class="ranking_number">2</div>
-          <img class="ranking_photo" src="" />
-          <div class="ranking_name">{%PATIENTNAME%}</div>
-          <div class="ranking_data">
-            <div class="insist_data">{%INSIST_DAYS%}</div>
-            <div class="percentage_data">{%PERSENTAGE%}</div>
-          </div>
-        </li>
-        <li>
-          <div class="ranking_number">3</div>
-          <img class="ranking_photo" src="" />
-          <div class="ranking_name">{%PATIENTNAME%}</div>
-          <div class="ranking_data">
-            <div class="insist_data">{%INSIST_DAYS%}</div>
-            <div class="percentage_data">{%PERSENTAGE%}</div>
-          </div>
-        </li>
-        <li>
-          <div class="ranking_number">4</div>
-          <img class="ranking_photo" src="" />
-          <div class="ranking_name">{%PATIENTNAME%}</div>
-          <div class="ranking_data">
-            <div class="insist_data">{%INSIST_DAYS%}</div>
-            <div class="percentage_data">{%PERSENTAGE%}</div>
-          </div>
-        </li>
-        <li>
-          <div class="ranking_number">5</div>
-          <img class="ranking_photo" src="" />
-          <div class="ranking_name">{%PATIENTNAME%}</div>
-          <div class="ranking_data">
-            <div class="insist_data">{%INSIST_DAYS%}</div>
-            <div class="percentage_data">{%PERSENTAGE%}</div>
-          </div>
-        </li>
+        {{#each data.top5}}
+          <li>
+            <div class='ranking_number'></div>
+            <img
+              class='ranking_photo'
+              src='/img/profile-photo/{{this.photo_url}}'
+            />
+            <div class='ranking_name'>{{this.patientName}}</div>
+            <div class='ranking_data'>
+              <div class='insist_data'>{{this.insistDay}} Days</div>
+              <div class='percentage_data'>{{this.engagementRate}}%</div>
+            </div>
+          </li>
+        {{/each}}
       </ol>
     </div>
 
   </section>
 </main>
+<script>
+  const list = document.querySelector("ol").children; for(let i = 0; i <
+  list.length; i++){ list[i].querySelector(".ranking_number").textContent =
+  `${i+1}`; }
+  document.querySelector(".podium_container").children[0].classList.add("no1")
+  document.querySelector(".podium_container").children[1].classList.add("no2")
+  document.querySelector(".podium_container").children[2].classList.add("no3")
+</script>

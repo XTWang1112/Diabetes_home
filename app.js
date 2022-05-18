@@ -12,7 +12,16 @@ const app = express();
 const flash = require('express-flash')
 const session = require('express-session')
 
-app.use(flash()) */
+require('./config/passport.js')(passport);
+app.use(flash())
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {maxAge: 900000}
+}))
+app.use(passport.initialize())
+app.use(passport.session()) */
 
 //middlewares
 if (process.env.NODE_ENV === 'development') {
@@ -87,7 +96,7 @@ app.get('', (req, res) => {
   );
 });
 
-// Tells the app to listen on port 80 and logs that information to the console.
-app.listen(process.env.PORT || 80, () => {
+// Tells the app to listen on port 8080 and logs that information to the console.
+app.listen(process.env.PORT || 8080, () => {
   console.log(`Diabetes@Home listening on port ${process.env.PORT}`);
 });

@@ -28,10 +28,10 @@
         <div class="patient-word-logo">patient</div>
       </div>
       <div class="login-box">
-        <form action="/patient" class="login-form" method="post">
+        <form action="/guest/login" href='/patient/{{this._id}}' class="login-form" method="post">
           <div>
-            <input type="email" placeholder="Email Address" />
-            <input type="password" placeholder="Password" />
+            <input type="email" placeholder="Email Address" name="email" />
+            <input type="password" placeholder="Password" name="password" />
           </div>
           <div class="rememberThisDevice-box">
             <input

@@ -7,11 +7,10 @@ const renderPatientBloodRecord = async (req, res) => {
   const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
   const current_day = new Date().getDate();
   // find id 对应的 patient
-  const find_id = '6267d6bb8b206aade8b24198';
+  const find_id = req.params.id;
   const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
   const today = new Date().getTime();
-  const onePatientRecord = await patientModel.findById(find_id).lean();
-  console.log(current_month);
+  const patient = await patientModel.findById(find_id).lean();
   const onePatientBloodRecord = await recordModel
     .find(
       {
@@ -31,10 +30,10 @@ const renderPatientBloodRecord = async (req, res) => {
     )
     .clone();
 
-  if (onePatientRecord) {
+  if (patient) {
     // 渲染血糖上传页面
     res.render('Blood_glucose', {
-      onePatient: onePatientRecord,
+      patient: patient,
       layout: 'patient_record_template',
     });
     const glucose_comment = req.query.glucose_comment || 'no comments';
@@ -54,7 +53,7 @@ const renderPatientBloodRecord = async (req, res) => {
         });
       } else if (
         onePatientBloodRecord.length !== 0 &&
-        onePatientRecord.bloodGlucose_record
+        patient.bloodGlucose_record
       ) {
         await recordModel.updateOne({
           find_id,

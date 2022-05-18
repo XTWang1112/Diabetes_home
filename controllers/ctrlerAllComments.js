@@ -1,9 +1,30 @@
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 
+const patientModel = require('../models/patient');
+const recordModel = require('../models/record');
+
 const renderAllComments = async (req, res) => {
   try {
-    res.render('All_comments');
+    const allComments = await recordModel.aggregate([
+      {
+        $lookup: {
+          from: 'patients',
+          localField: 'patientObjectID',
+          foreignField: '_id',
+          as: 'patient',
+        },
+      },
+    ]);
+    // res.status(200).json({
+    //   status: 'success',
+    //   data: {
+    //     allComments,
+    //   },
+    // });
+    res.render('All_comments', {
+      allComments,
+    });
   } catch (err) {
     res.status(404).json({
       status: 'fail',

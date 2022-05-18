@@ -1,51 +1,62 @@
-<link rel="stylesheet" href="/css/patient/patient_data.css" />
+<link rel='stylesheet' href='/css/patient/patient_data.css' />
 
 <main>
-  <nav class="main-nav-left">
-    <ul class="main-nav-left-list">
-      <div class="main-nav-left-shade"></div>
-      <li class="svg-link data-li">
-        <embed src="/img/svg/data-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link data-text" href="data">Data</a>
-      </li>
-      <li class="svg-link">
-        <embed src="/img/svg/clinician-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link" href="clinician">Clinician</a>
-      </li>
-      <li class="svg-link home-li">
-        <embed src="/img/svg/home-icon.svg" type="image/svg+xml" />
-        <a
-          class="main-nav-left-link home-text"
-          href="/patient"
-        >Home</a>
-      </li>
-      <li class="svg-link">
-        <embed src="/img/svg/ranking-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link" href="ranking">Ranking</a>
-      </li>
-      <li class="svg-link">
-        <embed src="/img/svg/me-icon.svg" type="image/svg+xml" />
-        <a class="main-nav-left-link" href="me">Me</a>
-      </li>
-    </ul>
-  </nav>
+  {{#with patient}}
+    <nav class='main-nav-left'>
+      <ul class='main-nav-left-list'>
+        <div class='main-nav-left-shade'></div>
+        <li class='svg-link data-li'>
+          <embed src='/img/svg/data-icon.svg' type='image/svg+xml' />
+          <a
+            class='main-nav-left-link data-text'
+            href='/patient/{{this._id}}/data'
+          >Data</a>
+        </li>
+        <li class='svg-link'>
+          <embed src='/img/svg/clinician-icon.svg' type='image/svg+xml' />
+          <a
+            class='main-nav-left-link'
+            href='/patient/{{this._id}}/clinician'
+          >Clinician</a>
+        </li>
+        <li class='svg-link home-li'>
+          <embed src='/img/svg/home-icon.svg' type='image/svg+xml' />
+          <a
+            class='main-nav-left-link home-text'
+            href='/patient/{{this._id}}'
+          >Home</a>
+        </li>
+        <li class='svg-link'>
+          <embed src='/img/svg/ranking-icon.svg' type='image/svg+xml' />
+          <a
+            class='main-nav-left-link'
+            href='/patient/{{this._id}}/ranking'
+          >Ranking</a>
+        </li>
+        <li class='svg-link'>
+          <embed src='/img/svg/me-icon.svg' type='image/svg+xml' />
+          <a class='main-nav-left-link' href='/patient/{{this._id}}/me'>Me</a>
+        </li>
+      </ul>
+    </nav>
+  {{/with}}
 
-  <section class="data_box">
-    <div class="index_router">
-      <div class="router_header">History graph</div>
+  <section class='data_box'>
+    <div class='index_router'>
+      <div class='router_header'>History graph</div>
       <select>
-        <option value="1">Blood glucose level</option>
-        <option value="1">Exercise</option>
-        <option value="1">Weight</option>
-        <option value="1">Insulin taken</option>
+        <option value='1'>Blood glucose level</option>
+        <option value='1'>Exercise</option>
+        <option value='1'>Weight</option>
+        <option value='1'>Insulin taken</option>
       </select>
     </div>
     <div>
-      <embed class="insert_chart" src="/img/svg/chart_blood.svg" />
+      <embed class='insert_chart' src='/img/svg/chart_blood.svg' />
     </div>
-    <div class="data_table">
-      <div class="table_name">History data Table</div>
-      <div class="table_div">
+    <div class='data_table'>
+      <div class='table_name'>History data Table</div>
+      <div class='table_div'>
         <table>
           <tr>
             <th>Date</th>
@@ -53,35 +64,39 @@
             <th>Exercise</th>
             <th>Weight</th>
             <th>Insulin Taken</th>
-          </tr> 
+          </tr>
           {{#each record}}
             <tr>
-              <td class="date_td">{{time}}</td>
-              <td class="data_td">
+              <td class='date_td'>{{time}}</td>
+              <td class='data_td'>
                 {{#if blood_glucose_level}}
-                  {{blood_glucose_level}} mmol/L
-                {{else}} 
+                  {{blood_glucose_level}}
+                  mmol/L
+                {{else}}
                   /
                 {{/if}}
               </td>
-              <td class="data_td">
+              <td class='data_td'>
                 {{#if exercise}}
-                  {{exercise}} step(s)
-                {{else}} 
+                  {{exercise}}
+                  step(s)
+                {{else}}
                   /
                 {{/if}}
               </td>
-              <td class="data_td">
+              <td class='data_td'>
                 {{#if weight}}
-                  {{weight}} kg(s)
-                {{else}} 
+                  {{weight}}
+                  kg(s)
+                {{else}}
                   /
                 {{/if}}
               </td>
-              <td class="data_td">
+              <td class='data_td'>
                 {{#if insulinTaken}}
-                  {{insulinTaken}} dose(s)
-                {{else}} 
+                  {{insulinTaken}}
+                  dose(s)
+                {{else}}
                   /
                 {{/if}}
               </td>

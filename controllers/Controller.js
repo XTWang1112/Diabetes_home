@@ -3,6 +3,7 @@ const { render } = require('express/lib/response');
 const res = require('express/lib/response');
 const patientModel = require('../models/patient');
 const recordModel = require('../models/record');
+const bcrypt = require("bcrypt")
 
 // The function to redner clinician dashboard
 const renderClinicianDashboard = async (req, res) => {
@@ -108,7 +109,7 @@ const renderClinicianDashboard = async (req, res) => {
 
 // The function to get the current value of each data and render the patient dashboard
 const renderPatientDashboard = async (req, res) => {
-  let patient_id = '6267d6bb8b206aade8b24198';
+  let patient_id = req.params.id;
   // find the patient using its id
   let patient = await patientModel.findById(patient_id).lean();
   // console.log(patient.patientName);
@@ -215,9 +216,25 @@ const renderPatientRanking = (req, res) => {
 };
 
 const postPatientLogin = (req, res) => {
+  const input_email = req.body.email;
+  const input_password = req.body.password;
+  console.log(input_email);
+  console.log(input_password)
   try {
-    console.log(req.body);
-    console.log(req.body.input_email);
+    patientModel.findOne({email: input_email}, function(err, foundUser){
+      if(foundUser){
+        bcrypt.compare(input_password, foundUser.password, function(err, result){
+          if(result === true){
+            console.log("登陆成功")
+            console.log("登陆用户的id是： " + foundUser._id)
+
+            res.redirect('/patient/' + foundUser._id)
+          }else{
+            console.log("登陆失败")
+          }
+        })
+      }
+    })
   } catch (err) {
     res.status(404).json({
       status: 'fail',
