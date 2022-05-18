@@ -95,6 +95,7 @@ const renderPatientDashboard = async (req, res) => {
     .sort({ time: -1 })
     .limit(-1)
     .lean();
+
   const support_message = patient.support_message;
   res.render('Patient_Dashboard', {
     patient: patient,
