@@ -1,4 +1,15 @@
 /*********************************/
+/* root setting*/
+/*********************************/
+:root {
+  --light_color: #7dbc57;
+  --dark_color: #2d5215;
+  --bg_color: #eaf4e4;
+}
+
+
+
+/*********************************/
 /*MAIN*/
 /*********************************/
 main {
@@ -161,9 +172,8 @@ h1 {
   gap: 1rem;
 }
 
-.main-nav-link,
 .main-nav-left-link {
-  color: #2d5215;
+  color: var(--dark_color);
   display: inline-block;
 }
 

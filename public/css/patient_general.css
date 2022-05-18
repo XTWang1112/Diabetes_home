@@ -40,6 +40,7 @@ Medium:
 :root {
   --light_color: #7dbc57;
   --dark_color: #2d5215;
+  --bg_color: #eaf4e4;
 }
 
 
@@ -89,7 +90,7 @@ body {
 }
 
 .logo-at-home {
-  color: #2d5215;
+  color: var(--dark_color);
 }
 
 .main-nav-list {
@@ -109,13 +110,13 @@ body {
   align-items: center;
   gap: 3rem;
 }
-
+r
 .nav-icon {
-  color: #2d5215;
+  color: var(--dark_color);
 }
 
 .main-nav-list {
-  color: #2d5215;
+  color: var(--dark_color);
   list-style: none;
   display: flex;
   font-size: 2rem;
@@ -123,7 +124,7 @@ body {
 }
 
 .main-nav-link {
-  color: #2d5215;
+  color: var(--dark_color);
   display: inline-block;
   transition: all 0.3s;
 }
@@ -139,6 +140,15 @@ body {
   align-items: center;
   gap: 1rem;
 }
+
+
+.theme_btn {
+  font-size: 2rem;
+  border:0;
+	outline:none;
+  background-color: transparent;
+}
+
 
 /*********************************/
 /*FOOTER*/
@@ -395,7 +405,7 @@ textarea {
 /*INFO pages*/
 /*********************************/
 .subheader {
-  background-color: #7dbc57 !important;
+  background-color: var(--light_color) !important;
 }
 
 h1,
@@ -406,5 +416,5 @@ p {
 
 .login:link,
 .login:visited {
-  color: #2d5215 !important;
+  color: var(--dark_color) !important;
 }

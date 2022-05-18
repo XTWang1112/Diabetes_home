@@ -12,6 +12,10 @@ const ctrlerPatientInsulin = require('../controllers/ctrPatientInsulin');
 // add a route to handle the get request for all patients' data
 Router.get('/', Controller.renderPatientDashboard);
 
+Router.get('/getTheme', Controller.setTheme);
+
+Router.post('/changeTheme', Controller.changeTheme);
+
 Router.post('/login', Controller.postPatientLogin);
 
 Router.get('/about-website', Controller.renderLoginAboutWebsite);
@@ -31,6 +35,7 @@ Router.get('/me', Controller.renderPatientMe);
 Router.get('/clinician', Controller.renderPatientClinician);
 
 Router.get('/data', Controller.renderPatientData);
+
 Router.get('/blood_glucose', ctrlerPatientBloodRecord.renderPatientBloodRecord);
 
 // export the router

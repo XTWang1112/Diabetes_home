@@ -1,4 +1,14 @@
 /*********************************/
+/* root setting*/
+/*********************************/
+:root {
+  --light_color: #7dbc57;
+  --dark_color: #2d5215;
+  --bg_color: #eaf4e4;
+}
+
+
+/*********************************/
 /*MAIN*/
 /*********************************/
 main {
@@ -16,7 +26,7 @@ h1 {
 }
 
 h2 {
-  color: #2d5215;
+  color: var(--dark_color);
   font-size: 3rem;
   padding-bottom: 1rem;
 }
@@ -79,7 +89,7 @@ h2 {
 .spec .spec_content {
   padding: 2rem;
   text-align: justify;
-  background-color: #EAF4E4;
+  background-color: var(--bg_color);
   border-radius: 20px;
 }
 
@@ -151,9 +161,9 @@ h2 {
   gap: 1rem;
 }
 
-.main-nav-link,
+
 .main-nav-left-link {
-  color: #2d5215;
+  color: var(--dark_color);
   display: inline-block;
 }
 
@@ -178,7 +188,7 @@ h2 {
 .icon-mobile-nav {
   height: 4.8rem;
   width: 4.8rem;
-  color: #2d5215;
+  color: var(--dark_color);
 }
 
 .icon-mobile-nav[name="close-outline"] {
