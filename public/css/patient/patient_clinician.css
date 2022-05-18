@@ -86,11 +86,7 @@ h2 {
 .spec .spec_content {
   padding: 2rem;
   text-align: justify;
-<<<<<<< HEAD
-  background-color: #eaf4e4;
-=======
   background-color: var(--bg_color);
->>>>>>> theme
   border-radius: 20px;
 }
 
@@ -124,10 +120,6 @@ h2 {
 /*********************************/
 /*SIDEBAR
 /*********************************/
-<<<<<<< HEAD
-
-=======
->>>>>>> theme
 .main-nav-left-shade {
   display: none;
 }
@@ -185,11 +177,10 @@ h2 {
   font-weight: bold;
 }
 
-<<<<<<< HEAD
-=======
+.home-li {
+  margin-left: -0.7rem;
+}
 
-
->>>>>>> theme
 /*********************************/
 /*MOBILE NAVIGATOR*/
 /*********************************/

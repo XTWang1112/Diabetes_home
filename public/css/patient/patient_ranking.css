@@ -5,6 +5,25 @@
   --light_color: #7dbc57;
   --dark_color: #2d5215;
   --bg_color: #eaf4e4;
+  --first_color: #7BBA55;
+  --second_color: #85C75D;
+  --third_color: #9FD472;
+  --bar_color: #C3DCB3;
+}
+
+/*********************************/
+/* change the podium*/
+/*********************************/
+.firstPlace {
+  fill: var(--first_color);
+}
+
+.secondPlace {
+  fill: var(--second_color);
+}
+
+.thirdPlace {
+  fill: var(--third_color);
 }
 
 
@@ -76,14 +95,14 @@ h1 {
 }
 
 .ranking_list {
-  background-color: #e7f4de;
+  background-color: var(--bg_color);
   width: 35rem;
   border-radius: 2.4rem;
 }
 
 .ranking_list li {
   display: flex;
-  background-color: #c3dcb3;
+  background-color: var(--bar_color);
   margin: 1rem;
   padding: 0.5rem;
   list-style-type: none;

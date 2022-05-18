@@ -39,10 +39,18 @@ function changeTheme() {
           document.documentElement.style.setProperty('--light_color', '#7dbc57');
           document.documentElement.style.setProperty('--dark_color', '#2d5215');
           document.documentElement.style.setProperty('--bg_color', '#eaf4e4');
+          document.documentElement.style.setProperty('--first_color', '#7BBA55');
+          document.documentElement.style.setProperty('--second_color', '#85C75D');
+          document.documentElement.style.setProperty('--third_color', '#9FD472');
+          document.documentElement.style.setProperty('--bar_color', '#C3DCB3');
         } else if (themeColor === "blue") {
           document.documentElement.style.setProperty('--light_color', '#5e8db7');
           document.documentElement.style.setProperty('--dark_color', '#202b5a');
           document.documentElement.style.setProperty('--bg_color', '#CBE2F8');
+          document.documentElement.style.setProperty('--first_color', '#2264B1');
+          document.documentElement.style.setProperty('--second_color', '#5384BE');
+          document.documentElement.style.setProperty('--third_color', '#668EBC');
+          document.documentElement.style.setProperty('--bar_color', '#A2C7ED');
         } else {
             console.log("not change the theme.")
         }
