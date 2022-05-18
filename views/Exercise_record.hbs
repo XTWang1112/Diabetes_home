@@ -7,11 +7,7 @@
 <section>
   <div class='container'>
     <h2 class='record-head'>
-      <embed
-        class='scale'
-        src='../img/svg/step-icon.svg'
-        type='image/svg+xml'
-      />
+      <embed class='scale' src='/img/svg/step-icon.svg' type='image/svg+xml' />
       &nbsp; Exercise
     </h2>
     {{! form to submit data }}
@@ -42,7 +38,7 @@
 
     <ul class='record-reminder'>
       <li>For your health, you have kept recording for
-        {{#with onePatient}}<span>{{this.insistDay}}</span>{{/with}}
+        {{#with patient}}<span>{{this.insistDay}}</span>{{/with}}
         days.</li>
       <li>Keep recording, control diabetes, and enjoy wonderful life!</li>
     </ul>

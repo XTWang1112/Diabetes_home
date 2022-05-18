@@ -183,9 +183,19 @@ h2 {
 }
 
 @media (max-width: 35em) {
+  main {
+    display: flex;
+    justify-content: center;
+  }
+
   .me_box {
     transform: scale(0.8);
     padding: 0;
+  }
+
+  .info_spec_box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   html {

@@ -25,10 +25,10 @@
     <title>{{title}}</title>
   </head>
 
-  <body>
+  {{#with patient}}
     <!-- nav-open -->
     <header class='header'>
-      <a class='web-logo' href='#'>
+      <a class='web-logo' href='/patient/{{this._id}}'>
         <p class='logo'>
           Diabetes@<span class='logo-at-home'>Home</span>
         </p>
@@ -38,12 +38,12 @@
         <ul class='main-nav-list'>
           <li class='icon-link'>
             <ion-icon class='nav-icon' name='medkit'></ion-icon>
-            <a class='main-nav-link' href='/patient/about-diabetes'>About
+            <a class='main-nav-link' href='/patient/{{this._id}}/about-diabetes'>About
               diabetes</a>
           </li>
           <li class='icon-link'>
             <ion-icon class='nav-icon' name='people'></ion-icon>
-            <a class='main-nav-link' href='/patient/about-website'>About website</a>
+            <a class='main-nav-link' href='/patient/{{this._id}}/about-website'>About website</a>
           </li>
           <li class='icon-link'>
             <ion-icon class='nav-icon' name='color-palette'></ion-icon>
@@ -51,7 +51,8 @@
           </li>
           <li class='icon-link'>
             <ion-icon class='nav-icon' name='key'></ion-icon>
-            <a class='main-nav-link' href='#'>Setting password</a>
+            <a class='main-nav-link' href='/patient/{{this._id}}/change-password'>Setting
+              password</a>
           </li>
           <li class='icon-link'>
             <ion-icon class='nav-icon' name='log-out'></ion-icon>
@@ -65,6 +66,7 @@
         <ion-icon class='icon-mobile-nav' name='close-outline'></ion-icon>
       </button>
     </header>
+  {{/with}}
 
     {{{body}}}
 

@@ -1,5 +1,6 @@
 <link rel='stylesheet' href='/../css/clinician_general.css' />
 <link rel='stylesheet' href='/../css/all_comments.css' />
+<script defer src='/script/comments.js'></script>
 
 <main class='main'>
   <div class='breadcrumbs'>
@@ -22,19 +23,34 @@
   </div>
 
   <div class='comments'>
-    <a href='/clinician/patientname'>
-      <div class='comment'>
-        <div class='subheader'>
-          <div>
-            <img class='patient-img' src='#' alt='' title='patient photo' />
-            <h2>{%PATIENT NAME%}</h2>
+    {{#each allComments}}
+      <a href='/clinician/{{this.patientObjectID}}'>
+        <div class='comment'>
+          <div class='subheader'>
+            <div>
+              {{#each patient}}
+                <img
+                  class='patient-img'
+                  src='/img/profile-photo/{{this.photo_url}}'
+                  alt=''
+                  title='patient photo'
+                />
+                <h2>{{this.patientName}}</h2>
+              {{/each}}
+            </div>
+            <p class='date'>{{this.time}}</p>
           </div>
-          <p class='date'>{%DATE%}</p>
+          <p><strong>Blood Glucose:
+            </strong>{{this.blood_glucose_level_comment}}</p>
+          <p><strong>Weight:
+            </strong>{{this.weight_comment}}</p>
+          <p><strong>Insulin:
+            </strong>{{this.insulinTaken_comment}}</p>
+          <p><strong>Exercise:
+            </strong>{{this.exercise_comment}}</p>
         </div>
-        <p>{%COMMENT%}</p>
-
-      </div>
-    </a>
+      </a>
+    {{/each}}
 
   </div>
 </main>

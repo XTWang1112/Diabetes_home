@@ -25,7 +25,3 @@ db.once('open', async () => {
 });
 
 require('./patient');
-require('./bloodGlucose');
-require('./weight');
-require('./insulinTaken');
-require('./exercise');

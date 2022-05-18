@@ -21,8 +21,6 @@ h2 {
   padding-bottom: 1rem;
 }
 
-
-
 /*********************************/
 /*Clinician box*/
 /*********************************/
@@ -55,7 +53,6 @@ h2 {
   font-size: 2rem;
 }
 
-
 .info_box .info_photo {
   width: 15rem;
   height: 15rem;
@@ -71,7 +68,7 @@ h2 {
 .spec .spec_header {
   text-align: right;
   font-size: 3rem;
-  font-weight:lighter;
+  font-weight: lighter;
   margin-right: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -79,14 +76,14 @@ h2 {
 .spec .spec_content {
   padding: 2rem;
   text-align: justify;
-  background-color: #EAF4E4;
+  background-color: #eaf4e4;
   border-radius: 20px;
 }
 
 .message .message_header {
   text-align: right;
   font-size: 3rem;
-  font-weight:lighter;
+  font-weight: lighter;
   margin-top: 2rem;
   margin-right: 1rem;
   margin-bottom: 0.5rem;
@@ -95,12 +92,12 @@ h2 {
 .message .comments-div {
   padding: 2rem;
   text-align: justify;
-  background-color: #F2F1D3;
+  background-color: #f2f1d3;
   border-radius: 20px;
-} 
+}
 
 .message .comments_date {
-  color: #5667C8;
+  color: #5667c8;
   font-size: 2rem;
   font-weight: 800;
 }
@@ -113,7 +110,6 @@ h2 {
 /*********************************/
 /*SIDEBAR
 /*********************************/
-
 
 .main-nav-left-shade {
   display: none;
@@ -140,7 +136,7 @@ h2 {
   text-shadow: 0 1px 5px rgba(45, 82, 21, 0.3);
 }
 
-.home-li {
+.clinician-li {
   margin-left: -0.7rem;
   text-shadow: 0 1px 5px rgba(86, 103, 200, 0.5);
 }
@@ -157,12 +153,9 @@ h2 {
   display: inline-block;
 }
 
-.home-text {
+.clinician-text {
   font-weight: bold;
 }
-
-
-
 
 /*********************************/
 /*MOBILE NAVIGATOR*/
@@ -181,10 +174,9 @@ h2 {
   color: #2d5215;
 }
 
-.icon-mobile-nav[name="close-outline"] {
+.icon-mobile-nav[name='close-outline'] {
   display: none;
 }
-
 
 /*********************************/
 /*********************************/
@@ -195,12 +187,9 @@ h2 {
 /* tablet size: 1200px - 560px */
 /* 75em = 1200px */
 @media (max-width: 75em) {
-
 }
 
 @media (max-width: 35em) {
-
-
   html {
     font-size: 50%;
   }
@@ -268,11 +257,11 @@ h2 {
     z-index: 999;
   }
 
-  .nav-open .icon-mobile-nav[name="close-outline"] {
+  .nav-open .icon-mobile-nav[name='close-outline'] {
     display: block;
   }
 
-  .nav-open .icon-mobile-nav[name="menu-outline"] {
+  .nav-open .icon-mobile-nav[name='menu-outline'] {
     display: none;
   }
 
@@ -301,7 +290,6 @@ h2 {
     padding: 0;
   }
 
-
   .main-nav-left {
     order: 2;
     border-right: 0;
@@ -313,7 +301,6 @@ h2 {
     padding: 2rem;
     z-index: 1;
   }
-
 
   /* .main-nav-left-shade {
     display: block;

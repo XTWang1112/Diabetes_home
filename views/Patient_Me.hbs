@@ -6,23 +6,38 @@
         <div class='main-nav-left-shade'></div>
         <li class='svg-link'>
           <embed src='/img/svg/data-icon.svg' type='image/svg+xml' />
-          <a class='main-nav-left-link' href='data'>Data</a>
+          <a
+            class='main-nav-left-link'
+            href='/patient/{{this._id}}/data'
+          >Data</a>
         </li>
         <li class='svg-link'>
           <embed src='/img/svg/clinician-icon.svg' type='image/svg+xml' />
-          <a class='main-nav-left-link' href='clinician'>Clinician</a>
+          <a
+            class='main-nav-left-link'
+            href='/patient/{{this._id}}/clinician'
+          >Clinician</a>
         </li>
         <li class='svg-link home-li'>
           <embed src='/img/svg/home-icon.svg' type='image/svg+xml' />
-          <a class='main-nav-left-link home-text' href='/patient'>Home</a>
+          <a
+            class='main-nav-left-link home-text'
+            href='/patient/{{this._id}}'
+          >Home</a>
         </li>
         <li class='svg-link'>
           <embed src='/img/svg/ranking-icon.svg' type='image/svg+xml' />
-          <a class='main-nav-left-link' href='ranking'>Ranking</a>
+          <a
+            class='main-nav-left-link'
+            href='/patient/{{this._id}}/'
+          >Ranking</a>
         </li>
         <li class='svg-link me-li'>
           <embed src='/img/svg/me-icon.svg' type='image/svg+xml' />
-          <a class='main-nav-left-link me-text' href='me'>Me</a>
+          <a
+            class='main-nav-left-link me-text'
+            href='/patient/{{this._id}}/'
+          >Me</a>
         </li>
       </ul>
     </nav>
@@ -32,8 +47,6 @@
         <img class='info_photo' src='/img/profile-photo/{{this.photo_url}}' />
         <div class='name_id_box'>
           <div class='name'>{{this.patientName}}</div>
-          <div class='id_div'>ID:
-            <span class='id'>{{this.patientID}}</span></div>
         </div>
         <embed src='/img/svg/change_info.svg' type='image/svg+xml' />
       </div>
@@ -44,12 +57,9 @@
         <div class='gender_div'>Gender:<span
             class='gender green'
           >{{this.gender}}</span></div>
-        <div class='age_div'>Age:<span
-            class='age green'
-          >{{this.age}}</span></div>
         <div class='engage_div'>Engagement rate:<span
             class='engage green'
-          >{{this.engagementRate}}</span></div>
+          >{{this.engagementRate}}%</span></div>
       </div>
       <div class='bio_box'>
         <h2 class='bio_header'>Bio</h2>
