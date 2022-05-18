@@ -163,13 +163,22 @@ h1 {
 }
 
 .rank-text {
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .svg-link {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.svg-link path {
+  fill: var(--dark_color);
+}
+
+.svg-link .me_icon {
+  fill: transparent;
+  stroke: var(--dark_color);
 }
 
 .main-nav-left-link {

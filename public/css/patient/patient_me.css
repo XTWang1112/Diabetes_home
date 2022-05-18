@@ -51,6 +51,8 @@ h2 {
   fill: var(--light_color);
   display: flex;
   margin: auto;
+  width:5rem;
+  height:5rem ;
 }
 
 .name_id_box {
@@ -147,6 +149,15 @@ h2 {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.svg-link path {
+  fill: var(--dark_color);
+}
+
+.svg-link .me_icon {
+  fill: transparent;
+  stroke: var(--dark_color);
 }
 
 

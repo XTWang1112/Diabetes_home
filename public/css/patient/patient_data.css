@@ -142,6 +142,15 @@ td {
   gap: 1rem;
 }
 
+.svg-link path {
+  fill: var(--dark_color);
+}
+
+.svg-link .me_icon {
+  fill: transparent;
+  stroke: var(--dark_color);
+}
+
 .main-nav-left-link {
   color: var(--dark_color);
   display: inline-block;
