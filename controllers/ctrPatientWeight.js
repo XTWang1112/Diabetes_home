@@ -14,7 +14,7 @@ const renderPatientWeight = async (req, res) => {
   const onePatientWeight = await recordModel
     .find(
       {
-        find_id,
+        patientObjectID: find_id,
         time: {
           $gte: new Date(search_day).getTime(),
           $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
@@ -42,6 +42,7 @@ const renderPatientWeight = async (req, res) => {
 
     if (weight_comment && patinet_weight) {
       const patientWeight = {
+        time: today,
         patientObjectID: find_id,
         weight: patinet_weight,
         weight_comment: weight_comment,
@@ -52,12 +53,21 @@ const renderPatientWeight = async (req, res) => {
           ...patientWeight,
         });
       } else if (onePatientWeight.length !== 0 && patient.weight_record) {
-        await recordModel.updateOne({
-          patientObjectID: find_id,
-          time: today,
-          weight: patinet_weight,
-          weight_comment: weight_comment,
-        });
+        console.log('update😎😎🤓');
+        const updated = await recordModel.findOneAndUpdate(
+          {
+            patientObjectID: find_id,
+            time: {
+              $gte: new Date(search_day).getTime(),
+              $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+            },
+          },
+          {
+            time: today,
+            weight: patinet_weight,
+            weight_comment: weight_comment,
+          }
+        );
       }
     }
   }

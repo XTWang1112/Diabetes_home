@@ -14,7 +14,7 @@ const renderPatientExercise = async (req, res) => {
   const onePatientExercise = await recordModel
     .find(
       {
-        find_id,
+        patientObjectID: find_id,
         time: {
           $gte: new Date(search_day).getTime(),
           $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
@@ -52,12 +52,21 @@ const renderPatientExercise = async (req, res) => {
           ...patientExercise,
         });
       } else if (onePatientExercise.length !== 0 && patient.exercise_record) {
-        await recordModel.updateOne({
-          patientObjectID: find_id,
-          time: today,
-          exercise: patinet_exercise,
-          exercise_comment: exercise_comment,
-        });
+        console.log('update😎😎🤓');
+        const updated = await recordModel.findOneAndUpdate(
+          {
+            patientObjectID: find_id,
+            time: {
+              $gte: new Date(search_day).getTime(),
+              $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+            },
+          },
+          {
+            time: today,
+            exercise: patinet_exercise,
+            exercise_comment: exercise_comment,
+          }
+        );
       }
     }
   }

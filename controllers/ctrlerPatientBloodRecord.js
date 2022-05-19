@@ -14,7 +14,7 @@ const renderPatientBloodRecord = async (req, res) => {
   const onePatientBloodRecord = await recordModel
     .find(
       {
-        find_id,
+        patientObjectID: find_id,
         time: {
           $gte: new Date(search_day).getTime(),
           $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
@@ -24,11 +24,13 @@ const renderPatientBloodRecord = async (req, res) => {
         if (err) {
           console.log(err);
         }
-        console.log('hi');
         return result;
       }
     )
     .clone();
+  console.log(search_day);
+  console.log(new Date(new Date(search_day).getTime()));
+  console.log(new Date(new Date(search_day).getTime() + 24 * 3600 * 1000));
 
   if (patient) {
     // 渲染血糖上传页面
@@ -38,6 +40,7 @@ const renderPatientBloodRecord = async (req, res) => {
     });
     const glucose_comment = req.query.glucose_comment || 'no comments';
     const patinet_blood_glucose = req.query.patinet_blood_glucose;
+    console.log(onePatientBloodRecord);
 
     if (glucose_comment && patinet_blood_glucose) {
       const patientBloodRecord = {
@@ -54,12 +57,22 @@ const renderPatientBloodRecord = async (req, res) => {
         onePatientBloodRecord.length !== 0 &&
         patient.bloodGlucose_record
       ) {
-        await recordModel.updateOne({
-          patientObjectID: find_id,
-          time: today,
-          blood_glucose_level: patinet_blood_glucose,
-          blood_glucose_level_comment: glucose_comment,
-        });
+        console.log('update😎😎🤓');
+        const updated = await recordModel.findOneAndUpdate(
+          {
+            patientObjectID: find_id,
+            time: {
+              $gte: new Date(search_day).getTime(),
+              $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+            },
+          },
+          {
+            time: today,
+            blood_glucose_level: patinet_blood_glucose,
+            blood_glucose_level_comment: glucose_comment,
+          }
+        );
+        console.log(onePatientBloodRecord);
       }
     }
   }

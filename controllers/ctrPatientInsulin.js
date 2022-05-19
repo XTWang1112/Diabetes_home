@@ -14,7 +14,7 @@ const renderPatientInsulin = async (req, res) => {
   const onePatientInsulin = await recordModel
     .find(
       {
-        find_id,
+        patientObjectID: find_id,
         time: {
           $gte: new Date(search_day).getTime(),
           $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
@@ -54,12 +54,21 @@ const renderPatientInsulin = async (req, res) => {
         onePatientInsulin.length !== 0 &&
         patient.insulinTaken_record
       ) {
-        await recordModel.updateOne({
-          patientObjectID: find_id,
-          time: today,
-          insulinTaken: patinet_insulin,
-          insulinTaken_comment: insulin_comment,
-        });
+        console.log('update😎😎🤓');
+        const updated = await recordModel.findOneAndUpdate(
+          {
+            patientObjectID: find_id,
+            time: {
+              $gte: new Date(search_day).getTime(),
+              $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+            },
+          },
+          {
+            time: today,
+            insulinTaken: patinet_insulin,
+            insulinTaken_comment: insulin_comment,
+          }
+        );
       }
     }
   }

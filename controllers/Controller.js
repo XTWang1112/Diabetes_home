@@ -87,18 +87,27 @@ const renderClinicianDashboard = async (req, res) => {
 };
 
 const renderPatientDashboard = async (req, res) => {
+  const current_year = new Date().getFullYear();
+  const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
+  const current_day = new Date().getDate();
+  const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
   const patient_id = req.params.id;
   const patient = await patientModel.findById(patient_id).lean();
 
-  const latestRecord = await recordModel
-    .find({ patientObjectID: patient_id })
-    .sort({ time: -1 })
-    .limit(-1)
+  const todayData = await recordModel
+    .find({
+      patientObjectID: patient_id,
+      time: {
+        $gte: new Date(search_day).getTime(),
+        $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+      },
+    })
     .lean();
+  console.log(todayData);
   const support_message = patient.support_message;
   res.render('Patient_Dashboard', {
     patient: patient,
-    latestRecord: latestRecord[0],
+    latestRecord: todayData[0],
     support_message: support_message,
     layout: 'patient_template',
   });
@@ -229,29 +238,40 @@ const renderLoginAboutDiabetes = async (req, res) => {
 };
 
 // change Theme
-const changeTheme = async(req,res) => {
+const changeTheme = async (req, res) => {
   let patient_id = '6267d6bb8b206aade8b24198';
   let patient = await patientModel.findById(patient_id);
   theme_preference = patient.theme_preference;
   currentColor = theme_preference;
-  if (currentColor == "blue") {
-    patientModel.updateOne({_id: patient_id}, {theme_preference: "green"})
-    .then((result) => console.log('Try to change color perference to green', result.acknowledged));
-    res.send("green");
-  } else if (currentColor == "green") {
-    patientModel.updateOne({_id: patient_id}, {theme_preference: "blue"})
-    .then((result) => console.log('Try to change color perference to blue', result.acknowledged));
-    res.send("blue");
+  if (currentColor == 'blue') {
+    patientModel
+      .updateOne({ _id: patient_id }, { theme_preference: 'green' })
+      .then((result) =>
+        console.log(
+          'Try to change color perference to green',
+          result.acknowledged
+        )
+      );
+    res.send('green');
+  } else if (currentColor == 'green') {
+    patientModel
+      .updateOne({ _id: patient_id }, { theme_preference: 'blue' })
+      .then((result) =>
+        console.log(
+          'Try to change color perference to blue',
+          result.acknowledged
+        )
+      );
+    res.send('blue');
   }
-}
+};
 
-const setTheme = async(req,res) => {
+const setTheme = async (req, res) => {
   let patient_id = '6267d6bb8b206aade8b24198';
   let patient = await patientModel.findById(patient_id);
   theme_preference = patient.theme_preference;
   res.send(theme_preference);
-}
-
+};
 
 module.exports = {
   renderClinicianDashboard,

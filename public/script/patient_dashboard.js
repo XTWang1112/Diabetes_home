@@ -37,6 +37,7 @@ document
 const data = document.querySelectorAll('.time-series');
 const finish = document.querySelectorAll('.finish');
 for (let i = 0; i < 4; i++) {
+  if (data[i].textContent === '') data[i].textContent = 'no data today';
   if (isNaN(data[i].textContent)) {
     finish[i].classList.add('disappear');
   }
