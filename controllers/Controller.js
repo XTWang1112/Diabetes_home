@@ -109,6 +109,7 @@ const renderClinicianDashboard = async (req, res) => {
 
 // The function to get the current value of each data and render the patient dashboard
 const renderPatientDashboard = async (req, res) => {
+  console.log(req.isAuthenticated())
   let patient_id = req.params.id;
   // find the patient using its id
   let patient = await patientModel.findById(patient_id).lean();

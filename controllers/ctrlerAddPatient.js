@@ -51,6 +51,7 @@ const registerPatient = async (req, res, next) => {
       postalCode: req.body.postal,
       city: req.body.city,
       password: generatePassword(),
+      role: "patient"
     });
     console.log(newPatient);
     console.log(newPatient.password);

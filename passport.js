@@ -1,12 +1,60 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
+const passport = require('passport')
 
 
 
-const patientModel = require('../models/patient');
+
+const patientModel = require('./models/patient');
+
+passport.serializeUser((user, done) => {
+    done(null, {_id: user._id, role: user.role})
+})
+
+passport.deserializeUser((login, done) => {
+    if(login.role === "patient"){
+        patientModel.findById(login._id, (err, user) => {
+            return done(err, user)
+        })
+    }else{
+        return done("This user does not have a role", null)
+    }
+})
+
+passport.use(
+    /* "patient-login", */
+    new LocalStrategy({
+        usernameField: "email",
+        passwordField: "password",
+        passReqToCallback: true
+    },
+    (req, email, password, done) => {
+        process.nextTick(() => {
+            patientModel.findOne({'email': email.toLowerCase()}, async(err, patient) => {
+                req.flash('loginMessage', 'No user found');
+                if(err){
+                    return done(err);
+                }else if(!patient){
+                    req.flash('loginMessage', 'No user found');
+                    return done(null, false, req.flash('loginMessage', 'No user found'));
+                    /* return done(null, false, {message: "no user found"}); */
+                }else if(!await bcrypt.compare(password, patient.password)){
+                    return done(null, false, req.flash('loginMessage', 'Oops, wrong password!'));
+                }else{
+                    return done(null, patient, {message: "Login in successfully"});
+                }
+            })
+        })
+    }
+    )
+)
+
+module.exports = passport
 
 
-module.exports = (passport) => {
+
+
+/* module.exports = (passport) => {
     // Store user information in session
     passport.serializeUser((user, done) => {
         done(null, {_id: user._id, role: user.role})
@@ -47,7 +95,7 @@ module.exports = (passport) => {
         }
         )
     )
-}
+} */
 
 
 

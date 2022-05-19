@@ -88,6 +88,8 @@ const patientSchema = new mongoose.Schema({
   weight_record: { type: Boolean, default: false },
   insulinTaken_record: { type: Boolean, default: false },
   exercise_record: { type: Boolean, default: false },
+
+  role: {type: String}
 });
 
 // Compile the schema into a model
