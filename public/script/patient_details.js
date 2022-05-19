@@ -20,10 +20,11 @@ document
 
 /////////////////////////
 //patient comment window
-document
-  .querySelector('.btn-view-message')
-  .addEventListener('click', function () {
+const btns = document.querySelectorAll('.btn-view-message');
+btns.forEach((btn) => {
+  btn.addEventListener('click', function () {
     document
       .querySelector('.patient-message-card')
       .classList.toggle('disappear');
   });
+});

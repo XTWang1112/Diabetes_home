@@ -55,7 +55,10 @@
         <p><strong>Street Address</strong><br />{{this.address}}</p>
         <p><strong>City</strong><br />{{this.city}}</p>
         <p><strong>Postal Code</strong><br />{{this.postcode}}</p>
-        <p><strong>Registered Date</strong><br />{{this.register_date}}</p>
+        <p>
+          <strong>Registered Date</strong>
+          <p class = "date">{{this.register_date}}</p>
+        </p>
       </div>
 
       <form action="/clinician/{{this._id}}" class='time-series-card' method="POST">
@@ -110,13 +113,13 @@
     <div class='note-card'>
       <div class='subheader'>
         <h2>Notes</h2>
-        <a class='see-all-notes' href='/clinician/patientname/all-notes'>See
+        <a class='see-all-notes' href='/clinician/{{this._id}}/all-notes'>See
           all</a>
       </div>
-      <div class='note-background'>
-        <textarea class='notes'> </textarea>
-        <btn class='btn btn-save-note'>Save</btn>
-      </div>
+      <form action="/clinician/{{this._id}}" method="POST" class='note-background'>
+        <textarea class='notes' name = "note"> </textarea>
+        <btn class='btn btn-save-note' type = "submit">Save</btn>
+      </form>
       <p>Latest changes saved by:</p>
       <div class='subfoot'>
         <div class='last-change-doc'>
@@ -169,14 +172,6 @@
                 </div>
                 <div class='sep'></div>
               </div>
-              {{!-- <div class='col3'>
-                <div>
-                  <p>Clinician</p>
-                  {{#with data.patient}}
-                  <p>{{this.clinician}}</p>
-                  {{/with}}
-                </div>
-              </div> --}}
             </div>
             <btn class='btn btn-view-message'>
               <svg xmlns='http://www.w3.org/2000/svg' class='message' fill='none' viewBox='0 0 24 24'
@@ -191,15 +186,25 @@
       </div>  
     </div>
     </div>
+    {{#each data.records}}
     <div class='patient-message-card disappear'>
       <h2>Patient's Comment</h2>
       <div class='show-message'>
-        <h3>{%DATE%} {%TIME%}</h3>
+        <h3>{{this.time}}</h3>
         <div class='message-box'>
-          <q> {%PATIENT MESSAGE%} </q>
+          <p><strong>Blood Glucose:
+            </strong>{{this.blood_glucose_level_comment}}</p>
+          <p><strong>Weight:
+            </strong>{{this.weight_comment}}</p>
+          <p><strong>Insulin:
+            </strong>{{this.insulinTaken_comment}}</p>
+          <p><strong>Exercise:
+            </strong>{{this.exercise_comment}}</p>
         </div>
       </div>
     </div>
+    {{/each}}
+
     <div class='support-message disappear'>
       <btn class='btn btn-close'>
         <svg xmlns='http://www.w3.org/2000/svg' class='close' fill='none' viewBox='0 0 24 24' stroke='currentColor'
@@ -228,4 +233,6 @@
     const inString = toDate(inNumber);
     records[i].querySelector("p").textContent = inString;
   }
+
+  document.querySelector(".date").textContent = toDate(document.querySelector(".date").textContent)
 </script>

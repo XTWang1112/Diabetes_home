@@ -1,7 +1,6 @@
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 
-const patientModel = require('../models/patient');
 const recordModel = require('../models/record');
 
 const renderAllComments = async (req, res) => {

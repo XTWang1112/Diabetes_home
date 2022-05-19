@@ -14,11 +14,13 @@ const renderPatientDetails = async (req, res) => {
     //current patient' records
     const records = await recordModel
       .find({
-        find_id,
+        patientObjectID: find_id,
       })
       .sort({ time: -1 })
       .lean();
+
     console.log(records);
+
     res.render('Patient_details', {
       data: {
         patient,
@@ -116,8 +118,6 @@ const setTimeSeries = async (req, res) => {
 };
 
 const saveSupportMessage = async (req, res) => {
-  console.log('saveSupportMessage running');
-  // let patient_id = '6267d6bb8b206aade8b24198';
   const patient_id = req.params.id;
   const message_date = new Date() - 2 * 60 * 60 * 1000;
   const message = req.body.support_message;
@@ -134,6 +134,23 @@ const saveSupportMessage = async (req, res) => {
   // 重新定向
   res.redirect('/clinician/' + req.params.id);
 };
+
+// const writeNote = async (req, res, next) => {
+//   console.log(req.query.note);
+
+//   const newNote = {
+//     time: new Date() - 2 * 60 * 60 * 1000,
+//     patientObjectID: req.params.id,
+//     note: req.query.note,
+//   };
+
+//   const note = await notesModel.create({
+//     ...newNote,
+//   });
+//   console.log('hi');
+//   console.log(note);
+//   next();
+// };
 
 module.exports = {
   renderPatientDetails,
