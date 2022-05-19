@@ -45,11 +45,11 @@
 
   <section class='clinician_box'>
     <div class='info_box'>
-      <img class='info_photo' src='/img/profile-photo/clinicianA.png' />
+      <img class='info_photo' src='/img/profile-photo/{{clinician.photo_url}}' />
       <div class='info_right_box'>
-        <div class='clinician_name'>Dr.Vincent</div>
-        <div class='clinician_background'>Clinical PhD</div>
-        <div class='contact'>Contact: <span>0433720249</span></div>
+        <div class='clinician_name'>{{clinician.firstName}} {{clinician.lastName}}</div>
+        <div class='clinician_background'>{{clinician.edu_background}}</div>
+        <div class='contact'>Contact: <span>{{clinician.phoneNumber}}</span></div>
       </div>
     </div>
 
@@ -58,14 +58,7 @@
         Specialties
       </div>
       <div class='spec_content'>
-        Vincent graduated from the Department of Clinical Medicine at the
-        University of Melbourne and studied at the University of Sydney
-        Hospital. Specializes in the diagnosis and treatment of chronic cough,
-        lung cancer, pulmonary nodules, chronic obstructive pulmonary disease,
-        asthma, lung infection, bronchiectasis, pleural effusion, pulmonary
-        embolism, respiratory failure and other diseases. He has rich experience
-        in tracheoscopy. He has published many papers in national magazines and
-        core science and technology magazines.
+        {{clinician.specialties}}
       </div>
     </div>
 
