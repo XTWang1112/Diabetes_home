@@ -273,6 +273,12 @@ const setTheme = async (req, res) => {
   res.send(theme_preference);
 };
 
+const renderGuestPage = async (req, res) => {
+  res.render('guest_page', {
+    layout: 'info_template',
+  });
+};
+
 module.exports = {
   renderClinicianDashboard,
   renderPatientDashboard,
@@ -285,4 +291,5 @@ module.exports = {
   renderLoginAboutDiabetes,
   changeTheme,
   setTheme,
+  renderGuestPage,
 };
