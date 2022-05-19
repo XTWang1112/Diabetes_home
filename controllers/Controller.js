@@ -103,7 +103,6 @@ const renderPatientDashboard = async (req, res) => {
       },
     })
     .lean();
-  console.log(todayData);
   const support_message = patient.support_message;
   res.render('Patient_Dashboard', {
     patient: patient,
