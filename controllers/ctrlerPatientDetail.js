@@ -5,6 +5,7 @@ const res = require('express/lib/response');
 
 const patientModel = require('../models/patient');
 const recordModel = require('../models/record');
+const noteModel = require('../models/clinician_notes');
 
 const renderPatientDetails = async (req, res) => {
   try {
@@ -130,10 +131,23 @@ const saveSupportMessage = async (req, res) => {
       { support_message_date: message_date.toLocaleDateString() }
     )
     .then((result) => console.log('Try to change support message date'));
-
-  // 重新定向
   res.redirect('/clinician/' + req.params.id);
-};
+}
+
+const saveNote = async (req, res) => {
+  const patient_id = req.params.id;
+  const time = new Date() - 2 * 60 * 60 * 1000;
+  const note = req.body.note;
+  newNote = new noteModel({
+    patientObjectID: patient_id,
+    time: time,
+    note: note,
+  });
+  await newNote.save()
+  .then(() => console.log("try to add new note"));
+  res.redirect('/clinician/' + req.params.id);
+}
+
 
 // const writeNote = async (req, res, next) => {
 //   console.log(req.query.note);
@@ -156,4 +170,5 @@ module.exports = {
   renderPatientDetails,
   setTimeSeries,
   saveSupportMessage,
+  saveNote,
 };

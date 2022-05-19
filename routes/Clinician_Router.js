@@ -20,6 +20,7 @@ Router.get('/all-comments', ctrlerAllComments.renderAllComments);
 Router.get('/:id', ctrlerPatientDetail.renderPatientDetails);
 // Router.get('/patientname', ctrlerPatientDetail.renderPatientDetails);
 Router.post('/:id/message', ctrlerPatientDetail.saveSupportMessage);
+Router.post('/:id/addNote', ctrlerPatientDetail.saveNote);
 Router.post('/:id', ctrlerPatientDetail.setTimeSeries);
 // Router.get('/:id', ctrlerPatientDetail.writeNote);
 Router.get('/:id/all-notes', ctrlerAllNotes.renderAllNotes);
