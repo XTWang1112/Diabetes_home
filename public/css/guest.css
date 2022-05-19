@@ -1,0 +1,52 @@
+main {
+  height: calc(100vh - 11.4rem);
+  position: relative;
+}
+
+.content {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  padding-top: 20rem;
+  padding-left: 24rem;
+}
+
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #0075e0;
+}
+
+h1 {
+  font-size: 6rem;
+  color: #202b5a;
+  margin-bottom: 6.4rem;
+}
+
+.btn:link,
+.btn:visited {
+  width: 22rem;
+  height: 5.2rem;
+  background-color: #2264b1;
+  display: inline-block;
+  border-radius: 10rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  font-weight: 500;
+  margin-bottom: 2.4rem;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}

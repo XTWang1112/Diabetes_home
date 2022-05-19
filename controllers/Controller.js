@@ -10,6 +10,8 @@ const renderClinicianDashboard = async (req, res) => {
         {},
         {
           patientName: true,
+          firstName: true,
+          lastName: true,
           patientID: true,
 
           gender: true,
@@ -44,37 +46,6 @@ const renderClinicianDashboard = async (req, res) => {
 
       // 通过Unix time 计算病人年龄，暂时不用
       // patient.birthday = Math.floor((new Date().getTime() - patient.birthday) / 1000 / 60 / 60 / 24 / 365);
-
-      // patient_result在循环的时候，是不会跟着loop的patient切换到下一位
-      // let patient_result = await patientModel.findOne(query);
-
-      // 判断血糖是否超标
-
-      // if (bloodGlucose_result) {
-      //   // get the latest bloodGlucose value
-      //   patient.today_blood_glucose_level = bloodGlucose_result.value;
-      //   patient.timestamp_blood_glucose_level = bloodGlucose_result.time;
-      //   patient.blood_glucose_level_lower_bound = patient_result.bloodGlucose_lowerBound;
-      //   patient.blood_glucose_level_upper_bound = patient_result.bloodGlucose_upperBound;
-      // } else {
-      //   patient.today_blood_glucose_level = 0;
-      //   patient.today_blood_glucose_level = 'No data today';
-      // }
-
-      // sort weight value according to date and time
-      // let weight_result = await weightModel.findOne(query).sort({
-      //   _id: -1,
-      // });
-      // if (weight_result) {
-      //   console.log(weight_result);
-      //   patient.today_weight = weight_result.value;
-      //   patient.timestamp_weight = weight_result.time;
-      //   patient.weight_lower_bound = 40;
-      //   patient.weight_upper_bound = 85;
-      // } else {
-      //   patient.today_weight = 0;
-      //   patient.today_weight = 'No data today';
-      // }
     }
 
     res.render('Clinician_dashboard', {
@@ -348,6 +319,12 @@ async function addDate() {
 }
 
 
+const renderGuestPage = async (req, res) => {
+  res.render('guest_page', {
+    layout: 'info_template',
+  });
+};
+
 module.exports = {
   renderClinicianDashboard,
   renderPatientDashboard,
@@ -361,4 +338,5 @@ module.exports = {
   changeTheme,
   setTheme,
   getData,
+  renderGuestPage,
 };
