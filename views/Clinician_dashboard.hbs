@@ -89,109 +89,112 @@
 </main>
 
 <script>
-  var path = "/clinician/data?id=6267d6bb8b206aade8b24198";
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', path);
-  xhr.send();
-  xhr.onreadystatechange = () => {
-    if(xhr.readyState === 4) {
-      if (xhr.status >= 200 && xhr.status < 300) {
-        records = JSON.parse(xhr.response);
-        for (record of records) {
-          console.log(record);
-          const bloodQuery = "#id"+record.patientObjectID+" .blood_glucose_data";
-          const weightQuery = "#id"+record.patientObjectID+" .weight_data";
-          const insulinQuery = "#id"+record.patientObjectID+" .insulin_data";
-          const exerciseQuery = "#id"+record.patientObjectID+" .exercise_data";
-          
-          if (record.blood_glucose_level) {
-            // change the innerHtml font text
-            document.querySelector(bloodQuery).innerHTML = record.blood_glucose_level;
-            // set the bound color
-            if (record.blood_glucose_level === "no data today") {
-              document.querySelector(bloodQuery).style.color = "orange";
-            } else {
-              var v = Number(record.blood_glucose_level);
-              if ( v < record.bloodGlucose_lowerBound) {
-                document.querySelector(bloodQuery).style.color = "blue";
-              } else if ( v < record.bloodGlucose_upperBound) {
-                document.querySelector(bloodQuery).style.color = "green";
+  function refreshDashboard() {
+    var path = "/clinician/data?id=6267d6bb8b206aade8b24198";
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', path);
+    xhr.send();
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState === 4) {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          records = JSON.parse(xhr.response);
+          for (record of records) {
+            console.log(record);
+            const bloodQuery = "#id"+record.patientObjectID+" .blood_glucose_data";
+            const weightQuery = "#id"+record.patientObjectID+" .weight_data";
+            const insulinQuery = "#id"+record.patientObjectID+" .insulin_data";
+            const exerciseQuery = "#id"+record.patientObjectID+" .exercise_data";
+            
+            if (record.blood_glucose_level) {
+              // change the innerHtml font text
+              document.querySelector(bloodQuery).innerHTML = record.blood_glucose_level;
+              // set the bound color
+              if (record.blood_glucose_level === "no data today") {
+                document.querySelector(bloodQuery).innerHTML = "no data today";
+                document.querySelector(bloodQuery).style.color = "orange";
               } else {
-                document.querySelector(bloodQuery).style.color = "red";
+                var v = Number(record.blood_glucose_level);
+                if ( v < record.bloodGlucose_lowerBound) {
+                  document.querySelector(bloodQuery).style.color = "blue";
+                } else if ( v < record.bloodGlucose_upperBound) {
+                  document.querySelector(bloodQuery).style.color = "green";
+                } else {
+                  document.querySelector(bloodQuery).style.color = "red";
+                }
               }
-            }
-          } else {
-            document.querySelector(bloodQuery).innerHTML = "No Series";
-            document.querySelector(bloodQuery).style.color = "grey";
-          } 
+            } else {
+              document.querySelector(bloodQuery).innerHTML = "No Series";
+              document.querySelector(bloodQuery).style.color = "grey";
+            } 
 
-          // document.querySelector(weightQuery).innerHTML = record.weight;
-          if (record.weight) {
-            // change the innerHtml font text
-            document.querySelector(weightQuery).innerHTML = record.weight;
-            // set the bound color
-            if (record.weight === "no data today") {
-              document.querySelector(weightQuery).style.color = "orange";
-            } else {
-              var v = Number(record.weight);
-              if ( v < record.weight_lowerBound) {
-                document.querySelector(weightQuery).style.color = "blue";
-              } else if ( v < record.weight_upperBound) {
-                document.querySelector(weightQuery).style.color = "green";
+            // document.querySelector(weightQuery).innerHTML = record.weight;
+            if (record.weight) {
+              // change the innerHtml font text
+              document.querySelector(weightQuery).innerHTML = record.weight;
+              // set the bound color
+              if (record.weight === "no data today") {
+                document.querySelector(weightQuery).style.color = "orange";
               } else {
-                document.querySelector(weightQuery).style.color = "red";
+                var v = Number(record.weight);
+                if ( v < record.weight_lowerBound) {
+                  document.querySelector(weightQuery).style.color = "blue";
+                } else if ( v < record.weight_upperBound) {
+                  document.querySelector(weightQuery).style.color = "green";
+                } else {
+                  document.querySelector(weightQuery).style.color = "red";
+                }
               }
-            }
-          } else {
-            document.querySelector(weightQuery).innerHTML = "No Series";
-            document.querySelector(weightQuery).style.color = "grey";
-          } 
+            } else {
+              document.querySelector(weightQuery).innerHTML = "No Series";
+              document.querySelector(weightQuery).style.color = "grey";
+            } 
 
-          if (record.insulinTaken) {
-            // change the innerHtml font text
-            document.querySelector(insulinQuery).innerHTML = record.insulinTaken;
-            // set the bound color
-            if (record.insulinTaken === "no data today") {
-              document.querySelector(insulinQuery).style.color = "orange";
-            } else {
-              var v = Number(record.insulinTaken);
-              if ( v < record.insulinTaken_lowerBound) {
-                document.querySelector(insulinQuery).style.color = "blue";
-              } else if ( v < record.insulinTaken_upperBound) {
-                document.querySelector(insulinQuery).style.color = "green";
+            if (record.insulinTaken) {
+              // change the innerHtml font text
+              document.querySelector(insulinQuery).innerHTML = record.insulinTaken;
+              // set the bound color
+              if (record.insulinTaken === "no data today") {
+                document.querySelector(insulinQuery).style.color = "orange";
               } else {
-                document.querySelector(insulinQuery).style.color = "red";
+                var v = Number(record.insulinTaken);
+                if ( v < record.insulinTaken_lowerBound) {
+                  document.querySelector(insulinQuery).style.color = "blue";
+                } else if ( v < record.insulinTaken_upperBound) {
+                  document.querySelector(insulinQuery).style.color = "green";
+                } else {
+                  document.querySelector(insulinQuery).style.color = "red";
+                }
               }
-            }
-          } else {
-            document.querySelector(insulinQuery).innerHTML = "No Series";
-            document.querySelector(insulinQuery).style.color = "grey";
-          } 
-          
-          // exercise 
-          if (record.exercise) {
-            // change the innerHtml font text
-            document.querySelector(exerciseQuery).innerHTML = record.exercise;
-            // set the bound color
-            if (record.exercise === "no data today") {
-              document.querySelector(exerciseQuery).style.color = "orange";
             } else {
-              var v = Number(record.exercise);
-              if ( v < record.exercise_lowerBound) {
-                document.querySelector(exerciseQuery).style.color = "blue";
-              } else if ( v < record.exercise_upperBound) {
-                document.querySelector(exerciseQuery).style.color = "green";
+              document.querySelector(insulinQuery).innerHTML = "No Series";
+              document.querySelector(insulinQuery).style.color = "grey";
+            } 
+            
+            // exercise 
+            if (record.exercise) {
+              // change the innerHtml font text
+              document.querySelector(exerciseQuery).innerHTML = record.exercise;
+              // set the bound color
+              if (record.exercise === "no data today") {
+                document.querySelector(exerciseQuery).style.color = "orange";
               } else {
-                document.querySelector(exerciseQuery).style.color = "red";
+                var v = Number(record.exercise);
+                if ( v < record.exercise_lowerBound) {
+                  document.querySelector(exerciseQuery).style.color = "blue";
+                } else if ( v < record.exercise_upperBound) {
+                  document.querySelector(exerciseQuery).style.color = "green";
+                } else {
+                  document.querySelector(exerciseQuery).style.color = "red";
+                }
               }
-            }
-          } else {
-            document.querySelector(exerciseQuery).innerHTML = "No Series";
-            document.querySelector(exerciseQuery).style.color = "grey";
-          } 
+            } else {
+              document.querySelector(exerciseQuery).innerHTML = "No Series";
+              document.querySelector(exerciseQuery).style.color = "grey";
+            } 
+          }
         }
-      }
-    } 
+      } 
+    }
   }
- 
+  refreshDashboard();
 </script>
