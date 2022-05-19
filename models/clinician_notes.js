@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Declare a Mongoose Schema
 const notesSchema = new mongoose.Schema({
-  time: { type: Number, default: Date.now() - 2 * 60 * 60 * 1000 },
+  time: { type: Number, default: Date.now() },
   patientObjectID: { type: mongoose.Schema.Types.ObjectId, ref: 'patients' },
   clinicianObjectID: {
     type: mongoose.Schema.Types.ObjectId,

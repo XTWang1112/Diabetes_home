@@ -8,7 +8,7 @@ const renderPatientBloodRecord = async (req, res) => {
   const current_day = new Date().getDate();
   // find id 对应的 patient
   const find_id = req.params.id;
-  const search_day = `${current_year}-${current_month}-${current_day}`;
+  const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
   //remove time difference
   const today = new Date().getTime();
   const patient = await patientModel.findById(find_id).lean();
@@ -17,8 +17,8 @@ const renderPatientBloodRecord = async (req, res) => {
       {
         patientObjectID: find_id,
         time: {
-          $gte: new Date(search_day).getTime(),
-          $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+          $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
+          $lt: new Date(search_day).getTime() + 14 * 3600 * 1000,
         },
       },
       (err, result) => {
@@ -29,9 +29,6 @@ const renderPatientBloodRecord = async (req, res) => {
       }
     )
     .clone();
-  console.log(search_day);
-  console.log(new Date(new Date(search_day).getTime()));
-  console.log(new Date(new Date(search_day).getTime() + 24 * 3600 * 1000));
 
   if (patient) {
     // 渲染血糖上传页面
@@ -63,8 +60,8 @@ const renderPatientBloodRecord = async (req, res) => {
           {
             patientObjectID: find_id,
             time: {
-              $gte: new Date(search_day).getTime(),
-              $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+              $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
+              $lt: new Date(search_day).getTime() + 14 * 3600 * 1000,
             },
           },
           {

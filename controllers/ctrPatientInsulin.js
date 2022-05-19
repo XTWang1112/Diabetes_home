@@ -16,8 +16,8 @@ const renderPatientInsulin = async (req, res) => {
       {
         patientObjectID: find_id,
         time: {
-          $gte: new Date(search_day).getTime(),
-          $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+          $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
+          $lt: new Date(search_day).getTime() + 14 * 3600 * 1000,
         },
       },
       (err, result) => {
@@ -59,8 +59,8 @@ const renderPatientInsulin = async (req, res) => {
           {
             patientObjectID: find_id,
             time: {
-              $gte: new Date(search_day).getTime(),
-              $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+              $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
+              $lt: new Date(search_day).getTime() + 14 * 3600 * 1000,
             },
           },
           {

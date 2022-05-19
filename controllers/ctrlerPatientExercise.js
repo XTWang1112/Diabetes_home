@@ -7,7 +7,7 @@ const renderPatientExercise = async (req, res) => {
   const current_day = new Date().getDate();
   const find_id = req.params.id;
   const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
-  const today = new Date().getTime() - 2 * 60 * 60 * 1000;
+  const today = new Date().getTime();
 
   const patient = await patientModel.findById(find_id).lean();
 
@@ -16,8 +16,8 @@ const renderPatientExercise = async (req, res) => {
       {
         patientObjectID: find_id,
         time: {
-          $gte: new Date(search_day).getTime(),
-          $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+          $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
+          $lt: new Date(search_day).getTime() + 14 * 3600 * 1000,
         },
       },
       (err, result) => {
@@ -57,8 +57,8 @@ const renderPatientExercise = async (req, res) => {
           {
             patientObjectID: find_id,
             time: {
-              $gte: new Date(search_day).getTime(),
-              $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+              $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
+              $lt: new Date(search_day).getTime() + 14 * 3600 * 1000,
             },
           },
           {

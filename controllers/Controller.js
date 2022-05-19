@@ -64,7 +64,7 @@ const renderPatientDashboard = async (req, res) => {
   const current_year = new Date().getFullYear();
   const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
   const current_day = new Date().getDate();
-  const search_day = `${current_year}-${current_month}-${current_day}`;
+  const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
   const patient_id = req.params.id;
   const patient = await patientModel.findById(patient_id).lean();
 
@@ -72,11 +72,13 @@ const renderPatientDashboard = async (req, res) => {
     .find({
       patientObjectID: patient_id,
       time: {
-        $gte: new Date(search_day).getTime(),
-        $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+        $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
+        $lt: new Date(search_day).getTime() + 14 * 3600 * 1000,
       },
     })
     .lean();
+  console.log(search_day);
+  console.log(todayData);
   const support_message = patient.support_message;
   res.render('Patient_Dashboard', {
     patient: patient,
@@ -125,7 +127,6 @@ const renderPatientClinician = async (req, res) => {
   // 找到这个病人名下的医生
   const patient = await patientModel.findById(patient_id).lean();
   const clinician = await clinicianModel.findById(patient.clinician).lean();
-  
 
   const support_message = patient.support_message;
   const message_date = patient.support_message_date;
