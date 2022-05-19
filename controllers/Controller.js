@@ -1,4 +1,5 @@
 const patientModel = require('../models/patient');
+const clinicianModel = require('../models/clinician');
 const recordModel = require('../models/record');
 
 // The function to redner clinician dashboard
@@ -121,11 +122,16 @@ const renderPatientLogin = (req, res) => {
 
 const renderPatientClinician = async (req, res) => {
   const patient_id = req.params.id;
+  // 找到这个病人名下的医生
   const patient = await patientModel.findById(patient_id).lean();
+  const clinician = await clinicianModel.findById(patient.clinician).lean();
+  
+
   const support_message = patient.support_message;
   const message_date = patient.support_message_date;
   res.render('patient_clinician', {
     patient,
+    clinician,
     support_message: support_message,
     message_date: message_date,
     layout: 'patient_template',
@@ -224,9 +230,11 @@ const renderLoginAboutDiabetes = async (req, res) => {
 
 // change Theme
 const changeTheme = async (req, res) => {
-  let patient_id = '6267d6bb8b206aade8b24198';
+  let patient_id = req.params.id;
   let patient = await patientModel.findById(patient_id);
   theme_preference = patient.theme_preference;
+  console.log(patient);
+  console.log(theme_preference);
   currentColor = theme_preference;
   if (currentColor == 'blue') {
     patientModel
@@ -252,7 +260,7 @@ const changeTheme = async (req, res) => {
 };
 
 const setTheme = async (req, res) => {
-  let patient_id = '6267d6bb8b206aade8b24198';
+  let patient_id = req.params.id;
   let patient = await patientModel.findById(patient_id);
   theme_preference = patient.theme_preference;
   res.send(theme_preference);
