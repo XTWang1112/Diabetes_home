@@ -233,8 +233,6 @@ const changeTheme = async (req, res) => {
   let patient_id = req.params.id;
   let patient = await patientModel.findById(patient_id);
   theme_preference = patient.theme_preference;
-  console.log(patient);
-  console.log(theme_preference);
   currentColor = theme_preference;
   if (currentColor == 'blue') {
     patientModel
@@ -283,8 +281,6 @@ const getData = async(req,res) => {
   //   console.log("no");
   //   res.send("no")
   // }
-  console.log(new Date().getTime() + 24 * 3600 * 1000);
-  console.log(new Date().getTime());
   const current_year = new Date().getFullYear();
   const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
   const current_day = new Date().getDate();
@@ -322,7 +318,6 @@ const getData = async(req,res) => {
     tdyRecord.exercise_upperBound = patient.exercise_upperBound;
     tdyRecord.insulinTaken_lowerBound = patient.insulinTaken_lowerBound;
     tdyRecord.insulinTaken_upperBound = patient.insulinTaken_upperBound;
-    console.log(tdyRecord);
   }
   res.send(tdyrecords)
 }
