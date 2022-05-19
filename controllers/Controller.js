@@ -92,6 +92,19 @@ const renderPatientDashboard = async (req, res) => {
   // });
 };
 
+const renderClinicianLogin = (req, res) => {
+  try {
+    res.render('clinician_login.hbs', {
+      layout: 'info_template',
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
 const renderPatientLogin = (req, res) => {
   try {
     res.render('Patient_login', {
@@ -263,4 +276,5 @@ module.exports = {
   changeTheme,
   setTheme,
   renderGuestPage,
+  renderClinicianLogin,
 };

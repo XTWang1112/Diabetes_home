@@ -9,6 +9,7 @@ Router.get('/', Controller.renderGuestPage);
 Router.get('/about-website', Controller.renderAboutWebsite);
 Router.get('/about-diabetes', Controller.renderAboutDiabetes);
 Router.get('/login', Controller.renderPatientLogin);
+Router.get('/clinician-login', Controller.renderClinicianLogin);
 
 // export the router
 module.exports = Router;
