@@ -12,7 +12,7 @@ const app = express();
 const flash = require('express-flash')
 const session = require('express-session')
 
-require('./config/passport.js')(passport);
+require('./config/passport')(passport);
 app.use(flash())
 app.use(session({
   secret: process.env.SESSION_SECRET,
