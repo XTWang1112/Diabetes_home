@@ -46,6 +46,11 @@ const registerPatient = async (req, res) => {
       postalCode: req.body.postal,
       city: req.body.city,
       password: generatePassword(),
+
+      bloodGlucose_record: false,
+      insulinTaken_record: false,
+      weight_record: false,
+      exercise_record: false,
     });
     console.log(newPatient);
     await newPatient.save();

@@ -13,8 +13,7 @@ const renderPatientBloodRecord = async (req, res) => {
   const today = new Date().getTime();
   const patient = await patientModel.findById(find_id).lean();
   const onePatientBloodRecord = await recordModel
-    .find(
-      {
+    .find({
         patientObjectID: find_id,
         time: {
           $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
@@ -27,11 +26,25 @@ const renderPatientBloodRecord = async (req, res) => {
         }
         return result;
       }
-    )
-    .clone();
+    ).clone();
+
+  // onePatientFullRecord
+  const onePatientFullRecord = await recordModel
+    .find({
+        patientObjectID: find_id,
+      },
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        return result;
+      }
+    ).clone();
+
+
 
   if (patient) {
-    // 渲染血糖上传页面
+    // render patient blood record page
     res.render('Blood_glucose', {
       patient: patient,
       layout: 'patient_record_template',
@@ -47,6 +60,7 @@ const renderPatientBloodRecord = async (req, res) => {
         time: today,
         patientObjectID: find_id,
       };
+
       if (onePatientBloodRecord.length === 0 && patient.bloodGlucose_record) {
         await recordModel.create({
           ...patientBloodRecord,
@@ -56,20 +70,24 @@ const renderPatientBloodRecord = async (req, res) => {
         patient.bloodGlucose_record
       ) {
         console.log('update😎😎🤓');
-        const updated = await recordModel.findOneAndUpdate(
-          {
-            patientObjectID: find_id,
-            time: {
-              $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
-              $lt: new Date(search_day).getTime() + 14 * 3600 * 1000,
-            },
+        const updated = await recordModel.findOneAndUpdate({
+          patientObjectID: find_id,
+          time: {
+            $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
+            $lt: new Date(search_day).getTime() + 14 * 3600 * 1000,
           },
-          {
-            time: today,
-            blood_glucose_level: patinet_blood_glucose,
-            blood_glucose_level_comment: glucose_comment,
-          }
-        );
+        }, {
+          time: today,
+          blood_glucose_level: patinet_blood_glucose,
+          blood_glucose_level_comment: glucose_comment,
+        });
+
+        // update insistDay
+        await patientModel.findOneAndUpdate({
+          _id: find_id,
+        }, {
+          insistDay: onePatientFullRecord.length,
+        });
         console.log(onePatientBloodRecord);
       }
     }
