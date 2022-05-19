@@ -31,7 +31,7 @@ const patientSchema = new mongoose.Schema({
   },
   photo_url: { type: String, default: 'chris.jpg' },
   nickname: { type: String, default: 'Your nickname' },
-  insistDat: { type: Number, default: 0 },
+  insistDay: { type: Number, default: 0 },
   engagementRate: { type: Number, default: 0 },
   birthday: {
     type: String,
