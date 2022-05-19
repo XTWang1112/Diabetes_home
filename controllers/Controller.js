@@ -29,6 +29,7 @@ const renderClinicianDashboard = async (req, res) => {
       };
 
       try {
+        patient._id = patient._id.valueOf();
         birth = Date.parse(patient.birthday);
         if (birth) {
           var year = 1000 * 60 * 60 * 24 * 365;
@@ -274,6 +275,80 @@ const setTheme = async(req,res) => {
   res.send(theme_preference);
 }
 
+let i = 0;
+const getData = async(req,res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  // let patient_id = req.query.id;
+  // let record = await recordModel.find({patientObjectID: patient_id}, {
+  //   blood_glucose_level: true,
+  //   insulinTaken: true,
+  //   weight: true,
+  //   exercise: true,
+  // }).lean();
+  // console.log(record);
+  // if (record[0]) {
+  //   console.log(record[0]);
+  //   res.send(record[0]);
+  // } else {
+  //   console.log("no");
+  //   res.send("no")
+  // }
+  console.log(new Date().getTime() + 24 * 3600 * 1000);
+  console.log(new Date().getTime());
+  const current_year = new Date().getFullYear();
+  const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
+  const current_day = new Date().getDate();
+  const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
+  let tdyrecords = await recordModel.find({
+    time: {
+      $gte: new Date(search_day).getTime(),
+      $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+    },
+  }, {
+    patientObjectID: true,
+    blood_glucose_level: true,
+    insulinTaken: true,
+    weight: true,
+    exercise: true,
+  }).lean();
+  for (tdyRecord of tdyrecords) {
+    let patient = await patientModel.findById({_id: tdyRecord.patientObjectID}, {
+      lastName: true,
+      bloodGlucose_lowerBound: true,
+      bloodGlucose_upperBound: true,
+      weight_lowerBound: true,
+      weight_upperBound: true,
+      exercise_lowerBound: true,
+      exercise_upperBound: true,
+      insulinTaken_lowerBound: true,
+      insulinTaken_upperBound:true,
+    })
+    tdyRecord.lastName = patient.lastName;
+    tdyRecord.bloodGlucose_lowerBound = patient.bloodGlucose_lowerBound;
+    tdyRecord.bloodGlucose_upperBound = patient.bloodGlucose_upperBound;
+    tdyRecord.weight_lowerBound = patient.weight_lowerBound;
+    tdyRecord.weight_upperBound = patient.weight_upperBound;
+    tdyRecord.exercise_lowerBound = patient.exercise_lowerBound;
+    tdyRecord.exercise_upperBound = patient.exercise_upperBound;
+    tdyRecord.insulinTaken_lowerBound = patient.insulinTaken_lowerBound;
+    tdyRecord.insulinTaken_upperBound = patient.insulinTaken_upperBound;
+    console.log(tdyRecord);
+  }
+  res.send(tdyrecords)
+}
+
+
+// use to inite the date in record model
+async function addDate() {
+  const records = await recordModel.find({},{}).lean();
+  for (record of records) {
+    let date = new Date(record.time);
+    let dateStr = date.toLocaleDateString();
+    recordModel.updateOne({_id: record._id}, {date: dateStr})
+    .then(res => res.acknowledged);
+  }
+}
+
 
 module.exports = {
   renderClinicianDashboard,
@@ -287,4 +362,5 @@ module.exports = {
   renderLoginAboutDiabetes,
   changeTheme,
   setTheme,
+  getData,
 };

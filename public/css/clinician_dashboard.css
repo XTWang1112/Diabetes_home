@@ -145,3 +145,13 @@ p {
 .name:visited {
   color: #2264b1;
 }
+
+
+/*********************************/
+/* setting every patient box*/
+/*********************************/
+
+.cell_data {
+  color: grey;
+}
+

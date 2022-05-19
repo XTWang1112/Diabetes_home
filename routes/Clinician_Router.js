@@ -13,6 +13,7 @@ const { renderPatientDetails } = require('../controllers/ctrlerPatientDetail');
 
 // add a route to handle the get request for all patients' data
 Router.get('/', Controller.renderClinicianDashboard);
+Router.get('/data', Controller.getData);
 Router.get('/add-patient', ctrlerAddPatient.renderAddPatient);
 Router.post('/add-patient', ctrlerAddPatient.registerPatient);
 Router.get('/all-comments', ctrlerAllComments.renderAllComments);
