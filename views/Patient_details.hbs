@@ -13,7 +13,7 @@
         <path stroke-linecap='round' stroke-linejoin='round' d='M9 5l7 7-7 7'></path>
       </svg>
 
-      <h1>{{this.patientName}}</h1>
+      <h1>{{this.firstName}} {{this.lastName}}</h1>
     </div>
     <div class='subheader-right'>
       <btn class='btn btn--print' onclick='window.print();'>
@@ -41,7 +41,7 @@
       <div class='message-card'>
         <img class='patient-img' src='/img/profile-photo/{{this.photo_url}}' alt='' title='patient photo' />
 
-        <h1>{{this.patientName}}</h1>
+        <h1>{{this.firstName}} {{this.lastName}}</h1>
         {{! <h1>{%patientName%}</h1> }}
 
         <p>{{this.email}}</p>

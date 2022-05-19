@@ -10,7 +10,6 @@ const renderClinicianDashboard = async (req, res) => {
       .find(
         {},
         {
-          patientName: true,
           firstName: true,
           lastName: true,
           patientID: true,
