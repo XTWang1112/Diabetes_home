@@ -18,7 +18,9 @@
         d='M9 5l7 7-7 7'
       ></path>
     </svg>
-    <h1 class='normal-weight'><a href='/clinician/patientname'>{%Patient Name%}</a></h1>
+    <h1 class='normal-weight'><a
+        href='/clinician/{{patient._id}}'
+      >{{patient.patientName}}</a></h1>
     <svg
       xmlns='http://www.w3.org/2000/svg'
       class='chevron-right'
@@ -37,14 +39,30 @@
   </div>
 
   <div class='subheader'>
-    <img class='patient-img' src='#' alt='' title='patient photo' />
-    <h2>{%PATIENT NAME%}</h2>
+    <img
+      class='patient-img'
+      src='/img/profile-photo/{{patient.photo_url}}'
+      alt=''
+      title='patient photo'
+    />
+    <h2>{{patient.patientName}}</h2>
   </div>
 
   <div class='notes'>
-    <div class='note'>
-      <p>{%NOTE%}</p>
-      <p class='date'>{%DATE%}</p>
-    </div>
+    {{#each notes}}
+      <div class='note'>
+        <p>{{this.note}}</p>
+        <p class='date'>{{this.time}}</p>
+      </div>
+    {{/each}}
   </div>
 </main>
+
+<script>
+  const dates = document.querySelectorAll(".date"); for(let i = 0; i
+  <dates.length; i++){ const year = new
+  Date(dates[i].textContent*1).getFullYear(); const month = new
+  Date(dates[i].textContent*1).getMonth() + 1; const day = new
+  Date(dates[i].textContent*1).getDate(); dates[i].textContent =
+  `${year}-${month}-${day}`; }
+</script>

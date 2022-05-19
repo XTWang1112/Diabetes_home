@@ -27,6 +27,11 @@
   overflow: scroll;
 }
 
+.notes::-webkit-scrollbar,
+.note::-webkit-scrollbar {
+  display: none;
+}
+
 .note {
   width: 164rem;
   height: 19.6rem;

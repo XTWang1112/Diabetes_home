@@ -20,7 +20,8 @@ Router.get('/:id', ctrlerPatientDetail.renderPatientDetails);
 // Router.get('/patientname', ctrlerPatientDetail.renderPatientDetails);
 Router.post('/:id/message', ctrlerPatientDetail.saveSupportMessage);
 Router.post('/:id', ctrlerPatientDetail.setTimeSeries);
-Router.get('/patientname/all-notes', ctrlerAllNotes.renderAllNotes);
+// Router.get('/:id', ctrlerPatientDetail.writeNote);
+Router.get('/:id/all-notes', ctrlerAllNotes.renderAllNotes);
 
 // export the router
 module.exports = Router;

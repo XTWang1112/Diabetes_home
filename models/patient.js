@@ -37,11 +37,11 @@ const patientSchema = new mongoose.Schema({
     required: [true, 'A patient must have a birthday'],
     default: '1999/01/01',
   },
-  register_date: { type: Number, default: Date.now() },
+  register_date: { type: Number, default: Date.now() - 2 * 60 * 60 * 1000 },
   support_message: { type: String, trime: true },
   support_message_date: String,
   theme_preference: String,
-  
+
   email: {
     type: String,
     trime: true,
