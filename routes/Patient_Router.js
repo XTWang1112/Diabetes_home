@@ -1,6 +1,8 @@
 // const { Router } = require('express')
 const express = require('express');
 
+const utility = require('./patientUtility')
+
 const Router = express.Router();
 
 const Controller = require('../controllers/Controller');
@@ -13,7 +15,10 @@ const ctrlerPatientRanking = require('../controllers/ctrPatientRanking');
 const ctrChangePassword = require('../controllers/ctrChangePassword');
 
 // header-nav
-Router.get('/:id', Controller.renderPatientDashboard);
+Router.get(
+    '/:id', 
+    utility.isLoggedIn,
+    Controller.renderPatientDashboard);
 Router.get('/:id/about-website', Controller.renderLoginAboutWebsite);
 Router.get('/:id/about-diabetes', Controller.renderLoginAboutDiabetes);
 Router.get('/:id/change-password', ctrChangePassword.renderChangePassword);

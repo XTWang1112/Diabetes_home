@@ -8,7 +8,7 @@ dotenv.config({ path: './config.env' });
 // Set app as our server
 const app = express();
 
-/* const passport = require('passport')
+const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 
@@ -18,10 +18,12 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: {maxAge: 900000}
+  cookie: {
+    httpOnly: true,
+    maxAge: 900000}
 }))
 app.use(passport.initialize())
-app.use(passport.session()) */
+app.use(passport.session())
 
 //middlewares
 if (process.env.NODE_ENV === 'development') {
