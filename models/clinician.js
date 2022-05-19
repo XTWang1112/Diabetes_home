@@ -19,15 +19,16 @@ const clinicianSchema = new mongoose.Schema({
         type: String,
         default: 'clinicianA.png'
     },
-    password: {
-        type: String,
-    },
 
     phoneNumber: {
         type: Number,
-        required: [true, 'A patient should have a contact number'],
+        required: [true, 'A clinician should have a contact number'],
         maxlength: [11, 'with 65 in front'],
         minlength: [9, 'withou 65 and 0 in front'],
+    },
+
+    password: {
+        type: String,
     },
 
     edu_background: {
@@ -39,7 +40,6 @@ const clinicianSchema = new mongoose.Schema({
     },
 
 });
-
 
 
 // Compile the schema into a model
