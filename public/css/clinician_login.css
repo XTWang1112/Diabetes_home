@@ -1,0 +1,103 @@
+main {
+  height: calc(100vh - 11.4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4.6rem;
+  overflow: hidden;
+}
+
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transform: scale(1.16);
+}
+
+input[type='email'] {
+  height: 5.4rem;
+  width: 45rem;
+  padding: 0.7rem 0 0.7rem 7.6rem;
+  color: #707070;
+  border: 1px solid transparent;
+  border-radius: 3.2rem;
+  display: block;
+  background: white
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='test' fill='none' viewBox='0 0 24 24' stroke='grey' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' /%3E%3C/svg%3E")
+    no-repeat;
+  font-size: 2.4rem;
+  background-position-x: 1.2rem;
+}
+
+input[type='password'] {
+  height: 5.4rem;
+  width: 45rem;
+  padding: 0.7rem 0 0.7rem 7.6rem;
+  color: #707070;
+  border: 1px solid transparent;
+  border-radius: 3.2rem;
+  display: block;
+  background: white
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='grey' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z' /%3E%3C/svg%3E")
+    no-repeat;
+  font-size: 2.4rem;
+  background-position-x: 1.2rem;
+}
+
+input[type='email']::placeholder,
+input[type='password']::placeholder {
+  color: #707070;
+  font-family: inherit;
+}
+
+input[type='email']:focus,
+input[type='password']:focus {
+  outline: none !important;
+  border: 2px solid #202b5a;
+}
+
+form {
+  height: 45rem;
+  width: 55rem;
+  background-color: #e5ebef;
+  box-shadow: 0px 5px 10px 2px rgba(94, 142, 183, 0.5);
+  border-radius: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+input {
+  margin-bottom: 3.2rem;
+}
+
+input:last-child {
+  margin-bottom: 0.8rem;
+}
+
+.rememberThisDevice-box {
+  color: black;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.btn {
+  width: 45rem;
+  height: 7.3rem;
+  color: white;
+  margin-top: 4.8rem;
+  font-size: 2.6rem;
+  font-weight: 800;
+  background-color: #2264b1;
+  border-radius: 5rem;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
