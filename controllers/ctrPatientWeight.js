@@ -48,7 +48,7 @@ const renderPatientWeight = async (req, res) => {
         weight_comment: weight_comment,
       };
 
-      if (onePatientWeight.length === 0) {
+      if (onePatientWeight.length === 0 && patient.weight_record) {
         await recordModel.create({
           ...patientWeight,
         });

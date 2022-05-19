@@ -46,7 +46,7 @@ const renderPatientInsulin = async (req, res) => {
         time: today,
       };
 
-      if (onePatientInsulin.length === 0) {
+      if (onePatientInsulin.length === 0 && patient.insulinTaken_record) {
         await recordModel.create({
           ...patientInsulin,
         });

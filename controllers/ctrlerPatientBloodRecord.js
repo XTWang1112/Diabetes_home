@@ -50,7 +50,7 @@ const renderPatientBloodRecord = async (req, res) => {
         time: today,
         patientObjectID: find_id,
       };
-      if (onePatientBloodRecord.length === 0) {
+      if (onePatientBloodRecord.length === 0 && patient.bloodGlucose_record) {
         await recordModel.create({
           ...patientBloodRecord,
         });

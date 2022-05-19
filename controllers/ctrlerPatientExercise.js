@@ -47,7 +47,7 @@ const renderPatientExercise = async (req, res) => {
       };
 
       // 如果今天没有录入数据，则插入一条新的血糖值
-      if (onePatientExercise.length === 0) {
+      if (onePatientExercise.length === 0 && patient.exercise_record) {
         await recordModel.create({
           ...patientExercise,
         });
