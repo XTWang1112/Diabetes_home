@@ -57,39 +57,43 @@
           <tr>
             <td>Blood glucose Level: </td>
             <td>
-              <font class="cell_data blood_glucose_data">No Series</font>
+              <font class="cell_data blood_glucose_data">no data today</font>
             </td>
           </tr>
           {{! Weight }}
           <tr>
             <td>Weight:</td>
             <td>
-              <font class="cell_data weight_data">No Series</font>
+              <font class="cell_data weight_data">no data today</font>
             </td>
           </tr>
           {{! Insulin taken }}
           <tr>
             <td>Insulin taken:</td>
             <td>
-              <font class="cell_data insulin_data">No Series</font>
+              <font class="cell_data insulin_data">no data today</font>
             </td>
           </tr>
           {{! Exercise }}
           <tr>
             <td>Exercise:</td>
             <td>
-              <font class="cell_data exercise_data">No Series</font>
+              <font class="cell_data exercise_data">no data today</font>
             </td>
           </tr>
         </table>
       </div>
-
     {{/each}}
   </section>
 </main>
 
 <script>
+  refreshDashboard();
+  let refreshInterval = 2000 //ms
+  window.setInterval(refreshDashboard, refreshInterval);
+  
   function refreshDashboard() {
+    var ifAlert = false;
     var path = "/clinician/data?id=6267d6bb8b206aade8b24198";
     var xhr = new XMLHttpRequest();
     xhr.open('GET', path);
@@ -99,7 +103,6 @@
         if (xhr.status >= 200 && xhr.status < 300) {
           records = JSON.parse(xhr.response);
           for (record of records) {
-            console.log(record);
             const bloodQuery = "#id"+record.patientObjectID+" .blood_glucose_data";
             const weightQuery = "#id"+record.patientObjectID+" .weight_data";
             const insulinQuery = "#id"+record.patientObjectID+" .insulin_data";
@@ -116,10 +119,12 @@
                 var v = Number(record.blood_glucose_level);
                 if ( v < record.bloodGlucose_lowerBound) {
                   document.querySelector(bloodQuery).style.color = "blue";
+                  ifAlert = true;
                 } else if ( v < record.bloodGlucose_upperBound) {
                   document.querySelector(bloodQuery).style.color = "green";
                 } else {
                   document.querySelector(bloodQuery).style.color = "red";
+                  ifAlert = true;
                 }
               }
             } else {
@@ -138,10 +143,12 @@
                 var v = Number(record.weight);
                 if ( v < record.weight_lowerBound) {
                   document.querySelector(weightQuery).style.color = "blue";
+                  ifAlert = true;
                 } else if ( v < record.weight_upperBound) {
                   document.querySelector(weightQuery).style.color = "green";
                 } else {
                   document.querySelector(weightQuery).style.color = "red";
+                  ifAlert = true;
                 }
               }
             } else {
@@ -159,10 +166,12 @@
                 var v = Number(record.insulinTaken);
                 if ( v < record.insulinTaken_lowerBound) {
                   document.querySelector(insulinQuery).style.color = "blue";
+                  ifAlert = true;
                 } else if ( v < record.insulinTaken_upperBound) {
                   document.querySelector(insulinQuery).style.color = "green";
                 } else {
                   document.querySelector(insulinQuery).style.color = "red";
+                  ifAlert = true;
                 }
               }
             } else {
@@ -181,10 +190,12 @@
                 var v = Number(record.exercise);
                 if ( v < record.exercise_lowerBound) {
                   document.querySelector(exerciseQuery).style.color = "blue";
+                  ifAlert = true;
                 } else if ( v < record.exercise_upperBound) {
                   document.querySelector(exerciseQuery).style.color = "green";
                 } else {
                   document.querySelector(exerciseQuery).style.color = "red";
+                  ifAlert = true;
                 }
               }
             } else {
@@ -196,5 +207,4 @@
       } 
     }
   }
-  refreshDashboard();
 </script>
