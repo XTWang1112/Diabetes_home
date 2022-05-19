@@ -2,7 +2,7 @@ main {
   display: flex;
   height: calc(100vh - 11.4rem);
   flex-direction: column;
-  background: url("../../img/login-photo.jpeg");
+  background: url('../../img/login-photo.jpeg');
 }
 
 .patient-logo {
@@ -27,7 +27,7 @@ main {
 }
 
 .login-box {
-  height: 40rem;
+  height: 43rem;
   width: 43rem;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,17 @@ main {
   border-radius: 3.6rem;
   border: rgb(93, 93, 93) solid 0.1rem;
   box-shadow: 0px 5px 15px 0px rgba(43, 85, 40, 0.6);
+  position: relative;
   /* box-shadow: offset-x offset-y blur spread color */
+}
+
+.login-message {
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 1.8rem;
+  color: rgb(174, 50, 5) !important;
 }
 
 .login-form {
@@ -58,7 +68,7 @@ main {
   gap: 2rem;
 }
 
-input[type="email"] {
+input[type='email'] {
   height: 4rem;
   width: 30rem;
   padding: 0.7rem 0 0.7rem 5.2rem;
@@ -73,7 +83,7 @@ input[type="email"] {
   background-position-x: 1.2rem;
 }
 
-input[type="password"] {
+input[type='password'] {
   height: 4rem;
   width: 30rem;
   padding: 0.7rem 0 0.7rem 5.2rem;
@@ -88,14 +98,14 @@ input[type="password"] {
   background-position-x: 1.2rem;
 }
 
-input[type="email"]::placeholder,
-input[type="password"]::placeholder {
+input[type='email']::placeholder,
+input[type='password']::placeholder {
   color: #707070;
   font-family: inherit;
 }
 
-input[type="email"]:focus,
-input[type="password"]:focus {
+input[type='email']:focus,
+input[type='password']:focus {
   outline: none !important;
   border: 2px solid #2d5215;
 }
@@ -114,7 +124,7 @@ input[type="password"]:focus {
   width: 18rem;
   height: 4.5rem;
   color: white;
-  margin-top: 2rem;
+  margin-top: 4rem;
   font-size: 2.6rem;
   font-weight: 800;
   background-color: rgb(69, 129, 31, 0.9);
@@ -163,7 +173,7 @@ input[type="password"]:focus {
   }
 
   main {
-    background: url("../../img/patient-login-pic.png");
+    background: url('../../img/patient-login-pic.png');
   }
 
   .login-box {

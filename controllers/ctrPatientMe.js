@@ -25,13 +25,15 @@ const renderPatientMe = async (req, res) => {
       .clone();
 
     const oneDay = 24 * 60 * 60 * 1000;
-    const currentTime = new Date().getTime() - 2 * 60 * 60 * 1000;
+    const currentTime = new Date().getTime();
+    console.log(currentTime);
 
     const diffDays = Math.round(
       Math.abs((currentTime - patientReg.register_date) / oneDay)
     );
-    const engagementRate = Math.round((records.length / diffDays) * 100) / 10;
-    console.log(engagementRate);
+    console.log(diffDays);
+    console.log(records.length);
+    const engagementRate = Math.round((records.length / diffDays) * 1000) / 10;
 
     await patientModel.updateOne({
       find_id,

@@ -43,7 +43,6 @@ Medium:
   --bg_color: #eaf4e4;
 }
 
-
 /*********************************/
 /* general setting*/
 /*********************************/
@@ -110,8 +109,7 @@ body {
   align-items: center;
   gap: 3rem;
 }
-r
-.nav-icon {
+r .nav-icon {
   color: var(--dark_color);
 }
 
@@ -141,14 +139,13 @@ r
   gap: 1rem;
 }
 
-
 .theme_btn {
   font-size: 2rem;
-  border:0;
-	outline:none;
+  border: 0;
+  outline: none;
   background-color: transparent;
+  margin-top: 0;
 }
-
 
 /*********************************/
 /*FOOTER*/
