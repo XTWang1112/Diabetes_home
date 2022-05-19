@@ -64,7 +64,7 @@ const renderPatientDashboard = async (req, res) => {
   const current_year = new Date().getFullYear();
   const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
   const current_day = new Date().getDate();
-  const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
+  const search_day = `${current_year}-${current_month}-${current_day}`;
   const patient_id = req.params.id;
   const patient = await patientModel.findById(patient_id).lean();
 
