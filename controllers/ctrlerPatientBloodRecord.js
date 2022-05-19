@@ -8,9 +8,9 @@ const renderPatientBloodRecord = async (req, res) => {
   const current_day = new Date().getDate();
   // find id 对应的 patient
   const find_id = req.params.id;
-  const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
+  const search_day = `${current_year}-${current_month}-${current_day}`;
   //remove time difference
-  const today = new Date().getTime() - 2 * 60 * 60 * 1000;
+  const today = new Date().getTime();
   const patient = await patientModel.findById(find_id).lean();
   const onePatientBloodRecord = await recordModel
     .find(

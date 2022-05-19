@@ -63,7 +63,7 @@ const renderPatientDashboard = async (req, res) => {
   const current_year = new Date().getFullYear();
   const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
   const current_day = new Date().getDate();
-  const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
+  const search_day = `${current_year}-${current_month}-${current_day}`;
   const patient_id = req.params.id;
   const patient = await patientModel.findById(patient_id).lean();
 
@@ -256,9 +256,9 @@ const setTheme = async (req, res) => {
   let patient = await patientModel.findById(patient_id);
   theme_preference = patient.theme_preference;
   res.send(theme_preference);
-}
+};
 
-const getData = async(req,res) => {
+const getData = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   // let patient_id = req.query.id;
   // let record = await recordModel.find({patientObjectID: patient_id}, {
@@ -281,30 +281,38 @@ const getData = async(req,res) => {
   const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
   const current_day = new Date().getDate();
   const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
-  let tdyrecords = await recordModel.find({
-    time: {
-      $gte: new Date(search_day).getTime(),
-      $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
-    },
-  }, {
-    patientObjectID: true,
-    blood_glucose_level: true,
-    insulinTaken: true,
-    weight: true,
-    exercise: true,
-  }).lean();
+  let tdyrecords = await recordModel
+    .find(
+      {
+        time: {
+          $gte: new Date(search_day).getTime(),
+          $lt: new Date(search_day).getTime() + 24 * 3600 * 1000,
+        },
+      },
+      {
+        patientObjectID: true,
+        blood_glucose_level: true,
+        insulinTaken: true,
+        weight: true,
+        exercise: true,
+      }
+    )
+    .lean();
   for (tdyRecord of tdyrecords) {
-    let patient = await patientModel.findById({_id: tdyRecord.patientObjectID}, {
-      lastName: true,
-      bloodGlucose_lowerBound: true,
-      bloodGlucose_upperBound: true,
-      weight_lowerBound: true,
-      weight_upperBound: true,
-      exercise_lowerBound: true,
-      exercise_upperBound: true,
-      insulinTaken_lowerBound: true,
-      insulinTaken_upperBound:true,
-    })
+    let patient = await patientModel.findById(
+      { _id: tdyRecord.patientObjectID },
+      {
+        lastName: true,
+        bloodGlucose_lowerBound: true,
+        bloodGlucose_upperBound: true,
+        weight_lowerBound: true,
+        weight_upperBound: true,
+        exercise_lowerBound: true,
+        exercise_upperBound: true,
+        insulinTaken_lowerBound: true,
+        insulinTaken_upperBound: true,
+      }
+    );
     tdyRecord.lastName = patient.lastName;
     tdyRecord.bloodGlucose_lowerBound = patient.bloodGlucose_lowerBound;
     tdyRecord.bloodGlucose_upperBound = patient.bloodGlucose_upperBound;
@@ -316,21 +324,20 @@ const getData = async(req,res) => {
     tdyRecord.insulinTaken_upperBound = patient.insulinTaken_upperBound;
     console.log(tdyRecord);
   }
-  res.send(tdyrecords)
-}
-
+  res.send(tdyrecords);
+};
 
 // use to inite the date in record model
 async function addDate() {
-  const records = await recordModel.find({},{}).lean();
+  const records = await recordModel.find({}, {}).lean();
   for (record of records) {
     let date = new Date(record.time);
     let dateStr = date.toLocaleDateString();
-    recordModel.updateOne({_id: record._id}, {date: dateStr})
-    .then(res => res.acknowledged);
+    recordModel
+      .updateOne({ _id: record._id }, { date: dateStr })
+      .then((res) => res.acknowledged);
   }
 }
-
 
 const renderGuestPage = async (req, res) => {
   res.render('guest_page', {
