@@ -1,8 +1,6 @@
 function renderCurrrentColor() {
-  currentColor = document.cookie
-  .split(";")
-  .find(el => el.startsWith(" currentColor"))
-  .split("=")[1];
+  let arr = document.cookie.split("=");
+  currentColor = arr[arr.length - 1];
   if (currentColor === "green") {
     document.documentElement.style.setProperty('--light_color', '#7dbc57');
     document.documentElement.style.setProperty('--dark_color', '#2d5215');
@@ -18,15 +16,14 @@ function renderCurrrentColor() {
   }
 }
 renderCurrrentColor();
-function changeTheme() {
+
+function changeTheme(id) {
   // setting ajax request
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', "/patient/changeTheme");
+  xhr.open('POST', "/patient/"+ id + "/changeTheme");
   // Set the request header so that the requestor can read urlencoded data
   xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-  xhr.send("colorchange=blue"); // 1 means change the color
-  
-  const root = getComputedStyle(document.documentElement);
+  xhr.send("colorchange=blue"); 
   let themeColor; 
   xhr.onreadystatechange = function(){
     if (xhr.readyState === 4) {

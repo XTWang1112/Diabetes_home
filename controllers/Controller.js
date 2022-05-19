@@ -224,9 +224,11 @@ const renderLoginAboutDiabetes = async (req, res) => {
 
 // change Theme
 const changeTheme = async (req, res) => {
-  let patient_id = '6267d6bb8b206aade8b24198';
+  let patient_id = req.params.id;
   let patient = await patientModel.findById(patient_id);
   theme_preference = patient.theme_preference;
+  console.log(patient);
+  console.log(theme_preference);
   currentColor = theme_preference;
   if (currentColor == 'blue') {
     patientModel
@@ -252,7 +254,7 @@ const changeTheme = async (req, res) => {
 };
 
 const setTheme = async (req, res) => {
-  let patient_id = '6267d6bb8b206aade8b24198';
+  let patient_id = req.params.id;
   let patient = await patientModel.findById(patient_id);
   theme_preference = patient.theme_preference;
   res.send(theme_preference);
