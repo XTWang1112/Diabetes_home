@@ -119,7 +119,7 @@ const saveSupportMessage = async (req, res) => {
   console.log('saveSupportMessage running');
   // let patient_id = '6267d6bb8b206aade8b24198';
   const patient_id = req.params.id;
-  const message_date = new Date();
+  const message_date = new Date() - 2 * 60 * 60 * 1000;
   const message = req.body.support_message;
   await patientModel
     .updateOne({ _id: patient_id }, { support_message: message })

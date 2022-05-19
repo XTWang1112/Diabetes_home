@@ -32,7 +32,8 @@ const renderClinicianDashboard = async (req, res) => {
         birth = Date.parse(patient.birthday);
         if (birth) {
           var year = 1000 * 60 * 60 * 24 * 365;
-          var currTime = new Date();
+          //remove time difference
+          var currTime = new Date() - 2 * 60 * 60 * 1000;
           var birthday = new Date(birth);
           patient.birthday = parseInt((currTime - birthday) / year);
         }

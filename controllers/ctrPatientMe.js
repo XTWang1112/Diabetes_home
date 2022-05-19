@@ -25,9 +25,10 @@ const renderPatientMe = async (req, res) => {
       .clone();
 
     const oneDay = 24 * 60 * 60 * 1000;
+    const currentTime = new Date().getTime() - 2 * 60 * 60 * 1000;
 
     const diffDays = Math.round(
-      Math.abs((new Date().getTime() - patientReg.register_date) / oneDay)
+      Math.abs((currentTime - patientReg.register_date) / oneDay)
     );
     const engagementRate = Math.round((records.length / diffDays) * 100) / 10;
     console.log(engagementRate);
@@ -54,16 +55,18 @@ const renderPatientMe = async (req, res) => {
   }
 };
 
-const changeNickName = async(req, res) => {
+const changeNickName = async (req, res) => {
   console.log('changeNickName running');
   // let patient_id = '6267d6bb8b206aade8b24198';
   const patient_id = req.params.id;
   var new_nick_name = req.body.new_nick_name;
   await patientModel
     .updateOne({ _id: patient_id }, { nickname: new_nick_name })
-    .then((result) => console.log('Try to change nick Name', result.acknowledged));
+    .then((result) =>
+      console.log('Try to change nick Name', result.acknowledged)
+    );
   res.redirect('/patient/' + req.params.id + '/me');
-}
+};
 
 module.exports = {
   renderPatientMe,

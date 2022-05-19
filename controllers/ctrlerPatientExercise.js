@@ -7,7 +7,7 @@ const renderPatientExercise = async (req, res) => {
   const current_day = new Date().getDate();
   const find_id = req.params.id;
   const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
-  const today = new Date().getTime();
+  const today = new Date().getTime() - 2 * 60 * 60 * 1000;
 
   const patient = await patientModel.findById(find_id).lean();
 
