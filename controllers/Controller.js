@@ -83,7 +83,7 @@ const renderPatientDashboard = async (req, res) => {
       },
     })
     .lean();
-  if (patient.support_message) {
+  if (patient) {
     var support_message = patient.support_message;
   }
 
