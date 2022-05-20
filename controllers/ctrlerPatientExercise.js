@@ -46,10 +46,17 @@ const renderPatientExercise = async (req, res) => {
         time: today,
       };
 
-      // 如果今天没有录入数据，则插入一条新的血糖值
+
+      // if today no data, insert a new blood glucose data
       if (onePatientExercise.length === 0 && patient.exercise_record) {
         await recordModel.create({
           ...patientExercise,
+        });
+        // update insistDay
+        await patientModel.findOneAndUpdate({
+          _id: find_id,
+        }, {
+          insistDay: onePatientFullRecord.length,
         });
       } else if (onePatientExercise.length !== 0 && patient.exercise_record) {
         console.log('update😎😎🤓');
@@ -67,6 +74,12 @@ const renderPatientExercise = async (req, res) => {
             exercise_comment: exercise_comment,
           }
         );
+        // update insistDay
+        await patientModel.findOneAndUpdate({
+          _id: find_id,
+        }, {
+          insistDay: onePatientFullRecord.length,
+        });
       }
     }
   }

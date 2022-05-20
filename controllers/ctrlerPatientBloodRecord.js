@@ -65,6 +65,13 @@ const renderPatientBloodRecord = async (req, res) => {
         await recordModel.create({
           ...patientBloodRecord,
         });
+        // update insistDay
+        await patientModel.findOneAndUpdate({
+          _id: find_id,
+        }, {
+          insistDay: onePatientFullRecord.length,
+        });
+        
       } else if (
         onePatientBloodRecord.length !== 0 &&
         patient.bloodGlucose_record
