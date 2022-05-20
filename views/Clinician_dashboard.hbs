@@ -88,13 +88,14 @@
 </main>
 
 <script>
-  refreshDashboard();
-  let refreshInterval = 2000 //ms
+  let ifAlert = refreshDashboard();
+  console.log(ifAlert);
+  let refreshInterval = 5000 //ms
   window.setInterval(refreshDashboard, refreshInterval);
-  
   function refreshDashboard() {
-    var ifAlert = false;
-    var path = "/clinician/data?id=6267d6bb8b206aade8b24198";
+    let ifAlert = false;
+    let ifChange = false;// to save last records for the following compare.
+    var path = "/clinician/data";
     var xhr = new XMLHttpRequest();
     xhr.open('GET', path);
     xhr.send();
@@ -120,11 +121,13 @@
                 if ( v < record.bloodGlucose_lowerBound) {
                   document.querySelector(bloodQuery).style.color = "blue";
                   ifAlert = true;
+                  document.querySelector("#id"+record.patientObjectID).style.backgroundColor = "lightyellow";
                 } else if ( v < record.bloodGlucose_upperBound) {
                   document.querySelector(bloodQuery).style.color = "green";
                 } else {
                   document.querySelector(bloodQuery).style.color = "red";
                   ifAlert = true;
+                  document.querySelector("#id"+record.patientObjectID).style.backgroundColor = "lightlightyellow";
                 }
               }
             } else {
@@ -144,11 +147,13 @@
                 if ( v < record.weight_lowerBound) {
                   document.querySelector(weightQuery).style.color = "blue";
                   ifAlert = true;
+                  document.querySelector("#id"+record.patientObjectID).style.backgroundColor = "lightlightyellow";
                 } else if ( v < record.weight_upperBound) {
                   document.querySelector(weightQuery).style.color = "green";
                 } else {
                   document.querySelector(weightQuery).style.color = "red";
                   ifAlert = true;
+                  document.querySelector("#id"+record.patientObjectID).style.backgroundColor = "lightyellow";
                 }
               }
             } else {
@@ -167,11 +172,13 @@
                 if ( v < record.insulinTaken_lowerBound) {
                   document.querySelector(insulinQuery).style.color = "blue";
                   ifAlert = true;
+                  document.querySelector("#id"+record.patientObjectID).style.backgroundColor = "lightyellow";
                 } else if ( v < record.insulinTaken_upperBound) {
                   document.querySelector(insulinQuery).style.color = "green";
                 } else {
                   document.querySelector(insulinQuery).style.color = "red";
                   ifAlert = true;
+                  document.querySelector("#id"+record.patientObjectID).style.backgroundColor = "lightyellow";
                 }
               }
             } else {
@@ -191,11 +198,13 @@
                 if ( v < record.exercise_lowerBound) {
                   document.querySelector(exerciseQuery).style.color = "blue";
                   ifAlert = true;
+                  document.querySelector("#id"+record.patientObjectID).style.backgroundColor = "lightyellow";
                 } else if ( v < record.exercise_upperBound) {
                   document.querySelector(exerciseQuery).style.color = "green";
                 } else {
                   document.querySelector(exerciseQuery).style.color = "red";
                   ifAlert = true;
+                  document.querySelector("#id"+record.patientObjectID).style.backgroundColor = "lightyellow";
                 }
               }
             } else {
@@ -203,8 +212,22 @@
               document.querySelector(exerciseQuery).style.color = "grey";
             } 
           }
+          if (ifChange) {
+            console.log("!")
+          }
         }
       } 
     }
+  }
+
+
+  function compareArray(a1, a2) {
+    if (a1 === a2) return true;
+    if ((!a1 && a2) || (a1 && ! a2)) return false;
+    if (a1.length !== a2.length) return false;
+    for (var i = 0, n = a1.length; i < n; i++) {
+        if (a1[i] !== a2[i]) return false;
+    }
+    return true;
   }
 </script>
