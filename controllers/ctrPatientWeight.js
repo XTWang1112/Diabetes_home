@@ -29,6 +29,20 @@ const renderPatientWeight = async (req, res) => {
     )
     .clone();
 
+  const onePatientFullRecord = await recordModel
+    .find(
+      {
+        patientObjectID: find_id,
+      },
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        return result;
+      }
+    )
+    .clone();
+
   if (patient) {
     // 渲染血糖上传页面
     console.log('hi!!!');
@@ -48,18 +62,20 @@ const renderPatientWeight = async (req, res) => {
         weight_comment: weight_comment,
       };
 
-      if (onePatientWeight.length === 0 && patient.weight_record){
+      if (onePatientWeight.length === 0 && patient.weight_record) {
         await recordModel.create({
           ...patientWeight,
         });
 
         // update insistDay
-        await patientModel.findOneAndUpdate({
-          _id: find_id,
-        }, {
-          insistDay: onePatientFullRecord.length,
-        });
-
+        await patientModel.findOneAndUpdate(
+          {
+            _id: find_id,
+          },
+          {
+            insistDay: onePatientFullRecord.length,
+          }
+        );
       } else if (onePatientWeight.length !== 0 && patient.weight_record) {
         console.log('update😎😎🤓');
         const updated = await recordModel.findOneAndUpdate(
@@ -77,11 +93,14 @@ const renderPatientWeight = async (req, res) => {
           }
         );
         // update insistDay
-        await patientModel.findOneAndUpdate({
-          _id: find_id,
-        }, {
-          insistDay: onePatientFullRecord.length,
-        });
+        await patientModel.findOneAndUpdate(
+          {
+            _id: find_id,
+          },
+          {
+            insistDay: onePatientFullRecord.length,
+          }
+        );
       }
     }
   }

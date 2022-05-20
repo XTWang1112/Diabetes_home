@@ -29,6 +29,20 @@ const renderPatientInsulin = async (req, res) => {
     )
     .clone();
 
+  const onePatientFullRecord = await recordModel
+    .find(
+      {
+        patientObjectID: find_id,
+      },
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        return result;
+      }
+    )
+    .clone();
+
   if (patient) {
     res.render('Insulin_record', {
       patient,
@@ -51,11 +65,14 @@ const renderPatientInsulin = async (req, res) => {
           ...patientInsulin,
         });
         // update insistDay
-        await patientModel.findOneAndUpdate({
-          _id: find_id,
-        }, {
-          insistDay: onePatientFullRecord.length,
-        });
+        await patientModel.findOneAndUpdate(
+          {
+            _id: find_id,
+          },
+          {
+            insistDay: onePatientFullRecord.length,
+          }
+        );
       } else if (
         onePatientInsulin.length !== 0 &&
         patient.insulinTaken_record
@@ -76,11 +93,14 @@ const renderPatientInsulin = async (req, res) => {
           }
         );
         // update insistDay
-        await patientModel.findOneAndUpdate({
-          _id: find_id,
-        }, {
-          insistDay: onePatientFullRecord.length,
-        });
+        await patientModel.findOneAndUpdate(
+          {
+            _id: find_id,
+          },
+          {
+            insistDay: onePatientFullRecord.length,
+          }
+        );
       }
     }
   }
