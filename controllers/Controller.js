@@ -244,10 +244,13 @@ const renderPatientData = async (req, res) => {
   const patient = await patientModel.findById(patient_id).lean();
   const record = await recordModel.find({ patientObjectID: patient_id }).lean();
   record.sort(function (a, b) {
-    return a.time - b.time;
+    return b.time - a.time;
   });
   let date_arr = [];
+  let blood_arr = [];
   let excercise_arr = [];
+  let weight_arr = [];
+  let insulin_arr = [];
   for (let i = 0; i < record.length; i++) {
     const date = new Date(record[i].time).toLocaleDateString();
     record[i].time = date;
@@ -264,7 +267,6 @@ const renderPatientData = async (req, res) => {
       record[i].exercise = undefined;
     }
     if (i <= 6) {
-      
       date_arr[i] = date;
       if (record[i].exercise) {
         var intExcercise = Number(record[i].exercise);
@@ -272,19 +274,45 @@ const renderPatientData = async (req, res) => {
       } else {
         excercise_arr[i] = 0;
       }
+
+      if (record[i].blood_glucose_level) {
+        var intVar = Number(record[i].blood_glucose_level);
+        blood_arr[i] = intVar;
+      } else {
+        blood_arr[i] = 0;
+      }
+      if (record[i].exercise) {
+        var intVar = Number(record[i].exercise);
+        excercise_arr[i] = intVar/100;
+      } else {
+        excercise_arr[i] = 0;
+      }
+      if (record[i].weight) {
+        var intVar = Number(record[i].weight);
+        weight_arr[i] = intVar;
+      } else {
+        weight_arr[i] = 0;
+      }
+      if (record[i].insulinTaken) {
+        var intVar = Number(record[i].insulinTaken);
+        insulin_arr[i] = intVar;
+      } else {
+        insulin_arr[i] = 0;
+      }
     }
   }
-
-  console.log(date_arr);
-  console.log(excercise_arr);
-
+  
+  console.log("weight ", weight_arr);
+  console.log("date ", date_arr);
   try {
     res.render('patient_data', {
       layout: 'patient_template',
       record,
-      //b_record [数值 ]
-      //date 
-      //weight_record
+      date_arr: date_arr,
+      blood_arr: blood_arr,
+      excercise_arr: excercise_arr,
+      weight_arr: weight_arr,
+      insulin_arr: insulin_arr,
       patient,
     });
   } catch (err) {
