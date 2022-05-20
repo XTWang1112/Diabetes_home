@@ -95,7 +95,6 @@ const renderPatientDashboard = async (req, res) => {
     layout: 'patient_template',
   });
 
-
   // res.status(200).json({
   //   status: 'success',
   //   data: {
@@ -270,7 +269,7 @@ const renderPatientData = async (req, res) => {
       date_arr[i] = date;
       if (record[i].exercise) {
         var intExcercise = Number(record[i].exercise);
-        excercise_arr[i] = intExcercise/100;
+        excercise_arr[i] = intExcercise / 100;
       } else {
         excercise_arr[i] = 0;
       }
@@ -283,7 +282,7 @@ const renderPatientData = async (req, res) => {
       }
       if (record[i].exercise) {
         var intVar = Number(record[i].exercise);
-        excercise_arr[i] = intVar/100;
+        excercise_arr[i] = intVar / 100;
       } else {
         excercise_arr[i] = 0;
       }
@@ -301,9 +300,13 @@ const renderPatientData = async (req, res) => {
       }
     }
   }
-  
-  console.log("weight ", weight_arr);
-  console.log("date ", date_arr);
+
+  const test = JSON.stringify(excercise_arr);
+
+  console.log(typeof excercise_arr);
+  console.log(test);
+  console.log(excercise_arr);
+  console.log('date ', date_arr);
   try {
     res.render('patient_data', {
       layout: 'patient_template',
