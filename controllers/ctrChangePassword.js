@@ -43,6 +43,7 @@ const changeNewPassword = async(req, res) => {
         })
       })
     }
+    res.redirect('/guest/login')
   })
 
   
