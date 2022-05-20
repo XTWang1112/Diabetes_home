@@ -25,6 +25,10 @@ Router.get(
     '/:id', 
     utility.isLoggedIn,
     Controller.renderPatientDashboard);
+Router.post('/:id/logout', (req, res) => {
+    req.logout()          // kill the session
+    res.redirect('/guest/login')     // redirect user to Home page, which will bounce them to Login page
+})
 Router.get('/:id/about-website', utility.isLoggedIn, Controller.renderLoginAboutWebsite);
 Router.get('/:id/about-diabetes', utility.isLoggedIn, Controller.renderLoginAboutDiabetes);
 Router.get('/:id/change-password', utility.isLoggedIn, ctrChangePassword.renderChangePassword);

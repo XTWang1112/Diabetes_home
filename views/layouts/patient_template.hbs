@@ -57,7 +57,9 @@
           </li>
           <li class='icon-link'>
             <ion-icon class='nav-icon' name='log-out'></ion-icon>
-            <a class='main-nav-link' href='#'>Log out</a>
+            <form class="logout" action="/patient/{{this._id}}/logout" method="post">
+              <button type="submit">Log Out</button>
+            </form>
           </li>
         </ul>
       </nav>
