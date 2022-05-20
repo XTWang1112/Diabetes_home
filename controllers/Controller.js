@@ -414,7 +414,7 @@ const getData = async (req, res) => {
         insulinTaken_upperBound: true,
       }
     );
-    tdyRecord.lastName = patient.lastName;
+    if (patient) {
     tdyRecord.bloodGlucose_lowerBound = patient.bloodGlucose_lowerBound;
     tdyRecord.bloodGlucose_upperBound = patient.bloodGlucose_upperBound;
     tdyRecord.weight_lowerBound = patient.weight_lowerBound;
@@ -423,6 +423,7 @@ const getData = async (req, res) => {
     tdyRecord.exercise_upperBound = patient.exercise_upperBound;
     tdyRecord.insulinTaken_lowerBound = patient.insulinTaken_lowerBound;
     tdyRecord.insulinTaken_upperBound = patient.insulinTaken_upperBound;
+    }
   }
   res.send(tdyrecords);
 };
