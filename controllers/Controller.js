@@ -258,7 +258,7 @@ const renderPatientClinician = async (req, res) => {
 
 const renderPatientData = async (req, res) => {
   const patient_id = req.params.id;
-  // find the patient using its id
+  const patient = await patientModel.findById(patient_id).lean();
   const record = await recordModel.find({ patientObjectID: patient_id }).lean();
   for (let i = 0; i < record.length; i++) {
     const date = new Date(record[i].time).toLocaleDateString();
@@ -272,6 +272,7 @@ const renderPatientData = async (req, res) => {
     res.render('patient_data', {
       layout: 'patient_template',
       record,
+      patient,
     });
   } catch (err) {
     res.status(404).json({
