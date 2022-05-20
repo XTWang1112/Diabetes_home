@@ -12,6 +12,7 @@ const utility = require('./patientUtility');
 // add a route to handle the get request for all patients' data
 Router.get('/', Controller.renderGuestPage);
 Router.get('/about-website', Controller.renderAboutWebsite);
+Router.get('/about-diabetes', Controller.renderAboutDiabetes);
 Router.get('/clinician-login', Controller.renderClinicianLogin);
 Router.get('/login', utility.unLoggedIn, Controller.renderPatientLogin);
 // Process login attempt

@@ -53,6 +53,7 @@ passport.use(
           }
         );
       });
+      console.log(req);
     }
   )
 );
