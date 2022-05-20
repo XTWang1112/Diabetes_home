@@ -260,9 +260,24 @@ const renderPatientData = async (req, res) => {
   const patient_id = req.params.id;
   const patient = await patientModel.findById(patient_id).lean();
   const record = await recordModel.find({ patientObjectID: patient_id }).lean();
+  record.sort( function(a,b) {
+    return a.time - b.time;
+  })
   for (let i = 0; i < record.length; i++) {
     const date = new Date(record[i].time).toLocaleDateString();
     record[i].time = date;
+    if (record[i].blood_glucose_level == "no data today") {
+      record[i].blood_glucose_level = undefined;
+    }
+    if (record[i].weight == "no data today") {
+      record[i].weight = undefined;
+    }
+    if (record[i].insulinTaken == "no data today") {
+      record[i].insulinTaken = undefined;
+    }
+    if (record[i].exercise == "no data today") {
+      record[i].exercise = undefined;
+    }
   }
 
   if (record) {
