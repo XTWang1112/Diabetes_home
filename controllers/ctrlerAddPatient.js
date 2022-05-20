@@ -1,6 +1,9 @@
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 const patientModel = require('../models/patient');
+const bcrypt = require("bcrypt");
+const { redirect } = require('express/lib/response');
+const SALT_FACTOR = 10;
 
 function generatePassword() {
   var chars =
@@ -28,7 +31,7 @@ const renderAddPatient = async (req, res, next) => {
   }
 };
 
-const registerPatient = async (req, res) => {
+const registerPatient = async (req, res, next) => {
   try {
     console.log('post');
     console.log('start Register');
@@ -36,10 +39,12 @@ const registerPatient = async (req, res) => {
     var newPassword = generatePassword();
     console.log(newPassword);
 
+    
     newPatient = new patientModel({
       firstName: req.body.first_name,
       lastName: req.body.last_name,
       email: req.body.email,
+      gender: req.body.gender,
       phoneNumber: req.body.phone_number,
       streetAddress: req.body.street,
       birthday: req.body.year_birth,
@@ -51,9 +56,23 @@ const registerPatient = async (req, res) => {
       insulinTaken_record: false,
       weight_record: false,
       exercise_record: false,
+      role: "patient"
     });
     console.log(newPatient);
-    await newPatient.save();
+    console.log(newPatient.password);
+
+    res.render('Add_patient', {account: newPatient.email, password: newPatient.password});
+
+    bcrypt.hash(newPatient.password, SALT_FACTOR, function(err, hash) {
+        newPatient.password = hash
+        newPatient.save();
+    })
+
+    
+    /* alert("Your email: " + newPatient.email + " Your password； " + newPatient.password)
+    res.redirect('/clinician') */
+    
+ 
   } catch (err) {
     res.status(400).json({
       status: 'fail',

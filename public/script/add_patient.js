@@ -10,7 +10,7 @@ document.querySelector('.overlay').addEventListener('click', closeWindow);
 
 /////////////////////////
 //pop message window
-document.querySelector('.btn-register').addEventListener('click', function () {
+if (document.querySelector('.password').textContent.length > 0) {
   document.querySelector('.account-password').classList.remove('disappear');
   document.querySelector('.overlay').classList.remove('disappear');
-});
+}

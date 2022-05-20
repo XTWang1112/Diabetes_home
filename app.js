@@ -2,17 +2,35 @@ const exphbs = require('express-handlebars');
 const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser')
 
 dotenv.config({ path: './config.env' });
 
 // Set app as our server
 const app = express();
 
-/* const passport = require('passport')
-const flash = require('express-flash')
+const passport = require('passport')
+/* const flash = require('express-flash') */
 const session = require('express-session')
+const flash = require('connect-flash');
 
-app.use(flash()) */
+require('./passport.js')
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    maxAge: 900000}
+}))
+app.use(flash())
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(cookieParser());
+
+
+
 
 //middlewares
 if (process.env.NODE_ENV === 'development') {

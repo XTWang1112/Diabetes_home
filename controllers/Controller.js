@@ -1,6 +1,10 @@
+const req = require('express/lib/request');
+const { render } = require('express/lib/response');
+const res = require('express/lib/response');
 const patientModel = require('../models/patient');
 const clinicianModel = require('../models/clinician');
 const recordModel = require('../models/record');
+const bcrypt = require("bcrypt")
 
 // The function to redner clinician dashboard
 const renderClinicianDashboard = async (req, res) => {
@@ -25,9 +29,25 @@ const renderClinicianDashboard = async (req, res) => {
       )
       .lean();
 
+    // Get Current date
+    // const today = new Date(new Date().toDateString()).getTime();
+    // const tomorrow = today + 24 * 3600 * 1000;
+
+    // 获取当前日-月-年
+    const date = new Date();
+    const thisYear = date.getFullYear();
+    const thisMonth = date.getMonth() + 1;
+    const thisDay = date.getDate();
+    const today_date = thisDay + '-' + thisMonth + '-' + thisYear;
+
+    // Get each patient's latest blood glucose and weight  value
     for (patient of patients) {
+      // Select the curent day's data
+      // 如果要用js操作mongoDB参数，把要操作的对象加到query里面，否则不会进行loop循环patient
+      // 把time注释掉就能显示patient的记录
       let query = {
         patient_id: patient._id,
+        // time: { $eq: today_date },
       };
 
       try {
@@ -79,6 +99,9 @@ const renderPatientDashboard = async (req, res) => {
   console.log(search_day);
   console.log(todayData);
   const support_message = patient.support_message;
+  console.log(req.isAuthenticated())
+
+  // console.log(comments);
   res.render('Patient_Dashboard', {
     patient: patient,
     latestRecord: todayData[0],
@@ -108,11 +131,137 @@ const renderClinicianLogin = (req, res) => {
   }
 };
 
+const renderPatientWeight = (req, res) => {
+  try {
+    res.render('Weight_record', { layout: 'patient_record_template' });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
+const renderPatientInsulin = (req, res) => {
+  try {
+    res.render('Insulin_record', { layout: 'patient_record_template' });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
+const renderPatientExercise = (req, res) => {
+  try {
+    res.render('Exercise_record', { layout: 'patient_record_template' });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
 const renderPatientLogin = (req, res) => {
   try {
     res.render('Patient_login', {
       layout: 'no_layouts',
     });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
+const renderPatientRanking = (req, res) => {
+  try {
+    res.render('patient_ranking', {
+      layout: 'patient_template',
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
+const postPatientLogin = (req, res) => {
+  const input_email = req.body.email;
+  const input_password = req.body.password;
+  console.log(input_email);
+  console.log(input_password)
+  try {
+    patientModel.findOne({email: input_email}, function(err, foundUser){
+      if(foundUser){
+        bcrypt.compare(input_password, foundUser.password, function(err, result){
+          if(result === true){
+            console.log("登陆成功")
+            console.log("登陆用户的id是： " + foundUser._id)
+
+            res.redirect('/patient/' + foundUser._id)
+          }else{
+            console.log("登陆失败")
+          }
+        })
+      }
+    })
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
+const renderPatientMe = async (req, res) => {
+  try {
+    const find_id = '6267d6bb8b206aade8b24198';
+    const patient = await patientModel.findById(find_id).lean();
+    const patientReg = await patientModel.findOne(
+      { find_id },
+      { register_date: 1, _id: 0 }
+    );
+
+    const records = await recordModel
+      .find(
+        {
+          find_id,
+        },
+        (err, result) => {
+          if (err) {
+            console.log(err);
+          }
+          return result;
+        }
+      )
+      .clone();
+
+    const oneDay = 24 * 60 * 60 * 1000;
+
+    const diffDays = Math.round(
+      Math.abs((new Date().getTime() - patientReg.register_date) / oneDay)
+    );
+    const engagementRate = (records.length / diffDays) * 100;
+
+    await patientModel.updateOne({
+      find_id,
+      engagementRate: engagementRate,
+    });
+    res.render('patient_me', {
+      patient,
+      layout: 'patient_template',
+    });
+    // res.status(200).json({
+    //   status: 'success',
+    //   data: {
+    //     records,
+    //   },
+    // });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -138,29 +287,22 @@ const renderPatientClinician = async (req, res) => {
   });
 };
 
-const renderPatientData = async (req, res) => {
-  const patient_id = req.params.id;
-  const patient = await patientModel.findById(patient_id).lean();
-
+const renderPatientData = async(req, res) => {
+  let patient_id = '6267d6bb8b206aade8b24198';
   // find the patient using its id
-  const record = await recordModel
-    .find({
-      patientObjectID: patient_id,
-    })
-    .lean();
-  for (let i = 0; i < record.length; i++) {
-    const date = new Date(record[i].time).toLocaleDateString();
+  let record = await recordModel.find({patientObjectID: patient_id}).lean();
+  for (var i = 0; i < record.length; i++) {
+    date = new Date(record[i].time).toLocaleDateString();
     record[i].time = date;
   }
-
+  
   if (record) {
-    console.log('get the record from data base, now sending them to render');
+    console.log("get the record from data base, now sending them to render");
   }
   try {
     res.render('patient_data', {
-      patient,
-      record: record,
       layout: 'patient_template',
+      record,
     });
   } catch (err) {
     res.status(404).json({
@@ -172,9 +314,7 @@ const renderPatientData = async (req, res) => {
 
 const renderAboutWebsite = (req, res) => {
   try {
-    res.render('About_website', {
-      layout: 'info_template',
-    });
+    res.render('About_website', { layout: 'info_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -185,9 +325,7 @@ const renderAboutWebsite = (req, res) => {
 
 const renderAboutDiabetes = (req, res) => {
   try {
-    res.render('About_diabetes', {
-      layout: 'info_template',
-    });
+    res.render('About_diabetes', { layout: 'info_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -196,14 +334,9 @@ const renderAboutDiabetes = (req, res) => {
   }
 };
 
-const renderLoginAboutWebsite = async (req, res) => {
+const renderLoginAboutWebsite = (req, res) => {
   try {
-    const patient_id = req.params.id;
-    const patient = await patientModel.findById(patient_id).lean();
-    res.render('About_website', {
-      patient,
-      layout: 'patient_template',
-    });
+    res.render('About_website', { layout: 'patient_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -212,14 +345,9 @@ const renderLoginAboutWebsite = async (req, res) => {
   }
 };
 
-const renderLoginAboutDiabetes = async (req, res) => {
+const renderLoginAboutDiabetes = (req, res) => {
   try {
-    const patient_id = req.params.id;
-    const patient = await patientModel.findById(patient_id).lean();
-    res.render('About_diabetes', {
-      patient,
-      layout: 'patient_template',
-    });
+    res.render('About_diabetes', { layout: 'patient_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -351,7 +479,13 @@ const renderGuestPage = async (req, res) => {
 module.exports = {
   renderClinicianDashboard,
   renderPatientDashboard,
+  renderPatientWeight,
+  renderPatientInsulin,
+  renderPatientExercise,
   renderPatientLogin,
+  postPatientLogin,
+  renderPatientRanking,
+  renderPatientMe,
   renderPatientClinician,
   renderPatientData,
   renderAboutWebsite,

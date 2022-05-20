@@ -45,7 +45,7 @@ main {
   /* box-shadow: offset-x offset-y blur spread color */
 }
 
-.login-message {
+.login-message{
   position: absolute;
   top: 47%;
   left: 50%;

@@ -1,6 +1,8 @@
 // const { Router } = require('express')
 const express = require('express');
 
+const utility = require('./patientUtility')
+
 const Router = express.Router();
 
 const Controller = require('../controllers/Controller');
@@ -14,15 +16,22 @@ const ctrChangePassword = require('../controllers/ctrChangePassword');
 
 // header-nav
 Router.get('/:id', Controller.renderPatientDashboard);
-Router.get('/:id/about-website', Controller.renderLoginAboutWebsite);
+/* Router.get('/:id/about-website', Controller.renderLoginAboutWebsite);
 Router.get('/:id/about-diabetes', Controller.renderLoginAboutDiabetes);
-Router.get('/:id/change-password', ctrChangePassword.renderChangePassword);
+Router.get('/:id/change-password', ctrChangePassword.renderChangePassword); */
 Router.get('/:id/getTheme', Controller.setTheme);
 Router.post('/:id/changeTheme', Controller.changeTheme);
+Router.get(
+    '/:id', 
+    utility.isLoggedIn,
+    Controller.renderPatientDashboard);
+Router.get('/:id/about-website', utility.isLoggedIn, Controller.renderLoginAboutWebsite);
+Router.get('/:id/about-diabetes', utility.isLoggedIn, Controller.renderLoginAboutDiabetes);
+Router.get('/:id/change-password', utility.isLoggedIn, ctrChangePassword.renderChangePassword);
 //data input
-Router.get('/:id/weight', ctrlerPatientWeight.renderPatientWeight);
-Router.get('/:id/insulin', ctrlerPatientInsulin.renderPatientInsulin);
-Router.get('/:id/exercise', ctrlerPatientExercise.renderPatientExercise);
+Router.get('/:id/weight', utility.isLoggedIn, ctrlerPatientWeight.renderPatientWeight);
+Router.get('/:id/insulin', utility.isLoggedIn, ctrlerPatientInsulin.renderPatientInsulin);
+Router.get('/:id/exercise', utility.isLoggedIn, ctrlerPatientExercise.renderPatientExercise);
 Router.get(
   '/:id/blood-glucose',
   ctrlerPatientBloodRecord.renderPatientBloodRecord

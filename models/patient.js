@@ -24,9 +24,9 @@ const patientSchema = new mongoose.Schema({
   gender: {
     type: String,
     required: [true, 'A patient must have a gender'],
-    enum: {
+    String: {
       values: ['-', 'Female', 'Male'],
-      message: 'Only support gender - female of male',
+      message: 'Only support gender - female or male',
     },
   },
   photo_url: { type: String, default: 'chris.jpg' },
@@ -94,6 +94,8 @@ const patientSchema = new mongoose.Schema({
   weight_record: { type: Boolean, default: false },
   insulinTaken_record: { type: Boolean, default: false },
   exercise_record: { type: Boolean, default: false },
+
+  role: {type: String}
 });
 
 // Compile the schema into a model
