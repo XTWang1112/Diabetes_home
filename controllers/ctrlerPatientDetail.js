@@ -6,6 +6,7 @@ const res = require('express/lib/response');
 const patientModel = require('../models/patient');
 const recordModel = require('../models/record');
 const noteModel = require('../models/clinician_notes');
+const notesModel = require('../models/clinician_notes');
 
 const renderPatientDetails = async (req, res) => {
   try {
@@ -14,14 +15,21 @@ const renderPatientDetails = async (req, res) => {
     const patient = await patientModel.findById(find_id).lean();
     //current patient' records
     const records = await recordModel
-      .find({
-        patientObjectID: find_id,
-      })
-      .sort({ time: -1 })
-      .lean();
-
-    console.log(records);
-
+    .find({
+      patientObjectID: find_id,
+    })
+    .sort({ time: -1 })
+    .lean();
+    
+    //recent patient' note
+    const note = await notesModel
+    .findOne({
+      patientObjectID: find_id,
+    })
+    .sort({ time: -1})
+    var date = new Date(note.time);
+    var dateStr = date.toLocaleDateString()
+    patient.dateStr = dateStr;
     res.render('Patient_details', {
       data: {
         patient,
