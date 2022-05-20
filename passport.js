@@ -22,7 +22,7 @@ passport.deserializeUser((login, done) => {
 })
 
 passport.use(
-    /* "patient-login", */
+    "patient-login",
     new LocalStrategy({
         usernameField: "email",
         passwordField: "password",
@@ -35,7 +35,6 @@ passport.use(
                 if(err){
                     return done(err);
                 }else if(!patient){
-                    req.flash('loginMessage', 'No user found');
                     return done(null, false, req.flash('loginMessage', 'No user found'));
                     /* return done(null, false, {message: "no user found"}); */
                 }else if(!await bcrypt.compare(password, patient.password)){

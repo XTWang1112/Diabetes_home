@@ -18,7 +18,7 @@ Router.get('/login', utility.unLoggedIn, Controller.renderPatientLogin);
 Router.post(
     '/login', 
     utility.unLoggedIn,
-    passport.authenticate('local', {
+    passport.authenticate("patient-login", {
         /* successRedirect: '/patient/62864c7a96d8e97f2078fc9c', */
         failureRedirect: "/guest/login",
         failureflash: true,
