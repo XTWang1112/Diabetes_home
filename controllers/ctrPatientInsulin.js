@@ -50,6 +50,12 @@ const renderPatientInsulin = async (req, res) => {
         await recordModel.create({
           ...patientInsulin,
         });
+        // update insistDay
+        await patientModel.findOneAndUpdate({
+          _id: find_id,
+        }, {
+          insistDay: onePatientFullRecord.length,
+        });
       } else if (
         onePatientInsulin.length !== 0 &&
         patient.insulinTaken_record
@@ -69,6 +75,12 @@ const renderPatientInsulin = async (req, res) => {
             insulinTaken_comment: insulin_comment,
           }
         );
+        // update insistDay
+        await patientModel.findOneAndUpdate({
+          _id: find_id,
+        }, {
+          insistDay: onePatientFullRecord.length,
+        });
       }
     }
   }
