@@ -28,6 +28,7 @@ Router.get(
 Router.get('/:id/about-website', utility.isLoggedIn, Controller.renderLoginAboutWebsite);
 Router.get('/:id/about-diabetes', utility.isLoggedIn, Controller.renderLoginAboutDiabetes);
 Router.get('/:id/change-password', utility.isLoggedIn, ctrChangePassword.renderChangePassword);
+Router .post('/:id/change-password', utility.isLoggedIn, ctrChangePassword.changeNewPassword);
 //data input
 Router.get('/:id/weight', utility.isLoggedIn, ctrlerPatientWeight.renderPatientWeight);
 Router.get('/:id/insulin', utility.isLoggedIn, ctrlerPatientInsulin.renderPatientInsulin);

@@ -6,6 +6,7 @@ const passport = require('passport')
 
 
 const patientModel = require('./models/patient');
+const clinicianModel = require('./models/clinician');
 
 passport.serializeUser((user, done) => {
     done(null, {_id: user._id, role: user.role})
@@ -14,6 +15,10 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((login, done) => {
     if(login.role === "patient"){
         patientModel.findById(login._id, (err, user) => {
+            return done(err, user)
+        })
+    }else if(login.role === "clinician"){
+        clinicianModel.findById(login._id, (err, user) => {
             return done(err, user)
         })
     }else{
@@ -31,7 +36,6 @@ passport.use(
     (req, email, password, done) => {
         process.nextTick(() => {
             patientModel.findOne({'email': email.toLowerCase()}, async(err, patient) => {
-                req.flash('loginMessage', 'No user found');
                 if(err){
                     return done(err);
                 }else if(!patient){
@@ -41,6 +45,32 @@ passport.use(
                     return done(null, false, req.flash('loginMessage', 'Oops, wrong password!'));
                 }else{
                     return done(null, patient, {message: "Login in successfully"});
+                }
+            })
+        })
+    }
+    )
+)
+
+passport.use(
+    "clinician-login",
+    new LocalStrategy({
+        usernameField: "email",
+        passwordField: "password",
+        passReqToCallback: true
+    },
+    (req, email, password, done) => {
+        process.nextTick(() => {
+            clinicianModel.findOne({'email': email.toLowerCase()}, async(err, clinician) => {
+                if(err){
+                    return done(err);
+                }else if(!clinician){
+                    return done(null, false, req.flash('loginMessage', 'No user found'));
+                    /* return done(null, false, {message: "no user found"}); */
+                }else if(!await bcrypt.compare(password, clinician.password)){
+                    return done(null, false, req.flash('loginMessage', 'Oops, wrong password!'));
+                }else{
+                    return done(null, clinician, {message: "Login in successfully"});
                 }
             })
         })

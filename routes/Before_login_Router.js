@@ -15,6 +15,19 @@ Router.get('/', Controller.renderGuestPage);
 Router.get('/about-website', Controller.renderAboutWebsite);
 Router.get('/about-diabetes', Controller.renderAboutDiabetes);
 Router.get('/clinician-login', Controller.renderClinicianLogin);
+Router.post(
+    '/clinician-login',
+    utility.unLoggedIn,
+    passport.authenticate("clinician-login", {
+        failureRedirect: "/guest/clinician-login",
+        failureFlash: true,
+    }),
+    (req, res) => {
+        console.log("这里是医生")
+        res.redirect('/clinician')
+    }
+
+)
 Router.get('/login', utility.unLoggedIn, Controller.renderPatientLogin);
 // Process login attempt
 Router.post(
