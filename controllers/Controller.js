@@ -92,6 +92,8 @@ const renderPatientDashboard = async (req, res) => {
     support_message: support_message,
     layout: 'patient_template',
   });
+
+
   // res.status(200).json({
   //   status: 'success',
   //   data: {
@@ -260,7 +262,7 @@ const renderPatientData = async (req, res) => {
   }
 
   if (record) {
-    console.log('get the record from data base, now sending them to render');
+    console.log(record);
   }
   try {
     res.render('patient_data', {
