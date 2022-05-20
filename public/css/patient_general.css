@@ -415,3 +415,19 @@ p {
 .login:visited {
   color: var(--dark_color) !important;
 }
+
+.logout button {
+  border: none;
+  background-color: var(--light_color)
+  color: var(--dark_color);
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.logout {
+  margin-top: 0;
+}
+
+.logout button:hover {
+  cursor: pointer;
+}

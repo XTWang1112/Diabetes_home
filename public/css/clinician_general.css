@@ -116,8 +116,8 @@ p {
 
 .theme_btn {
   text-decoration: none;
-  border:0;
-	outline:none;
+  border: 0;
+  outline: none;
   background-color: transparent;
 }
 
@@ -300,4 +300,15 @@ footer {
 .address li {
   font-size: 1.8rem;
   color: #202b5a;
+}
+
+.logout button {
+  border: none;
+  background-color: #5e8db7;
+  color: white;
+  font-size: 2rem;
+}
+
+.logout button:hover {
+  cursor: pointer;
 }
