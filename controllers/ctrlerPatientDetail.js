@@ -120,7 +120,7 @@ const saveSupportMessage = async (req, res) => {
   await patientModel
     .updateOne(
       { _id: patient_id },
-      { support_message_date: message_date.toLocaleDateString() }
+      { support_message_date: "2022/5/20" }
     )
     .then((result) => console.log('Try to change support message date'));
   res.redirect('/clinician/' + req.params.id);
