@@ -20,7 +20,6 @@ const renderPatientDetails = async (req, res) => {
     })
     .sort({ time: -1 })
     .lean();
-    
     //recent patient' note
     const note = await notesModel
     .findOne({
@@ -30,6 +29,7 @@ const renderPatientDetails = async (req, res) => {
     var date = new Date(note.time);
     var dateStr = date.toLocaleDateString()
     patient.dateStr = dateStr;
+    // render
     res.render('Patient_details', {
       data: {
         patient,

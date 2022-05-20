@@ -68,9 +68,9 @@
           <label for='blood-glucose-level'><strong>Blood glucose level</strong></label>
           <div class='bounds'>
             <label for='blood-glucose-lb'>Min</label>
-            <input name='bloodGlucose_lb' type='number' step="0.1"/>
+            <input name='bloodGlucose_lb' type='number' step="0.1" placeholder="{{this.bloodGlucose_lowerBound}}"/>
             <label for='blood-glucose-ub'>Max</label>
-            <input name='bloodGlucose_ub' type='number' step="0.1"/>
+            <input name='bloodGlucose_ub' type='number' step="0.1" placeholder="{{this.bloodGlucose_upperBound}}"/>
           </div>
         </div>
         {{!-- insulinTaken --}}
@@ -79,9 +79,9 @@
           <label for='insulin-taken'><strong>Insulin taken</strong></label>
           <div class='bounds'>
             <label for='insulin-taken-lb'>Min</label>
-            <input name='insulinTaken_lb' type='number' step="0.1"/>
+            <input name='insulinTaken_lb' type='number' step="0.1" placeholder="{{this.insulinTaken_lowerBound}}"/>
             <label for='insulin-takene-ub'>Max</label>
-            <input name='insulinTaken_ub' type='number' step="0.1"/>
+            <input name='insulinTaken_ub' type='number' step="0.1" placeholder="{{this.insulinTaken_upperBound}}"/>
           </div>
         </div>
         {{!-- weight --}}
@@ -90,9 +90,9 @@
           <label for='weight'><strong>Weight</strong></label>
           <div class='bounds'>
             <label for='weight-lb'>Min</label>
-            <input name='weight_lb' type='number' step="0.1"/>
+            <input name='weight_lb' type='number' step="0.1" placeholder="{{this.weight_lowerBound}}"/>
             <label for='weight-ub'>Max</label>
-            <input name='weight_ub' type='number' step="0.1"/>
+            <input name='weight_ub' type='number' step="0.1" placeholder="{{this.weight_upperBound}}"/>
           </div>
         </div>
         {{!-- exercise --}}
@@ -101,9 +101,9 @@
           <label for='exercise'><strong>Exercise</strong></label>
           <div class='bounds'>
             <label for='exercise-lb'>Min</label>
-            <input name='exercise_lb' type='number' step="0.1"/>
+            <input name='exercise_lb' type='number' step="0.1" placeholder="{{this.exercise_lowerBound}}" place />
             <label for='exercise-ub'>Max</label>
-            <input name='exercise_ub' type='number'step="0.1" />
+            <input name='exercise_ub' type='number'step="0.1" placeholder="{{this.exercise_upperBound}}" placeholder />
           </div>
         </div>
         <button type="submit" , class='btn btn-change'>Change</button>
