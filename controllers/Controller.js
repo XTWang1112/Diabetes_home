@@ -7,24 +7,26 @@ const recordModel = require('../models/record');
 const renderClinicianDashboard = async (req, res) => {
   try {
     // find patientModel里面全部病人的数据
-    const patients = await patientModel
-      .find(
-        {},
-        {
-          firstName: true,
-          lastName: true,
-          patientID: true,
+    // const patients = await patientModel
+    //   .find(
+    //     {},
+    //     {
+    //       firstName: true,
+    //       lastName: true,
+    //       patientID: true,
 
-          gender: true,
-          photo_url: true,
-          insistDay: true,
-          birthday: true,
+    //       gender: true,
+    //       photo_url: true,
+    //       insistDay: true,
+    //       birthday: true,
 
-          bloodGlucose_lowerBound: true,
-          bloodGlucose_upperBound: true,
-        }
-      )
-      .lean();
+    //       bloodGlucose_lowerBound: true,
+    //       bloodGlucose_upperBound: true,
+    //     }
+    //   )
+    //   .lean();
+    const patients = await patientModel.find().lean();
+    console.log(patients);
 
     // const date = new Date();
     // const thisYear = date.getFullYear();
@@ -147,7 +149,6 @@ const renderPatientExercise = (req, res) => {
 };
 
 const renderPatientLogin = (req, res) => {
-
   try {
     res.render('patient_login', {
       layout: 'no_layouts',

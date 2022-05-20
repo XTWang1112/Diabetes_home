@@ -1,12 +1,7 @@
-const { handle } = require('express/lib/application');
-const req = require('express/lib/request');
-const { redirect } = require('express/lib/response');
-const res = require('express/lib/response');
-
 const patientModel = require('../models/patient');
 const recordModel = require('../models/record');
 const noteModel = require('../models/clinician_notes');
-const notesModel = require('../models/clinician_notes');
+// const notesModel = require('../models/clinician_notes');
 
 const renderPatientDetails = async (req, res) => {
   try {
@@ -22,15 +17,21 @@ const renderPatientDetails = async (req, res) => {
       .lean();
 
     //recent patient' note
-    const note = await notesModel
-      .findOne({
-        patientObjectID: find_id,
-      })
-      .sort({ time: -1 });
-    var date = new Date(note.time);
-    var dateStr = date.toLocaleDateString();
-    console.log('hi' + patient);
-    patient.dateStr = dateStr;
+    try{
+      const note = await noteModel.findOne(
+        {patientObjectID: find_id,})
+        .sort({ time: -1 });
+      if(note){
+        var date = new Date(note.time);
+        var dateStr = date.toLocaleDateString();
+        patient.dateStr = dateStr;
+      }else{
+        patient.dateStr = "";
+      }
+    }catch(err){
+      console.log(err);
+    }
+
     res.render('patient_details', {
       data: {
         patient,
@@ -168,3 +169,5 @@ module.exports = {
   saveSupportMessage,
   saveNote,
 };
+
+
