@@ -415,3 +415,10 @@ p {
 .login:visited {
   color: var(--dark_color) !important;
 }
+
+.logout button {
+  border: none;
+  background-color: #7dbc57;
+  color: white;
+  font-size: 2rem;
+}
