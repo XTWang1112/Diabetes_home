@@ -322,7 +322,7 @@ const renderAboutDiabetes = (req, res) => {
 const renderLoginAboutWebsite = async (req, res) => {
   try {
     const patient_id = req.params.id;
-    const patient = await patientModel.findById(patient_id);
+    const patient = await patientModel.findById(patient_id).lean();
     res.render('about_website', { patient, layout: 'patient_template' });
   } catch (err) {
     res.status(404).json({
@@ -335,7 +335,8 @@ const renderLoginAboutWebsite = async (req, res) => {
 const renderLoginAboutDiabetes = async (req, res) => {
   try {
     const patient_id = req.params.id;
-    const patient = await patientModel.findById(patient_id);
+    const patient = await patientModel.findById(patient_id).lean();
+    console.log(patient);
     res.render('about_diabetes', { patient, layout: 'patient_template' });
   } catch (err) {
     res.status(404).json({
