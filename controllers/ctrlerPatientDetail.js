@@ -29,6 +29,7 @@ const renderPatientDetails = async (req, res) => {
       .sort({ time: -1 });
     var date = new Date(note.time);
     var dateStr = date.toLocaleDateString();
+    console.log('hi' + patient);
     patient.dateStr = dateStr;
     res.render('patient_details', {
       data: {

@@ -5,10 +5,9 @@ const renderPatientMe = async (req, res) => {
   try {
     const find_id = req.params.id;
     const patient = await patientModel.findById(find_id).lean();
-    const patientReg = await patientModel.findOne(
-      { find_id },
-      { register_date: 1, _id: 0 }
-    );
+    const patientReg = await patientModel
+      .findOne({ find_id }, { register_date: 1, _id: 0 })
+      .lean();
 
     const records = await recordModel
       .find(
