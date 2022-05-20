@@ -22,7 +22,7 @@ const renderAddPatient = async (req, res, next) => {
   try {
     console.log('Log start');
     console.log('get');
-    res.render('Add_patient');
+    res.render('add_patient');
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -60,7 +60,7 @@ const registerPatient = async (req, res, next) => {
     console.log(newPatient);
     console.log(newPatient.password);
 
-    res.render('Add_patient', {
+    res.render('add_patient', {
       account: newPatient.email,
       password: newPatient.password,
     });

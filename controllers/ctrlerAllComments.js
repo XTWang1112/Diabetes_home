@@ -15,7 +15,7 @@ const renderAllComments = async (req, res) => {
         },
       },
     ]);
-    res.render('All_comments', {
+    res.render('all_comments', {
       allComments,
     });
   } catch (err) {
