@@ -418,7 +418,16 @@ p {
 
 .logout button {
   border: none;
-  background-color: #7dbc57;
-  color: white;
+  background-color: var(--light_color)
+  color: var(--dark_color);
   font-size: 2rem;
+  margin-top: 0;
+}
+
+.logout {
+  margin-top: 0;
+}
+
+.logout button:hover {
+  cursor: pointer;
 }

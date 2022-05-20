@@ -308,3 +308,7 @@ footer {
   color: white;
   font-size: 2rem;
 }
+
+.logout button:hover {
+  cursor: pointer;
+}
