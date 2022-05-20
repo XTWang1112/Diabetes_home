@@ -43,12 +43,6 @@ const renderPatientMe = async (req, res) => {
       patient: patient,
       layout: 'patient_template',
     });
-    // res.status(200).json({
-    //   status: 'success',
-    //   data: {
-    //     records,
-    //   },
-    // });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -59,7 +53,6 @@ const renderPatientMe = async (req, res) => {
 
 const changeNickName = async (req, res) => {
   console.log('changeNickName running');
-  // let patient_id = '6267d6bb8b206aade8b24198';
   const patient_id = req.params.id;
   var new_nick_name = req.body.new_nick_name;
   await patientModel

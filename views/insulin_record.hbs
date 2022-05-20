@@ -9,10 +9,10 @@
     <h2 class='record-head'>
       <embed
         class='scale'
-        src='/img/svg/weight-icon.svg'
+        src='/img/svg/insulin-icon.svg'
         type='image/svg+xml'
       />
-      &nbsp; weight
+      &nbsp; Insulin Taken
     </h2>
     {{! form to submit data }}
     <form class='record-data' name='record_form'>
@@ -22,8 +22,8 @@
           id='data'
           type='number'
           step='0.1'
-          placeholder='in kg'
-          name='patinet_weight'
+          placeholder='in doses'
+          name='patinet_insulin'
           required
         />
       </div>
@@ -33,7 +33,7 @@
         <textarea
           rows='5'
           cols='30'
-          name='weight_comment'
+          name='insulin_comment'
           placeholder='How do you feel today:)'
         ></textarea>
       </div>
@@ -41,11 +41,9 @@
     </form>
 
     <ul class='record-reminder'>
-      {{#with patient}}
-        <li>For your health, you have kept recording for
-          <span>{{this.insistDay}}</span>
-          days.</li>
-      {{/with}}
+      <li>For your health, you have kept recording for
+        {{#with patient}}<span>{{this.insistDay}}</span>{{/with}}
+        days.</li>
       <li>Keep recording, control diabetes, and enjoy wonderful life!</li>
     </ul>
 

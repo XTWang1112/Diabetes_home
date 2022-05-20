@@ -15,12 +15,6 @@ const renderAllComments = async (req, res) => {
         },
       },
     ]);
-    // res.status(200).json({
-    //   status: 'success',
-    //   data: {
-    //     allComments,
-    //   },
-    // });
     res.render('All_comments', {
       allComments,
     });
