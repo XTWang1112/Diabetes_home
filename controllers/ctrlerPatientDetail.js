@@ -28,13 +28,6 @@ const renderPatientDetails = async (req, res) => {
         records,
       },
     });
-    // res.status(200).json({
-    //   status: 'success',
-    //   data: {
-    //     patient,
-    //     records,
-    //   },
-    // });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -47,29 +40,29 @@ const setTimeSeries = async (req, res) => {
   try {
     const patient = await patientModel.findById(req.params.id).lean();
 
-    // 判定是否需要录入该数据
-    // bloodGlucose的判定
+    // convert input data to boolean
+    // check bloodGlucose
     let bloodGlucose_update = req.body.bloodGlucose_record;
     if (bloodGlucose_update == undefined) {
       bloodGlucose_update = false;
     } else {
       bloodGlucose_update = true;
     }
-    // insulinTaken的判定
+    // check insulinTaken
     let insulinTaken_update = req.body.insulinTaken_record;
     if (insulinTaken_update == undefined) {
       insulinTaken_update = false;
     } else {
       insulinTaken_update = true;
     }
-    // weight的判定
+    // check weight
     let weight_update = req.body.weight_record;
     if (weight_update == undefined) {
       weight_update = false;
     } else {
       weight_update = true;
     }
-    // exercise的判定
+    // check exercise
     let exercise_update = req.body.exercise_record;
     if (exercise_update == undefined) {
       exercise_update = false;
@@ -77,7 +70,7 @@ const setTimeSeries = async (req, res) => {
       exercise_update = true;
     }
 
-    // 更新数据
+    // update data
     const matchID = req.params.id;
 
     await patientModel.updateOne(
@@ -105,12 +98,11 @@ const setTimeSeries = async (req, res) => {
         exercise_upperBound: req.body.exercise_ub,
       }
     );
-    console.log('更新完毕');
+    console.log('update finish');
 
-    // 重新定向避免无限循环
     res.redirect('/clinician/' + req.params.id);
   } catch (err) {
-    console.log('出错了：' + err);
+    console.log('error: ' + err);
     res.status(404).json({
       status: 'fail',
       message: err,
