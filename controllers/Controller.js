@@ -146,9 +146,12 @@ const renderPatientExercise = (req, res) => {
   }
 };
 
-const renderPatientLogin = (req, res) => {
+const renderPatientLogin = async (req, res) => {
   try {
+    const patient_id = req.params.id;
+    const patient = await patientModel.findById(patient_id);
     res.render('patient_login', {
+      patient,
       layout: 'no_layouts',
     });
   } catch (err) {
