@@ -264,9 +264,13 @@ const renderPatientData = async (req, res) => {
       record[i].exercise = undefined;
     }
     if (i <= 6) {
+      
       date_arr[i] = date;
       if (record[i].exercise) {
-        excercise_arr[i] = record[i].exercise;
+        var intExcercise = Number(record[i].exercise);
+        excercise_arr[i] = intExcercise/100;
+      } else {
+        excercise_arr[i] = 0;
       }
     }
   }
