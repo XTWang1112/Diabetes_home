@@ -53,7 +53,7 @@ const renderClinicianDashboard = async (req, res) => {
       }
     }
 
-    res.render('Clinician_dashboard', {
+    res.render('clinician_dashboard', {
       patients: patients,
     });
   } catch (err) {
@@ -84,7 +84,7 @@ const renderPatientDashboard = async (req, res) => {
   const support_message = patient.support_message;
 
   // console.log(comments);
-  res.render('Patient_Dashboard', {
+  res.render('patient_dashboard', {
     patient: patient,
     latestRecord: todayData[0],
     support_message: support_message,
@@ -115,7 +115,7 @@ const renderClinicianLogin = (req, res) => {
 
 const renderPatientWeight = (req, res) => {
   try {
-    res.render('Weight_record', { layout: 'patient_record_template' });
+    res.render('weight_record', { layout: 'patient_record_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -126,7 +126,7 @@ const renderPatientWeight = (req, res) => {
 
 const renderPatientInsulin = (req, res) => {
   try {
-    res.render('Insulin_record', { layout: 'patient_record_template' });
+    res.render('insulin_record', { layout: 'patient_record_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -137,7 +137,7 @@ const renderPatientInsulin = (req, res) => {
 
 const renderPatientExercise = (req, res) => {
   try {
-    res.render('Exercise_record', { layout: 'patient_record_template' });
+    res.render('exercise_record', { layout: 'patient_record_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -149,7 +149,7 @@ const renderPatientExercise = (req, res) => {
 const renderPatientLogin = (req, res) => {
 
   try {
-    res.render('Patient_login', {
+    res.render('patient_login', {
       layout: 'no_layouts',
       loginMessage: '',
     });
@@ -276,22 +276,22 @@ const renderPatientData = async (req, res) => {
   const patient_id = req.params.id;
   const patient = await patientModel.findById(patient_id).lean();
   const record = await recordModel.find({ patientObjectID: patient_id }).lean();
-  record.sort( function(a,b) {
+  record.sort(function (a, b) {
     return a.time - b.time;
-  })
+  });
   for (let i = 0; i < record.length; i++) {
     const date = new Date(record[i].time).toLocaleDateString();
     record[i].time = date;
-    if (record[i].blood_glucose_level == "no data today") {
+    if (record[i].blood_glucose_level == 'no data today') {
       record[i].blood_glucose_level = undefined;
     }
-    if (record[i].weight == "no data today") {
+    if (record[i].weight == 'no data today') {
       record[i].weight = undefined;
     }
-    if (record[i].insulinTaken == "no data today") {
+    if (record[i].insulinTaken == 'no data today') {
       record[i].insulinTaken = undefined;
     }
-    if (record[i].exercise == "no data today") {
+    if (record[i].exercise == 'no data today') {
       record[i].exercise = undefined;
     }
   }
@@ -315,7 +315,7 @@ const renderPatientData = async (req, res) => {
 
 const renderAboutWebsite = (req, res) => {
   try {
-    res.render('About_website', { layout: 'info_template' });
+    res.render('about_website', { layout: 'info_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -326,7 +326,7 @@ const renderAboutWebsite = (req, res) => {
 
 const renderAboutDiabetes = (req, res) => {
   try {
-    res.render('About_diabetes', { layout: 'info_template' });
+    res.render('about_diabetes', { layout: 'info_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -337,7 +337,7 @@ const renderAboutDiabetes = (req, res) => {
 
 const renderLoginAboutWebsite = (req, res) => {
   try {
-    res.render('About_website', { layout: 'patient_template' });
+    res.render('about_website', { layout: 'patient_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -348,7 +348,7 @@ const renderLoginAboutWebsite = (req, res) => {
 
 const renderLoginAboutDiabetes = (req, res) => {
   try {
-    res.render('About_diabetes', { layout: 'patient_template' });
+    res.render('about_diabetes', { layout: 'patient_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',

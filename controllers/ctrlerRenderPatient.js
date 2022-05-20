@@ -4,7 +4,7 @@ const res = require('express/lib/response');
 const renderAddPatient = async (req, res, next) => {
   try {
     console.log('Sign up start');
-    res.render('Add_patient');
+    res.render('add_patient');
   } catch (err) {
     res.status(404).json({
       status: 'fail',

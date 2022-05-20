@@ -44,7 +44,7 @@ const renderPatientInsulin = async (req, res) => {
     .clone();
 
   if (patient) {
-    res.render('Insulin_record', {
+    res.render('insulin_record', {
       patient,
       layout: 'patient_record_template',
     });

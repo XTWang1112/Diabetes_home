@@ -45,7 +45,7 @@ const renderPatientWeight = async (req, res) => {
 
   if (patient) {
     console.log('hi!!!');
-    res.render('Weight_record', {
+    res.render('weight_record', {
       patient,
       layout: 'patient_record_template',
     });

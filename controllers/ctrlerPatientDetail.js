@@ -15,22 +15,22 @@ const renderPatientDetails = async (req, res) => {
     const patient = await patientModel.findById(find_id).lean();
     //current patient' records
     const records = await recordModel
-    .find({
-      patientObjectID: find_id,
-    })
-    .sort({ time: -1 })
-    .lean();
+      .find({
+        patientObjectID: find_id,
+      })
+      .sort({ time: -1 })
+      .lean();
+
     //recent patient' note
     const note = await notesModel
-    .findOne({
-      patientObjectID: find_id,
-    })
-    .sort({ time: -1})
+      .findOne({
+        patientObjectID: find_id,
+      })
+      .sort({ time: -1 });
     var date = new Date(note.time);
-    var dateStr = date.toLocaleDateString()
+    var dateStr = date.toLocaleDateString();
     patient.dateStr = dateStr;
-    // render
-    res.render('Patient_details', {
+    res.render('patient_details', {
       data: {
         patient,
         records,
@@ -126,13 +126,10 @@ const saveSupportMessage = async (req, res) => {
     .updateOne({ _id: patient_id }, { support_message: message })
     .then((result) => console.log('Try to change support message'));
   await patientModel
-    .updateOne(
-      { _id: patient_id },
-      { support_message_date: "2022/5/20" }
-    )
+    .updateOne({ _id: patient_id }, { support_message_date: '2022/5/20' })
     .then((result) => console.log('Try to change support message date'));
   res.redirect('/clinician/' + req.params.id);
-}
+};
 
 const saveNote = async (req, res) => {
   const patient_id = req.params.id;
@@ -143,11 +140,9 @@ const saveNote = async (req, res) => {
     time: time,
     note: note,
   });
-  await newNote.save()
-  .then(() => console.log("try to add new note"));
+  await newNote.save().then(() => console.log('try to add new note'));
   res.redirect('/clinician/' + req.params.id);
-}
-
+};
 
 // const writeNote = async (req, res, next) => {
 //   console.log(req.query.note);
