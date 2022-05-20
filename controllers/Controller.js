@@ -146,12 +146,9 @@ const renderPatientExercise = (req, res) => {
   }
 };
 
-const renderPatientLogin = async (req, res) => {
+const renderPatientLogin = (req, res) => {
   try {
-    const patient_id = req.params.id;
-    const patient = await patientModel.findById(patient_id);
     res.render('patient_login', {
-      patient,
       layout: 'no_layouts',
     });
   } catch (err) {
@@ -322,9 +319,11 @@ const renderAboutDiabetes = (req, res) => {
   }
 };
 
-const renderLoginAboutWebsite = (req, res) => {
+const renderLoginAboutWebsite = async (req, res) => {
   try {
-    res.render('about_website', { layout: 'patient_template' });
+    const patient_id = req.params.id;
+    const patient = await patientModel.findById(patient_id);
+    res.render('about_website', { patient, layout: 'patient_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -333,9 +332,11 @@ const renderLoginAboutWebsite = (req, res) => {
   }
 };
 
-const renderLoginAboutDiabetes = (req, res) => {
+const renderLoginAboutDiabetes = async (req, res) => {
   try {
-    res.render('about_diabetes', { layout: 'patient_template' });
+    const patient_id = req.params.id;
+    const patient = await patientModel.findById(patient_id);
+    res.render('about_diabetes', { patient, layout: 'patient_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
