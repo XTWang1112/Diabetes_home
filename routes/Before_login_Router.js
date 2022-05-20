@@ -22,7 +22,7 @@ Router.post(
   passport.authenticate('patient-login', {
     /* successRedirect: '/patient/62864c7a96d8e97f2078fc9c', */
     failureRedirect: '/guest/login',
-    failureflash: true,
+    failureFlash: true,
   }), // 如果是坏人，重新回到login page
   (req, res) => {
     console.log('用户 ');
