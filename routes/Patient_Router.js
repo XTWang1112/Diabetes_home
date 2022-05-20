@@ -21,10 +21,14 @@ Router.get('/:id/about-diabetes', Controller.renderLoginAboutDiabetes);
 Router.get('/:id/change-password', ctrChangePassword.renderChangePassword); */
 Router.get('/:id/getTheme', Controller.setTheme);
 Router.post('/:id/changeTheme', Controller.changeTheme);
-Router.get('/:id', Controller.renderPatientDashboard);
-Router.get('/:id/about-website', Controller.renderLoginAboutWebsite);
-Router.get('/:id/about-diabetes', Controller.renderLoginAboutDiabetes);
-Router.get('/:id/change-password', ctrChangePassword.renderChangePassword);
+Router.get(
+    '/:id', 
+    utility.isLoggedIn,
+    Controller.renderPatientDashboard);
+Router.get('/:id/about-website', utility.isLoggedIn, Controller.renderLoginAboutWebsite);
+Router.get('/:id/about-diabetes', utility.isLoggedIn, Controller.renderLoginAboutDiabetes);
+Router.get('/:id/change-password', utility.isLoggedIn, ctrChangePassword.renderChangePassword);
+Router .post('/:id/change-password', utility.isLoggedIn, ctrChangePassword.changeNewPassword);
 //data input
 Router.get('/:id/weight', ctrlerPatientWeight.renderPatientWeight);
 Router.get('/:id/insulin', ctrlerPatientInsulin.renderPatientInsulin);

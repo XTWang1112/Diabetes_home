@@ -38,6 +38,14 @@ const clinicianSchema = new mongoose.Schema({
   specialties: {
     type: String,
   },
+
+  email: {
+    type: String,
+  },
+
+  role: {
+    type: String,
+  }
 });
 
 // Compile the schema into a model
