@@ -311,11 +311,11 @@ const renderPatientData = async (req, res) => {
     res.render('patient_data', {
       layout: 'patient_template',
       record,
-      date_arr: date_arr,
-      blood_arr: blood_arr,
-      excercise_arr: excercise_arr,
-      weight_arr: weight_arr,
-      insulin_arr: insulin_arr,
+      date_arr: [1, 2, 3, 4, 5, 6, 7],
+      blood_arr: JSON.stringify(blood_arr),
+      excercise_arr: JSON.stringify(excercise_arr),
+      weight_arr: JSON.stringify(weight_arr),
+      insulin_arr: JSON.stringify(insulin_arr),
       patient,
     });
   } catch (err) {

@@ -74,7 +74,8 @@
       <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
       <div id="main" style="width: 600px;height:400px;"></div>
       <script>
-        console.log({{excercise_arr}});
+        var ser = {{excercise_arr}};
+        console.log(ser);
       </script>
       <script type="text/javascript">
         console.log("yes");
@@ -95,7 +96,7 @@
             }
           },
           legend: {
-            data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+            data: ['blood', 'exercise', 'weight', 'insulin']
           },
           toolbox: {
             feature: {
@@ -111,13 +112,13 @@
           xAxis: [{
             type: 'category',
             boundaryGap: false,
-            data: {{date_arr}}
+            data: [1, 2, 3, 4, 5, 6, 7],
           }],
           yAxis: [{
             type: 'value'
           }],
           series: [{
-              name: 'Email',
+              name: 'blood',
               type: 'line',
               stack: 'Total',
               areaStyle: {},
@@ -127,7 +128,7 @@
               data: {{blood_arr}}
             },
             {
-              name: 'Union Ads',
+              name: 'exercise',
               type: 'line',
               stack: 'Total',
               areaStyle: {},
@@ -137,7 +138,7 @@
               data: {{excercise_arr}}
             },
             {
-              name: 'Video Ads',
+              name: 'weight',
               type: 'line',
               stack: 'Total',
               areaStyle: {},
@@ -147,7 +148,7 @@
               data: {{weight_arr}}
             },
             {
-              name: 'Direct',
+              name: 'insulin',
               type: 'line',
               stack: 'Total',
               areaStyle: {},
@@ -161,7 +162,6 @@
         // display chart
         myChart.setOption(option);
       </script>
-
 
 
 
@@ -218,6 +218,5 @@
         </table>
       </div>
     </div>
-
   </section>
 </main>
