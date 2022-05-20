@@ -104,11 +104,11 @@
         if (xhr.status >= 200 && xhr.status < 300) {
           records = JSON.parse(xhr.response);
           for (record of records) {
+            document.querySelector("#id"+record.patientObjectID).style.backgroundColor = "white";
             const bloodQuery = "#id"+record.patientObjectID+" .blood_glucose_data";
             const weightQuery = "#id"+record.patientObjectID+" .weight_data";
             const insulinQuery = "#id"+record.patientObjectID+" .insulin_data";
             const exerciseQuery = "#id"+record.patientObjectID+" .exercise_data";
-            
             if (record.blood_glucose_level) {
               // change the innerHtml font text
               document.querySelector(bloodQuery).innerHTML = record.blood_glucose_level;

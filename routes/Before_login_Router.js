@@ -14,7 +14,25 @@ Router.get('/', Controller.renderGuestPage);
 Router.get('/about-website', Controller.renderAboutWebsite);
 Router.get('/about-diabetes', Controller.renderAboutDiabetes);
 Router.get('/clinician-login', Controller.renderClinicianLogin);
+Router.post(
+    '/clinician-login',
+    utility.unLoggedIn,
+    passport.authenticate("clinician-login", {
+        failureRedirect: "/guest/clinician-login",
+        failureFlash: true,
+    }),
+    (req, res) => {
+        console.log("这里是医生")
+        res.redirect('/clinician')
+    }
+
+)
 Router.get('/login', utility.unLoggedIn, Controller.renderPatientLogin);
+Router.get(
+  '/login/tryagine',
+  utility.unLoggedIn,
+  Controller.renderPatientLoginTryagin
+);
 // Process login attempt
 Router.post(
   '/login',
@@ -22,7 +40,7 @@ Router.post(
   passport.authenticate('patient-login', {
     /* successRedirect: '/patient/62864c7a96d8e97f2078fc9c', */
     failureRedirect: '/guest/login',
-    failureflash: true,
+    failureFlash: true,
   }), // 如果是坏人，重新回到login page
   (req, res) => {
     console.log('用户 ');

@@ -7,24 +7,26 @@ const recordModel = require('../models/record');
 const renderClinicianDashboard = async (req, res) => {
   try {
     // find patientModel里面全部病人的数据
-    const patients = await patientModel
-      .find(
-        {},
-        {
-          firstName: true,
-          lastName: true,
-          patientID: true,
+    // const patients = await patientModel
+    //   .find(
+    //     {},
+    //     {
+    //       firstName: true,
+    //       lastName: true,
+    //       patientID: true,
 
-          gender: true,
-          photo_url: true,
-          insistDay: true,
-          birthday: true,
+    //       gender: true,
+    //       photo_url: true,
+    //       insistDay: true,
+    //       birthday: true,
 
-          bloodGlucose_lowerBound: true,
-          bloodGlucose_upperBound: true,
-        }
-      )
-      .lean();
+    //       bloodGlucose_lowerBound: true,
+    //       bloodGlucose_upperBound: true,
+    //     }
+    //   )
+    //   .lean();
+    const patients = await patientModel.find().lean();
+    console.log(patients);
 
     // const date = new Date();
     // const thisYear = date.getFullYear();
@@ -150,6 +152,21 @@ const renderPatientLogin = (req, res) => {
   try {
     res.render('patient_login', {
       layout: 'no_layouts',
+      loginMessage: '',
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
+const renderPatientLoginTryagin = (req, res) => {
+  try {
+    res.render('Patient_login', {
+      layout: 'no_layouts',
+      loginMessage: 'Please try agine!',
     });
   } catch (err) {
     res.status(404).json({
@@ -194,44 +211,6 @@ const postPatientLogin = (req, res) => {
         );
       }
     });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      message: err,
-    });
-  }
-};
-
-const renderPatientMe = async (req, res) => {
-  try {
-    const find_id = req.params.id;
-    const patient = await patientModel.findById(find_id).lean();
-    const patientReg = await patientModel.findOne(
-      { find_id },
-      { register_date: 1, insistDay: 1, _id: 0 }
-    );
-
-    const oneDay = 24 * 60 * 60 * 1000;
-
-    const diffDays = Math.round(
-      Math.abs((new Date().getTime() - patientReg.register_date) / oneDay)
-    );
-    const engagementRate = (patientReg.insistDay / diffDays) * 100;
-
-    await patientModel.updateOne({
-      find_id,
-      engagementRate: engagementRate,
-    });
-    res.render('patient_me', {
-      patient,
-      layout: 'patient_template',
-    });
-    // res.status(200).json({
-    //   status: 'success',
-    //   data: {
-    //     records,
-    //   },
-    // });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -319,9 +298,11 @@ const renderAboutDiabetes = (req, res) => {
   }
 };
 
-const renderLoginAboutWebsite = (req, res) => {
+const renderLoginAboutWebsite = async (req, res) => {
   try {
-    res.render('about_website', { layout: 'patient_template' });
+    const patient_id = req.params.id;
+    const patient = await patientModel.findById(patient_id).lean();
+    res.render('about_website', { patient, layout: 'patient_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -330,9 +311,12 @@ const renderLoginAboutWebsite = (req, res) => {
   }
 };
 
-const renderLoginAboutDiabetes = (req, res) => {
+const renderLoginAboutDiabetes = async (req, res) => {
   try {
-    res.render('about_diabetes', { layout: 'patient_template' });
+    const patient_id = req.params.id;
+    const patient = await patientModel.findById(patient_id).lean();
+    console.log(patient);
+    res.render('about_diabetes', { patient, layout: 'patient_template' });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -456,9 +440,9 @@ module.exports = {
   renderPatientInsulin,
   renderPatientExercise,
   renderPatientLogin,
+  renderPatientLoginTryagin,
   postPatientLogin,
   renderPatientRanking,
-  renderPatientMe,
   renderPatientClinician,
   renderPatientData,
   renderAboutWebsite,

@@ -1,8 +1,3 @@
-const { handle } = require('express/lib/application');
-const req = require('express/lib/request');
-const { redirect } = require('express/lib/response');
-const res = require('express/lib/response');
-
 const patientModel = require('../models/patient');
 const recordModel = require('../models/record');
 const noteModel = require('../models/clinician_notes');
