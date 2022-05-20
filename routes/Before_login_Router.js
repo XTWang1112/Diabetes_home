@@ -15,6 +15,11 @@ Router.get('/about-website', Controller.renderAboutWebsite);
 Router.get('/about-diabetes', Controller.renderAboutDiabetes);
 Router.get('/clinician-login', Controller.renderClinicianLogin);
 Router.get('/login', utility.unLoggedIn, Controller.renderPatientLogin);
+Router.get(
+  '/login/tryagine',
+  utility.unLoggedIn,
+  Controller.renderPatientLoginTryagin
+);
 // Process login attempt
 Router.post(
   '/login',

@@ -147,9 +147,25 @@ const renderPatientExercise = (req, res) => {
 };
 
 const renderPatientLogin = (req, res) => {
+
   try {
     res.render('patient_login', {
       layout: 'no_layouts',
+      loginMessage: '',
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
+const renderPatientLoginTryagin = (req, res) => {
+  try {
+    res.render('Patient_login', {
+      layout: 'no_layouts',
+      loginMessage: 'Please try agine!',
     });
   } catch (err) {
     res.status(404).json({
@@ -423,6 +439,7 @@ module.exports = {
   renderPatientInsulin,
   renderPatientExercise,
   renderPatientLogin,
+  renderPatientLoginTryagin,
   postPatientLogin,
   renderPatientRanking,
   renderPatientClinician,
