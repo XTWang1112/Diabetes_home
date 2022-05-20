@@ -10,6 +10,7 @@ const renderAllNotes = async (req, res) => {
       .find({
         patientObjectID: req.params.id,
       })
+      .sort({ time: -1 })
       .lean();
     console.log(notes);
     console.log(patient);

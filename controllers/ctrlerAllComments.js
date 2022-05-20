@@ -14,7 +14,11 @@ const renderAllComments = async (req, res) => {
           as: 'patient',
         },
       },
+      {
+        $sort: { time: -1 },
+      },
     ]);
+    console.log(allComments);
     res.render('all_comments', {
       allComments,
     });
