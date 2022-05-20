@@ -11,10 +11,14 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((login, done) => {
   if (login.role === 'patient') {
     patientModel.findById(login._id, (err, user) => {
+<<<<<<< HEAD
+      done(err, user);
+=======
       return done(err, user);
+>>>>>>> 973ee2a2e5bdb8b1a5fe22c186440f1d6c65e8ab
     });
   } else {
-    return done('This user does not have a role', null);
+    done('This user does not have a role', null);
   }
 });
 
@@ -53,6 +57,7 @@ passport.use(
           }
         );
       });
+      console.log(req);
     }
   )
 );
