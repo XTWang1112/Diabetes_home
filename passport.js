@@ -76,8 +76,6 @@ passport.use(
     )
 )
 
-module.exports = passport
-
 
 
 module.exports = passport;
