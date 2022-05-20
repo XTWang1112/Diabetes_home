@@ -44,7 +44,6 @@ const renderPatientWeight = async (req, res) => {
     .clone();
 
   if (patient) {
-    // 渲染血糖上传页面
     console.log('hi!!!');
     res.render('Weight_record', {
       patient,

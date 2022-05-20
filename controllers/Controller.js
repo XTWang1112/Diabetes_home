@@ -6,7 +6,7 @@ const recordModel = require('../models/record');
 // The function to redner clinician dashboard
 const renderClinicianDashboard = async (req, res) => {
   try {
-    // find patientModel里面全部病人的数据
+    // find patientModel all patient data
     const patients = await patientModel
       .find(
         {},
@@ -90,14 +90,6 @@ const renderPatientDashboard = async (req, res) => {
     support_message: support_message,
     layout: 'patient_template',
   });
-  // res.status(200).json({
-  //   status: 'success',
-  //   data: {
-  //     patient: patient,
-  //     record: latestRecord,
-  //     support_message: support_message,
-  //   },
-  // });
 };
 
 const renderClinicianLogin = (req, res) => {
@@ -226,12 +218,7 @@ const renderPatientMe = async (req, res) => {
       patient,
       layout: 'patient_template',
     });
-    // res.status(200).json({
-    //   status: 'success',
-    //   data: {
-    //     records,
-    //   },
-    // });
+
   } catch (err) {
     res.status(404).json({
       status: 'fail',

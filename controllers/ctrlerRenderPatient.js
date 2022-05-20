@@ -3,7 +3,7 @@ const res = require('express/lib/response');
 
 const renderAddPatient = async (req, res, next) => {
   try {
-    console.log('注册开始');
+    console.log('Sign up start');
     res.render('Add_patient');
   } catch (err) {
     res.status(404).json({

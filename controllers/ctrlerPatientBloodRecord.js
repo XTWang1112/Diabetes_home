@@ -6,7 +6,7 @@ const renderPatientBloodRecord = async (req, res) => {
   const current_year = new Date().getFullYear();
   const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
   const current_day = new Date().getDate();
-  // find id 对应的 patient
+  // find patient match with the id
   const find_id = req.params.id;
   const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
   //remove time difference

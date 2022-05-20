@@ -20,7 +20,7 @@ function generatePassword() {
 
 const renderAddPatient = async (req, res, next) => {
   try {
-    console.log('注册开始');
+    console.log('Log start');
     console.log('get');
     res.render('Add_patient');
   } catch (err) {
