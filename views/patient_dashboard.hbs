@@ -1,8 +1,9 @@
-<link rel='stylesheet' href='/css/patient/patient_me.css' />
-<script defer src='/script/changeNickName.js'></script>
+<link rel='stylesheet' href='/css/patient_dashboard.css' />
+<link rel='stylesheet' href='/css/patient_dashboard_queries.css' />
+<script defer src='/script/patient_dashboard.js'></script>
 
-{{#with patient}}
-  <main>
+<main class='main'>
+  {{#with patient}}
     <nav class='main-nav-left'>
       <ul class='main-nav-left-list'>
         <div class='main-nav-left-shade'></div>
@@ -21,7 +22,7 @@
             ></path>
           </svg>
           <a
-            class='main-nav-left-link'
+            class='main-nav-left-link data_text'
             href='/patient/{{this._id}}/data'
           >Data</a>
         </li>
@@ -44,7 +45,7 @@
             ></path>
           </svg>
           <a
-            class='main-nav-left-link'
+            class='main-nav-left-link clinician-text'
             href='/patient/{{this._id}}/clinician'
           >Clinician</a>
         </li>
@@ -65,10 +66,10 @@
           </svg>
           <a
             class='main-nav-left-link home-text'
-            href='/patient/{{this._id}}/'
+            href='/patient/{{this._id}}/patient/'
           >Home</a>
         </li>
-        <li class='svg-link'>
+        <li class='svg-link rank-li'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             width='35.508'
@@ -97,7 +98,7 @@
             ></path>
           </svg>
           <a
-            class='main-nav-left-link'
+            class='main-nav-left-link rank-text'
             href='/patient/{{this._id}}/ranking'
           >Ranking</a>
         </li>
@@ -113,7 +114,7 @@
               d='M127.723,51.852a8.839,8.839,0,1,0-8.839-8.839A8.839,8.839,0,0,0,127.723,51.852Zm10.254,4.287c-2.5-2.148-6.568-2.7-10.2-2.74h-.15c-3.633.044-7.7.592-10.2,2.74-3.094,2.652-4.163,7.363-4.163,11.685v.451h28.851v-.451C142.14,63.5,141.071,58.782,137.977,56.139Z'
               transform='translate(-112.012 -32.924)'
               fill='rgba(255,255,255,0)'
-              stroke='none'
+              stroke='#2d5215'
               stroke-width='2.5'
             ></path>
           </svg>
@@ -124,94 +125,110 @@
         </li>
       </ul>
     </nav>
+  {{/with}}
 
-    <section class='me_box'>
-      <div class='info_box'>
-        <img class='info_photo' src='/img/profile-photo/{{this.photo_url}}' />
-        <div class='name_id_box'>
-          <div class='name'>{{this.firstName}} {{this.lastName}}</div>
-          <div class='id_div'>Nick Name:
-            <span class='nick_name'>{{this.nickname}}</span></div>
-        </div>
-        <btn class='btn btn-change-nick-name'>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            class='change_info h-6 w-6'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-            stroke-width='2'
-          >
-            <path
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              d='M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z'
-            ></path>
-          </svg>
-        </btn>
-      </div>
-      <div class='info_spec_box'>
-        <div class='city_div'>City:<span
-            class='city green'
-          >{{this.city}}</span></div>
-        <div class='gender_div'>Gender:<span
-            class='gender green'
-          >{{this.gender}}</span></div>
-        <div class='engage_div'>Engagement rate:<span
-            class='engage green'
-          >{{this.engagementRate}}%</span></div>
-      </div>
-      <div class='bio_box'>
-        <h2 class='bio_header'>Bio</h2>
-        <div class='bio_content'>Hi, friend. I am a patient in this website,
-          from a village in east west Melb. Nice to meet you.</div>
-      </div>
-      <div class='badget_box'>
-        <h2 class='badget_header'>Badget</h2>
-        <div class='badget_container'>
+  <section class='record-div'>
+    <div class='record-top'>
+      <h1>Record</h1>
+      <h2 class='record-date'></h2>
+    </div>
+
+    <div class='grid grid--2 record-grid'>
+
+      {{#if patient.bloodGlucose_record}}
+        <a
+          class='record-box blood-box'
+          href='/patient/{{patient._id}}/blood-glucose'
+        >
           <embed
-            class='badge'
-            src='/img/svg/high_engagement_rate.svg'
+            class='blood-icon'
+            src='/img/svg/blood-icon.svg'
             type='image/svg+xml'
           />
-        </div>
-      </div>
-    </section>
-    <div class='nick_div disappear'>
-      <btn class='btn btn-close'>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          class='close'
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
-          stroke-width='2'
-        >
-          <path
-            stroke-linecap='round'
-            stroke-linejoin='round'
-            d='M6 18L18 6M6 6l12 12'
-          ></path>
-        </svg>
-      </btn>
-      <form
-        action='/patient/{{this._id}}/me/change-nick-name'
-        class='login-form'
-        method='POST'
-      >
-        <label for='new_nick_name'>
-          <textarea
-            name='new_nick_name'
-            placeholder=' Change your nick name to...'
-          ></textarea>
-        </label>
-        <button type='submit' class='btn btn-send'>Change</button>
-      </form>
-    </div>
-  </main>
-{{/with}}
+          <div>
+            <p>Blood glucose level</p>
+            <p class='time-series'>{{latestRecord.blood_glucose_level}}</p>
+            <p>(in mmol/L)</p>
+          </div>
+          <div class='finish'>
+            finish
+          </div>
+        </a>
+      {{/if}}
 
-<script>
-  if(document.querySelector(".engage").textContent.slice(0, -1)*1 < 80){
-  document.querySelector(".badge").classList.add("disappear") }
-</script>
+      {{#if patient.weight_record}}
+        <a class='record-box weight-box' href='/patient/{{patient._id}}/weight'>
+          <embed
+            class='scale'
+            src='/img/svg/weight-icon.svg'
+            type='image/svg+xml'
+          />
+          <div>
+            <p>Weight</p>
+            <p class='time-series'>{{latestRecord.weight}}</p>
+            <p>(in kg)</p>
+          </div>
+          <div class='finish'>
+            finish
+          </div>
+        </a>
+      {{/if}}
+
+      {{#if patient.insulinTaken_record}}
+        <a
+          class='record-box insulin-box'
+          href='/patient/{{patient._id}}/insulin'
+        >
+          <embed
+            class='needle'
+            src='/img/svg/insulin-icon.svg'
+            type='image/svg+xml'
+          />
+          <div>
+            <p>Insulin taken</p>
+            <p class='time-series'>{{latestRecord.insulinTaken}}</p>
+            <p>(number of doses)</p>
+          </div>
+          <div class='finish'>
+            finish
+          </div>
+        </a>
+      {{/if}}
+
+      {{#if patient.exercise_record}}
+        <a
+          class='record-box exercise-box'
+          href='/patient/{{patient._id}}/exercise'
+        >
+          <embed
+            class='step'
+            src='/img/svg/step-icon.svg'
+            type='image/svg+xml'
+          />
+          <div>
+            <p>Exercise</p>
+            <p class='time-series'>{{latestRecord.exercise}}</p>
+            <p>(step count)</p>
+          </div>
+          <div class='finish'>
+            finish
+          </div>
+        </a>
+      {{/if}}
+    </div>
+  </section>
+
+  <section class='comments-section'>
+    <h1>Comments</h1>
+    <div class='comments-div'>
+      <div class='comments-box'>
+        <button class='cross-button'>
+          <ion-icon class='cross-button-icon' name='close-outline'></ion-icon>
+        </button>
+        <p>
+          {{support_message}}
+        </p>
+      </div>
+    </div>
+  </section>
+</main>

@@ -3,8 +3,8 @@
     <meta charset='UTF-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <link rel='stylesheet' href='../css/patient_general.css' />
-    <link rel='stylesheet' href='../css/patient/patient_log_in.css' />
+    <link rel='stylesheet' href='/css/patient_general.css' />
+    <link rel='stylesheet' href='/css/patient/patient_log_in.css' />
 
     <title>Log in</title>
   </head>
@@ -24,14 +24,19 @@
 
     <main>
       <div class='patient-logo'>
-        <embed src='../img/svg/patient-login-logo.svg' />
+        <embed src='/img/svg/patient-login-logo.svg' />
         <div class='patient-word-logo'>patient</div>
       </div>
-      <div class="login-box">
-        <form action="/guest/login" href='/patient/{{this._id}}' class="login-form" method="post">
+      <div class='login-box'>
+        <form
+          action='/guest/login'
+          href='/patient/{{this._id}}'
+          class='login-form'
+          method='post'
+        >
           <div>
-            <input type="email" placeholder="Email Address" name="email" />
-            <input type="password" placeholder="Password" name="password" />
+            <input type='email' placeholder='Email Address' name='email' />
+            <input type='password' placeholder='Password' name='password' />
           </div>
           <div class='rememberThisDevice-box'>
             <input
@@ -42,12 +47,13 @@
             />
             <label for='rememberThisDevice'>Keep me log in on this trusted
               device</label>
-            {<p class = "login-message">{{loginMessage}}</p>}
+            <p class='login-message'>{{loginMessage}}</p>
+            {{! <p class='login-message'>HIIII</p> }}
           </div>
           <button type='submit'>Log In</button>
         </form>
 
-        <embed src='../img/svg/or.svg' />
+        <embed src='/img/svg/or.svg' />
         <div class='need_to_register'>
           <p>Need to register? </p>
           <p>Contact with your clinician</p>

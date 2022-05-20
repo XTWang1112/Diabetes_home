@@ -1,7 +1,7 @@
 // const { Router } = require('express')
 const express = require('express');
 
-const utility = require('./patientUtility')
+const utility = require('./patientUtility');
 
 const Router = express.Router();
 
@@ -30,9 +30,9 @@ Router.get('/:id/about-diabetes', utility.isLoggedIn, Controller.renderLoginAbou
 Router.get('/:id/change-password', utility.isLoggedIn, ctrChangePassword.renderChangePassword);
 Router .post('/:id/change-password', utility.isLoggedIn, ctrChangePassword.changeNewPassword);
 //data input
-Router.get('/:id/weight', utility.isLoggedIn, ctrlerPatientWeight.renderPatientWeight);
-Router.get('/:id/insulin', utility.isLoggedIn, ctrlerPatientInsulin.renderPatientInsulin);
-Router.get('/:id/exercise', utility.isLoggedIn, ctrlerPatientExercise.renderPatientExercise);
+Router.get('/:id/weight', ctrlerPatientWeight.renderPatientWeight);
+Router.get('/:id/insulin', ctrlerPatientInsulin.renderPatientInsulin);
+Router.get('/:id/exercise', ctrlerPatientExercise.renderPatientExercise);
 Router.get(
   '/:id/blood-glucose',
   ctrlerPatientBloodRecord.renderPatientBloodRecord

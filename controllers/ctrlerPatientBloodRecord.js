@@ -6,14 +6,15 @@ const renderPatientBloodRecord = async (req, res) => {
   const current_year = new Date().getFullYear();
   const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
   const current_day = new Date().getDate();
-  // find id 对应的 patient
+  // find patient match with the id
   const find_id = req.params.id;
   const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
   //remove time difference
   const today = new Date().getTime();
   const patient = await patientModel.findById(find_id).lean();
   const onePatientBloodRecord = await recordModel
-    .find({
+    .find(
+      {
         patientObjectID: find_id,
         time: {
           $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
@@ -26,11 +27,13 @@ const renderPatientBloodRecord = async (req, res) => {
         }
         return result;
       }
-    ).clone();
+    )
+    .clone();
 
   // onePatientFullRecord
   const onePatientFullRecord = await recordModel
-    .find({
+    .find(
+      {
         patientObjectID: find_id,
       },
       (err, result) => {
@@ -39,13 +42,12 @@ const renderPatientBloodRecord = async (req, res) => {
         }
         return result;
       }
-    ).clone();
-
-
+    )
+    .clone();
 
   if (patient) {
     // render patient blood record page
-    res.render('Blood_glucose', {
+    res.render('blood_glucose', {
       patient: patient,
       layout: 'patient_record_template',
     });
@@ -65,29 +67,44 @@ const renderPatientBloodRecord = async (req, res) => {
         await recordModel.create({
           ...patientBloodRecord,
         });
+        // update insistDay
+        await patientModel.findOneAndUpdate(
+          {
+            _id: find_id,
+          },
+          {
+            insistDay: onePatientFullRecord.length,
+          }
+        );
       } else if (
         onePatientBloodRecord.length !== 0 &&
         patient.bloodGlucose_record
       ) {
         console.log('update😎😎🤓');
-        const updated = await recordModel.findOneAndUpdate({
-          patientObjectID: find_id,
-          time: {
-            $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
-            $lt: new Date(search_day).getTime() + 14 * 3600 * 1000,
+        const updated = await recordModel.findOneAndUpdate(
+          {
+            patientObjectID: find_id,
+            time: {
+              $gte: new Date(search_day).getTime() - 10 * 3600 * 1000,
+              $lt: new Date(search_day).getTime() + 14 * 3600 * 1000,
+            },
           },
-        }, {
-          time: today,
-          blood_glucose_level: patinet_blood_glucose,
-          blood_glucose_level_comment: glucose_comment,
-        });
+          {
+            time: today,
+            blood_glucose_level: patinet_blood_glucose,
+            blood_glucose_level_comment: glucose_comment,
+          }
+        );
 
         // update insistDay
-        await patientModel.findOneAndUpdate({
-          _id: find_id,
-        }, {
-          insistDay: onePatientFullRecord.length,
-        });
+        await patientModel.findOneAndUpdate(
+          {
+            _id: find_id,
+          },
+          {
+            insistDay: onePatientFullRecord.length,
+          }
+        );
         console.log(onePatientBloodRecord);
       }
     }

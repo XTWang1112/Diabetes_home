@@ -91,6 +91,7 @@ input[type='file'] {
 /*Show password*/
 /*********************************/
 .account-password {
+  display: none;
   background-color: white;
   height: 20rem;
   width: 50rem;

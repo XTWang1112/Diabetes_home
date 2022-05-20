@@ -29,8 +29,22 @@ const renderPatientInsulin = async (req, res) => {
     )
     .clone();
 
+  const onePatientFullRecord = await recordModel
+    .find(
+      {
+        patientObjectID: find_id,
+      },
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        return result;
+      }
+    )
+    .clone();
+
   if (patient) {
-    res.render('Insulin_record', {
+    res.render('insulin_record', {
       patient,
       layout: 'patient_record_template',
     });
@@ -50,6 +64,15 @@ const renderPatientInsulin = async (req, res) => {
         await recordModel.create({
           ...patientInsulin,
         });
+        // update insistDay
+        await patientModel.findOneAndUpdate(
+          {
+            _id: find_id,
+          },
+          {
+            insistDay: onePatientFullRecord.length,
+          }
+        );
       } else if (
         onePatientInsulin.length !== 0 &&
         patient.insulinTaken_record
@@ -67,6 +90,15 @@ const renderPatientInsulin = async (req, res) => {
             time: today,
             insulinTaken: patinet_insulin,
             insulinTaken_comment: insulin_comment,
+          }
+        );
+        // update insistDay
+        await patientModel.findOneAndUpdate(
+          {
+            _id: find_id,
+          },
+          {
+            insistDay: onePatientFullRecord.length,
           }
         );
       }

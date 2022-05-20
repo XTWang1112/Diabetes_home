@@ -29,8 +29,22 @@ const renderPatientExercise = async (req, res) => {
     )
     .clone();
 
+  const onePatientFullRecord = await recordModel
+    .find(
+      {
+        patientObjectID: find_id,
+      },
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        return result;
+      }
+    )
+    .clone();
+
   if (patient) {
-    res.render('Exercise_record', {
+    res.render('exercise_record', {
       patient,
       layout: 'patient_record_template',
     });
@@ -46,11 +60,20 @@ const renderPatientExercise = async (req, res) => {
         time: today,
       };
 
-      // 如果今天没有录入数据，则插入一条新的血糖值
+      // if today no data, insert a new blood glucose data
       if (onePatientExercise.length === 0 && patient.exercise_record) {
         await recordModel.create({
           ...patientExercise,
         });
+        // update insistDay
+        await patientModel.findOneAndUpdate(
+          {
+            _id: find_id,
+          },
+          {
+            insistDay: onePatientFullRecord.length,
+          }
+        );
       } else if (onePatientExercise.length !== 0 && patient.exercise_record) {
         console.log('update😎😎🤓');
         const updated = await recordModel.findOneAndUpdate(
@@ -65,6 +88,15 @@ const renderPatientExercise = async (req, res) => {
             time: today,
             exercise: patinet_exercise,
             exercise_comment: exercise_comment,
+          }
+        );
+        // update insistDay
+        await patientModel.findOneAndUpdate(
+          {
+            _id: find_id,
+          },
+          {
+            insistDay: onePatientFullRecord.length,
           }
         );
       }

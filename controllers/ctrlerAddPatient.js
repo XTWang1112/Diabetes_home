@@ -1,7 +1,7 @@
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 const patientModel = require('../models/patient');
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 const { redirect } = require('express/lib/response');
 const SALT_FACTOR = 10;
 
@@ -20,9 +20,9 @@ function generatePassword() {
 
 const renderAddPatient = async (req, res, next) => {
   try {
-    console.log('注册开始');
+    console.log('Log start');
     console.log('get');
-    res.render('Add_patient');
+    res.render('add_patient');
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -36,11 +36,10 @@ const registerPatient = async (req, res, next) => {
     console.log('post');
     console.log('start Register');
     console.log(req.body);
-    var newPassword = generatePassword();
+    const newPassword = generatePassword();
     console.log(newPassword);
 
-    
-    newPatient = new patientModel({
+    const newPatient = new patientModel({
       firstName: req.body.first_name,
       lastName: req.body.last_name,
       email: req.body.email,
@@ -56,23 +55,23 @@ const registerPatient = async (req, res, next) => {
       insulinTaken_record: false,
       weight_record: false,
       exercise_record: false,
-      role: "patient"
+      role: 'patient',
     });
     console.log(newPatient);
     console.log(newPatient.password);
 
-    res.render('Add_patient', {account: newPatient.email, password: newPatient.password});
+    res.render('add_patient', {
+      account: newPatient.email,
+      password: newPatient.password,
+    });
 
-    bcrypt.hash(newPatient.password, SALT_FACTOR, function(err, hash) {
-        newPatient.password = hash
-        newPatient.save();
-    })
+    bcrypt.hash(newPatient.password, SALT_FACTOR, function (err, hash) {
+      newPatient.password = hash;
+      newPatient.save();
+    });
 
-    
     /* alert("Your email: " + newPatient.email + " Your password； " + newPatient.password)
     res.redirect('/clinician') */
-    
- 
   } catch (err) {
     res.status(400).json({
       status: 'fail',

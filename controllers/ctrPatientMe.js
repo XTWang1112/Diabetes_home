@@ -26,29 +26,22 @@ const renderPatientMe = async (req, res) => {
 
     const oneDay = 24 * 60 * 60 * 1000;
     const currentTime = new Date().getTime();
-    console.log(currentTime);
+    console.log(patient);
 
     const diffDays = Math.round(
       Math.abs((currentTime - patientReg.register_date) / oneDay)
     );
-    console.log(diffDays);
-    console.log(records.length);
     const engagementRate = Math.round((records.length / diffDays) * 1000) / 10;
 
     await patientModel.updateOne({
       find_id,
       engagementRate: engagementRate,
     });
+    console.log(patient._id);
     res.render('patient_me', {
       patient: patient,
       layout: 'patient_template',
     });
-    // res.status(200).json({
-    //   status: 'success',
-    //   data: {
-    //     records,
-    //   },
-    // });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -59,7 +52,6 @@ const renderPatientMe = async (req, res) => {
 
 const changeNickName = async (req, res) => {
   console.log('changeNickName running');
-  // let patient_id = '6267d6bb8b206aade8b24198';
   const patient_id = req.params.id;
   var new_nick_name = req.body.new_nick_name;
   await patientModel

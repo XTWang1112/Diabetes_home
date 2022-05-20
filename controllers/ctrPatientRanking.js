@@ -28,13 +28,6 @@ const renderPatientRanking = async (req, res) => {
       },
       layout: 'patient_template',
     });
-    // res.status(200).json({
-    //   status: 'success',
-    //   data: {
-    //     top5,
-    //     top3,
-    //   },
-    // });
   } catch (err) {
     res.status(404).json({
       status: 'fail',

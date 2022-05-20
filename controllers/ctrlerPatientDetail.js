@@ -6,6 +6,7 @@ const res = require('express/lib/response');
 const patientModel = require('../models/patient');
 const recordModel = require('../models/record');
 const noteModel = require('../models/clinician_notes');
+const notesModel = require('../models/clinician_notes');
 
 const renderPatientDetails = async (req, res) => {
   try {
@@ -20,21 +21,22 @@ const renderPatientDetails = async (req, res) => {
       .sort({ time: -1 })
       .lean();
 
-    console.log(records);
-
-    res.render('Patient_details', {
+    //recent patient' note
+    const note = await notesModel
+      .findOne({
+        patientObjectID: find_id,
+      })
+      .sort({ time: -1 });
+    var date = new Date(note.time);
+    var dateStr = date.toLocaleDateString();
+    console.log('hi' + patient);
+    patient.dateStr = dateStr;
+    res.render('patient_details', {
       data: {
         patient,
         records,
       },
     });
-    // res.status(200).json({
-    //   status: 'success',
-    //   data: {
-    //     patient,
-    //     records,
-    //   },
-    // });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -47,29 +49,29 @@ const setTimeSeries = async (req, res) => {
   try {
     const patient = await patientModel.findById(req.params.id).lean();
 
-    // 判定是否需要录入该数据
-    // bloodGlucose的判定
+    // convert input data to boolean
+    // check bloodGlucose
     let bloodGlucose_update = req.body.bloodGlucose_record;
     if (bloodGlucose_update == undefined) {
       bloodGlucose_update = false;
     } else {
       bloodGlucose_update = true;
     }
-    // insulinTaken的判定
+    // check insulinTaken
     let insulinTaken_update = req.body.insulinTaken_record;
     if (insulinTaken_update == undefined) {
       insulinTaken_update = false;
     } else {
       insulinTaken_update = true;
     }
-    // weight的判定
+    // check weight
     let weight_update = req.body.weight_record;
     if (weight_update == undefined) {
       weight_update = false;
     } else {
       weight_update = true;
     }
-    // exercise的判定
+    // check exercise
     let exercise_update = req.body.exercise_record;
     if (exercise_update == undefined) {
       exercise_update = false;
@@ -77,7 +79,7 @@ const setTimeSeries = async (req, res) => {
       exercise_update = true;
     }
 
-    // 更新数据
+    // update data
     const matchID = req.params.id;
 
     await patientModel.updateOne(
@@ -105,12 +107,11 @@ const setTimeSeries = async (req, res) => {
         exercise_upperBound: req.body.exercise_ub,
       }
     );
-    console.log('更新完毕');
+    console.log('update finish');
 
-    // 重新定向避免无限循环
     res.redirect('/clinician/' + req.params.id);
   } catch (err) {
-    console.log('出错了：' + err);
+    console.log('error: ' + err);
     res.status(404).json({
       status: 'fail',
       message: err,
@@ -126,13 +127,10 @@ const saveSupportMessage = async (req, res) => {
     .updateOne({ _id: patient_id }, { support_message: message })
     .then((result) => console.log('Try to change support message'));
   await patientModel
-    .updateOne(
-      { _id: patient_id },
-      { support_message_date: message_date.toLocaleDateString() }
-    )
+    .updateOne({ _id: patient_id }, { support_message_date: '2022/5/20' })
     .then((result) => console.log('Try to change support message date'));
   res.redirect('/clinician/' + req.params.id);
-}
+};
 
 const saveNote = async (req, res) => {
   const patient_id = req.params.id;
@@ -143,11 +141,9 @@ const saveNote = async (req, res) => {
     time: time,
     note: note,
   });
-  await newNote.save()
-  .then(() => console.log("try to add new note"));
+  await newNote.save().then(() => console.log('try to add new note'));
   res.redirect('/clinician/' + req.params.id);
-}
-
+};
 
 // const writeNote = async (req, res, next) => {
 //   console.log(req.query.note);

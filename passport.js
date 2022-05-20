@@ -1,16 +1,13 @@
-const LocalStrategy = require("passport-local").Strategy;
-const bcrypt = require("bcrypt");
-const passport = require('passport')
-
-
-
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
+const passport = require('passport');
 
 const patientModel = require('./models/patient');
 const clinicianModel = require('./models/clinician');
 
 passport.serializeUser((user, done) => {
-    done(null, {_id: user._id, role: user.role})
-})
+  done(null, { _id: user._id, role: user.role });
+});
 
 passport.deserializeUser((login, done) => {
     if(login.role === "patient"){
@@ -27,11 +24,12 @@ passport.deserializeUser((login, done) => {
 })
 
 passport.use(
-    "patient-login",
-    new LocalStrategy({
-        usernameField: "email",
-        passwordField: "password",
-        passReqToCallback: true
+  'patient-login',
+  new LocalStrategy(
+    {
+      usernameField: 'email',
+      passwordField: 'password',
+      passReqToCallback: true,
     },
     (req, email, password, done) => {
         process.nextTick(() => {
@@ -82,6 +80,7 @@ module.exports = passport
 
 
 
+module.exports = passport;
 
 /* module.exports = (passport) => {
     // Store user information in session
@@ -125,21 +124,6 @@ module.exports = passport
         )
     )
 } */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");

@@ -13,7 +13,7 @@ const renderAllNotes = async (req, res) => {
       .lean();
     console.log(notes);
     console.log(patient);
-    res.render('All_notes', {
+    res.render('all_notes', {
       patient,
       notes,
     });
