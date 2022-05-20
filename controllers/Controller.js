@@ -246,6 +246,8 @@ const renderPatientData = async (req, res) => {
   record.sort(function (a, b) {
     return a.time - b.time;
   });
+  let date_arr = [];
+  let excercise_arr = [];
   for (let i = 0; i < record.length; i++) {
     const date = new Date(record[i].time).toLocaleDateString();
     record[i].time = date;
@@ -261,15 +263,24 @@ const renderPatientData = async (req, res) => {
     if (record[i].exercise == 'no data today') {
       record[i].exercise = undefined;
     }
+    if (i <= 6) {
+      date_arr[i] = date;
+      if (record[i].exercise) {
+        excercise_arr[i] = record[i].exercise;
+      }
+    }
   }
 
-  if (record) {
-    console.log(record);
-  }
+  console.log(date_arr);
+  console.log(excercise_arr);
+
   try {
     res.render('patient_data', {
       layout: 'patient_template',
       record,
+      //b_record [数值 ]
+      //date 
+      //weight_record
       patient,
     });
   } catch (err) {
