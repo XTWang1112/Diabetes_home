@@ -83,7 +83,9 @@ const renderPatientDashboard = async (req, res) => {
       },
     })
     .lean();
-  const support_message = patient.support_message;
+  if (patient.support_message) {
+    var support_message = patient.support_message;
+  }
 
   // console.log(comments);
   res.render('patient_dashboard', {
@@ -415,14 +417,14 @@ const getData = async (req, res) => {
       }
     );
     if (patient) {
-    tdyRecord.bloodGlucose_lowerBound = patient.bloodGlucose_lowerBound;
-    tdyRecord.bloodGlucose_upperBound = patient.bloodGlucose_upperBound;
-    tdyRecord.weight_lowerBound = patient.weight_lowerBound;
-    tdyRecord.weight_upperBound = patient.weight_upperBound;
-    tdyRecord.exercise_lowerBound = patient.exercise_lowerBound;
-    tdyRecord.exercise_upperBound = patient.exercise_upperBound;
-    tdyRecord.insulinTaken_lowerBound = patient.insulinTaken_lowerBound;
-    tdyRecord.insulinTaken_upperBound = patient.insulinTaken_upperBound;
+      tdyRecord.bloodGlucose_lowerBound = patient.bloodGlucose_lowerBound;
+      tdyRecord.bloodGlucose_upperBound = patient.bloodGlucose_upperBound;
+      tdyRecord.weight_lowerBound = patient.weight_lowerBound;
+      tdyRecord.weight_upperBound = patient.weight_upperBound;
+      tdyRecord.exercise_lowerBound = patient.exercise_lowerBound;
+      tdyRecord.exercise_upperBound = patient.exercise_upperBound;
+      tdyRecord.insulinTaken_lowerBound = patient.insulinTaken_lowerBound;
+      tdyRecord.insulinTaken_upperBound = patient.insulinTaken_upperBound;
     }
   }
   res.send(tdyrecords);
