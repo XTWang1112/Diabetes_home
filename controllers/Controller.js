@@ -1,10 +1,7 @@
-const req = require('express/lib/request');
-const { render } = require('express/lib/response');
-const res = require('express/lib/response');
+const bcrypt = require('bcrypt');
 const patientModel = require('../models/patient');
 const clinicianModel = require('../models/clinician');
 const recordModel = require('../models/record');
-const bcrypt = require("bcrypt")
 
 // The function to redner clinician dashboard
 const renderClinicianDashboard = async (req, res) => {
@@ -29,22 +26,14 @@ const renderClinicianDashboard = async (req, res) => {
       )
       .lean();
 
-    // Get Current date
-    // const today = new Date(new Date().toDateString()).getTime();
-    // const tomorrow = today + 24 * 3600 * 1000;
-
-    // 获取当前日-月-年
-    const date = new Date();
-    const thisYear = date.getFullYear();
-    const thisMonth = date.getMonth() + 1;
-    const thisDay = date.getDate();
-    const today_date = thisDay + '-' + thisMonth + '-' + thisYear;
+    // const date = new Date();
+    // const thisYear = date.getFullYear();
+    // const thisMonth = date.getMonth() + 1;
+    // const thisDay = date.getDate();
+    // const today_date = thisDay + '-' + thisMonth + '-' + thisYear;
 
     // Get each patient's latest blood glucose and weight  value
     for (patient of patients) {
-      // Select the curent day's data
-      // 如果要用js操作mongoDB参数，把要操作的对象加到query里面，否则不会进行loop循环patient
-      // 把time注释掉就能显示patient的记录
       let query = {
         patient_id: patient._id,
         // time: { $eq: today_date },
@@ -55,17 +44,13 @@ const renderClinicianDashboard = async (req, res) => {
         birth = Date.parse(patient.birthday);
         if (birth) {
           var year = 1000 * 60 * 60 * 24 * 365;
-          //remove time difference
-          var currTime = new Date() - 2 * 60 * 60 * 1000;
+          var currTime = new Date() - 10 * 60 * 60 * 1000;
           var birthday = new Date(birth);
           patient.birthday = parseInt((currTime - birthday) / year);
         }
       } catch (err) {
         console.log(err);
       }
-
-      // 通过Unix time 计算病人年龄，暂时不用
-      // patient.birthday = Math.floor((new Date().getTime() - patient.birthday) / 1000 / 60 / 60 / 24 / 365);
     }
 
     res.render('Clinician_dashboard', {
@@ -96,10 +81,7 @@ const renderPatientDashboard = async (req, res) => {
       },
     })
     .lean();
-  console.log(search_day);
-  console.log(todayData);
   const support_message = patient.support_message;
-  console.log(req.isAuthenticated())
 
   // console.log(comments);
   res.render('Patient_Dashboard', {
@@ -193,23 +175,25 @@ const renderPatientRanking = (req, res) => {
 const postPatientLogin = (req, res) => {
   const input_email = req.body.email;
   const input_password = req.body.password;
-  console.log(input_email);
-  console.log(input_password)
   try {
-    patientModel.findOne({email: input_email}, function(err, foundUser){
-      if(foundUser){
-        bcrypt.compare(input_password, foundUser.password, function(err, result){
-          if(result === true){
-            console.log("登陆成功")
-            console.log("登陆用户的id是： " + foundUser._id)
+    patientModel.findOne({ email: input_email }, function (err, foundUser) {
+      if (foundUser) {
+        bcrypt.compare(
+          input_password,
+          foundUser.password,
+          function (err, result) {
+            if (result === true) {
+              console.log('Log in success');
+              console.log('User ID: ' + foundUser._id);
 
-            res.redirect('/patient/' + foundUser._id)
-          }else{
-            console.log("登陆失败")
+              res.redirect('/patient/' + foundUser._id);
+            } else {
+              console.log('Log in fail');
+            }
           }
-        })
+        );
       }
-    })
+    });
   } catch (err) {
     res.status(404).json({
       status: 'fail',
@@ -220,33 +204,19 @@ const postPatientLogin = (req, res) => {
 
 const renderPatientMe = async (req, res) => {
   try {
-    const find_id = '6267d6bb8b206aade8b24198';
+    const find_id = req.params.id;
     const patient = await patientModel.findById(find_id).lean();
     const patientReg = await patientModel.findOne(
       { find_id },
-      { register_date: 1, _id: 0 }
+      { register_date: 1, insistDay: 1, _id: 0 }
     );
-
-    const records = await recordModel
-      .find(
-        {
-          find_id,
-        },
-        (err, result) => {
-          if (err) {
-            console.log(err);
-          }
-          return result;
-        }
-      )
-      .clone();
 
     const oneDay = 24 * 60 * 60 * 1000;
 
     const diffDays = Math.round(
       Math.abs((new Date().getTime() - patientReg.register_date) / oneDay)
     );
-    const engagementRate = (records.length / diffDays) * 100;
+    const engagementRate = (patientReg.insistDay / diffDays) * 100;
 
     await patientModel.updateOne({
       find_id,
@@ -272,7 +242,6 @@ const renderPatientMe = async (req, res) => {
 
 const renderPatientClinician = async (req, res) => {
   const patient_id = req.params.id;
-  // 找到这个病人名下的医生
   const patient = await patientModel.findById(patient_id).lean();
   const clinician = await clinicianModel.findById(patient.clinician).lean();
 
@@ -287,17 +256,17 @@ const renderPatientClinician = async (req, res) => {
   });
 };
 
-const renderPatientData = async(req, res) => {
-  let patient_id = '6267d6bb8b206aade8b24198';
+const renderPatientData = async (req, res) => {
+  const patient_id = req.params.id;
   // find the patient using its id
-  let record = await recordModel.find({patientObjectID: patient_id}).lean();
-  for (var i = 0; i < record.length; i++) {
-    date = new Date(record[i].time).toLocaleDateString();
+  const record = await recordModel.find({ patientObjectID: patient_id }).lean();
+  for (let i = 0; i < record.length; i++) {
+    const date = new Date(record[i].time).toLocaleDateString();
     record[i].time = date;
   }
-  
+
   if (record) {
-    console.log("get the record from data base, now sending them to render");
+    console.log('get the record from data base, now sending them to render');
   }
   try {
     res.render('patient_data', {
@@ -358,10 +327,10 @@ const renderLoginAboutDiabetes = (req, res) => {
 
 // change Theme
 const changeTheme = async (req, res) => {
-  let patient_id = req.params.id;
-  let patient = await patientModel.findById(patient_id);
-  theme_preference = patient.theme_preference;
-  currentColor = theme_preference;
+  const patient_id = req.params.id;
+  const patient = await patientModel.findById(patient_id);
+  const theme_preference = patient.theme_preference;
+  const currentColor = theme_preference;
   if (currentColor == 'blue') {
     patientModel
       .updateOne({ _id: patient_id }, { theme_preference: 'green' })
@@ -386,9 +355,9 @@ const changeTheme = async (req, res) => {
 };
 
 const setTheme = async (req, res) => {
-  let patient_id = req.params.id;
-  let patient = await patientModel.findById(patient_id);
-  theme_preference = patient.theme_preference;
+  const patient_id = req.params.id;
+  const patient = await patientModel.findById(patient_id);
+  const theme_preference = patient.theme_preference;
   res.send(theme_preference);
 };
 
@@ -413,7 +382,7 @@ const getData = async (req, res) => {
   const current_month = ('0' + (new Date().getMonth() + 1)).slice(-2);
   const current_day = new Date().getDate();
   const search_day = `${current_year}-${current_month}-${current_day}T00:00:00.000Z`;
-  let tdyrecords = await recordModel
+  const tdyrecords = await recordModel
     .find(
       {
         time: {
@@ -431,7 +400,7 @@ const getData = async (req, res) => {
     )
     .lean();
   for (tdyRecord of tdyrecords) {
-    let patient = await patientModel.findById(
+    const patient = await patientModel.findById(
       { _id: tdyRecord.patientObjectID },
       {
         lastName: true,
@@ -457,18 +426,6 @@ const getData = async (req, res) => {
   }
   res.send(tdyrecords);
 };
-
-// use to inite the date in record model
-async function addDate() {
-  const records = await recordModel.find({}, {}).lean();
-  for (record of records) {
-    let date = new Date(record.time);
-    let dateStr = date.toLocaleDateString();
-    recordModel
-      .updateOne({ _id: record._id }, { date: dateStr })
-      .then((res) => res.acknowledged);
-  }
-}
 
 const renderGuestPage = async (req, res) => {
   res.render('guest_page', {

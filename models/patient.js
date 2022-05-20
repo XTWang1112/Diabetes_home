@@ -42,6 +42,7 @@ const patientSchema = new mongoose.Schema({
   clinicianObjectID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'clinicians',
+    default: '6286170126fe0c122740a8a5',
   },
   support_message: { type: String, trime: true },
   support_message_date: String,
@@ -95,7 +96,7 @@ const patientSchema = new mongoose.Schema({
   insulinTaken_record: { type: Boolean, default: false },
   exercise_record: { type: Boolean, default: false },
 
-  role: {type: String}
+  role: { type: String },
 });
 
 // Compile the schema into a model
