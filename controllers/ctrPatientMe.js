@@ -25,7 +25,7 @@ const renderPatientMe = async (req, res) => {
 
     const oneDay = 24 * 60 * 60 * 1000;
     const currentTime = new Date().getTime();
-    console.log(currentTime);
+    console.log(patient);
 
     const diffDays = Math.round(
       Math.abs((currentTime - patientReg.register_date) / oneDay)
