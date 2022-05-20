@@ -2,7 +2,7 @@ const exphbs = require('express-handlebars');
 const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
 
 dotenv.config({ path: './config.env' });
 
@@ -99,11 +99,13 @@ app.use('/patient', PatientRouter);
 app.use('/guest', beforeLoginRouter);
 
 // render Clinician_dashboard page
-app.get('', (req, res) => {
-  res.send(
-    "<h1>The home page is under developing, please view: <br><a href='https://webbbbers-diabetes-home.herokuapp.com/patient'>https://webbbbers-diabetes-home.herokuapp.com/patient</a><br><a href='https://webbbbers-diabetes-home.herokuapp.com/clinician'>https://webbbbers-diabetes-home.herokuapp.com/clinician</a></h1>."
-  );
-});
+const Controller = require('./controllers/Controller');
+app.get('/', Controller.renderGuestPage);
+// app.get('', (req, res) => {
+//   res.send(
+//     "<h1>The home page is under developing, please view: <br><a href='https://webbbbers-diabetes-home.herokuapp.com/patient'>https://webbbbers-diabetes-home.herokuapp.com/patient</a><br><a href='https://webbbbers-diabetes-home.herokuapp.com/clinician'>https://webbbbers-diabetes-home.herokuapp.com/clinician</a></h1>."
+//   );
+// });
 
 // Tells the app to listen on port 8080 and logs that information to the console.
 app.listen(process.env.PORT || 8080, () => {
