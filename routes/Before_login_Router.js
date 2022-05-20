@@ -15,13 +15,14 @@ Router.get('/about-website', Controller.renderAboutWebsite);
 Router.get('/about-diabetes', Controller.renderAboutDiabetes);
 Router.get('/clinician-login', Controller.renderClinicianLogin);
 Router.get('/login', utility.unLoggedIn, Controller.renderPatientLogin);
+Router.get('/login/tryagine', utility.unLoggedIn, Controller.renderPatientLoginTryagin);
 // Process login attempt
 Router.post(
   '/login',
   utility.unLoggedIn,
   passport.authenticate('patient-login', {
     /* successRedirect: '/patient/62864c7a96d8e97f2078fc9c', */
-    failureRedirect: '/guest/login',
+    failureRedirect: '/guest/login/tryagine',
     failureflash: true,
   }), // 如果是坏人，重新回到login page
   (req, res) => {
