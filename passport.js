@@ -11,10 +11,10 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((login, done) => {
   if (login.role === 'patient') {
     patientModel.findById(login._id, (err, user) => {
-      return done(err, user);
-    )};
+      done(err, user);
+    });
   } else {
-    return done('This user does not have a role', null);
+    done('This user does not have a role', null);
   }
 });
 
