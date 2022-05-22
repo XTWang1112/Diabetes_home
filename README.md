@@ -10,11 +10,11 @@ Health Data tracking app, designed for diabetes patients. This web app allows pa
 ## Landing page: :https://webbbbers-diabetes-home.herokuapp.com
 
 ## Accounts for testing:
-# patient Pat: 
+### patient Pat: 
 username: pat@outlook.com
 password: 19691018
-# Clinician Chris
+### Clinician Chris
 username: chris@gmail.com
 password: 12345678
-# please log out before switching user
-# you can register new patient under clinician side add-patient page
+### please log out before switching user
+### you can register new patient under clinician side add-patient page
